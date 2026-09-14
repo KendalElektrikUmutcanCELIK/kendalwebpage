@@ -37,7 +37,7 @@ export const PrivacyContent = () => {
                 info@kendalelektrik.com.tr
               </a>{' '}
               adresinden Müşteri Hizmetleri Ekibine e-posta göndermek ya da{' '}
-              <strong>0(212) 251 77 90</strong> numaralı telefondan aramak
+              <strong>0212 482 75 90 - 91</strong> numaralı telefondan aramak
               suretiyle bize ulaşınız.
             </p>
 
@@ -249,7 +249,7 @@ export const PrivacyContent = () => {
             <ul className="list-disc pl-6 text-gray-300 leading-relaxed mb-10 space-y-2">
               <li>
                 Müşteri Hizmetleri Grubu: www.kendalelektrik.com.tr adresinden
-                bize ulaşabilirsiniz. Veya 0(212) 251 77 90 no’lu telefondan
+                bize ulaşabilirsiniz. Veya 0212 482 75 90 - 91 no’lu telefondan
                 arayabilirsiniz.
               </li>
               <li>
@@ -352,7 +352,7 @@ export const PrivacyContent = () => {
               >
                 info@kendalelektrik.com.tr
               </a>{' '}
-              or by calling <strong>0(212) 251 77 90</strong>.
+              or by calling <strong>0212 482 75 90 - 91</strong>.
             </p>
 
             <h2 className="text-2xl font-semibold mb-4 text-white">
@@ -550,7 +550,7 @@ export const PrivacyContent = () => {
             <ul className="list-disc pl-6 text-gray-300 leading-relaxed mb-10 space-y-2">
               <li>
                 Customer Service Group: You can reach us at
-                www.kendalelektrik.com.tr. Or you can call 0(212) 251 77 90.
+                www.kendalelektrik.com.tr. Or you can call 0212 482 75 90 - 91.
               </li>
               <li>
                 If you have any brochure or message sent to us, please state
