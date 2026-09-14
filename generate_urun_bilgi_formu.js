@@ -363,9 +363,43 @@ async function generateOne(browser, kendalLogo, product) {
   }
 }
 
+// Mirrors src/lib/getProductPdfForm.ts's matching so "--missing" agrees with
+// what the live site actually resolves as an existing PDF for a product.
+function findProductsMissingPdf() {
+  const SUFFIX = ' Ürün Bilgi Formu.pdf';
+  const existing = fs.existsSync(OUTPUT_DIR)
+    ? fs
+        .readdirSync(OUTPUT_DIR)
+        .filter((f) => f.toLowerCase().endsWith('.pdf'))
+        .map((f) =>
+          f.toLowerCase().endsWith(SUFFIX.toLowerCase())
+            ? f.slice(0, -SUFFIX.length)
+            : f.replace(/\.pdf$/i, ''),
+        )
+    : [];
+
+  return Object.keys(products).filter((id) => {
+    const product = products[id];
+    const model = (product.model || '').toUpperCase();
+    const nameTr = (product.name?.tr || '').toUpperCase();
+    return !existing.some(
+      (code) => model.includes(code.toUpperCase()) || nameTr.includes(code.toUpperCase()),
+    );
+  });
+}
+
 async function main() {
   const args = process.argv.slice(2);
-  const targetIds = args.length > 0 ? args : Object.keys(products);
+  const targetIds = args.includes('--missing')
+    ? findProductsMissingPdf()
+    : args.length > 0
+      ? args
+      : Object.keys(products);
+
+  if (targetIds.length === 0) {
+    console.log('Eksik ürün bilgi formu yok, üretilecek bir şey bulunamadı.');
+    return;
+  }
 
   if (!fs.existsSync(OUTPUT_DIR)) fs.mkdirSync(OUTPUT_DIR, { recursive: true });
   const kendalLogo = toBase64DataUri(KENDAL_LOGO_PATH);

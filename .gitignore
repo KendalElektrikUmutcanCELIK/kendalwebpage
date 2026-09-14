@@ -44,3 +44,7 @@ next-env.d.ts
 # graphify
 graphify-out/
 .graphify/
+
+# ürün bilgi formu üretim çıktıları (her çalıştırmada yeniden üretilir)
+urun_bilgi_formu_calisma_log.txt
+urun_bilgi_formu_rapor.json

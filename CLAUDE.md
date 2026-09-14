@@ -291,6 +291,6 @@ See **`urun_ekleme_rehberi.md`** at the repo root for the full new-product workf
 - **Start Dev Server:** `npm run dev`
 - **Build:** `npm run build`
 - **Lint:** `npm run lint` (Biome) — `npm run format` to auto-fix formatting, `npm run check` to run both lint+format together.
-- **Generate Product PDFs:** `node generate_urun_bilgi_formu.js` — Run this script when a new product is added (or updated) to generate/update its "Ürün Bilgi Formu" PDF document.
+- **Generate Product PDFs:** `node generate_urun_bilgi_formu.js` (all products), `node generate_urun_bilgi_formu.js ID1 ID2 ...` (specific products), or `node generate_urun_bilgi_formu.js --missing` (only products without an existing PDF) — see [`urun_bilgi_formu_rehberi.md`](urun_bilgi_formu_rehberi.md) for the full workflow, output location, and design decisions before touching this script.
 
 Please refer to this document to understand where to place new components, where to look for routing logic, how the data layer resolves products/slugs, and how the styling/animation/3D stack is structured. When something here seems out of date (a file renamed, a component removed), trust the current code over this doc and update this file accordingly.
