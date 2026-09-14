@@ -303,7 +303,7 @@ export function K2CreativePage({ allProducts }: K2CreativePageProps) {
     >
       <K2Preloader ready={sceneReady} />
 
-      <section className="relative z-10 w-full h-[70vh] md:h-screen flex flex-col items-center justify-center pointer-events-none px-4 overflow-hidden">
+      <section className="relative z-10 w-full h-[100svh] min-h-[600px] md:h-screen md:min-h-[800px] flex flex-col items-center justify-center pointer-events-none px-4 overflow-hidden">
         <div
           ref={flashRef}
           className="absolute inset-0 opacity-0 pointer-events-none"

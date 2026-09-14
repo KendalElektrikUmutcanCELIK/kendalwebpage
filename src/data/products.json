@@ -38517,7 +38517,11 @@
     "variantOptions": {
       "watt": "7W",
       "light": "Günışığı (3000K), Ararenk (4200K), Beyaz (6500K)"
-    }
+    },
+    "images": [
+      "urunler/ksl900-2.webp",
+      "urunler/ksl900-old.webp"
+    ]
   },
   "KDA857": {
     "id": "KDA857",

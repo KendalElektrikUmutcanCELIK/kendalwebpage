@@ -58,15 +58,15 @@ export function IletisimClient() {
       className="bg-black text-white pt-36 pb-12 px-6 relative z-10 overflow-hidden"
     >
       <div
-        className="absolute top-0 left-0 w-[65vw] h-full pointer-events-none opacity-40 mix-blend-screen"
+        className="absolute top-0 left-0 w-[80vw] h-full pointer-events-none opacity-80 mix-blend-screen"
         style={{
-          background: 'radial-gradient(ellipse at -20% 50%, #6366f1 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse at -10% 30%, #6366f1 0%, transparent 75%)',
         }}
       />
       <div
-        className="absolute top-0 right-0 w-[65vw] h-full pointer-events-none opacity-30 mix-blend-screen"
+        className="absolute top-0 right-0 w-[80vw] h-full pointer-events-none opacity-70 mix-blend-screen"
         style={{
-          background: 'radial-gradient(ellipse at 120% 50%, #ec4899 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse at 110% 30%, #ec4899 0%, transparent 75%)',
         }}
       />
 

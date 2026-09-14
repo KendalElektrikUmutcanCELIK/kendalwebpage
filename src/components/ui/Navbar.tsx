@@ -248,7 +248,7 @@ export const Navbar = () => {
       ],
     },
     {
-      label: 'Hizmet Ağımız',
+      label: (t as any).nav?.references || 'Referanslarımız',
       links: [
         {
           id: 'projects',
