@@ -23,6 +23,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  verification: {
+    google: 'GdN0-v59rFupmT2YoIoW9POqdeETaaK4UHmgd2M23ko',
+  },
   openGraph: {
     title: 'Kendal Elektrik - Global Manufacturer',
     description: 'Innovative lighting and electrical equipment.',

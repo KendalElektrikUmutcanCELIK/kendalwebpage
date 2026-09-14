@@ -93,10 +93,10 @@ export default function ProductCompareModal({
     { bg: 'bg-orange-50/70', dot: 'bg-orange-500', text: 'text-orange-700' },
     { bg: 'bg-pink-50/70', dot: 'bg-pink-500', text: 'text-pink-700' },
   ];
-  const gridColsClass =
+  const colWidthClass =
     items.length >= 3
-      ? 'grid-cols-[repeat(3,135px)] sm:grid-cols-[repeat(3,260px)] md:grid-cols-[repeat(3,300px)]'
-      : 'grid-cols-[repeat(2,150px)] sm:grid-cols-[repeat(2,260px)] md:grid-cols-[repeat(2,300px)]';
+      ? 'w-[135px] sm:w-[260px] md:w-[300px]'
+      : 'w-[150px] sm:w-[260px] md:w-[300px]';
 
   const attributeRows = useMemo(() => {
     const labels: string[] = [];
@@ -178,126 +178,128 @@ export default function ProductCompareModal({
         </div>
 
         <div className="overflow-auto flex-1 scrollbar-thin scrollbar-thumb-zinc-200 px-3 sm:px-5 md:px-8 pb-8">
-          <div className="w-fit mx-auto">
-            <div
-              className={`sticky top-0 z-10 bg-white grid gap-3 pt-4 pb-3 ${gridColsClass}`}
-            >
-              {items.map(({ product, url }) => {
-                const displayName =
-                  product.name[language as keyof typeof product.name] ||
-                  product.name.tr;
-                return (
-                  <div
-                    key={product.id}
-                    className={`relative rounded-2xl sm:rounded-3xl border ${accentBorder} bg-gradient-to-b ${accentGradient} to-white p-2 sm:p-3 md:p-4 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.12)]`}
-                  >
-                    <button
-                      onClick={() => onRemove(product.id)}
-                      className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center rounded-full bg-white border border-zinc-200 text-zinc-400 hover:text-zinc-700 hover:border-zinc-300 shadow-sm transition-colors"
+          <table className="w-fit mx-auto table-fixed border-separate border-spacing-x-3 border-spacing-y-0">
+            <colgroup>
+              {items.map(({ product }) => (
+                <col key={product.id} className={colWidthClass} />
+              ))}
+            </colgroup>
+            <thead>
+              <tr className="sticky top-0 z-10 bg-white">
+                {items.map(({ product, url }) => {
+                  const displayName =
+                    product.name[language as keyof typeof product.name] ||
+                    product.name.tr;
+                  return (
+                    <th
+                      key={product.id}
+                      scope="col"
+                      className="relative align-top pt-4 pb-3 font-normal"
                     >
-                      <svg
-                        className="w-3 h-3 sm:w-4 sm:h-4"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+                      <div
+                        className={`relative rounded-2xl sm:rounded-3xl border ${accentBorder} bg-gradient-to-b ${accentGradient} to-white p-2 sm:p-3 md:p-4 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.12)]`}
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2.5}
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </button>
-                    <div className="relative aspect-square w-full max-w-[70px] sm:max-w-[100px] md:max-w-[120px] mx-auto mb-1.5 sm:mb-2 md:mb-3 bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_4px_16px_-4px_rgba(0,0,0,0.15)]">
-                      <Image
-                        src={getAssetPath('/images/' + product.image)}
-                        alt={displayName}
-                        fill
-                        sizes="280px"
-                        priority
-                        className="object-contain p-2 sm:p-4"
-                      />
-                    </div>
-                    <div className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-zinc-400 mb-1 sm:mb-1.5 text-left truncate">
-                      {texts.model} {product.model}
-                    </div>
-                    <div
-                      className="font-bold text-zinc-900 text-[11px] sm:text-xs md:text-sm leading-snug mb-1.5 sm:mb-2 md:mb-3 text-left line-clamp-2 min-h-[2.4em]"
-                      title={displayName}
-                    >
-                      {displayName}
-                    </div>
-                    <div className="text-center">
-                      <Link
-                        href={url}
-                        className={`inline-flex items-center gap-1 sm:gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 rounded-full text-[10px] sm:text-[11px] md:text-xs font-bold ${accentSolid} ${accentSolidHover} ${accentSolidText} shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md`}
-                      >
-                        {texts.view}
-                        <svg
-                          className="w-3.5 h-3.5 sm:w-4 sm:h-4"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
+                        <button
+                          onClick={() => onRemove(product.id)}
+                          className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center rounded-full bg-white border border-zinc-200 text-zinc-400 hover:text-zinc-700 hover:border-zinc-300 shadow-sm transition-colors"
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2.5}
-                            d="M9 5l7 7-7 7"
+                          <svg
+                            className="w-3 h-3 sm:w-4 sm:h-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2.5}
+                              d="M6 18L18 6M6 6l12 12"
+                            />
+                          </svg>
+                        </button>
+                        <div className="relative aspect-square w-full max-w-[70px] sm:max-w-[100px] md:max-w-[120px] mx-auto mb-1.5 sm:mb-2 md:mb-3 bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_4px_16px_-4px_rgba(0,0,0,0.15)]">
+                          <Image
+                            src={getAssetPath('/images/' + product.image)}
+                            alt={displayName}
+                            fill
+                            sizes="280px"
+                            priority
+                            className="object-contain p-2 sm:p-4"
                           />
-                        </svg>
-                      </Link>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            {attributeRows.map((row, i) => {
-              const palette = rowPalette[i % rowPalette.length];
-              return (
-                <div key={row.label} className={palette.bg}>
-                  <div className="flex justify-center pt-3 sm:pt-5 pb-2 sm:pb-3">
-                    <span className="inline-flex items-center gap-2">
-                      <span
-                        className={`w-2 h-2 rounded-full ${palette.dot} flex-shrink-0`}
-                      />
-                      <span
-                        className={`text-xs sm:text-base md:text-lg font-extrabold uppercase tracking-wider ${palette.text}`}
-                      >
-                        {row.label}
-                      </span>
-                    </span>
-                  </div>
-                  <div className="relative">
-                    <div className={`grid gap-3 pb-3 sm:pb-5 ${gridColsClass}`}>
-                      {row.values.map((value, j) => (
+                        </div>
+                        <div className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-zinc-400 mb-1 sm:mb-1.5 text-left truncate">
+                          {texts.model} {product.model}
+                        </div>
                         <div
+                          className="font-bold text-zinc-900 text-[11px] sm:text-xs md:text-sm leading-snug mb-1.5 sm:mb-2 md:mb-3 text-left line-clamp-2 min-h-[2.4em]"
+                          title={displayName}
+                        >
+                          {displayName}
+                        </div>
+                        <div className="text-center">
+                          <Link
+                            href={url}
+                            className={`inline-flex items-center gap-1 sm:gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 rounded-full text-[10px] sm:text-[11px] md:text-xs font-bold ${accentSolid} ${accentSolidHover} ${accentSolidText} shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md`}
+                          >
+                            {texts.view}
+                            <svg
+                              className="w-3.5 h-3.5 sm:w-4 sm:h-4"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2.5}
+                                d="M9 5l7 7-7 7"
+                              />
+                            </svg>
+                          </Link>
+                        </div>
+                      </div>
+                    </th>
+                  );
+                })}
+              </tr>
+            </thead>
+            <tbody>
+              {attributeRows.map((row, i) => {
+                const palette = rowPalette[i % rowPalette.length];
+                return (
+                  <React.Fragment key={row.label}>
+                    <tr className={palette.bg}>
+                      <td
+                        colSpan={items.length}
+                        className="pt-3 sm:pt-5 pb-2 sm:pb-3 text-center"
+                      >
+                        <span className="inline-flex items-center gap-2">
+                          <span
+                            className={`w-2 h-2 rounded-full ${palette.dot} flex-shrink-0`}
+                          />
+                          <span
+                            className={`text-xs sm:text-base md:text-lg font-extrabold uppercase tracking-wider ${palette.text}`}
+                          >
+                            {row.label}
+                          </span>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr className={palette.bg}>
+                      {row.values.map((value, j) => (
+                        <td
                           key={j}
-                          className="px-1 text-center text-zinc-800 text-xs sm:text-base md:text-lg font-medium leading-relaxed"
+                          className={`px-1 pb-3 sm:pb-5 text-center text-zinc-800 text-xs sm:text-base md:text-lg font-medium leading-relaxed align-top ${j > 0 ? 'border-l-2 border-zinc-200' : ''}`}
                         >
                           {renderValue(value, texts.no_value)}
-                        </div>
+                        </td>
                       ))}
-                    </div>
-                    <div
-                      className={`absolute inset-0 pointer-events-none grid gap-3 ${gridColsClass}`}
-                    >
-                      {items.map((item, idx) => (
-                        <div
-                          key={item.product.id}
-                          className={
-                            idx > 0 ? 'border-l-2 border-zinc-200' : ''
-                          }
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                    </tr>
+                  </React.Fragment>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>,

@@ -1,3 +1,4 @@
+import { BrandSchema } from '@/components/shared/BrandSchema';
 import { BrandFooter } from '@/components/ui/BrandFooter';
 import { BrandNavbar } from '@/components/ui/BrandNavbar';
 import { ScrollToTop } from '@/components/ui/ScrollToTop';
@@ -59,6 +60,7 @@ export default async function BrandLayout({
 
   return (
     <div className="brand-layout-container min-h-screen flex flex-col bg-white">
+      <BrandSchema brandName={brandName} />
       <BrandNavbar brandName={brandName} />
 
       <main className="flex-grow">{children}</main>

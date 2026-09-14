@@ -12,6 +12,7 @@ import {
   getSlugByProductId,
 } from '@/data/products';
 import { getProductPdfFile } from '@/lib/getProductPdfForm';
+import { buildProductDescription } from '@/lib/productMetadata';
 import { ProductDetailClient } from './ProductDetailClient';
 
 export async function generateMetadata({
@@ -29,8 +30,7 @@ export async function generateMetadata({
     };
   }
 
-  const category = product.category?.tr?.[0];
-  const description = `${product.name.tr}${category ? ` - ${category}` : ''} | Model: ${product.model}. Kendal Elektrik'in yerli üretim aydınlatma ve elektrik ürünleri arasında yer alan ${product.name.tr}, teknik özellikleri ve garanti koşullarıyla incelenebilir.`;
+  const description = buildProductDescription(product);
   const canonicalUrl = getProductCanonicalUrl(product);
 
   return {

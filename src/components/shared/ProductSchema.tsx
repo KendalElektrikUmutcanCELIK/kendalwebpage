@@ -18,6 +18,18 @@ export const ProductSchema = ({
   const category = product.category?.tr?.[0];
   const brand = BRAND_NAMES[product.brand || ''] || 'Kendal Elektrik';
 
+  // Mirrors the exact-match check ProductDetailClient.tsx uses to show the
+  // "Yerli Üretim" badge, so the schema only claims TR origin when the data
+  // actually says so.
+  const isDomesticProduction = attributes.some((attr) =>
+    String(attr.value)
+      .split(' / ')
+      .some((token) => {
+        const t = token.trim().toLowerCase();
+        return t === 'yerli üretim' || t === 'domestic production';
+      }),
+  );
+
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -37,6 +49,7 @@ export const ProductSchema = ({
       name: 'Kendal Elektrik',
       url: 'https://www.kendalelektrik.com.tr',
     },
+    ...(isDomesticProduction ? { countryOfOrigin: 'TR' } : {}),
     additionalProperty: attributes
       .filter((attr) => attr.label && attr.value)
       .map((attr) => ({

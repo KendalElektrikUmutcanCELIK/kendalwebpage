@@ -5,6 +5,7 @@ import React, { Suspense } from 'react';
 import { BrandProductsHeader } from '@/components/sections/BrandProductsHeader';
 import CategoryFirstShowcase from '@/components/sections/CategoryFirstShowcase';
 import { ItemListSchema } from '@/components/shared/ItemListSchema';
+import { WebsiteSearchSchema } from '@/components/shared/WebsiteSearchSchema';
 import { getProductCanonicalUrl, products } from '@/data/products';
 import { getAssetPath } from '@/lib/basePath';
 
@@ -112,6 +113,11 @@ export default async function BrandProductsPage({
           name: p.name.tr,
           url: getProductCanonicalUrl(p),
         }))}
+      />
+      <WebsiteSearchSchema
+        name={meta.title}
+        siteUrl={`${meta.host}/urunler`}
+        searchUrlTemplate={`${meta.host}/urunler?q={search_term_string}`}
       />
 
       <div className="relative z-10 max-w-[1440px] mx-auto">
