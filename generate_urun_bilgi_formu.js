@@ -11,7 +11,7 @@ const KENDAL_LOGO_PATH = path.join(repoPath, 'public/images/kendal-logo.svg');
 const BRAND_LOGOS = {
   k2: path.join(repoPath, 'public/images/brands/k2-logo.svg'),
   vanti: path.join(repoPath, 'public/images/brands/vanti-logo.svg'),
-  global: path.join(repoPath, 'public/images/brands/global-logo.svg'),
+  global: path.join(repoPath, 'public/images/brands/global-logo-beyaz.svg'),
 };
 
 // Turkish attribute labels that get a clearer bilingual label in the sheet

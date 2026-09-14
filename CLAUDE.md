@@ -55,7 +55,8 @@ src/app/
 │   ├── layout.tsx              # Navbar + <main>{children}</main> + Footer + CookieConsentBanner + ScrollToTop (no providers)
 │   ├── page.tsx                 # "/" → HomeClient.tsx
 │   ├── HomeClient.tsx           # "use client": Loader, Hero, AboutUs, OurBrands, CompanyStats, GlobalPresence,
-│   │                            #   CompanyVideo, NewsTicker, NewsPreview, Certifications, CatalogCTA, ApertureTransition
+│   │                            #   CompanyVideo, NewsTicker, NewsPreview, CatalogCTA, ApertureTransition
+│   │                            #   (Certifications moved off the homepage to its own /sertifikalar route)
 │   │
 │   ├── [slug]/                  # SHORT product URL: /{slug} — e.g. /ges230-20w-torch-led-ampul-beyaz
 │   │   ├── page.tsx              # generateStaticParams = getAllSlugs() (every slug-map.json key, incl. non-canonical)
@@ -83,6 +84,11 @@ src/app/
 │   ├── projeler/         layout.tsx (metadata-only) + page.tsx → renders <Projects/> directly (no client wrapper)
 │   ├── zincir-marketler/ layout.tsx (metadata-only) + page.tsx → renders <RetailPresence/> directly
 │   ├── misyon-ve-vizyon/ page.tsx → MissionVisionClient.tsx
+│   ├── iletisim/         page.tsx → IletisimClient.tsx (static contact info/links, no form — no backend needed)
+│   ├── sertifikalar/     page.tsx → renders <Certifications/> directly (moved off the homepage, own route)
+│   │   ├── iso/            page.tsx → CertificateGallery with ISO management-system cert images
+│   │   ├── tse/            page.tsx → CertificateGallery with TSE product-approval cert images
+│   │   └── marka-tescil/   page.tsx → CertificateGallery with Turk Patent trademark registration images
 │   ├── kvkk/             page.tsx → KVKKContent.tsx
 │   └── gizlilik-cerez-politikasi/ page.tsx → PrivacyContent.tsx
 │
@@ -146,7 +152,8 @@ All follow the same pattern: `useRef` container + `useIsomorphicLayoutEffect` wr
 - **`AboutUs.tsx`** — two-column about+timeline; scrubbed vertical "wire" scale animation. Code comment notes a past perf fix: switched from scrubbing `filter` (brightness/grayscale, paint-heavy) to scrubbing `opacity`.
 - **`WhyUs.tsx`** — 5-feature grid, inline SVG icons, staggered fade-in.
 - **`CompanyStats.tsx`** — animated counters (`gsap.to(obj,{val:target})` driving `innerHTML`).
-- **`Certifications.tsx`** — cert logo grid; hovering the ISO cert reveals 4 sub-certs radiating out with dashed SVG connector lines.
+- **`Certifications.tsx`** — no longer a homepage section, lives at its own `/sertifikalar` route (removed from `HomeClient.tsx`). Cert logo grid, 4 of 5 cards clickable: ISO/TSE/Marka Tescil link to their own `/sertifikalar/{iso,tse,marka-tescil}` detail page (rendered via `CertificateGallery.tsx`), Entegre Kalite Politikası opens a PDF directly in a new tab (`public/images/certifications/K2-ENEC-BELGESI.pdf`), Yerli Malı Belgeleri has no documents yet and stays non-clickable (dimmed). The old ISO hover-reveal-4-subcerts interaction was removed in favor of the click-through page.
+- **`CertificateGallery.tsx`** — shared `{title, subtitle, images}` component powering the 3 `/sertifikalar/*` detail pages; grid of certificate document images, each opens full-size in a new tab on click, back-link to `/sertifikalar`.
 - **`CompanyVideo.tsx`** — click-to-play YouTube embed (lazy, thumbnail until clicked).
 - **`BrandsStrip.tsx`** — simple 3-logo strip (K2/Vanti/Global), no GSAP.
 - **`OurBrands.tsx`** — brand-card grid, GSAP stagger-reveal, per-brand glow color via CSS var.

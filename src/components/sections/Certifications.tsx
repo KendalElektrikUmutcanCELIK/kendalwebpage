@@ -1,206 +1,124 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
+import React from 'react';
 import { getAssetPath } from '@/lib/basePath';
-import { gsap } from '@/lib/gsapConfig';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
-import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect';
 
 export const Certifications = () => {
   const { t } = useLanguage();
-  const containerRef = useRef<HTMLElement>(null);
-
-  useIsomorphicLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      const items = gsap.utils.toArray('.cert-item');
-
-      gsap.fromTo(
-        items,
-        { opacity: 0, scale: 0.9, y: 20 },
-        {
-          opacity: 1,
-          scale: 1,
-          y: 0,
-          duration: 0.4,
-          stagger: 0.05,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: 'top 85%',
-          },
-        },
-      );
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  const isoSubCerts = [
-    getAssetPath('/images/certifications/ISO/1.webp'),
-    getAssetPath('/images/certifications/ISO/2.webp'),
-    getAssetPath('/images/certifications/ISO/3.webp'),
-    getAssetPath('/images/certifications/ISO/4.webp'),
-  ];
 
   const certs = [
     {
       id: 'iso',
       label: (t as any).certifications?.iso,
       icon: getAssetPath('/images/certifications/iso.webp'),
+      href: '/sertifikalar/iso',
     },
     {
       id: 'tse',
       label: (t as any).certifications?.tse,
       icon: getAssetPath('/images/certifications/tse.webp'),
+      href: '/sertifikalar/tse',
     },
     {
       id: 'kalite',
       label: (t as any).certifications?.kalite,
       icon: getAssetPath('/images/certifications/kalite.webp'),
+      href: getAssetPath('/images/certifications/K2-ENEC-BELGESI.pdf'),
+      external: true,
     },
     {
       id: 'yerli',
       label: (t as any).certifications?.yerli,
       icon: getAssetPath('/images/certifications/yerli-uretim.webp'),
+      href: null,
     },
     {
       id: 'marka',
       label: (t as any).certifications?.marka_tescil,
       icon: getAssetPath('/images/certifications/marka-tescil.webp'),
+      href: '/sertifikalar/marka-tescil',
     },
   ];
 
   return (
     <section
       id="certifications"
-      ref={containerRef}
-      className="w-full relative bg-transparent py-10 md:py-14 px-6 border-t border-white/5 overflow-hidden"
+      className="w-full relative bg-black pt-36 pb-20 md:pb-28 px-6 overflow-hidden min-h-screen"
     >
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[1200px] h-[300px] bg-yellow-500/40 rounded-[100%] blur-[90px] pointer-events-none" />
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/4 w-[1100px] h-[450px] bg-blue-500/60 blur-[110px] rounded-full" />
+        <div className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/4 w-[1100px] h-[450px] bg-blue-500/35 blur-[110px] rounded-full" />
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="mb-12">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[var(--global-text)] opacity-90 mb-4">
+            {(t as any).certifications?.title || 'Sertifikalarımız'}
+          </h1>
+          <div className="h-1.5 w-16 bg-[var(--brand-red)] rounded-full mb-6" />
+          <p className="text-gray-400 max-w-2xl">
+            {(t as any).certifications?.subtitle ||
+              'Kalite ve güvenilirlik anlayışımızı belgeleyen sertifikalarımız ve tescillerimiz.'}
+          </p>
+        </div>
+
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
-          {certs.map((cert, idx) => (
-            <div
-              key={idx}
-              className={`cert-item relative flex flex-col items-center justify-center p-4 md:p-6 rounded-2xl bg-[var(--global-text)]/[0.02] border border-[var(--global-text)]/10 transition-all duration-300 hover:bg-[var(--global-text)]/[0.05] hover:border-[var(--brand-red)] hover:shadow-[0_0_15px_rgba(227,0,15,0.3)] group ${cert.id === 'iso' ? 'cursor-pointer z-40' : 'z-10'}`}
-            >
-              {cert.id === 'iso' && (
-                <>
-                  <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 transition-all duration-500 scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 origin-center">
-                    <line
-                      x1="50%"
-                      y1="45%"
-                      x2="0%"
-                      y2="0%"
-                      stroke="var(--brand-red)"
-                      strokeWidth="1.5"
-                      strokeDasharray="4 4"
-                      className="opacity-60"
-                    />
-                    <line
-                      x1="50%"
-                      y1="45%"
-                      x2="100%"
-                      y2="0%"
-                      stroke="var(--brand-red)"
-                      strokeWidth="1.5"
-                      strokeDasharray="4 4"
-                      className="opacity-60"
-                    />
-                    <line
-                      x1="50%"
-                      y1="45%"
-                      x2="0%"
-                      y2="100%"
-                      stroke="var(--brand-red)"
-                      strokeWidth="1.5"
-                      strokeDasharray="4 4"
-                      className="opacity-60"
-                    />
-                    <line
-                      x1="50%"
-                      y1="45%"
-                      x2="100%"
-                      y2="100%"
-                      stroke="var(--brand-red)"
-                      strokeWidth="1.5"
-                      strokeDasharray="4 4"
-                      className="opacity-60"
-                    />
-                  </svg>
+          {certs.map((cert, idx) => {
+            const cardClassName =
+              'cert-item relative flex flex-col items-center justify-center p-4 md:p-6 rounded-2xl bg-[var(--global-text)]/[0.02] border border-[var(--global-text)]/10 transition-all duration-300 group z-10' +
+              (cert.href
+                ? ' hover:bg-[var(--global-text)]/[0.05] hover:border-[var(--brand-red)] hover:shadow-[0_0_15px_rgba(227,0,15,0.3)] cursor-pointer'
+                : ' cursor-default');
 
-                  {isoSubCerts.map((subIcon, subIdx) => {
-                    const positions = [
-                      { left: '0%', top: '0%' },
-                      { left: '100%', top: '0%' },
-                      { left: '0%', top: '100%' },
-                      { left: '100%', top: '100%' },
-                    ];
+            const cardContent = (
+              <>
+                <div className="relative w-16 h-16 md:w-24 md:h-24 mb-3 md:mb-4 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 drop-shadow-md">
+                  <Image
+                    src={cert.icon}
+                    alt={cert.label || 'Certification'}
+                    fill
+                    sizes="(max-width: 768px) 64px, 96px"
+                    className="object-contain drop-shadow-md"
+                  />
+                </div>
 
-                    const pos = positions[subIdx];
+                <h3 className="text-center text-[13px] md:text-base font-medium text-[var(--global-text)] opacity-70 transition-opacity duration-300 group-hover:opacity-100">
+                  {cert.label}
+                </h3>
+              </>
+            );
 
-                    return (
-                      <div
-                        key={subIdx}
-                        className="absolute z-20 -translate-x-1/2 -translate-y-1/2 w-16 h-16 md:w-24 md:h-24 flex items-center justify-center transition-all duration-500 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 pointer-events-none group-hover:pointer-events-auto"
-                        style={{
-                          left: pos.left,
-                          top: pos.top,
-                          transitionDelay: `${subIdx * 50}ms`,
-                        }}
-                      >
-                        <div className="relative w-full h-full bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_15px_rgba(227,0,15,0.4)]">
-                          <Image
-                            src={subIcon}
-                            alt={`ISO Detail ${subIdx + 1}`}
-                            fill
-                            sizes="(max-width: 768px) 64px, 96px"
-                            className="object-contain p-2"
-                            style={{
-                              filter:
-                                'hue-rotate(135deg) saturate(2.5) contrast(1.1)',
-                            }}
-                          />
-                        </div>
-                      </div>
-                    );
-                  })}
-                </>
-              )}
+            if (!cert.href) {
+              return (
+                <div key={idx} className={cardClassName}>
+                  {cardContent}
+                </div>
+              );
+            }
 
-              <div className="relative w-20 h-20 md:w-32 md:h-32 mb-3 md:mb-4 flex items-center justify-center">
-                {cert.id === 'iso' ? (
-                  <div className="absolute inset-0 z-30 flex items-center justify-center transition-transform duration-500 group-hover:scale-90 bg-transparent rounded-full">
-                    <Image
-                      src={cert.icon}
-                      alt={cert.label || 'Certification'}
-                      fill
-                      sizes="(max-width: 768px) 80px, 128px"
-                      className="object-contain drop-shadow-md"
-                    />
-                  </div>
-                ) : (
-                  <div className="relative w-16 h-16 md:w-24 md:h-24 transition-transform duration-300 group-hover:scale-110 drop-shadow-md">
-                    <Image
-                      src={cert.icon}
-                      alt={cert.label || 'Certification'}
-                      fill
-                      sizes="(max-width: 768px) 64px, 96px"
-                      className="object-contain drop-shadow-md"
-                    />
-                  </div>
-                )}
-              </div>
+            if (cert.external) {
+              return (
+                <a
+                  key={idx}
+                  href={cert.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cardClassName}
+                >
+                  {cardContent}
+                </a>
+              );
+            }
 
-              <h3
-                className={`text-center text-[13px] md:text-base font-medium text-[var(--global-text)] transition-opacity duration-300 ${cert.id === 'iso' ? 'opacity-90 group-hover:opacity-0' : 'opacity-70 group-hover:opacity-100'}`}
-              >
-                {cert.label}
-              </h3>
-            </div>
-          ))}
+            return (
+              <Link key={idx} href={cert.href} className={cardClassName}>
+                {cardContent}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>

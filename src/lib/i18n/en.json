@@ -17,7 +17,8 @@
     "group_brands": "Brands & Markets",
     "group_media": "Media & References",
     "brands": "Our Brands & Products",
-    "catalog": "Catalog"
+    "catalog": "Catalog",
+    "certifications": "Certifications"
   },
   "hero": {
     "badge": "Global Manufacturer Since 1997",
@@ -57,6 +58,8 @@
     ]
   },
   "certifications": {
+    "title": "Our Certifications",
+    "subtitle": "Certificates and registrations documenting our commitment to quality and reliability.",
     "iso": "ISO Management System Certificates",
     "tse": "TSE Product Approval Certificates",
     "kalite": "Integrated Quality Policy",

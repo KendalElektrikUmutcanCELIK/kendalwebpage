@@ -87,6 +87,30 @@ function wwwSitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'daily',
       priority: 0.8,
     },
+    {
+      url: `${WWW_HOST}/sertifikalar`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.6,
+    },
+    {
+      url: `${WWW_HOST}/sertifikalar/iso`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.5,
+    },
+    {
+      url: `${WWW_HOST}/sertifikalar/tse`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.5,
+    },
+    {
+      url: `${WWW_HOST}/sertifikalar/marka-tescil`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.5,
+    },
     ...newsEntries,
     {
       url: `${WWW_HOST}/kariyer`,

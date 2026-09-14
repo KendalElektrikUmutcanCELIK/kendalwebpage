@@ -157,6 +157,11 @@ export const Navbar = () => {
           href: '/haberler',
           label: (t as any).nav?.news || 'Haberler',
         },
+        {
+          id: 'certifications',
+          href: '/sertifikalar',
+          label: (t as any).nav?.certifications || 'Sertifikalar',
+        },
       ],
     },
     {

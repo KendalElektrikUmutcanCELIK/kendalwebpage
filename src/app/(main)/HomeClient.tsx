@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Loader } from '@/components/loader/Loader';
 import { AboutUs } from '@/components/sections/AboutUs';
 import { CatalogCTA } from '@/components/sections/CatalogCTA';
-import { Certifications } from '@/components/sections/Certifications';
 
 import { CompanyStats } from '@/components/sections/CompanyStats';
 import { CompanyVideo } from '@/components/sections/CompanyVideo';
@@ -35,7 +34,6 @@ export function HomeClient() {
         <CompanyVideo />
         <GlobalPresence />
         <NewsPreview />
-        <Certifications />
       </div>
     </main>
   );

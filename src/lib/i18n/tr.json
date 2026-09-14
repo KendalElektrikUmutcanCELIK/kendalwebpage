@@ -17,7 +17,8 @@
     "group_brands": "Markalar & Pazarlar",
     "group_media": "Medya & Referanslar",
     "brands": "Markalarımız & Ürünlerimiz",
-    "catalog": "Katalog & Fiyat Listesi"
+    "catalog": "Katalog & Fiyat Listesi",
+    "certifications": "Sertifikalar"
   },
   "hero": {
     "badge": "1997'den Beri Küresel Üretici",
@@ -57,6 +58,8 @@
     ]
   },
   "certifications": {
+    "title": "Sertifikalarımız",
+    "subtitle": "Kalite ve güvenilirlik anlayışımızı belgeleyen sertifikalarımız ve tescillerimiz.",
     "iso": "ISO Yönetim Sistemi Sertifikaları",
     "tse": "TSE Ürün Onay Sertifikaları",
     "kalite": "Entegre Kalite Politikası",
