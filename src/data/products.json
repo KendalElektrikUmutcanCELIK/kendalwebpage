@@ -3053,7 +3053,7 @@
     "image": "urunler/kel00624ledkrm.webp",
     "name": {
       "tr": "KEL006 24 Ledli El Feneri Sarı",
-      "en": "KEL006 24 Ledli El Feneri Sarı"
+      "en": "KEL006 24 LED Flashlight Yellow"
     },
     "attributes": {
       "tr": [
@@ -3073,7 +3073,7 @@
       "en": [
         {
           "label": "Color",
-          "value": "Kırmızı"
+          "value": "Red"
         },
         {
           "label": "Package Quantity",
@@ -3081,7 +3081,7 @@
         },
         {
           "label": "Product",
-          "value": "24 Ledli Kamp Feneri"
+          "value": "24 LED Camping Lantern"
         }
       ]
     },
@@ -3090,7 +3090,7 @@
         "Fenerler"
       ],
       "en": [
-        "Fenerler"
+        "Flashlights"
       ]
     },
     "brand": "k2",
@@ -3104,7 +3104,7 @@
     "image": "urunler/kel008-4ledsri.webp",
     "name": {
       "tr": "KEL008 4 Ledli El Feneri Sarı",
-      "en": "KEL008 4 Ledli El Feneri Sarı"
+      "en": "KEL008 4 LED Flashlight Yellow"
     },
     "attributes": {
       "tr": [
@@ -3124,7 +3124,7 @@
       "en": [
         {
           "label": "Color",
-          "value": "Sarı"
+          "value": "Yellow"
         },
         {
           "label": "Package Quantity",
@@ -3141,7 +3141,7 @@
         "Fenerler"
       ],
       "en": [
-        "Fenerler"
+        "Flashlights"
       ]
     },
     "brand": "k2",
@@ -3155,7 +3155,7 @@
     "image": "urunler/kel009-7ledsri.webp",
     "name": {
       "tr": "KEL009 7 Ledli El Feneri Sarı",
-      "en": "KEL009 7 Ledli El Feneri Sarı"
+      "en": "KEL009 7 LED Flashlight Yellow"
     },
     "attributes": {
       "tr": [
@@ -3192,7 +3192,7 @@
         "Fenerler"
       ],
       "en": [
-        "Fenerler"
+        "Flashlights"
       ]
     },
     "brand": "k2",
@@ -3206,7 +3206,7 @@
     "image": "urunler/kel011-5ledfen.webp",
     "name": {
       "tr": "KEL011 5 LED Sarzlı El Feneri",
-      "en": "KEL011 5 LED Sarzlı El Feneri"
+      "en": "KEL011 5 LED Rechargeable Flashlight"
     },
     "attributes": {
       "tr": [
@@ -3226,7 +3226,7 @@
       "en": [
         {
           "label": "Color",
-          "value": "Siyah"
+          "value": "Black"
         },
         {
           "label": "Package Quantity",
@@ -3243,7 +3243,7 @@
         "Fenerler"
       ],
       "en": [
-        "Fenerler"
+        "Flashlights"
       ]
     },
     "brand": "k2",
@@ -3257,7 +3257,7 @@
     "image": "urunler/kel01216ledfen.webp",
     "name": {
       "tr": "KEL012 16 LED Sarzlı El Feneri",
-      "en": "KEL012 16 LED Sarzlı El Feneri"
+      "en": "KEL012 16 LED Rechargeable Flashlight"
     },
     "attributes": {
       "tr": [
@@ -3285,7 +3285,7 @@
         },
         {
           "label": "Color",
-          "value": "Beyaz"
+          "value": "White"
         },
         {
           "label": "Lumen",
@@ -3302,7 +3302,7 @@
         "Fenerler"
       ],
       "en": [
-        "Fenerler"
+        "Flashlights"
       ]
     },
     "brand": "k2",
@@ -3317,7 +3317,7 @@
     "image": "urunler/kfs1066afotosl.webp",
     "name": {
       "tr": "KFS106 Fotosel 6a",
-      "en": "KFS106 Fotosel 6a"
+      "en": "KFS106 Photocell 6a"
     },
     "attributes": {
       "tr": [
@@ -3358,7 +3358,7 @@
     "image": "urunler/kfs11010afotsl.webp",
     "name": {
       "tr": "KFS110 Fotosel 10a",
-      "en": "KFS110 Fotosel 10a"
+      "en": "KFS110 Photocell 10a"
     },
     "attributes": {
       "tr": [
@@ -3399,7 +3399,7 @@
     "image": "urunler/kfs12525afotsl.webp",
     "name": {
       "tr": "KFS125 Fotosel 25a",
-      "en": "KFS125 Fotosel 25a"
+      "en": "KFS125 Photocell 25a"
     },
     "attributes": {
       "tr": [
@@ -3451,6 +3451,10 @@
         {
           "label": "Koli Adeti",
           "value": "50"
+        },
+        {
+          "label": "Kasa Rengi",
+          "value": "Siyah-Rose Gold"
         }
       ],
       "en": [
@@ -3463,7 +3467,7 @@
           "value": "50"
         },
         {
-          "label": "Cashiers",
+          "label": "Case",
           "value": "Black-R.Gold"
         }
       ]
@@ -3499,6 +3503,10 @@
         {
           "label": "Koli Adeti",
           "value": "50"
+        },
+        {
+          "label": "Kasa Rengi",
+          "value": "Siyah-Krom"
         }
       ],
       "en": [
@@ -3511,7 +3519,7 @@
           "value": "50"
         },
         {
-          "label": "Cashiers",
+          "label": "Case",
           "value": "Black-Chrome"
         }
       ]
@@ -3547,6 +3555,10 @@
         {
           "label": "Koli Adeti",
           "value": "50"
+        },
+        {
+          "label": "Kasa Rengi",
+          "value": "Beyaz-Rose Gold"
         }
       ],
       "en": [
@@ -3559,7 +3571,7 @@
           "value": "50"
         },
         {
-          "label": "Cashiers",
+          "label": "Case",
           "value": "White-R.Gold"
         }
       ]
@@ -3595,6 +3607,10 @@
         {
           "label": "Koli Adeti",
           "value": "50"
+        },
+        {
+          "label": "Kasa Rengi",
+          "value": "Beyaz-Krom"
         }
       ],
       "en": [
@@ -3607,7 +3623,7 @@
           "value": "50"
         },
         {
-          "label": "Cashiers",
+          "label": "Case",
           "value": "White-Chrome"
         }
       ]
@@ -3643,6 +3659,10 @@
         {
           "label": "Koli Adeti",
           "value": "50"
+        },
+        {
+          "label": "Kasa Rengi",
+          "value": "Siyah-Rose Gold"
         }
       ],
       "en": [
@@ -3655,7 +3675,7 @@
           "value": "50"
         },
         {
-          "label": "Cashiers",
+          "label": "Case",
           "value": "Black-R.Gold"
         }
       ]
@@ -3691,6 +3711,10 @@
         {
           "label": "Koli Adeti",
           "value": "50"
+        },
+        {
+          "label": "Kasa Rengi",
+          "value": "Siyah-Krom"
         }
       ],
       "en": [
@@ -3703,7 +3727,7 @@
           "value": "50"
         },
         {
-          "label": "Cashiers",
+          "label": "Case",
           "value": "Black-Chrome"
         }
       ]
@@ -3739,6 +3763,10 @@
         {
           "label": "Koli Adeti",
           "value": "50"
+        },
+        {
+          "label": "Kasa Rengi",
+          "value": "Beyaz-Rose Gold"
         }
       ],
       "en": [
@@ -3751,7 +3779,7 @@
           "value": "50"
         },
         {
-          "label": "Cashiers",
+          "label": "Case",
           "value": "White-R.Gold"
         }
       ]
@@ -3787,6 +3815,10 @@
         {
           "label": "Koli Adeti",
           "value": "50"
+        },
+        {
+          "label": "Kasa Rengi",
+          "value": "Beyaz-Krom"
         }
       ],
       "en": [
@@ -3799,7 +3831,7 @@
           "value": "50"
         },
         {
-          "label": "Cashiers",
+          "label": "Case",
           "value": "White-Chrome"
         }
       ]
@@ -11678,6 +11710,10 @@
           "value": "1800"
         },
         {
+          "label": "Kasa Rengi",
+          "value": "Siyah"
+        },
+        {
           "label": "Gerilim",
           "value": "220-240V"
         },
@@ -11767,6 +11803,10 @@
         {
           "label": "Lümen",
           "value": "1800"
+        },
+        {
+          "label": "Kasa Rengi",
+          "value": "Beyaz"
         },
         {
           "label": "Gerilim",
@@ -20506,7 +20546,9 @@
     "id": "HAN015B",
     "model": "HAN015B",
     "image": "urunler/han015b.webp",
-    "images": ["urunler/han015b-old.webp"],
+    "images": [
+      "urunler/han015b-old.webp"
+    ],
     "name": {
       "tr": "HAN015B 30X120 CLİP-İN KASA PANEL ÇERÇEVESİ",
       "en": "HAN015B 30X120 CLIP-IN BODY PANEL FRAME"
@@ -20606,7 +20648,9 @@
     "id": "HAN016A",
     "model": "HAN016A",
     "image": "urunler/han016a.webp",
-    "images": ["urunler/han016a-old.webp"],
+    "images": [
+      "urunler/han016a-old.webp"
+    ],
     "name": {
       "tr": "HAN016A 30X60 DEMONTE PANEL ÇERÇEVESİ",
       "en": "HAN016A 30X60 DISASSEMBLED PANEL FRAME"
@@ -21052,7 +21096,9 @@
     "id": "KES120",
     "model": "KES120",
     "image": "urunler/kes120.webp",
-    "images": ["urunler/kes120-old.webp"],
+    "images": [
+      "urunler/kes120-old.webp"
+    ],
     "name": {
       "tr": "KES120 LED AMPUL (IC DRIVER)",
       "en": "KES120 LED BULB (IC DRIVER)"
@@ -21153,7 +21199,9 @@
     "id": "KES126",
     "model": "KES126",
     "image": "urunler/kes126.webp",
-    "images": ["urunler/kes126-old.webp"],
+    "images": [
+      "urunler/kes126-old.webp"
+    ],
     "name": {
       "tr": "KES126 LED AMPUL (IC DRIVER)",
       "en": "KES126 LED BULB (IC DRIVER)"
@@ -21254,7 +21302,9 @@
     "id": "KES122",
     "model": "KES122",
     "image": "urunler/kes122.webp",
-    "images": ["urunler/kes122-old.webp"],
+    "images": [
+      "urunler/kes122-old.webp"
+    ],
     "name": {
       "tr": "KES122 LED AMPUL (IC DRIVER)",
       "en": "KES122 LED BULB (IC DRIVER)"
@@ -21355,7 +21405,9 @@
     "id": "KES123",
     "model": "KES123",
     "image": "urunler/kes123.webp",
-    "images": ["urunler/kes123-old.webp"],
+    "images": [
+      "urunler/kes123-old.webp"
+    ],
     "name": {
       "tr": "KES123 LED AMPUL (IC DRIVER)",
       "en": "KES123 LED BULB (IC DRIVER)"
@@ -21456,7 +21508,9 @@
     "id": "KES181",
     "model": "KES181",
     "image": "urunler/kes181.webp",
-    "images": ["urunler/kes181-old.webp"],
+    "images": [
+      "urunler/kes181-old.webp"
+    ],
     "name": {
       "tr": "KES181 LED AMPUL (DOB)",
       "en": "KES181 LED BULB (DOB)"
@@ -21557,7 +21611,9 @@
     "id": "KES185",
     "model": "KES185",
     "image": "urunler/kes185.webp",
-    "images": ["urunler/kes185-old.webp"],
+    "images": [
+      "urunler/kes185-old.webp"
+    ],
     "name": {
       "tr": "KES185 LED AMPUL (DOB)",
       "en": "KES185 LED BULB (DOB)"
@@ -21658,7 +21714,9 @@
     "id": "KES182",
     "model": "KES182",
     "image": "urunler/kes182.webp",
-    "images": ["urunler/kes182-old.webp"],
+    "images": [
+      "urunler/kes182-old.webp"
+    ],
     "name": {
       "tr": "KES182 LED AMPUL (DOB)",
       "en": "KES182 LED BULB (DOB)"
@@ -22259,7 +22317,9 @@
     "id": "KES209",
     "model": "KES209",
     "image": "urunler/kes209.webp",
-    "images": ["urunler/kes209-old.webp"],
+    "images": [
+      "urunler/kes209-old.webp"
+    ],
     "name": {
       "tr": "KES209 LEDLİ BUJİ AMPUL",
       "en": "KES209 LED CANDLE BULB"
@@ -22352,7 +22412,9 @@
     "id": "KES183",
     "model": "KES183",
     "image": "urunler/kes183.webp",
-    "images": ["urunler/kes183-old.webp"],
+    "images": [
+      "urunler/kes183-old.webp"
+    ],
     "name": {
       "tr": "KES183 LEDLİ BUJİ AMPUL (DOB)",
       "en": "KES183 LED CANDLE BULB (DOB)"
@@ -22445,7 +22507,9 @@
     "id": "KES184",
     "model": "KES184",
     "image": "urunler/kes184.webp",
-    "images": ["urunler/kes184-old.webp"],
+    "images": [
+      "urunler/kes184-old.webp"
+    ],
     "name": {
       "tr": "KES184 LEDLİ BUJİ AMPUL (DOB)",
       "en": "KES184 LED CANDLE BULB (DOB)"
@@ -22538,7 +22602,9 @@
     "id": "KES206",
     "model": "KES206",
     "image": "urunler/kes206.webp",
-    "images": ["urunler/kes206-old.webp"],
+    "images": [
+      "urunler/kes206-old.webp"
+    ],
     "name": {
       "tr": "KES206 LEDLİ BUJİ KIVRIK AMPUL",
       "en": "KES206 LED BENT CANDLE BULB"
@@ -22631,7 +22697,9 @@
     "id": "KES210",
     "model": "KES210",
     "image": "urunler/kes210.webp",
-    "images": ["urunler/kes210-old.webp"],
+    "images": [
+      "urunler/kes210-old.webp"
+    ],
     "name": {
       "tr": "KES210 LEDLİ BUJİ KIVRIK AMPUL",
       "en": "KES210 LED BENT CANDLE BULB"
@@ -22724,7 +22792,9 @@
     "id": "KES207",
     "model": "KES207",
     "image": "urunler/kes207.webp",
-    "images": ["urunler/kes207-old.webp"],
+    "images": [
+      "urunler/kes207-old.webp"
+    ],
     "name": {
       "tr": "KES207 LEDLİ TOP AMPUL",
       "en": "KES207 LED GLOBE BULB"
@@ -22825,7 +22895,9 @@
     "id": "KES208",
     "model": "KES208",
     "image": "urunler/kes208.webp",
-    "images": ["urunler/kes208-old.webp"],
+    "images": [
+      "urunler/kes208-old.webp"
+    ],
     "name": {
       "tr": "KES208 LEDLİ TOP AMPUL",
       "en": "KES208 LED GLOBE BULB"
@@ -22926,7 +22998,9 @@
     "id": "KFL118",
     "model": "KFL118",
     "image": "urunler/kfl118.webp",
-    "images": ["urunler/kfl118-old.webp"],
+    "images": [
+      "urunler/kfl118-old.webp"
+    ],
     "name": {
       "tr": "KFL118 LED TÜP FLORESAN",
       "en": "KFL118 LED TUBE FLUORESCENT"
@@ -23027,7 +23101,9 @@
     "id": "KFL136",
     "model": "KFL136",
     "image": "urunler/kfl136.webp",
-    "images": ["urunler/kfl136-old.webp"],
+    "images": [
+      "urunler/kfl136-old.webp"
+    ],
     "name": {
       "tr": "KFL136 LED TÜP FLORESAN",
       "en": "KFL136 LED TUBE FLUORESCENT"
@@ -23128,7 +23204,9 @@
     "id": "KFL136SE",
     "model": "KFL136SE",
     "image": "urunler/kfl136se.webp",
-    "images": ["urunler/kfl136se-old.webp"],
+    "images": [
+      "urunler/kfl136se-old.webp"
+    ],
     "name": {
       "tr": "KFL136SE LED TÜP FLORESAN (RADAR SENSÖRLÜ)",
       "en": "KFL136SE LED TUBE FLUORESCENT (RADAR SENSOR)"
@@ -23229,7 +23307,9 @@
     "id": "KFL118C",
     "model": "KFL118C",
     "image": "urunler/kfl118c.webp",
-    "images": ["urunler/kfl118c-old.webp"],
+    "images": [
+      "urunler/kfl118c-old.webp"
+    ],
     "name": {
       "tr": "KFL118C LED TÜP FLORESAN",
       "en": "KFL118C LED TUBE FLUORESCENT"
@@ -23330,7 +23410,9 @@
     "id": "KFL136C",
     "model": "KFL136C",
     "image": "urunler/kfl136c.webp",
-    "images": ["urunler/kfl136c-old.webp"],
+    "images": [
+      "urunler/kfl136c-old.webp"
+    ],
     "name": {
       "tr": "KFL136C LED TÜP FLORESAN",
       "en": "KFL136C LED TUBE FLUORESCENT"
@@ -23431,7 +23513,9 @@
     "id": "KFL146C",
     "model": "KFL146C",
     "image": "urunler/kfl146c.webp",
-    "images": ["urunler/kfl146c-old.webp"],
+    "images": [
+      "urunler/kfl146c-old.webp"
+    ],
     "name": {
       "tr": "KFL146C LED TÜP FLORESAN",
       "en": "KFL146C LED TUBE FLUORESCENT"
@@ -24730,7 +24814,9 @@
     "id": "KES224",
     "model": "KES224",
     "image": "urunler/kes224.webp",
-    "images": ["urunler/kes224-old.webp"],
+    "images": [
+      "urunler/kes224-old.webp"
+    ],
     "name": {
       "tr": "KES224 12-48 VOLT LED AMPUL",
       "en": "KES224 12-48 VOLT LED BULB"
@@ -24823,7 +24909,9 @@
     "id": "KES222",
     "model": "KES222",
     "image": "urunler/kes222.webp",
-    "images": ["urunler/kes222-old.webp"],
+    "images": [
+      "urunler/kes222-old.webp"
+    ],
     "name": {
       "tr": "KES222 12-48 VOLT LED AMPUL",
       "en": "KES222 12-48 VOLT LED BULB"
@@ -24916,7 +25004,9 @@
     "id": "KES094",
     "model": "KES094",
     "image": "urunler/kes094.webp",
-    "images": ["urunler/kes094-old.webp"],
+    "images": [
+      "urunler/kes094-old.webp"
+    ],
     "name": {
       "tr": "KES094 LEDLİ RADAR SENSÖRLÜ AMPUL",
       "en": "KES094 LED RADAR SENSOR BULB"
@@ -25009,7 +25099,9 @@
     "id": "KES300",
     "model": "KES300",
     "image": "urunler/kes300.webp",
-    "images": ["urunler/kes300-old.webp"],
+    "images": [
+      "urunler/kes300-old.webp"
+    ],
     "name": {
       "tr": "KES300 LEDLİ RGB AMPUL",
       "en": "KES300 LED RGB BULB"
@@ -30254,7 +30346,9 @@
     "id": "KES006",
     "model": "KES006",
     "image": "urunler/kes006.webp",
-    "images": ["urunler/kes006-old.webp"],
+    "images": [
+      "urunler/kes006-old.webp"
+    ],
     "name": {
       "tr": "KES006 G4 DUY LEDLİ AMPUL",
       "en": "KES006 G4 SOCKET LED BULB"
@@ -30347,7 +30441,9 @@
     "id": "KES104",
     "model": "KES104",
     "image": "urunler/kes104.webp",
-    "images": ["urunler/kes104-old.webp"],
+    "images": [
+      "urunler/kes104-old.webp"
+    ],
     "name": {
       "tr": "KES104 G4 DUY LEDLİ AMPUL",
       "en": "KES104 G4 SOCKET LED BULB"
@@ -30440,7 +30536,9 @@
     "id": "KES001",
     "model": "KES001",
     "image": "urunler/kes001.webp",
-    "images": ["urunler/kes001-old.webp"],
+    "images": [
+      "urunler/kes001-old.webp"
+    ],
     "name": {
       "tr": "KES001 G4 DUY LEDLİ AMPUL",
       "en": "KES001 G4 SOCKET LED BULB"
@@ -30533,7 +30631,9 @@
     "id": "KES022",
     "model": "KES022",
     "image": "urunler/kes022.webp",
-    "images": ["urunler/kes022-old.webp"],
+    "images": [
+      "urunler/kes022-old.webp"
+    ],
     "name": {
       "tr": "KES022 G4 DUY LEDLİ AMPUL",
       "en": "KES022 G4 SOCKET LED BULB"
@@ -30626,7 +30726,9 @@
     "id": "KES007",
     "model": "KES007",
     "image": "urunler/kes007.webp",
-    "images": ["urunler/kes007-old.webp"],
+    "images": [
+      "urunler/kes007-old.webp"
+    ],
     "name": {
       "tr": "KES007 G4 DUY LEDLİ AMPUL",
       "en": "KES007 G4 SOCKET LED BULB"
@@ -30719,7 +30821,9 @@
     "id": "KES112",
     "model": "KES112",
     "image": "urunler/kes112.webp",
-    "images": ["urunler/kes112-old.webp"],
+    "images": [
+      "urunler/kes112-old.webp"
+    ],
     "name": {
       "tr": "KES112 G4 DUY LEDLİ AMPUL - DİM",
       "en": "KES112 G4 SOCKET LED BULB - DIMMABLE"
@@ -30812,7 +30916,9 @@
     "id": "KES008",
     "model": "KES008",
     "image": "urunler/kes008.webp",
-    "images": ["urunler/kes008-old.webp"],
+    "images": [
+      "urunler/kes008-old.webp"
+    ],
     "name": {
       "tr": "KES008 G4 DUY LEDLİ AMPUL",
       "en": "KES008 G4 SOCKET LED BULB"
@@ -30905,7 +31011,9 @@
     "id": "KES010",
     "model": "KES010",
     "image": "urunler/kes010.webp",
-    "images": ["urunler/kes010-old.webp"],
+    "images": [
+      "urunler/kes010-old.webp"
+    ],
     "name": {
       "tr": "KES010 G9 DUY LEDLİ AMPUL",
       "en": "KES010 G9 SOCKET LED BULB"
@@ -30998,7 +31106,9 @@
     "id": "KES016",
     "model": "KES016",
     "image": "urunler/kes016.webp",
-    "images": ["urunler/kes016-old.webp"],
+    "images": [
+      "urunler/kes016-old.webp"
+    ],
     "name": {
       "tr": "KES016 G9 DUY LEDLİ AMPUL - DİM",
       "en": "KES016 G9 SOCKET LED BULB - DIMMABLE"
@@ -31091,7 +31201,9 @@
     "id": "KES110",
     "model": "KES110",
     "image": "urunler/kes110.webp",
-    "images": ["urunler/kes110-old.webp"],
+    "images": [
+      "urunler/kes110-old.webp"
+    ],
     "name": {
       "tr": "KES110 G9 DUY LEDLİ AMPUL",
       "en": "KES110 G9 SOCKET LED BULB"
@@ -31229,7 +31341,11 @@
     "brand": "k2",
     "variantOptions": {
       "açıklama": "5 Duy / 5 Metre"
-    }
+    },
+    "images": [
+      "urunler/kes700.webp",
+      "urunler/kes700-2.webp"
+    ]
   },
   "KES701": {
     "id": "KES701",
@@ -31280,7 +31396,11 @@
     "brand": "k2",
     "variantOptions": {
       "açıklama": "20 Duy / 10 Metre"
-    }
+    },
+    "images": [
+      "urunler/kes701.webp",
+      "urunler/kes701-2.webp"
+    ]
   },
   "KCL005_1": {
     "id": "KCL005_1",
@@ -35840,6 +35960,10 @@
           "value": "CCT 3 Renk"
         },
         {
+          "label": "Kasa Rengi",
+          "value": "Beyaz-Gümüş"
+        },
+        {
           "label": "Gerilim",
           "value": "220-240V"
         },
@@ -35926,6 +36050,10 @@
         {
           "label": "Işık Rengi",
           "value": "CCT 3 Renk"
+        },
+        {
+          "label": "Kasa Rengi",
+          "value": "Siyah-Gümüş"
         },
         {
           "label": "Gerilim",
@@ -36016,6 +36144,10 @@
           "value": "CCT 3 Renk"
         },
         {
+          "label": "Kasa Rengi",
+          "value": "Beyaz-Altın"
+        },
+        {
           "label": "Gerilim",
           "value": "220-240V"
         },
@@ -36102,6 +36234,10 @@
         {
           "label": "Renk Sıcaklığı",
           "value": "3000K-4000K-6500K"
+        },
+        {
+          "label": "Kasa Rengi",
+          "value": "Beyaz-Gümüş"
         },
         {
           "label": "Gerilim",
@@ -36192,6 +36328,10 @@
           "value": "3000K-4000K-6500K"
         },
         {
+          "label": "Kasa Rengi",
+          "value": "Siyah-Gümüş"
+        },
+        {
           "label": "Gerilim",
           "value": "220-240V"
         },
@@ -36278,6 +36418,10 @@
         {
           "label": "Renk Sıcaklığı",
           "value": "3000K-4000K-6500K"
+        },
+        {
+          "label": "Kasa Rengi",
+          "value": "Beyaz-Altın"
         },
         {
           "label": "Gerilim",
@@ -38381,7 +38525,7 @@
     "image": "urunler/kda857.webp",
     "name": {
       "tr": "KDA857 YAKUT SPOT",
-      "en": "KDA857 YAKUT SPOT"
+      "en": "KDA857 RUBY SPOT"
     },
     "attributes": {
       "tr": [
@@ -38433,7 +38577,7 @@
     "image": "urunler/kda858.webp",
     "name": {
       "tr": "KDA858 YAKUT SPOT",
-      "en": "KDA858 YAKUT SPOT"
+      "en": "KDA858 RUBY SPOT"
     },
     "attributes": {
       "tr": [
@@ -38485,7 +38629,7 @@
     "image": "urunler/kda859.webp",
     "name": {
       "tr": "KDA859 YAKUT SPOT",
-      "en": "KDA859 YAKUT SPOT"
+      "en": "KDA859 RUBY SPOT"
     },
     "attributes": {
       "tr": [
@@ -38537,7 +38681,7 @@
     "image": "urunler/kda860.webp",
     "name": {
       "tr": "KDA860 YAKUT SPOT",
-      "en": "KDA860 YAKUT SPOT"
+      "en": "KDA860 RUBY SPOT"
     },
     "attributes": {
       "tr": [
@@ -38737,7 +38881,11 @@
     "variantOptions": {
       "watt": "Değişken",
       "casing": "Siyah-Krom"
-    }
+    },
+    "images": [
+      "urunler/kda882.webp",
+      "urunler/kda882-2.webp"
+    ]
   },
   "KDA883": {
     "id": "KDA883",
@@ -38789,7 +38937,11 @@
     "variantOptions": {
       "watt": "Değişken",
       "casing": "Siyah-Rose"
-    }
+    },
+    "images": [
+      "urunler/kda883.webp",
+      "urunler/kda883-2.webp"
+    ]
   },
   "KDA878": {
     "id": "KDA878",
@@ -42923,7 +43075,7 @@
   },
   "KLS519-3W": {
     "model": "KLS519",
-    "image": "urunler/kls519-3w.webp",
+    "image": "urunler/kls519.webp",
     "name": {
       "tr": "KLS519 HAREKETLİ LED YILDIZ SPOT",
       "en": "KLS519 ADJUSTABLE LED STAR SPOT"
@@ -43004,11 +43156,16 @@
       "casing": "Beyaz, Siyah, Saten",
       "watt": "3W"
     },
-    "id": "KLS519-3W"
+    "id": "KLS519-3W",
+    "images": [
+      "urunler/kls519.webp",
+      "urunler/kls519-2.webp",
+      "urunler/kls519-3.webp"
+    ]
   },
   "KLS519-5W": {
     "model": "KLS519",
-    "image": "urunler/kls519-5w.webp",
+    "image": "urunler/kls519.webp",
     "name": {
       "tr": "KLS519 HAREKETLİ LED YILDIZ SPOT",
       "en": "KLS519 ADJUSTABLE LED STAR SPOT"
@@ -43089,7 +43246,12 @@
       "casing": "Beyaz, Siyah, Saten",
       "watt": "5W"
     },
-    "id": "KLS519-5W"
+    "id": "KLS519-5W",
+    "images": [
+      "urunler/kls519.webp",
+      "urunler/kls519-2.webp",
+      "urunler/kls519-3.webp"
+    ]
   },
   "KSL243-BEYAZ": {
     "model": "KSL243",
@@ -55756,7 +55918,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -55839,7 +56001,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -55922,7 +56084,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -56013,7 +56175,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -56104,7 +56266,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -56203,7 +56365,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -56302,7 +56464,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -56401,7 +56563,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -56500,7 +56662,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -56591,7 +56753,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -56675,7 +56837,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -56758,7 +56920,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -56841,7 +57003,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -56924,7 +57086,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -57015,7 +57177,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -57106,7 +57268,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -57197,7 +57359,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -57288,7 +57450,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -57379,7 +57541,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -57470,7 +57632,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -57561,7 +57723,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -57652,7 +57814,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -57743,7 +57905,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -57834,7 +57996,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -57925,7 +58087,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -58016,7 +58178,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -58107,7 +58269,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -58198,7 +58360,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -58289,7 +58451,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -58380,7 +58542,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -58472,7 +58634,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -58550,7 +58712,7 @@
       ],
       "en": [
         "Outdoor Wall Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -58628,7 +58790,7 @@
       ],
       "en": [
         "Outdoor Wall Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -58698,7 +58860,7 @@
       ],
       "en": [
         "Garden Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -58768,7 +58930,7 @@
       ],
       "en": [
         "Mediterranean Bollard Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -58843,7 +59005,7 @@
       ],
       "en": [
         "Mediterranean Bollard Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -58918,7 +59080,7 @@
       ],
       "en": [
         "Mediterranean Bollard Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -58993,7 +59155,7 @@
       ],
       "en": [
         "Mediterranean Bollard Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -59068,7 +59230,7 @@
       ],
       "en": [
         "Garden Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -59143,7 +59305,7 @@
       ],
       "en": [
         "Garden Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -59218,7 +59380,7 @@
       ],
       "en": [
         "Garden Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -59293,7 +59455,7 @@
       ],
       "en": [
         "Garden Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -59368,7 +59530,7 @@
       ],
       "en": [
         "Corridor and Staircase Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -59446,7 +59608,7 @@
       ],
       "en": [
         "Corridor and Staircase Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -59532,7 +59694,7 @@
       ],
       "en": [
         "Corridor and Staircase Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -59610,7 +59772,7 @@
       ],
       "en": [
         "Corridor and Staircase Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -59688,7 +59850,7 @@
       ],
       "en": [
         "Corridor and Staircase Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -59774,7 +59936,7 @@
       ],
       "en": [
         "Corridor and Staircase Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -59852,7 +60014,7 @@
       ],
       "en": [
         "Corridor and Staircase Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -59938,7 +60100,7 @@
       ],
       "en": [
         "Corridor and Staircase Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -60016,7 +60178,7 @@
       ],
       "en": [
         "Corridor and Staircase Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -60094,7 +60256,7 @@
       ],
       "en": [
         "Corridor and Staircase Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -60164,7 +60326,7 @@
       ],
       "en": [
         "Sensored Corridor and Staircase Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -60234,7 +60396,7 @@
       ],
       "en": [
         "Sensored Corridor and Staircase Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -60304,7 +60466,7 @@
       ],
       "en": [
         "Sensored Corridor and Staircase Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -60589,7 +60751,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -60656,7 +60818,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -60723,7 +60885,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -60814,7 +60976,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -60905,7 +61067,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -60996,7 +61158,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -61087,7 +61249,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -61178,7 +61340,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -61263,7 +61425,7 @@
       ],
       "en": [
         "Magnetic Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -61346,7 +61508,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -61429,7 +61591,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -61520,7 +61682,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -61611,7 +61773,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -61710,7 +61872,7 @@
         "LED Aplikler"
       ],
       "en": [
-        "LED Aplikler"
+        "LED Wall Lights"
       ]
     },
     "brand": "k2",
@@ -61801,7 +61963,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -61893,7 +62055,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -61985,7 +62147,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -62077,7 +62239,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -62169,7 +62331,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -62261,7 +62423,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -62353,7 +62515,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -62445,7 +62607,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -62537,7 +62699,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -62629,7 +62791,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -62721,7 +62883,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -62813,7 +62975,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -62905,7 +63067,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -62997,7 +63159,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -63089,7 +63251,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -63181,7 +63343,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -63273,7 +63435,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -63381,7 +63543,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -63488,7 +63650,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -63595,7 +63757,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -63702,7 +63864,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -63809,7 +63971,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -63916,7 +64078,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -64023,7 +64185,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -64130,7 +64292,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -64237,7 +64399,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -64344,7 +64506,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -64451,7 +64613,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -64558,7 +64720,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -64665,7 +64827,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -64772,7 +64934,7 @@
         "Projektörler"
       ],
       "en": [
-        "Projektörler"
+        "Projectors"
       ]
     },
     "brand": "k2",
@@ -64855,7 +65017,7 @@
         "Işıldaklar"
       ],
       "en": [
-        "Işıldaklar"
+        "Floodlights"
       ]
     },
     "brand": "k2",
@@ -64938,7 +65100,7 @@
         "Işıldaklar"
       ],
       "en": [
-        "Işıldaklar"
+        "Floodlights"
       ]
     },
     "brand": "k2",
@@ -65021,7 +65183,7 @@
         "Işıldaklar"
       ],
       "en": [
-        "Işıldaklar"
+        "Floodlights"
       ]
     },
     "brand": "k2",
@@ -65112,7 +65274,7 @@
         "Işıldaklar"
       ],
       "en": [
-        "Işıldaklar"
+        "Floodlights"
       ]
     },
     "brand": "k2",
@@ -65203,7 +65365,7 @@
         "Işıldaklar"
       ],
       "en": [
-        "Işıldaklar"
+        "Floodlights"
       ]
     },
     "brand": "k2",
@@ -65286,7 +65448,7 @@
         "Işıldaklar"
       ],
       "en": [
-        "Işıldaklar"
+        "Floodlights"
       ]
     },
     "brand": "k2",
@@ -65353,7 +65515,7 @@
         "Lambalar"
       ],
       "en": [
-        "Lambalar"
+        "Lamps"
       ]
     },
     "brand": "k2",
@@ -65420,7 +65582,7 @@
         "Lambalar"
       ],
       "en": [
-        "Lambalar"
+        "Lamps"
       ]
     },
     "brand": "k2",
@@ -65495,7 +65657,7 @@
         "Lambalar"
       ],
       "en": [
-        "Lambalar"
+        "Lamps"
       ]
     },
     "brand": "k2",
@@ -65576,7 +65738,7 @@
         "Lambalar"
       ],
       "en": [
-        "Lambalar"
+        "Lamps"
       ]
     },
     "brand": "k2",
@@ -65649,7 +65811,7 @@
         "Fenerler"
       ],
       "en": [
-        "Fenerler"
+        "Flashlights"
       ]
     },
     "brand": "k2",
@@ -65716,7 +65878,7 @@
         "Fenerler"
       ],
       "en": [
-        "Fenerler"
+        "Flashlights"
       ]
     },
     "brand": "k2",
@@ -65807,7 +65969,7 @@
         "Fenerler"
       ],
       "en": [
-        "Fenerler"
+        "Flashlights"
       ]
     },
     "brand": "k2",
@@ -65883,7 +66045,7 @@
         "Sinek Öldürücü Armatürler"
       ],
       "en": [
-        "Sinek Öldürücü Armatürler"
+        "Insect Killer Fixtures"
       ]
     },
     "brand": "k2",
@@ -65958,7 +66120,7 @@
         "Sinek Öldürücü Armatürler"
       ],
       "en": [
-        "Sinek Öldürücü Armatürler"
+        "Insect Killer Fixtures"
       ]
     },
     "brand": "k2",
@@ -66033,7 +66195,7 @@
         "LEDLİ EXIT ARMATÜRLER"
       ],
       "en": [
-        "LEDLİ EXIT ARMATÜRLER"
+        "LED Exit Fixtures"
       ]
     },
     "brand": "k2",
@@ -66448,7 +66610,7 @@
         "Işıldaklar"
       ],
       "en": [
-        "Işıldaklar"
+        "Floodlights"
       ]
     },
     "brand": "k2",
@@ -66507,7 +66669,7 @@
         "Işıldaklar"
       ],
       "en": [
-        "Işıldaklar"
+        "Floodlights"
       ]
     },
     "brand": "k2",
@@ -68013,7 +68175,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -68094,7 +68256,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -68167,7 +68329,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -68264,7 +68426,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -68361,7 +68523,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -68458,7 +68620,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -68579,7 +68741,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -68684,7 +68846,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -68789,7 +68951,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -68894,7 +69056,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -68999,7 +69161,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -69096,7 +69258,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -69201,7 +69363,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -69306,7 +69468,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -69411,7 +69573,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -69516,7 +69678,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -69621,7 +69783,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -69710,7 +69872,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -69799,7 +69961,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -69896,7 +70058,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -70001,7 +70163,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -70058,7 +70220,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -70107,7 +70269,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -70158,7 +70320,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -70217,7 +70379,7 @@
         "Masa Lambaları"
       ],
       "en": [
-        "Masa Lambaları"
+        "Desk Lamps"
       ]
     },
     "brand": "k2",
@@ -70284,7 +70446,7 @@
       ],
       "en": [
         "Pendant Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -70351,7 +70513,7 @@
       ],
       "en": [
         "Pendant Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -70418,7 +70580,7 @@
       ],
       "en": [
         "Pendant Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -70485,7 +70647,7 @@
       ],
       "en": [
         "Pendant Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -70552,7 +70714,7 @@
       ],
       "en": [
         "Pendant Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -70643,7 +70805,7 @@
       ],
       "en": [
         "Linear Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -70737,7 +70899,7 @@
       ],
       "en": [
         "Linear Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -70831,7 +70993,7 @@
       ],
       "en": [
         "Linear Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -70925,7 +71087,7 @@
       ],
       "en": [
         "Linear Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -71019,7 +71181,7 @@
       ],
       "en": [
         "Linear Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -71113,7 +71275,7 @@
       ],
       "en": [
         "Linear Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -71207,7 +71369,7 @@
       ],
       "en": [
         "Linear Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -71301,7 +71463,7 @@
       ],
       "en": [
         "Linear Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -71395,7 +71557,7 @@
       ],
       "en": [
         "Linear Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -71489,7 +71651,7 @@
       ],
       "en": [
         "Linear Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -71583,7 +71745,7 @@
       ],
       "en": [
         "Linear Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -71677,7 +71839,7 @@
       ],
       "en": [
         "Linear Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",
@@ -71723,7 +71885,7 @@
       ],
       "en": [
         "Linear Fixtures",
-        "Armatürler"
+        "Fixtures"
       ]
     },
     "brand": "k2",

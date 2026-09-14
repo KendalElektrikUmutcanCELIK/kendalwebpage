@@ -1,4 +1,4 @@
-import { getBrandExternalHref, getBrandUrunlerHref } from '@/lib/basePath';
+import { getAssetPath, getBrandExternalHref, getBrandUrunlerHref } from '@/lib/basePath';
 
 export interface ChatLink {
   label: { tr: string; en: string };
@@ -65,8 +65,8 @@ const CATALOG_NODE: ChatNode = {
     {
       label: { tr: 'Kataloğu İncele 📥', en: 'Browse Catalog 📥' },
       href: {
-        tr: '/kendal-elektrik-katalog-2026.pdf',
-        en: '/en-catalog.pdf'
+        tr: getAssetPath('/kendal-elektrik-katalog-2026.pdf'),
+        en: getAssetPath('/en-catalog.pdf')
       },
       external: true,
     },

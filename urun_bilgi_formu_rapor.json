@@ -1,0 +1,17 @@
+{
+  "successCount": 854,
+  "blocked": [
+    {
+      "id": "KDA716",
+      "model": "KDA716",
+      "reason": "görsel bulunamadı: urunler/kda716.webp"
+    },
+    {
+      "id": "KLD111",
+      "model": "KLD111",
+      "reason": "görsel bulunamadı: urunler/kld111.webp"
+    }
+  ],
+  "failed": [],
+  "warnings": []
+}

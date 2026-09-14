@@ -2,26 +2,93 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 const path = require('path');
 
-const repoPath = 'C:/Users/umutcan.celik/Documents/GitHub/kendalwebpage';
+const repoPath = __dirname;
+const products = require(path.join(repoPath, 'src/data/products.json'));
 
-const kendalLogoStr = path.join(repoPath, 'public/images/kendal-logo.svg');
-const brandLogoStr = path.join(repoPath, 'public/images/brands/k2-logo.svg');
-const productImagePathStr = path.join(repoPath, 'public/images/urunler/kes119-5wsari.webp');
+const OUTPUT_DIR = path.join(repoPath, 'public/urun-bilgi-formlari');
+const KENDAL_LOGO_PATH = path.join(repoPath, 'public/images/kendal-logo.svg');
 
-const kendalLogoBase64 = fs.readFileSync(kendalLogoStr, 'base64');
-const brandLogoBase64 = fs.readFileSync(brandLogoStr, 'base64');
-const productBase64 = fs.readFileSync(productImagePathStr, 'base64');
+const BRAND_LOGOS = {
+  k2: path.join(repoPath, 'public/images/brands/k2-logo.svg'),
+  vanti: path.join(repoPath, 'public/images/brands/vanti-logo.svg'),
+  global: path.join(repoPath, 'public/images/brands/global-logo.svg'),
+};
 
-const kendalLogo = `data:image/svg+xml;base64,${kendalLogoBase64}`;
-const brandLogo = `data:image/svg+xml;base64,${brandLogoBase64}`;
-const productImagePath = `data:image/webp;base64,${productBase64}`;
+// Turkish attribute labels that get a clearer bilingual label in the sheet
+// than a literal word-for-word translation of the raw data label.
+const LABEL_MAP = {
+  Watt: { tr: 'Güç', en: 'Power' },
+  'Çalışma Ömrü': { tr: 'Ömür', en: 'Life Time' },
+  Özellik: { tr: 'Diğer Özellikler', en: 'Additional Features' },
+  Renk: { tr: 'Renk Seçenekleri', en: 'Color Options' },
+};
 
-const htmlContent = `
+function toBase64DataUri(filePath) {
+  const ext = path.extname(filePath).slice(1);
+  const mime = ext === 'svg' ? 'image/svg+xml' : `image/${ext}`;
+  const b64 = fs.readFileSync(filePath, 'base64');
+  return `data:${mime};base64,${b64}`;
+}
+
+function combineValue(trCombined, enCombined) {
+  if (trCombined.trim().toLowerCase() === enCombined.trim().toLowerCase()) {
+    return trCombined;
+  }
+  const separator = trCombined.includes('/') || enCombined.includes('/') ? ' — ' : ' / ';
+  return `${trCombined}${separator}${enCombined}`;
+}
+
+function buildRows(product) {
+  const attrsTr = product.attributes?.tr || [];
+  const attrsEn = product.attributes?.en || [];
+  const n = Math.min(attrsTr.length, attrsEn.length);
+
+  // Group by (remapped) label: some products repeat the same attribute
+  // label (e.g. two separate "Özellik" entries) - merge those into one row.
+  const grouped = new Map();
+  for (let i = 0; i < n; i++) {
+    const trLabelRaw = attrsTr[i].label;
+    const override = LABEL_MAP[trLabelRaw];
+    const trLabel = override ? override.tr : trLabelRaw;
+    const enLabel = override ? override.en : attrsEn[i].label;
+    const key = `${trLabel} / ${enLabel}`;
+    if (!grouped.has(key)) grouped.set(key, { trValues: [], enValues: [] });
+    grouped.get(key).trValues.push(attrsTr[i].value);
+    grouped.get(key).enValues.push(attrsEn[i].value);
+  }
+
+  const rows = [];
+  for (const [label, { trValues, enValues }] of grouped) {
+    rows.push({ label, value: combineValue(trValues.join(' / '), enValues.join(' / ')) });
+  }
+
+  const catTr = product.category?.tr?.[0];
+  const catEn = product.category?.en?.[0];
+  if (catTr && catEn) {
+    rows.push({ label: 'Kategori / Category', value: combineValue(catTr, catEn) });
+  }
+  rows.push({ label: 'Marka / Brand', value: (product.brand || 'k2').toUpperCase() });
+  return rows;
+}
+
+function rowsToHtml(rows) {
+  return rows
+    .map((r) => `<tr><td class="label">${r.label}</td><td class="value">${r.value}</td></tr>`)
+    .join('\n                    ');
+}
+
+function buildHtml(product, { kendalLogo, brandLogo, productImage }) {
+  const rows = buildRows(product);
+  const mid = Math.ceil(rows.length / 2);
+  const leftRows = rows.slice(0, mid);
+  const rightRows = rows.slice(mid);
+
+  return `
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>KES119 Ürün Bilgi Formu</title>
+    <title>${product.model} Ürün Bilgi Formu</title>
     <style>
         * {
             box-sizing: border-box;
@@ -137,15 +204,6 @@ const htmlContent = `
         }
 
         /* SPECIFICATIONS */
-        .specs-section {
-            display: flex;
-            gap: 40px;
-        }
-
-        .spec-column {
-            flex: 1;
-        }
-
         .section-title {
             font-size: 16px;
             font-weight: 700;
@@ -155,6 +213,15 @@ const htmlContent = `
             padding-bottom: 10px;
             border-bottom: 2px solid #E60000;
             display: inline-block;
+        }
+
+        .specs-section {
+            display: flex;
+            gap: 40px;
+        }
+
+        .spec-column {
+            flex: 1;
         }
 
         .spec-table {
@@ -229,35 +296,25 @@ const htmlContent = `
     <div class="content">
         <div class="product-hero">
             <div class="product-info">
-                <h3>KES119 RENKLİ<br>LED AMPUL</h3>
-                <h4>KES119 COLORED LED BULB</h4>
+                <h3>${product.name.tr}</h3>
+                <h4>${product.name.en}</h4>
             </div>
             <div class="image-container">
-                <img src="${productImagePath}" alt="KES119" />
+                <img src="${productImage}" alt="${product.model}" />
             </div>
         </div>
 
+        <div class="section-title">TEKNİK ÖZELLİKLER / TECHNICAL FEATURES</div>
         <div class="specs-section">
             <div class="spec-column">
-                <div class="section-title">TEKNİK ÖZELLİKLER / TECH SPECS</div>
                 <table class="spec-table">
-                    <tr><td class="label">Watt</td><td class="value">5W</td></tr>
-                    <tr><td class="label">Lümen / Lumen</td><td class="value">420</td></tr>
-                    <tr><td class="label">Duy / Socket</td><td class="value">E27</td></tr>
-                    <tr><td class="label">Gerilim / Voltage</td><td class="value">220-240V</td></tr>
-                    <tr><td class="label">Çalışma Ömrü / Life Span</td><td class="value">20000 Saat / Hours</td></tr>
-                    <tr><td class="label">Ölçüler / Dimensions</td><td class="value">11.2 cm x 6 cm</td></tr>
-                    <tr><td class="label">Koli Adedi / Package Qty</td><td class="value">100</td></tr>
-                    <tr><td class="label">Özellik / Feature</td><td class="value">IC Driver / Alüminyum Isı Transfer Modülü / Yerli Üretim</td></tr>
+                    ${rowsToHtml(leftRows)}
                 </table>
             </div>
-            
+
             <div class="spec-column">
-                <div class="section-title">VARYANT ÖZELLİKLERİ / VARIANTS</div>
                 <table class="spec-table">
-                    <tr><td class="label">Renk Seçenekleri / Colors</td><td class="value">Sarı, Kırmızı, Yeşil, Mavi, Beyaz</td></tr>
-                    <tr><td class="label">Kategori / Category</td><td class="value">LED Ampuller / LED Bulbs</td></tr>
-                    <tr><td class="label">Marka / Brand</td><td class="value">K2</td></tr>
+                    ${rowsToHtml(rightRows)}
                 </table>
             </div>
         </div>
@@ -270,26 +327,116 @@ const htmlContent = `
 </body>
 </html>
 `;
+}
 
-(async () => {
-    try {
-        const browser = await puppeteer.launch();
-        const page = await browser.newPage();
-        
-        await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
-        
-        const pdfPath = path.join('C:', 'Users', 'umutcan.celik', 'Desktop', 'KES119 Ürün Bilgi Formu.pdf');
-        
-        await page.pdf({
-            path: pdfPath,
-            format: 'A4',
-            printBackground: true,
-            margin: { top: '0', right: '0', bottom: '0', left: '0' }
-        });
-        
-        await browser.close();
-        console.log('PDF generated at:', pdfPath);
-    } catch (e) {
-        console.error('Error generating PDF:', e);
+function validateProduct(product) {
+  if (!product.name?.tr || !product.name?.en) return 'name.tr/en eksik';
+  if (!product.attributes?.tr?.length || !product.attributes?.en?.length) return 'attributes.tr/en eksik';
+  if (!product.image) return 'image alanı eksik';
+  const imgPath = path.join(repoPath, 'public/images', product.image);
+  if (!fs.existsSync(imgPath)) return `görsel bulunamadı: ${product.image}`;
+  return null;
+}
+
+async function generateOne(browser, kendalLogo, product) {
+  const brand = product.brand || 'k2';
+  const brandLogoPath = BRAND_LOGOS[brand] || BRAND_LOGOS.k2;
+  const brandLogo = toBase64DataUri(brandLogoPath);
+  const productImage = toBase64DataUri(path.join(repoPath, 'public/images', product.image));
+
+  const html = buildHtml(product, { kendalLogo, brandLogo, productImage });
+
+  const page = await browser.newPage();
+  try {
+    await page.setContent(html, { waitUntil: 'networkidle0' });
+    const pdfPath = path.join(OUTPUT_DIR, `${product.model} Ürün Bilgi Formu.pdf`);
+    await page.pdf({
+      path: pdfPath,
+      format: 'A4',
+      printBackground: true,
+      margin: { top: '0', right: '0', bottom: '0', left: '0' },
+    });
+    const stat = fs.statSync(pdfPath);
+    return { ok: true, path: pdfPath, size: stat.size };
+  } finally {
+    await page.close();
+  }
+}
+
+async function main() {
+  const args = process.argv.slice(2);
+  const targetIds = args.length > 0 ? args : Object.keys(products);
+
+  if (!fs.existsSync(OUTPUT_DIR)) fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+  const kendalLogo = toBase64DataUri(KENDAL_LOGO_PATH);
+
+  const blocked = [];
+  const failed = [];
+  const warnings = [];
+  let successCount = 0;
+
+  const browser = await puppeteer.launch();
+
+  const BATCH_SIZE = 10;
+  for (let i = 0; i < targetIds.length; i += BATCH_SIZE) {
+    const batch = targetIds.slice(i, i + BATCH_SIZE);
+    for (const id of batch) {
+      const product = products[id];
+      if (!product) {
+        blocked.push({ id, reason: 'products.json içinde bulunamadı' });
+        continue;
+      }
+      const problem = validateProduct(product);
+      if (problem) {
+        blocked.push({ id, model: product.model, reason: problem });
+        continue;
+      }
+      try {
+        const result = await generateOne(browser, kendalLogo, product);
+        successCount++;
+        if (result.size < 20_000 || result.size > 5_000_000) {
+          warnings.push({ id, model: product.model, reason: `olağandışı dosya boyutu: ${result.size} byte` });
+        }
+      } catch (e) {
+        failed.push({ id, model: product.model, reason: e.message });
+      }
     }
-})();
+    console.log(
+      `Batch ${Math.floor(i / BATCH_SIZE) + 1}/${Math.ceil(targetIds.length / BATCH_SIZE)} tamamlandı (${Math.min(i + BATCH_SIZE, targetIds.length)}/${targetIds.length})`,
+    );
+  }
+
+  await browser.close();
+
+  console.log('\n--- ÖZET ---');
+  console.log('Başarılı:', successCount);
+  console.log('Engellenen (veri eksik):', blocked.length);
+  console.log('Hata alan:', failed.length);
+  console.log('Uyarı (dosya boyutu):', warnings.length);
+
+  if (blocked.length) {
+    console.log('\nEngellenenler:');
+    for (const b of blocked) console.log(` - ${b.id} (${b.model || '?'}): ${b.reason}`);
+  }
+  if (failed.length) {
+    console.log('\nHata alanlar:');
+    for (const f of failed) console.log(` - ${f.id} (${f.model || '?'}): ${f.reason}`);
+  }
+  if (warnings.length) {
+    console.log('\nUyarılar:');
+    for (const w of warnings) console.log(` - ${w.id} (${w.model || '?'}): ${w.reason}`);
+  }
+
+  const reportPath = path.join(repoPath, 'urun_bilgi_formu_rapor.json');
+  fs.writeFileSync(
+    reportPath,
+    JSON.stringify({ successCount, blocked, failed, warnings }, null, 2),
+    'utf-8',
+  );
+  console.log('\nDetay rapor:', reportPath);
+}
+
+main().catch((e) => {
+  console.error('Beklenmeyen hata:', e);
+  process.exit(1);
+});
