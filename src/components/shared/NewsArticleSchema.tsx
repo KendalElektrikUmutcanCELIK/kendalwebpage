@@ -1,13 +1,20 @@
 import React from 'react';
 import type { NewsItem } from '@/data/news-tr';
+import { parseNewsDate } from '@/lib/newsDate';
 
 export const NewsArticleSchema = ({ news }: { news: NewsItem }) => {
+  const parsedDate = parseNewsDate(news.date);
+  const isoDate =
+    parsedDate > 0
+      ? new Date(parsedDate).toISOString().slice(0, 10)
+      : undefined;
+
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'NewsArticle',
     headline: news.title,
     image: news.images.map((img) => `https://www.kendalelektrik.com.tr${img}`),
-    datePublished: news.date,
+    ...(isoDate ? { datePublished: isoDate } : {}),
     author: [
       {
         '@type': 'Organization',

@@ -4,7 +4,8 @@ import Link from 'next/link';
 import React, { Suspense } from 'react';
 import { BrandProductsHeader } from '@/components/sections/BrandProductsHeader';
 import CategoryFirstShowcase from '@/components/sections/CategoryFirstShowcase';
-import { getSlugByProductId, products } from '@/data/products';
+import { ItemListSchema } from '@/components/shared/ItemListSchema';
+import { getProductCanonicalUrl, products } from '@/data/products';
 import { getAssetPath } from '@/lib/basePath';
 
 const BRAND_META: Record<
@@ -63,6 +64,8 @@ export default async function BrandProductsPage({
     (p) => p.brand === brandName,
   );
 
+  const meta = BRAND_META[brandName] || BRAND_META.k2;
+
   const glowStrong = isK2
     ? 'bg-[#ff5500]/60'
     : brandName === 'vanti'
@@ -101,6 +104,14 @@ export default async function BrandProductsPage({
       />
       <div
         className={`absolute bottom-0 left-1/4 w-[480px] h-[480px] rounded-full blur-[150px] pointer-events-none z-0 ${glowSoft}`}
+      />
+
+      <ItemListSchema
+        name={meta.title}
+        items={allProducts.map((p) => ({
+          name: p.name.tr,
+          url: getProductCanonicalUrl(p),
+        }))}
       />
 
       <div className="relative z-10 max-w-[1440px] mx-auto">
