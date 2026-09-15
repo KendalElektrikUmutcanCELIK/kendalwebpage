@@ -148,25 +148,53 @@ function prune_old_pages_backups(): void
 }
 
 /**
- * Başlıktan benzersiz bir slug üretir (mevcutsa -2, -3 ekler); next.js route segmentine güvenli.
- * Sayfalar artık ürün kısa linkleriyle (/{slug}) AYNI adres uzayını paylaşıyor — bu yüzden
- * üretilen slug hem mevcut sayfalarla hem gerçek ürün slug/id'leriyle hem de sabit
- * route isimleriyle (haberler, iletisim vb.) çakışmamalı.
+ * Başlıktan (opsiyonel bir üst sayfanın altına) benzersiz bir slug üretir
+ * (mevcutsa -2, -3 ekler); next.js route segmentine güvenli. Sayfalar artık
+ * ürün kısa linkleriyle (/{slug}) AYNI adres uzayını paylaşıyor — bu yüzden
+ * üretilen slug'ın İLK segmenti hem sabit route isimleriyle (haberler,
+ * iletisim vb. — bunların da /kariyer/temel-ilkelerimiz, /haberler/{id} gibi
+ * kendi alt sayfaları olduğu için TAMAMI yasak) çakışmamalı; tek segmentli
+ * (üst sayfasız) bir slug ayrıca gerçek ürün slug/id'leriyle de çakışmamalı
+ * (iç içe bir slug, ör. "ges230-.../x", ürünlerin tek-segmentli çıktısıyla
+ * asla aynı dosya yoluna denk gelmediği için bu ek kontrolü gerektirmiyor).
  */
-function generate_unique_page_slug(string $title, array $existingPages): string
+function generate_unique_page_slug(string $title, array $existingPages, string $parentSlug = ''): string
 {
-    $base = slugify_tr($title);
-    if ($base === '') {
-        $base = 'sayfa';
+    $leaf = slugify_tr($title);
+    if ($leaf === '') {
+        $leaf = 'sayfa';
     }
-    $taken = array_merge(reserved_top_level_slugs(), reserved_product_slugs());
+    $base = $parentSlug !== '' ? $parentSlug . '/' . $leaf : $leaf;
+    $reservedTop = reserved_top_level_slugs();
+    $reservedProducts = reserved_product_slugs();
+
+    $isTaken = function (string $candidate) use ($existingPages, $reservedTop, $reservedProducts): bool {
+        if (isset($existingPages[$candidate])) {
+            return true;
+        }
+        $firstSegment = explode('/', $candidate)[0];
+        if (in_array($firstSegment, $reservedTop, true)) {
+            return true;
+        }
+        if (!str_contains($candidate, '/') && in_array($candidate, $reservedProducts, true)) {
+            return true;
+        }
+        return false;
+    };
+
     $slug = $base;
     $i = 2;
-    while (isset($existingPages[$slug]) || in_array($slug, $taken, true)) {
+    while ($isTaken($slug)) {
         $slug = $base . '-' . $i;
         $i++;
     }
     return $slug;
+}
+
+/** Bir sayfa slug'ını (içinde "/" olabilir) düz bir dosya adı önekine çevirir. */
+function page_slug_filename_prefix(string $slug): string
+{
+    return str_replace('/', '--', $slug);
 }
 
 function generate_block_id(): string
@@ -215,10 +243,11 @@ function find_block_index(array $blocks, string $blockId): ?int
     return null;
 }
 
-/** Bir sayfaya ait tüm yüklenmiş görselleri diskten siler (dosya adları hep "{slug}-..." ile başlar). */
+/** Bir sayfaya ait tüm yüklenmiş görselleri diskten siler (dosya adları hep "{slug-onek}-..." ile başlar). */
 function delete_page_images(string $slug): void
 {
-    foreach (glob(PAGES_IMAGE_DIR . '/' . $slug . '-*') ?: [] as $file) {
+    $prefix = page_slug_filename_prefix($slug);
+    foreach (glob(PAGES_IMAGE_DIR . '/' . $prefix . '-*') ?: [] as $file) {
         @unlink($file);
     }
 }

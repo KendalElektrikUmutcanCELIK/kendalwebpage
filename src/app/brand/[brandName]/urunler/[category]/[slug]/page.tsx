@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 import React from 'react';
-import { ProductDetailClient } from '@/app/(main)/[slug]/ProductDetailClient';
+import { ProductDetailClient } from '@/app/(main)/[...slug]/ProductDetailClient';
 import { ProductSchema } from '@/components/shared/ProductSchema';
 import {
   getProductBySlug,

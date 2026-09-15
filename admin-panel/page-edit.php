@@ -44,10 +44,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && is_post_too_large()) {
         $metaTr = trim((string) ($_POST['meta_tr'] ?? ''));
         $metaEn = trim((string) ($_POST['meta_en'] ?? ''));
 
+        $parentSlug = $isNew ? trim((string) ($_POST['parent_slug'] ?? '')) : '';
+        if ($parentSlug !== '' && !isset($pages[$parentSlug])) {
+            $parentSlug = '';
+        }
+
         if ($titleTr === '') {
             $error = 'Türkçe başlık zorunludur.';
         } else {
-            $slug = $isNew ? generate_unique_page_slug($titleTr, $pages) : $editSlug;
+            $slug = $isNew ? generate_unique_page_slug($titleTr, $pages, $parentSlug) : $editSlug;
             $record = $isNew ? ['blocks' => []] : $page;
             $record['slug'] = $slug;
             $record['title'] = ['tr' => $titleTr, 'en' => $titleEn !== '' ? $titleEn : $titleTr];
@@ -160,7 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && is_post_too_large()) {
                         if ($uploadError !== null) {
                             $error = $uploadError;
                         } elseif (is_uploaded_file($_FILES['block_image']['tmp_name'])) {
-                            $result = save_block_image($_FILES['block_image']['tmp_name'], $editSlug . '-' . $blockId);
+                            $result = save_block_image($_FILES['block_image']['tmp_name'], page_slug_filename_prefix($editSlug) . '-' . $blockId);
                             if (!$result['ok']) {
                                 $error = 'Fotoğraf işlenemedi: ' . $result['error'];
                             } else {
@@ -201,7 +206,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && is_post_too_large()) {
                     $error = $uploadError;
                 } elseif (is_uploaded_file($_FILES['gallery_image']['tmp_name'])) {
                     $imageIndex = count($blocks[$idx]['data']['images'] ?? []);
-                    $result = save_block_image($_FILES['gallery_image']['tmp_name'], $editSlug . '-' . $blockId . '-' . $imageIndex);
+                    $result = save_block_image($_FILES['gallery_image']['tmp_name'], page_slug_filename_prefix($editSlug) . '-' . $blockId . '-' . $imageIndex);
                     if (!$result['ok']) {
                         $error = 'Fotoğraf işlenemedi: ' . $result['error'];
                     } else {
@@ -263,6 +268,18 @@ render_header($isNew ? 'Yeni Sayfa' : 'Sayfa Düzenle', 'pages');
     </div>
   <?php else: ?>
     <p class="hint">Adres, Türkçe başlıktan otomatik oluşturulacak (ör. "Özel Kampanya" → /ozel-kampanya). Ürün linkleriyle veya sabit sayfalarla (ör. "haberler") çakışırsa sonuna otomatik "-2" gibi bir ek eklenir.</p>
+    <?php if (!empty($pages)): ?>
+      <div class="form-row">
+        <label for="parent_slug">Üst Sayfa (opsiyonel)</label>
+        <select id="parent_slug" name="parent_slug">
+          <option value="">— Yok (kök adres) —</option>
+          <?php foreach ($pages as $pSlug => $p): ?>
+            <option value="<?= htmlspecialchars($pSlug, ENT_QUOTES, 'UTF-8') ?>">/<?= htmlspecialchars($pSlug, ENT_QUOTES, 'UTF-8') ?> — <?= htmlspecialchars($p['title']['tr'] ?? $pSlug, ENT_QUOTES, 'UTF-8') ?></option>
+          <?php endforeach; ?>
+        </select>
+        <p class="hint">Seçersen adres "/üst-sayfa/bu-sayfa" şeklinde iç içe olur (ör. "/iletisim/kampanya").</p>
+      </div>
+    <?php endif; ?>
   <?php endif; ?>
 
   <div class="form-row">

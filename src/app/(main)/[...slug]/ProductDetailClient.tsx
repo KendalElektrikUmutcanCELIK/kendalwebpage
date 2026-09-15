@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import type React from 'react';
 import { useEffect, useState } from 'react';
 import { getProductImageUrl, type Product, products } from '@/data/products';
-import { getAssetPath } from '@/lib/basePath';
+import { getAssetPath, getBrandUrunlerHref } from '@/lib/basePath';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
 
 interface ProductDetailClientProps {
@@ -347,10 +347,12 @@ export function ProductDetailClient({
   const categoryName =
     product.category?.[language]?.[0] || product.category?.tr?.[0] || null;
   const productBrand = brandName || product.brand || 'k2';
-  // isLight: zaten marka alt alan adı bağlamındayız, göreli link yeter. Değilse
-  // marka alt alan adına geçmek gerekiyor (Navbar.tsx'teki desenle aynı).
+  // isLight: zaten marka sayfaları bağlamındayız — getBrandUrunlerHref cPanel'de
+  // (alt alan adı rewrite'ı sayesinde) göreli '/urunler', GH Pages'te (alt alan
+  // adı yok) mutlak '/brand/{marka}/urunler' döner (CategoryShowcase.tsx'teki
+  // aynı desen). isLight false ise ana www sitesindeyiz, markaya geçmek gerekiyor.
   const categoryBase = isLight
-    ? '/urunler'
+    ? getBrandUrunlerHref(productBrand)
     : process.env.NODE_ENV === 'production'
       ? `/brand/${productBrand}/urunler`
       : `http://${productBrand}.localhost:3000/urunler`;

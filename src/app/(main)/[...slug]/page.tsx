@@ -18,13 +18,17 @@ import { buildProductDescription } from '@/lib/productMetadata';
 import { ProductDetailClient } from './ProductDetailClient';
 
 /**
- * Ürün kısa linkleri (slug-map.json) ve panelden oluşturulan serbest sayfalar
- * (pages.json) aynı tek-segmentli /{slug} adresini paylaşıyor. Bu isimler her
- * zaman ürünlere/sabit route'lara ayrılmış kalmalı — admin panel taraf
- * (admin-panel/lib/pages.php) yeni bir sayfa slug'ı üretirken bunlarla
- * çakışmayı zaten engelliyor; buradaki filtre, o kontrol atlanırsa bile
- * static export'un aynı yola iki farklı sayfa yazıp build'i kırmasını önleyen
- * ikinci bir güvenlik katmanı. Yeni bir sabit route eklenirse burayı da güncelle.
+ * Ürün kısa linkleri (slug-map.json, hep tek segment) ve panelden oluşturulan
+ * serbest sayfalar (pages.json, tek VEYA çok segmentli — "test/test2" gibi iç
+ * içe olabilir) aynı /{...slug} adres uzayını paylaşıyor. Bu isimler her zaman
+ * sabit route'lara (haberler, kariyer, sertifikalar, brand vb. — bunların
+ * kendi iç içe alt sayfaları da var, ör. /kariyer/temel-ilkelerimiz,
+ * /haberler/{id}) ayrılmış kalmalı: bir serbest sayfanın İLK segmenti asla bu
+ * isimlerden biri olamaz — aksi halde static export aynı çıktı yoluna iki
+ * farklı route yazmaya çalışıp build'i kırar. admin-panel/lib/pages.php yeni
+ * sayfa slug'ı üretirken bunu zaten engelliyor; buradaki filtre, o kontrol
+ * atlansa bile build'i kırmayı imkansız kılan ikinci bir güvenlik katmanı.
+ * Yeni bir sabit route eklenirse burayı da güncelle.
  */
 const RESERVED_TOP_LEVEL_SLUGS = new Set([
   'zincir-marketler',
@@ -43,14 +47,19 @@ const RESERVED_TOP_LEVEL_SLUGS = new Set([
   'brand',
 ]);
 
+function decodeSlugSegments(segments: string[]): string[] {
+  return segments.map((s) => decodeURIComponent(s));
+}
+
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string[] }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const decodedSlug = decodeURIComponent(slug);
-  const product = getProductBySlug(decodedSlug);
+  const segments = decodeSlugSegments(slug);
+  const joinedSlug = segments.join('/');
+  const product = segments.length === 1 ? getProductBySlug(segments[0]) : null;
 
   if (product) {
     const description = buildProductDescription(product);
@@ -70,12 +79,14 @@ export async function generateMetadata({
     };
   }
 
-  const page = getCustomPageBySlug(decodedSlug);
-  if (page) {
-    return {
-      title: `${page.title?.tr ?? decodedSlug} | Kendal Elektrik`,
-      description: page.metaDescription?.tr,
-    };
+  if (!RESERVED_TOP_LEVEL_SLUGS.has(segments[0])) {
+    const page = getCustomPageBySlug(joinedSlug);
+    if (page) {
+      return {
+        title: `${page.title?.tr ?? joinedSlug} | Kendal Elektrik`,
+        description: page.metaDescription?.tr,
+      };
+    }
   }
 
   return {
@@ -86,24 +97,31 @@ export async function generateMetadata({
 export function generateStaticParams() {
   const productSlugs = getAllSlugs();
   const productSlugSet = new Set(productSlugs);
-  const customPageSlugs = getAllCustomPageSlugs().filter(
-    (slug) => !productSlugSet.has(slug) && !RESERVED_TOP_LEVEL_SLUGS.has(slug),
-  );
-  return [...productSlugs, ...customPageSlugs].map((slug) => ({ slug }));
+  const customPageSlugs = getAllCustomPageSlugs().filter((slug) => {
+    const firstSegment = slug.split('/')[0];
+    if (RESERVED_TOP_LEVEL_SLUGS.has(firstSegment)) return false;
+    if (!slug.includes('/') && productSlugSet.has(slug)) return false;
+    return true;
+  });
+  return [
+    ...productSlugs.map((slug) => ({ slug: [slug] })),
+    ...customPageSlugs.map((slug) => ({ slug: slug.split('/') })),
+  ];
 }
 
 export default async function SlugPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string[] }>;
 }) {
   const resolvedParams = await params;
-  const decodedSlug = decodeURIComponent(resolvedParams.slug);
-  const product = getProductBySlug(decodedSlug);
+  const segments = decodeSlugSegments(resolvedParams.slug);
+  const joinedSlug = segments.join('/');
+  const product = segments.length === 1 ? getProductBySlug(segments[0]) : null;
 
   if (product) {
     const canonicalSlug = getSlugByProductId(product.id);
-    if (canonicalSlug && canonicalSlug !== decodedSlug) {
+    if (canonicalSlug && canonicalSlug !== segments[0]) {
       redirect(`/${encodeURIComponent(canonicalSlug)}`);
     }
 
@@ -138,8 +156,8 @@ export default async function SlugPage({
     );
   }
 
-  if (!RESERVED_TOP_LEVEL_SLUGS.has(decodedSlug)) {
-    const page = getCustomPageBySlug(decodedSlug);
+  if (!RESERVED_TOP_LEVEL_SLUGS.has(segments[0])) {
+    const page = getCustomPageBySlug(joinedSlug);
     if (page) {
       return <PageBlocksClient page={page} />;
     }
