@@ -7,6 +7,44 @@ define('PAGES_JSON_PATH', __DIR__ . '/../../src/data/pages.json');
 define('PAGES_BACKUP_DIR', __DIR__ . '/../data/backups');
 define('PAGES_IMAGE_DIR', __DIR__ . '/../../public/images/sayfalar');
 define('VALID_BLOCK_TYPES', ['heading_text', 'image_gallery', 'text_image', 'cta']);
+define('SLUG_MAP_JSON_PATH', __DIR__ . '/../../src/data/slug-map.json');
+
+/**
+ * Sabit (hard-coded) route'ların isimleri — src/app/(main)/[slug]/page.tsx'teki
+ * RESERVED_TOP_LEVEL_SLUGS ile BİREBİR aynı tutulmalı. Yeni bir sabit route
+ * (src/app/(main)/{isim}/page.tsx) eklenirse buraya da eklenmeli, yoksa panelden
+ * o isimde bir sayfa oluşturulabilir ve gerçek route'la aynı adrese denk gelirse
+ * (Next.js'in sabit route önceliği sayesinde pratikte hep gerçek route kazanır ama)
+ * kafa karıştırıcı, asla erişilemeyen bir sayfa oluşur.
+ * @return array<int, string>
+ */
+function reserved_top_level_slugs(): array
+{
+    return [
+        'zincir-marketler', 'uretim', 'projeler', 'misyon-ve-vizyon', 'kvkk',
+        'kariyer', 'haberler', 'gizlilik-cerez-politikasi', 'iletisim',
+        'sertifikalar', 'robots', 'sitemap', 'icon', 'brand',
+    ];
+}
+
+/** Ürün kısa linklerinin (slug-map.json) kullandığı tüm slug'lar + ham ürün id'leri (ikisi de /{slug} ile eşleşebiliyor). */
+function reserved_product_slugs(): array
+{
+    $slugs = [];
+    if (file_exists(SLUG_MAP_JSON_PATH)) {
+        $raw = json_decode((string) file_get_contents(SLUG_MAP_JSON_PATH), true);
+        if (is_array($raw)) {
+            $slugs = array_keys($raw);
+        }
+    }
+    if (file_exists(PRODUCTS_JSON_PATH)) {
+        $products = json_decode((string) file_get_contents(PRODUCTS_JSON_PATH), true);
+        if (is_array($products)) {
+            $slugs = array_merge($slugs, array_keys($products));
+        }
+    }
+    return $slugs;
+}
 
 /** @return array<string, array<string, mixed>> */
 function load_pages(): array
@@ -53,7 +91,7 @@ function validate_page_structure(array $page): ?string
 }
 
 /**
- * Gerçek src/data/pages.json'a yazar (src/app/(main)/sayfa/[slug]/ bunu okuyor) —
+ * Gerçek src/data/pages.json'a yazar (src/app/(main)/[slug]/page.tsx bunu okuyor) —
  * her sayfa kaydının yapısal bütünlüğünü doğrular (next build'i kıramaz), kaydetmeden
  * önce yedek alır, atomik yazar.
  * @param array<string, array<string, mixed>> $pages
@@ -109,16 +147,22 @@ function prune_old_pages_backups(): void
     }
 }
 
-/** Başlıktan benzersiz bir slug üretir (mevcutsa -2, -3 ekler); next.js route segmentine güvenli. */
+/**
+ * Başlıktan benzersiz bir slug üretir (mevcutsa -2, -3 ekler); next.js route segmentine güvenli.
+ * Sayfalar artık ürün kısa linkleriyle (/{slug}) AYNI adres uzayını paylaşıyor — bu yüzden
+ * üretilen slug hem mevcut sayfalarla hem gerçek ürün slug/id'leriyle hem de sabit
+ * route isimleriyle (haberler, iletisim vb.) çakışmamalı.
+ */
 function generate_unique_page_slug(string $title, array $existingPages): string
 {
     $base = slugify_tr($title);
     if ($base === '') {
         $base = 'sayfa';
     }
+    $taken = array_merge(reserved_top_level_slugs(), reserved_product_slugs());
     $slug = $base;
     $i = 2;
-    while (isset($existingPages[$slug])) {
+    while (isset($existingPages[$slug]) || in_array($slug, $taken, true)) {
         $slug = $base . '-' . $i;
         $i++;
     }

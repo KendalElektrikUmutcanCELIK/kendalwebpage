@@ -24,7 +24,7 @@ render_header('Sayfalar', 'pages');
   <h1>Sayfalar</h1>
   <a href="page-edit.php" class="btn btn-primary">+ Yeni Sayfa</a>
 </div>
-<p class="page-subtitle">Blok tabanlı serbest sayfalar. Her sayfa <code>/sayfa/{slug}</code> adresinde yayınlanır, navbar'a otomatik eklenmez.</p>
+<p class="page-subtitle">Blok tabanlı serbest sayfalar. Her sayfa <code>/{slug}</code> adresinde yayınlanır (ürün linkleriyle veya sabit sayfalarla aynı isimde olamaz), navbar'a otomatik eklenmez.</p>
 
 <?php if (isset($_GET['deleted'])): ?>
   <div class="success-banner">Sayfa silindi.</div>
@@ -42,7 +42,7 @@ render_header('Sayfalar', 'pages');
   <?php foreach ($pages as $slug => $p): ?>
     <a href="page-edit.php?slug=<?= urlencode($slug) ?>" class="product-card">
       <div class="product-info">
-        <span class="product-id">/sayfa/<?= htmlspecialchars($slug, ENT_QUOTES, 'UTF-8') ?></span>
+        <span class="product-id">/<?= htmlspecialchars($slug, ENT_QUOTES, 'UTF-8') ?></span>
         <span class="product-name"><?= htmlspecialchars($p['title']['tr'] ?? $slug, ENT_QUOTES, 'UTF-8') ?></span>
         <span class="product-brand"><?= count($p['blocks'] ?? []) ?> blok</span>
       </div>

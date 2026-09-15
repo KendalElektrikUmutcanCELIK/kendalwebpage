@@ -122,7 +122,7 @@ render_header('Navbar Linkleri', 'navbar-links');
         <select id="page_picker" onchange="if(this.value){document.getElementById('url').value=this.value;}">
           <option value="">— Seç —</option>
           <?php foreach ($customPages as $slug => $p): ?>
-            <option value="/sayfa/<?= htmlspecialchars($slug, ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($p['title']['tr'] ?? $slug, ENT_QUOTES, 'UTF-8') ?></option>
+            <option value="/<?= htmlspecialchars($slug, ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($p['title']['tr'] ?? $slug, ENT_QUOTES, 'UTF-8') ?></option>
           <?php endforeach; ?>
         </select>
       </div>
@@ -137,7 +137,7 @@ render_header('Navbar Linkleri', 'navbar-links');
     </div>
     <div class="form-row">
       <label for="url">Adres</label>
-      <input type="text" id="url" name="url" placeholder="/sayfa/ozel-kampanya veya https://..." required>
+      <input type="text" id="url" name="url" placeholder="/ozel-kampanya veya https://..." required>
     </div>
     <div class="form-actions">
       <button type="submit" class="btn btn-primary">Link Ekle</button>

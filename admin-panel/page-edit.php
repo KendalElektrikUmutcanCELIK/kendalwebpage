@@ -247,7 +247,7 @@ render_header($isNew ? 'Yeni Sayfa' : 'Sayfa Düzenle', 'pages');
 </div>
 
 <?php if ($success): ?>
-  <div class="success-banner">Kaydedildi. <?php if (!$isNew): ?>Sayfa <code>/sayfa/<?= htmlspecialchars($editSlug, ENT_QUOTES, 'UTF-8') ?></code> adresinde (bir sonraki build'de) yayınlanacak.<?php endif; ?></div>
+  <div class="success-banner">Kaydedildi. <?php if (!$isNew): ?>Sayfa <code>/<?= htmlspecialchars($editSlug, ENT_QUOTES, 'UTF-8') ?></code> adresinde (bir sonraki build'de) yayınlanacak.<?php endif; ?></div>
 <?php endif; ?>
 <?php if ($error): ?>
   <div class="error-banner"><?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?></div>
@@ -258,11 +258,11 @@ render_header($isNew ? 'Yeni Sayfa' : 'Sayfa Düzenle', 'pages');
   <?php if (!$isNew): ?>
     <div class="form-row">
       <label>Adres (URL)</label>
-      <input type="text" value="/sayfa/<?= htmlspecialchars($editSlug, ENT_QUOTES, 'UTF-8') ?>" readonly>
+      <input type="text" value="/<?= htmlspecialchars($editSlug, ENT_QUOTES, 'UTF-8') ?>" readonly>
       <p class="hint">Adres, sayfa oluşturulduktan sonra değiştirilemez (eski linklerin kırılmaması için).</p>
     </div>
   <?php else: ?>
-    <p class="hint">Adres, Türkçe başlıktan otomatik oluşturulacak (ör. "Özel Kampanya" → /sayfa/ozel-kampanya).</p>
+    <p class="hint">Adres, Türkçe başlıktan otomatik oluşturulacak (ör. "Özel Kampanya" → /ozel-kampanya). Ürün linkleriyle veya sabit sayfalarla (ör. "haberler") çakışırsa sonuna otomatik "-2" gibi bir ek eklenir.</p>
   <?php endif; ?>
 
   <div class="form-row">

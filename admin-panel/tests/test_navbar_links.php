@@ -21,13 +21,13 @@ check('Boş liste mesajı görünüyor', str_contains($body, 'Henüz hiç navbar
 echo PHP_EOL . "=== 2. Yeni link ekleme (Türkçe/emoji karakterlerle) ===" . PHP_EOL;
 $labelTr = 'Özel Kampanya 🎉';
 [$status2] = req('http://localhost:8899/admin-panel/navbar-links.php', $cookieFile, [
-    'form_action' => 'add_link', 'label_tr' => $labelTr, 'label_en' => 'Special Campaign', 'url' => '/sayfa/ozel-kampanya',
+    'form_action' => 'add_link', 'label_tr' => $labelTr, 'label_en' => 'Special Campaign', 'url' => '/ozel-kampanya',
 ]);
 check('Ekleme başarılı (302)', $status2 === 302);
 $saved = json_decode(file_get_contents($dataPath), true);
 check('Link gerçek navLinks.json\'a eklendi', count($saved) === 1);
 check('Türkçe/emoji başlık bozulmadan kaydedildi', ($saved[0]['label']['tr'] ?? '') === $labelTr);
-check('URL doğru kaydedildi', ($saved[0]['url'] ?? '') === '/sayfa/ozel-kampanya');
+check('URL doğru kaydedildi', ($saved[0]['url'] ?? '') === '/ozel-kampanya');
 $firstId = $saved[0]['id'];
 
 echo PHP_EOL . "=== 3. Geçersiz adres (protokol yok, / ile başlamıyor) reddediliyor ===" . PHP_EOL;
