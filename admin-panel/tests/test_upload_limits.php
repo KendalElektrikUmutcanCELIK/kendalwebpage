@@ -8,6 +8,16 @@ $cookieFile = sys_get_temp_dir() . '/admin_limit_test_cookies.txt';
 preg_match('/name="csrf_token" value="([^"]+)"/', $loginPage, $m);
 req('http://localhost:8899/admin-panel/login.php', $cookieFile, ['csrf_token' => $m[1], 'password' => 'degistir123']);
 
+$dataPath = __DIR__ . '/../../src/data/products.json';
+$originalProducts = file_get_contents($dataPath);
+
+echo "=== 0. Geçici test ürünü (DENEME) oluştur ===" . PHP_EOL;
+req('http://localhost:8899/admin-panel/product-edit.php', $cookieFile, [
+    'model' => 'DENEME', 'name_tr' => 'DENEME Test Ürünü', 'name_en' => 'DENEME Test Product',
+    'brand' => 'k2', 'category_tr' => 'Test', 'category_en' => 'Test',
+    'attr_tr_label[0]' => 'Watt', 'attr_tr_value[0]' => '1W',
+]);
+
 $bigFile = sys_get_temp_dir() . '/big-test-file.jpg';
 $fh = fopen($bigFile, 'wb');
 fwrite($fh, str_repeat('A', 11 * 1024 * 1024));
@@ -55,4 +65,13 @@ echo "Normal boyutlu dosya durumu (302 beklenir): $status3" . PHP_EOL;
 
 unlink($bigFile);
 unlink($bigLogo);
-@unlink(__DIR__ . '/../data/uploads/urunler/deneme.webp');
+
+echo PHP_EOL . "=== Temizlik: DENEME'yi sil, gerçek veriyi eski hâline döndür ===" . PHP_EOL;
+req('http://localhost:8899/admin-panel/product-edit.php?id=DENEME', $cookieFile, ['form_action' => 'delete_product']);
+$finalContent = file_get_contents($dataPath);
+echo "Dosya teste başlamadan önceki hâliyle aynı mı: " . var_export($finalContent === $originalProducts, true) . PHP_EOL;
+if ($finalContent !== $originalProducts) {
+    echo "⚠️ UYARI: temizlik tam olmadı, orijinal veri elle geri yükleniyor!" . PHP_EOL;
+    file_put_contents($dataPath, $originalProducts);
+}
+@unlink(__DIR__ . '/../../public/images/urunler/deneme.webp');

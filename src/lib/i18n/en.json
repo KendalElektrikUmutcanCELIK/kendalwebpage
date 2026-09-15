@@ -27,37 +27,6 @@
     "title_part2": "Darkness",
     "subtitle": "Innovative lighting & electrical equipment."
   },
-  "about": {
-    "title": "About Us",
-    "text1": "Kendal Elektrik is a leading brand in the electrical materials sector with its innovative approach and quality-oriented production.",
-    "text2": "By designing the lighting technologies of the future today, we provide reliable solutions both domestically and in global markets.",
-    "beats": [
-      {
-        "title": "1997 — Started with an Idea",
-        "text": "We set out with a humble yet passionate vision in the electrical materials sector, backed by 100% Turkish capital."
-      },
-      {
-        "title": "22,000 m² — Production Power",
-        "text": "Today, we manufacture at world standards with our expert team of 150 employees and fully automated production lines."
-      },
-      {
-        "title": "From Mold to Product — In-House",
-        "text": "We guarantee our quality by handling all stages in-house, from crafting our own metal molds to precision injection production."
-      },
-      {
-        "title": "R&D and Automation",
-        "text": "Our products, developed in our own R&D center and TSE-certified accredited lab, are perfected by our dedicated automation team established in 2013."
-      },
-      {
-        "title": "Market Leader in LED Bulbs",
-        "text": "With our eye-friendly 4000K LED technology and diverse product range, we stand at the top of the market in domestic LED bulb production capacity."
-      },
-      {
-        "title": "We produce light sources and sell to the world",
-        "text": "We are rapidly approaching our goal of becoming a true global brand, aiming for top 10 status in Asian, European, and African export markets."
-      }
-    ]
-  },
   "certifications": {
     "title": "Our Certifications",
     "subtitle": "Certificates and registrations documenting our commitment to quality and reliability.",
@@ -250,14 +219,6 @@
   },
   "company_video": {
     "discover": "Discover the Power Behind the Light"
-  },
-  "mission_page": {
-    "title": "Mission",
-    "content": "As Kendal Elektrik, we aim to add value to our customers, partners, and society by providing innovative, reliable, and sustainable solutions in the lighting sector. With our R&D and production capabilities, we are committed to being a leading brand in the sector by developing lighting products with the highest quality and performance both in Turkey and globally."
-  },
-  "vision_page": {
-    "title": "Vision",
-    "content": "To reach a strong position in the global market as a leading lighting brand that sets international standards in customer satisfaction and operational excellence by 2026. With this vision, we aim to grow on the foundations of sustainability, innovation, and reliability, and to stand out in the sector by providing effective solutions and advancing with technological developments."
   },
   "production_page": {
     "title": "Production",

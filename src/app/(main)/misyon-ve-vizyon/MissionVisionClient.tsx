@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import React, { useRef } from 'react';
+import { getMissionVisionContent } from '@/data/missionVision';
 import { getAssetPath } from '@/lib/basePath';
 import { gsap } from '@/lib/gsapConfig';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
@@ -9,19 +10,10 @@ import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect';
 
 export function MissionVisionClient() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
 
-  const missionData = (t as any).mission_page || {
-    title: 'Misyon',
-    content:
-      "Kendal Elektrik olarak, aydınlatma sektöründe yenilikçi, güvenilir ve sürdürülebilir çözümler sunarak müşterilerimize, ortaklarımıza ve topluma değer katmayı hedefliyoruz. Ar-Ge ve üretim yeteneklerimizle, hem Türkiye'de hem de küresel olarak en yüksek kalite ve performansa sahip aydınlatma ürünleri geliştirerek sektöre öncülük eden bir marka olmaya kararlıyız.",
-  };
-
-  const visionData = (t as any).vision_page || {
-    title: 'Vizyon',
-    content:
-      '2026 yılına kadar, müşteri memnuniyeti ve operasyonel mükemmellikte uluslararası standartları belirleyen lider bir aydınlatma markası olarak küresel pazarda güçlü bir konuma ulaşmak. Bu vizyonla, sürdürülebilirlik, yenilikçilik ve güvenilirlik temelleri üzerinde büyümeyi ve etkili çözümler sunarak ve teknolojik gelişmelerle ilerleyerek sektörde öne çıkmayı hedefliyoruz.',
-  };
+  const { mission: missionData, vision: visionData } =
+    getMissionVisionContent(language);
 
   const pageTitle =
     language === 'en' ? 'Mission and Vision' : 'Misyon ve Vizyon';

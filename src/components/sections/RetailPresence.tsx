@@ -4,25 +4,14 @@ import Image from 'next/image';
 import React, { useRef } from 'react';
 import { getAssetPath } from '@/lib/basePath';
 import { gsap } from '@/lib/gsapConfig';
+import { retailers } from '@/data/retailers';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
 import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect';
 
-const RETAILERS = [
-  { name: 'BİM', logo: getAssetPath('/images/retail/bim-logo.webp') },
-  { name: 'A101', logo: getAssetPath('/images/retail/a101-logo.webp') },
-  { name: 'Koçtaş', logo: getAssetPath('/images/retail/koctas-logo.webp') },
-  {
-    name: 'Türkiye Tarım Kredi Kooperatif Market',
-    logo: getAssetPath('/images/retail/tarim-logo.webp'),
-  },
-  {
-    name: 'Bizim Toptan',
-    logo: getAssetPath('/images/retail/bizim-logo.webp'),
-  },
-  { name: 'Seç Market', logo: getAssetPath('/images/retail/sec-logo.webp') },
-  { name: 'Avansas', logo: getAssetPath('/images/retail/avansas-logo.webp') },
-  { name: 'ANPA Gross', logo: getAssetPath('/images/retail/anpa-logo.webp') },
-];
+const RETAILERS = retailers.map((r) => ({
+  name: r.name,
+  logo: getAssetPath(`/images/${r.logo}`),
+}));
 
 const LOOP_RETAILERS = [...RETAILERS, ...RETAILERS];
 

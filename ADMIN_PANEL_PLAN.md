@@ -1,6 +1,27 @@
 # Yönetim Paneli Planı — Kendal Webpage
 
-Bu dosya, projeye kodsuz bir "yönetim paneli" (admin panel) eklenmesiyle ilgili 2026-09-14 tarihli konuşmanın özeti. Amaç: birkaç hafta sonra yeni bir Claude Code session'ına sadece bu dosya okutulduğunda, neden bu karar alındığını ve nereden başlanması gerektiğini anlaması. İşin kendisi henüz **başlamadı** — bu dosya sadece plan/karar özetidir, hiçbir kod yazılmadı.
+Bu dosya, projeye kodsuz bir "yönetim paneli" (admin panel) eklenmesiyle ilgili 2026-09-14'te başlayan çalışmanın özeti. Amaç: yeni bir Claude Code session'ına sadece bu dosya okutulduğunda, neden bu kararların alındığını ve nereden devam edilmesi gerektiğini anlaması.
+
+## 🗺️ DURUM ÖZETİ (en güncel hâliyle, en üstte — detaylar aşağıdaki tarihli bölümlerde)
+
+**1. GitHub bağlantısı — TAMAMLANDI**
+- Repo: `KendalElektrikUmutcanCELIK/kendalwebpage` (private, kullanıcının kendi yeni şirket mailiyle açtığı hesap).
+- Admin panelin "Yayınla" butonu için bir GitHub Personal Access Token oluşturulup `admin-panel/config.php`'ye eklendi (bu dosya **asla git'e girmez**, `.gitignore`'da).
+- Bu gece atılan tek gerçek kod commit'i (`7990599`) temiz hâliyle GitHub'a gönderildi — detaylar için "cPanel/GitHub kurulumu birlikte tamamlandı" bölümüne bakın (bir git karışıklığı yaşandı, düzeltildi).
+- GitHub Pages önizleme workflow'u (`.github/workflows/nextjs.yml`) hâlâ duruyor, dokunulmadı — kullanıcı isterse ayrıca kapatılabilir.
+
+**2. cPanel'de yapılanlar — TAMAMLANDI (altyapı), TEST EDİLMEDİ (gerçek deploy)**
+- Kısıtlı bir FTP hesabı oluşturuldu: `deploy@kendalelektrik.com.tr`, dizini `public_html`'e sabitli.
+- Bu hesabın bilgileri (`CPANEL_FTP_SERVER/USERNAME/PASSWORD/SERVER_DIR`) GitHub reposunun Secrets kısmına eklendi.
+- `.github/workflows/deploy-cpanel.yml` hazır: `npm run build` alıp FTP ile cPanel'e yüklüyor — **ama kullanıcı "önce admin panelini bitirelim" dediği için hiç gerçek olarak çalıştırılmadı** (eski OpenCart sitesinin üzerine yazmasın diye bilerek ertelendi).
+
+**3. Admin panelde tamamlanan özellikler (hepsi gerçek siteye bağlı, test edilmiş):**
+- Ürün kataloğu (ekle/düzenle/sil/fotoğraf), Marka logoları (SVG), Sayfalar (blok editörü, `/sayfa/{slug}`), Site Ayarları (footer/iletişim), Navbar Linkleri (menüye sayfa ekleme).
+
+**4. Bundan sonra yapılacaklar (kullanıcı kararı bekliyor):**
+- İlk kod commit'i zaten atıldı (GitHub'da) — ama **cPanel'e ilk gerçek deploy** henüz yapılmadı, ne zaman yapılacağına karar verilecek.
+- Aşağıdaki "İncelendi, kod değiştirilmedi" bölümündeki 6 alan (Zincir Marketler, Haberler, Projeler, Sertifikalar, Hakkımızda — İletişim zaten tamam) admin panele eklenebilir mi, hangi sırayla — karar bekliyor.
+- Eski, hâlâ geçerli açık kararlar: bu dosyanın geri kalanında ayrıntılı (DB kararı zaten JSON lehine kapandı).
 
 ## Neden bu ihtiyaç doğdu
 
@@ -272,3 +293,122 @@ Kullanıcıyla sohbette Açık Soru #1 (DB) ve #3 (otomatik deploy) konuşuldu:
 ## 🛑 Kullanıcı isteğiyle burada durulundu (2026-09-15, sabah)
 
 Kullanıcı canlı sohbette ürün silme özelliğini onayladı, eklendi ve test edildi. Ardından DB/deploy yöntemi konuşuldu, GitHub Actions + FTP yöntemine karar verildi, kimlik bilgisi gerektirmeyen tüm altyapı koda döküldü ve test edildi. Kullanıcı 2 saat sonra dönüp GitHub token/cPanel FTP bilgilerini sağlayacak. Hâlâ karar bekleyenler: navbar'a link ekleme, sayfalara navbar/footer'dan link verme, `products.json`'ın gerçek siteye bağlanması, ilk kod commit'inin ne zaman yapılacağı. Hiçbir şey commit edilmedi.
+
+## cPanel/GitHub kurulumu birlikte tamamlandı (2026-09-15, kullanıcı ile canlı, adım adım)
+
+Kullanıcı bilgisayara döndü, cPanel ve GitHub arayüzlerinde adım adım birlikte ilerlendi:
+- GitHub'da fine-grained Personal Access Token oluşturuldu (`KendalElektrikUmutcanCELIK` hesabıyla, repo tam eşleşiyor), `admin-panel/config.php`'ye yazıldı.
+- **Önemli olay — git geçmişi temizliği:** Kullanıcı kendi git kimliğiyle bir commit atmıştı, bu commit'te yanlışlıkla `admin-panel/data/backups/` (81 dosya, ~140MB, otomatik yedekler) ve `admin-panel/config.php` (gizli anahtarlar) git'e girmişti. `.gitignore`'a `admin-panel/config.php`, `admin-panel/data/backups/`, `admin-panel/data/uploads/` eklendi; `git reset --soft` ile commit geri alınıp bu dosyalar hariç tutularak temiz şekilde yeniden atıldı (3.671.980 satır eklemeden 76.212 satıra indi), `git push --force-with-lease` ile GitHub'daki hâli değiştirildi (kullanıcı onayıyla — force-push otomatik olarak engellenmişti, kullanıcı elle izin verdi). Bir ara kullanıcının "pull" yapması eski/kirli commit'i geri birleştirdi, tekrar `reset --hard` + force-push ile düzeltildi. **Ders:** Bu repo üzerinde pull/senkronize etmeden önce artık birlikte kontrol ediliyor.
+- cPanel'de kısıtlı bir FTP hesabı (`deploy@kendalelektrik.com.tr`, dizini `public_html`'e sınırlı) oluşturuldu, 4 bilgisi (`CPANEL_FTP_SERVER/USERNAME/PASSWORD/SERVER_DIR`) GitHub Secrets'a eklendi.
+- **Kullanıcı canlıya almadan test etmek istemedi (doğru refleks)** — workflow şu an `public_html`'in KÖKÜNE yüklüyor, yani hemen çalıştırılırsa eski OpenCart sitesinin üzerine yazar. Bu yüzden gerçek deploy testi (`Run workflow` ile elle tetikleme, önce `/test-deploy/` gibi geçici bir alt klasöre) ERTELENDİ — kullanıcı "önce admin panelini tamamlayalım" dedi.
+
+## Ürün kataloğu gerçek siteye bağlandı (2026-09-15, kullanıcı onayıyla — Açık Soru'nun büyük kısmı kapandı)
+
+Kullanıcı sordu: "bunun için canlıya mı almamız lazım?" — Hayır, bu tamamen kod değişikliği, site hâlâ eski (OpenCart) yayında olsa da yapılabilir olduğu açıklandı, "başla" dedi.
+
+**Yapılanlar:**
+- [x] `admin-panel/lib/products.php`: `PRODUCTS_JSON_PATH` artık gerçek `src/data/products.json` (izole kopya terk edildi), yeni `PRODUCTS_IMAGE_DIR` sabiti gerçek `public/images/urunler/`'ı gösteriyor. `validate_product_structure()` eklendi (pages.php'deki desenin aynısı — id/model/image/name.tr-en/attributes.tr-en yapısal olarak var mı kontrol eder, `save_products()`'a gömülü, next build'i kıracak eksik alan bırakmaz).
+- [x] `product-edit.php`: fotoğraf yükleme artık `PRODUCTS_IMAGE_DIR`'a (gerçek `public/images/urunler/`) yazıyor. `delete_product_upload()` de gerçek `public/images/` altından siliyor. `lib/image_url.php`'deki izole-kopya kontrolü kaldırıldı (artık gereksiz), sadece `/images/{yol}` döndürüyor.
+- [x] **Gerçek bir hata bulundu ve düzeltildi — JSON girinti/format uyumsuzluğu:** PHP'nin `JSON_PRETTY_PRINT`'i her zaman 4 boşluk girinti kullanıyor, ama gerçek `products.json`/`settings.json` dosyaları (Node/TypeScript tarafından) 2 boşlukla yazılmıştı. Admin panel bir dosyayı ilk kaydettiğinde TÜM dosya 4 boşluğa "yeniden biçimlenip" `git diff`'te alakasız, devasa bir fark oluşturacaktı (71.892 satırın tamamı "değişmiş" görünürdü). **Düzeltme:** yeni paylaşılan `admin-panel/lib/json_format.php` → `json_encode_2space()` fonksiyonu, PHP'nin 4 boşluklu çıktısını 2 boşluğa çeviriyor + dosya sonuna orijinal dosyalardaki gibi bir yeni satır ekliyor. `save_products()`/`save_settings()`/`save_pages()` üçü de buna geçirildi.
+- [x] **İkinci küçük hata — boş obje/dizi belirsizliği:** PHP'de boş bir ilişkisel dizi (`array()`) ile boş bir liste (`[]`) ayırt edilemiyor; `json_decode(..., true)` bir JSON `{}`'i PHP'de boş dizi yapıyor, geri `json_encode` edince `[]` çıkıyor (anlamca farklı). İki somut örnek düzeltildi: ürünlerin boş `variantOptions: {}` alanı (bazı ürünlerde var) artık `stdClass`'a çevrilip doğru `{}` olarak kaydediliyor; `pages.json` tamamen boşken (`{}`) `save_pages()` bunu doğru şekilde `{}` (obje) olarak yazıyor, `[]` değil.
+- [x] **Gerçek veriyle uçtan uca doğrulama (byte-byte):** Tüm testler (`smoke-test.php`, `test_edge_cases.php`, `test_category.php`, `test_upload_limits.php`, `test_product_delete.php`) artık **gerçek `src/data/products.json`** üzerinde çalışacak şekilde yeniden yazıldı — kalıcı `DENEME` fixture'ı kavramı kaldırıldı (gerçek katalogda sahte kalıcı ürün olmamalı), her test kendi geçici ürününü oluşturup en sonunda `delete_product` ile siliyor ve **dosyanın teste başlamadan önceki hâliyle TAM OLARAK (byte-byte) aynı olduğunu doğruluyor**. Hepsi ilk denemede geçti (25+15+12+diğerleri, toplam 858 üründen hiçbiri bozulmadı).
+- [x] **Gerçek canlı kanıt:** Yerel `npm run dev` çalışırken admin panelden gerçek bir ürünün (GES230) adını geçici olarak değiştirdim → `curl` ile gerçek ürün sayfasında (`/ges230-20w-torch-led-ampul-beyaz`) değişikliğin anında göründüğü doğrulandı → orijinal veri geri yüklendi, `git diff` tamamen temiz. Bu, ürün kataloğu bağlantısının gerçekten çalıştığının kanıtı (settings.json için daha önce yapılan kanıtın aynısı, ürünler için).
+
+**Sonuç:** Ürün kataloğu artık **Site Ayarları ve Sayfalar gibi gerçek siteye bağlı** — admin panelden yapılan ürün değişiklikleri `src/data/products.json`'a yazılıyor, `npm run build` + deploy sonrası canlıya yansıyacak. Açık Soru #1 (DB) zaten JSON lehine kapanmıştı; bu adımla ürünler için de "izole test kopyası" aşaması bitti.
+
+**⚠️ Not — kullanıcının kendi ayrı çalışması:** `git status` incelenirken `src/app/(main)/HomeClient.tsx`, `src/components/sections/Hero.tsx` ve `src/app/globals.css` dosyalarında, bu oturumda HİÇ dokunulmamış, kullanıcının kendi editöründe yaptığı (mobil "ışık anahtarı" tıklama animasyonu ekleyen) uncommitted bir değişiklik bulundu. Bu değişikliğe dokunulmadı, hiçbir commit'e dahil edilmedi — kullanıcının kendi bilgisiyle orada duruyor.
+
+## Marka logoları da gerçek siteye bağlandı (2026-09-15, "onu da yap" — son izole parça kapandı)
+
+Kullanıcı, ürün kataloğu bağlantısı bittikten sonra kalan tek izole özelliği (marka logoları) de bağlamamı istedi.
+
+**Önce yapılan tespit:** Gerçek site kodu tarandı (`grep -r "logo\.(svg|png..."`) — K2/Vanti/Global logolarına yapılan **15'ten fazla referansın hepsi** (`Navbar.tsx`, `BrandFooter.tsx`, `BrandNavbar.tsx`, `OurBrands.tsx`, `BrandsStrip.tsx`, `BrandSchema.tsx`, brand'a özel `*CreativePage.tsx`/`*Preloader.tsx` dosyaları, `brand/[brandName]/layout.tsx`) **özellikle `.svg` uzantısını sabit kodlamış** durumda. Bu yüzden admin panelin PNG/WEBP/JPG yükleme seçeneği anlamsız hale geliyordu — kaydedilse bile site o dosyayı asla göstermezdi.
+
+**Yapılanlar:**
+- [x] `brand-logo.php`: yükleme hedefi artık gerçek `public/images/brands/{brand}-logo.svg`. Format seçeneği **sadece SVG'ye** indirildi (PNG/WEBP/JPG kaldırıldı, açık bir hata mesajıyla reddediliyor — "sitenin tüm marka logosu referansları özellikle .svg uzantısını arıyor, başka bir format siteye hiç yansımaz").
+- [x] **Gerçek bir hata bulundu ve düzeltildi — dosya yazma mantığı iki kez tekrarlanmıştı:** `brand-logo.php` kendi başına, paylaşılan `atomic_write()`'ı KULLANMADAN, sabit bir `.tmp` adıyla (`$destPath . '.tmp'`) kendi yazma mantığını tekrar yazmıştı — yani bu gece products/pages/settings için düzeltilen "paylaşılan sabit tmp adı" eşzamanlılık hatası burada hâlâ mevcuttu. `atomic_write()` kullanacak şekilde birleştirildi — hem gerçek dosyaya bağlandı hem bu latent hata da giderildi.
+- [x] `current_logo_url()` basitleştirildi (izole-kopya kontrolü kaldırıldı, doğrudan `/images/brands/{brand}-logo.svg` döner).
+- [x] **Test sırasında ikinci gerçek bir hata bulundu — ama bu sefer koddan değil, testin kendi kurgusundan:** İlk yazılan test, `k2-logo.svg`'yi HEM yükleme kaynağı (CURLFile) HEM yazma hedefi olarak aynı anda kullanıyordu. Bu, Windows'ta istemcinin (curl) dosyayı okumak için tuttuğu handle ile sunucunun aynı dosyaya `rename()` yapma girişiminin çakışmasına yol açtı (`Erişim engellendi, code: 5`) — `error_log` ile adım adım izlenip kaynağın **testin kendi tasarımı** olduğu (gerçek kullanımda admin bilgisayarından hep FARKLI bir dosya yükler, kendi üzerine değil) kanıtlandı. Test, yükleme kaynağı olarak ayrı bir geçici kopya kullanacak şekilde düzeltildi — sorun kayboldu.
+- [x] `admin-panel/tests/smoke-test.php`'nin 6. bölümü genişletildi: k2 logosu (kopya üzerinden) yüklenip gerçek dosyanın bozulmadığı, vanti logosuna gerçekten farklı bir SVG içeriği yazılıp doğrulanıp tam olarak eski hâline döndürüldüğü, PNG formatının yeni mesajla reddedildiği kontrol ediliyor. **Tüm 28 kontrol geçti**, ardından tüm diğer test dosyaları (test_edge_cases, test_settings, test_pages, test_page_blocks, test_page_hardening, test_concurrent_writes, test_deploy, test_product_delete, test_upload_limits, test_category) tekrar çalıştırılıp regresyon olmadığı doğrulandı, `git status` gerçek veri/görsellerde tertemiz.
+
+**Sonuç:** Artık admin panelin **hiçbir bölümü izole/test-amaçlı bir kopya üzerinde çalışmıyor** — ürünler, sayfalar, site ayarları ve marka logoları hepsi gerçek site verisine/dosyalarına doğrudan yazıyor.
+
+## Navbar Linkleri özelliği eklendi (2026-09-15, "yap ama test ederek yap her adımı" — son büyük onay bekleyen madde kapandı)
+
+Kullanıcı sordu: sayfa oluşturma özelliğimiz var mı, navbar'a ekleyemiyoruz galiba, zor mu? Zorluğu açıklandı (Site Ayarları bağlantısına benzer orta ölçekli bir iş), "yap ama test ederek, olmazsa geri alırız" onayı alındı.
+
+**Önce yapılan tespit:** `Navbar.tsx` incelendi — menü linkleri (`navGroups`) tamamen kod içine sabit yazılmış, hiçbir veri dosyasından okumuyor; hem masaüstü (hover-dropdown) hem mobil (accordion) aynı diziyi kullanıyor; aktif-bölüm takibi/scroll senkronu gibi hassas kısımlara hiç dokunulmadan, sadece koşullu bir "ekstra grup" eklenecek şekilde tasarlandı.
+
+**Yapılanlar (her adım ayrı test edildi):**
+- [x] **Veri katmanı:** `src/data/navLinks.json` (gerçek site verisi, başlangıçta `[]`) + `src/data/navLinks.ts` (`NavLink` tipi, `getNavLinks()`). `npx tsc --noEmit` temiz.
+- [x] **Navbar.tsx entegrasyonu:** `customLinks`/`visibleNavGroups` eklendi — liste boşken `navGroups` birebir aynı kalıyor (yeni grup HİÇ render edilmiyor), en az 1 link varsa sona "Sayfalarımız" adında yeni bir grup ekleniyor. **Regresyon testi:** boş dizide ana sayfa HTML'i grep ile kontrol edildi, "Sayfalarımız" hiç görünmüyor, mevcut 4 grup (Kurumsal/Markalarımız/Referanslarımız/İletişim) birebir duruyor. Sonra gerçek bir test linkiyle dolu dizide hem masaüstü hem mobil menüde linkin doğru göründüğü (`grep -o` ile 2 kez — biri masaüstü biri mobil), href'in doğru olduğu doğrulandı. Not: ham HTML'in tamamını `diff` ile karşılaştırmak yanıltıcı çıktı verdi çünkü Next.js her derlemede sayfaya gömülü streaming ID'lerini rastgele üretiyor — bunun yerine ilgili metin/link parçalarını `grep` ile hedefli karşılaştırmak doğru yöntem oldu.
+- [x] **Admin panel arka ucu:** `admin-panel/lib/navlinks.php` — `load_nav_links()`/`save_nav_links()` (pages.php'deki desenin aynısı: yapısal doğrulama + yedek + `atomic_write()` + `json_encode_2space()`), `validate_nav_link_structure()`, `generate_nav_link_id()`.
+- [x] **Admin panel arayüzü:** `admin-panel/navbar-links.php` — link listesi (ekle/sil/sırala), "Sayfalar" bölümünde oluşturulmuş bir sayfayı seçince adresi otomatik dolduran küçük bir kolaylık. Sidebar'a ve dashboard'a eklendi.
+- [x] **Test:** `admin-panel/tests/test_navbar_links.php` yazıldı — 13 kontrol: boş liste mesajı, Türkçe/emoji karakterli link ekleme, geçersiz adresin (`javascript:...`) reddedilmesi, sıralama (yukarı taşıma), silme, ve **dosyanın byte-byte teste başlamadan önceki hâline (boş diziye) döndüğü**. **13/13 ilk çalıştırmada geçti.** Ardından smoke-test (28/28), test_edge_cases (15/15), test_settings, test_pages, test_page_blocks, test_deploy, test_product_delete tekrar çalıştırılıp regresyon olmadığı doğrulandı.
+- [x] Biome ile `Navbar.tsx` kontrol edildi — çıkan uyarılar (`noExplicitAny`, `noSvgWithoutTitle`) `git stash` ile orijinal (değişiklik öncesi) haliyle karşılaştırılarak **önceden var olan, bu değişiklikle ilgisi olmayan** uyarılar olduğu doğrulandı.
+
+**⚠️ Yan olay — kullanıcının kendi çalışmasıyla ilgili bir karışıklık:** Bu doğrulama sırasında `git stash`/`git stash pop` kullanıldı; sonrasında kullanıcının ayrı yürüttüğü `Hero.tsx` (mobil ışık anahtarı animasyonu) değişikliğinin kaybolduğu görüldü. Detaylı incelendi (stash listesi boş, pop hatasız, eşzamanlı değişen `globals.css` etkilenmemiş) — kesin sebep tespit edilemedi ama muhtemelen kullanıcının kendi editöründeki bir işlemle ilgili, bu oturumun git işlemleriyle bağlantılı görünmüyor. Kullanıcıya doğrudan söylendi, kullanıcı "ben onu arka planda güncelliyorum, merak etme" dedi — sorun değil, kendi kontrolünde.
+
+**Sonuç:** Artık "Sayfalar" özelliğiyle oluşturulan sayfalar admin panelden menüye eklenebiliyor. Faz 6 + Navbar Linkleri ile birlikte, kullanıcının orijinal "kodsuz yönetim" hedefinin ana parçalarının hepsi tamamlandı.
+
+**Hâlâ karar bekleyenler:** İlk gerçek kod commit'inin ne zaman yapılacağı, cPanel'e gerçek deploy testinin ne zaman (test klasörüyle) yapılacağı.
+
+## İncelendi, KOD DEĞİŞTİRİLMEDİ — localhost:3000'de yönetilebilir hâle getirilebilecek diğer alanlar (2026-09-15)
+
+Kullanıcı canlıya taşımadan önce şunları sordu: Zincir Marketler, Haberler, Projeler, İletişim, Sertifikalar, Hakkımızda alanlarında ekleme/düzenleme/silme yapılabilir mi? Sadece kod inceledim, hiçbir dosyaya dokunmadım — her biri için gerçek kod referanslarıyla bulgular ve kabaca kapsam/zorluk tahmini:
+
+### 1. Zincir Marketler — `src/components/sections/RetailPresence.tsx`
+Sabit kodlanmış `RETAILERS` dizisi: `{ name, logo }`, 8 kayıt (BİM, A101, Koçtaş vb.), her biri `public/images/retail/{slug}-logo.webp`'ye işaret ediyor.
+**Kapsam:** Küçük-orta. Marka logoları özelliğine çok benzer (JSON dosyası + logo yükleme + basit liste ekle/sil/sırala). `admin-panel/lib/pages.php`/`navlinks.php` deseninin neredeyse birebir kopyası olur. **Tahmini efor: Navbar Linkleri kadar (bir oturumluk iş).**
+
+### 2. Projeler (Referanslar) — `src/components/sections/Projects.tsx`
+Sabit kodlanmış `REFERENCE_DATA` dizisi: `{ id, name, location }`, 43 kayıt, her biri `public/images/references/turkiye/{id}.webp`'ye işaret ediyor (görsel adı id'ye bağlı).
+**Kapsam:** Küçük-orta, Zincir Marketler ile aynı desen (JSON + görsel yükleme + liste). Tek fark: id'nin görsel dosya adını da belirlemesi — yeni kayıt eklerken otomatik id üretimi (`generate_product_id()` benzeri) gerekir. **Tahmini efor: Zincir Marketler ile aynı.**
+
+### 3. Haberler — `src/data/news-tr.ts` + `news-en.ts`
+İki paralı TypeScript dosyası (JSON değil!), ~37 haber, ortak `id` ile eşleşiyor: `{ id, title, date, images: string[], content: string[] }`. `content` dizisindeki her paragraf ya düz metin ya da `[IMAGE]{yol}` öneki ile bir "metin içi görsel" — `NewsDetailClient.tsx` bunu özel olarak parse ediyor.
+**Kapsam: En büyüğü.** Nedenleri: (a) veri şu an `.ts` dosyasında, JSON'a taşınması gerekiyor (`news.ts`'nin re-export deseni + `NewsDetailClient.tsx`/`HaberlerListesiClient.tsx`/`NewsPreview.tsx`'in import'ları güncellenmeli — ama şema/görünüm DEĞİŞMEZ, sadece kaynağı değişir, "Sayfalar"da yaptığımız gibi risk düşük); (b) TR/EN içerik AYRI diziler (aynı objede iç içe değil), admin formunun bunu doğru şekilde eşleştirmesi gerekir; (c) `content` dizisi + iç içe `[IMAGE]` deseni, "Sayfalar" blok editöründeki gibi bir mini-editör ister (paragraf ekle/sil/sırala, aralara görsel ekle). **Tahmini efor: Faz 6 (Sayfalar) kadar, belki biraz daha az — çünkü blok tipi sayısı zaten sabit (metin + görsel), yeni "blok tipi" tasarımına gerek yok.**
+
+### 4. İletişim — zaten TAMAMLANDI
+`IletisimClient.tsx` tamamen `src/data/settings.json`'dan okuyor (Site Ayarları özelliği bunu zaten kapsıyor). Ekstra bir şey yapmaya gerek yok.
+
+### 5. Sertifikalar — `src/components/sections/Certifications.tsx` + `/sertifikalar/{iso,tse,marka-tescil}/page.tsx`
+İki katman: (a) anasayfadaki 5 kartlık üst liste — ikon+link, nadiren değişir, kod içine sabit; (b) her kategori sayfasının (`iso/page.tsx` vb.) kendi sabit `IMAGES` dizisi (dosya adı listesi, ör. `emc-1.webp`, `iso9001-2015.webp`...).
+**Kapsam:** Orta. (a) katmanını editable yapmak muhtemelen gereksiz (nadiren değişir, 5 sabit kategori). (b) katmanı — her kategoriye görsel ekleyip/çıkarabilme — Zincir Marketler ile aynı desende ama **3 ayrı liste** (iso/tse/marka-tescil) yönetmek gerekir. **Tahmini efor: Zincir Marketler'in ~1.5 katı (3 kategori olduğu için).**
+
+### 6. Hakkımızda — `src/components/sections/AboutUs.tsx`
+**Bulgu:** İçerik bir veri dosyasında DEĞİL — `src/lib/i18n/tr.json`/`en.json` içindeki genel çeviri sözlüğünün bir parçası (`t.about.title`, `about.text1`, `about.text2`, `about.beats[]` — her biri `{title, text}`).
+**Kapsam:** Orta, farklı bir zorluk türü. Diğerleri gibi "yeni bir JSON dosyası ekle" değil — **mevcut, büyük i18n sözlüğünün bir köşesini** admin'e açmak gerekiyor. İki yol var: (a) sadece `about` bölümünü i18n dosyalarından ayırıp `settings.json` gibi ayrı bir dosyaya taşımak (temiz ama `tr.json`/`en.json`'a dokunmayı gerektirir), (b) admin panelde sadece `tr.json`/`en.json`'daki `about` anahtarını okuyup/yazan özel bir form yapmak (i18n dosyasının geri kalanına dokunmadan). (a) daha temiz bir mimari, (b) daha az riskli/dokunaklı. **Tahmini efor: Zincir Marketler'e yakın, ama i18n dosyasına dokunma riski nedeniyle biraz daha dikkat ister.**
+
+### 7. Misyon ve Vizyon — `src/app/(main)/misyon-ve-vizyon/MissionVisionClient.tsx`
+**Bulgu:** Hakkımızda ile birebir aynı durum — içerik `src/lib/i18n/tr.json`/`en.json` içinde, `t.mission_page` ve `t.vision_page` anahtarlarında, her biri `{title, content}` (sabit metin, fallback olarak component içine de gömülü). Hakkımızda'dan bile basit — tekrarlanan bir liste yok, sadece 2 sabit kart (Misyon, Vizyon).
+**Kapsam:** Küçük-orta, Hakkımızda ile aynı yöntemle (i18n'den ayırma ya da özel form) çözülür, hatta daha basit çünkü sadece 2 sabit alan var. **Tahmini efor: Hakkımızda'dan biraz daha az.**
+
+### Genel öneri (sıralama için)
+Zorluk/risk açısından en kolaydan en zora: **Zincir Marketler ≈ Projeler < Sertifikalar < Misyon-Vizyon ≈ Hakkımızda < Haberler**. Hiçbiri mimari olarak riskli değil (hepsi "Sayfalar" veya "Marka Logoları" ile aynı, kanıtlanmış deseni kullanır), sadece Haberler gerçekten büyük bir veri kümesi + TS→JSON geçişi içerdiği için en çok zaman alacak olan.
+
+---
+
+## 🎉 Yukarıdaki 6 alanın TAMAMI admin panele bağlandı (2026-09-15, kullanıcı onayıyla — yukarıdaki sıralama izlendi)
+
+Kullanıcı bu incelemenin ardından "hepsini admin panelden yönetilebilir hale getir, sırayla test ederek ilerle, artık sormana gerek yok (önceki özellikler için zaten onay verildi, aynı deseni kullan)" dedi. Yukarıdaki zorluk sıralamasıyla (Zincir Marketler/Projeler → Sertifikalar → Misyon-Vizyon/Hakkımızda → Haberler) birebir, her biri tek tek yapılıp gerçek HTTP istekleriyle test edildi. Hiçbiri izole bir kopya üzerinde çalışmıyor — hepsi doğrudan gerçek site verisine/dosyalarına yazıyor (önceki turlarda kurulan desenin aynısı).
+
+**1. Zincir Marketler** — `src/data/retailers.json`/`retailers.ts` (8 kayıt, mevcut `RETAILERS` dizisinden birebir taşındı) + `RetailPresence.tsx` artık bunu okuyor. `admin-panel/lib/retailers.php` + `retailers.php` (liste/ekle/sil/sırala, logo yükleme → `public/images/retail/{id}-logo.webp`, otomatik WebP). `test_retailers.php`: 15/15.
+
+**2. Projeler** — `src/data/projects.json`/`projects.ts` (43 kayıt, mevcut `REFERENCE_DATA`'dan taşındı). **Not:** orijinal component görsel yolunu `id`'den türetiyordu (`references/turkiye/${item.id}.webp`) — JPEG yedek senaryosunda (WebP yoksa) bu kırılabileceği için veri şemasına ayrı bir `image` alanı eklendi (`retailers.json`'daki `logo` alanına benzer), `Projects.tsx` artık bunu okuyor. `admin-panel/lib/projects.php` + `projects.php` (liste/ekle/sil/sırala, id otomatik `ref-NN` olarak üretiliyor). `test_projects.php`: 16/16.
+
+**3. Sertifikalar** — `src/data/certificates.json`/`certificates.ts`, 3 kategori (`iso`/`tse`/`marka-tescil`) → `/sertifikalar/{kategori}/page.tsx` dosyalarının 3'ü de artık buradan okuyor. Anasayfadaki üst 5 kartlık sabit liste (`Certifications.tsx`) **kasıtlı olarak dokunulmadı** (plan analizinde önerildiği gibi — nadiren değişir, sabit ikon+link). `admin-panel/lib/certificates.php` + `certificates.php` (3 sekmeli yönetim, her kategoride ekle/sil/sırala). `test_certificates.php`: 15/15.
+
+**4-5. Hakkımızda + Misyon ve Vizyon** — İkisi de içerik daha önce `src/lib/i18n/tr.json`/`en.json`'ın içine gömülüydü (plan analizinde önerilen (a) seçeneği uygulandı: i18n sözlüğünden ayrı dosyaya taşıma). `src/data/aboutContent.json` (`about` anahtarından) ve `src/data/missionVision.json` (`mission_page`+`vision_page`'den) oluşturuldu; `tr.json`/`en.json`'dan bu üç anahtar silindi (**`nav.about` menü etiketine dokunulmadı** — aynı isimli ama farklı bir anahtar, dikkatle ayırt edildi). Taşıma öncesi/sonrası veri eşitliği Node ile derin karşılaştırmayla (`deepStrictEqual`) doğrulandı. `AboutUs.tsx`/`MissionVisionClient.tsx` artık yeni dosyalardan okuyor. `admin-panel/lib/about.php` + `about.php` (ana metin TR/EN + zaman çizelgesi maddeleri ekle/sil/sırala/düzenle — TR/EN karşılıklı, aynı sırada). `admin-panel/lib/missionvision.php` + `mission-vision.php` (settings.php ile birebir aynı desen). `test_about.php`: 12/12, `test_mission_vision.php`: 8/8.
+
+**6. Haberler** — En büyük parça. `src/data/news-tr.ts` (706 satır) + `news-en.ts` (709 satır) TypeScript literal dizileriydi; **`src/data/news.json`'a taşındı**. Node'da `eval()` ile önce orijinal diziler gerçek veriye çözüldü, sonra JSON'a yazıldı, sonra JSON'dan geri kurulan veri orijinaliyle `assert.deepStrictEqual` ile **byte-seviyesinde karşılaştırılıp tam eşleştiği doğrulandı** (37 TR + 37 EN kayıt, paragraflar arası `[IMAGE]/images/...` mutlak-yol işaretleri dahil — bu işaretler kasıtlı olarak `getAssetPath` UYGULANMADAN, orijinal (GH Pages'te kırık olabilen, ama dokunulmayan) davranışıyla birebir korundu). `news-tr.ts`/`news-en.ts` artık bu JSON'u okuyup `getAssetPath` uygulayan ince sarmalayıcılar — dışa açık `NewsItem` tipi ve `newsDataTR`/`newsDataEN` API'si birebir aynı kaldığı için `news.ts`, `NewsDetailClient.tsx`, `HaberlerListesiClient.tsx`, `NewsPreview.tsx`, `NewsArticleSchema.tsx`, `sitemap.ts` hiçbiri değiştirilmedi. `admin-panel/lib/news.php` + `news.php` (liste) + `news-edit.php`: başlık/tarih TR ve EN ayrı; galeri görselleri (üst slider) TR/EN arasında **paylaşımlı** (gerçek veride zaten hep aynıydı, doğrulandı); haber metni paragrafları TR ve EN için **tamamen bağımsız** iki liste (gerçek veri yapısına sadık — ayrı diziler, ortak index'e zorlanmadı), her ikisinde de metin paragrafı ekle/düzenle/sil/sırala + görsel paragrafı ekle (otomatik `[IMAGE]...` işaretiyle). Yeni haber id'si mevcut en büyük sayısal id'den bir sonraki. "Haberi Sil" ilişkili tüm görselleri de `public/images/haberler/{id}/` altından temizliyor. `test_news.php`: 26/26 (ilk çalıştırmada).
+
+**Sidebar/dashboard:** `includes/layout.php`'ye 6 yeni link eklendi (Zincir Marketler, Projeler, Sertifikalar, Hakkımızda, Misyon ve Vizyon, Haberler), `dashboard.php`'ye karşılık gelen 6 hızlı erişim kartı eklendi. `panel.css`'e sadece 1 küçük yeni sınıf eklendi (`.tab-bar`, sertifika kategorisi sekmeleri için) + `textarea` için mevcut `form-row input` stiline eklenen ortak kural — yeni CSS neredeyse yok, mevcut sınıflar (`block-editor-card`, `gallery-image-list`, `product-grid` vb.) yeniden kullanıldı.
+
+**Doğrulama yöntemi (her adımda tekrarlandı):** `npx tsc --noEmit` temiz → `npm run dev` üzerinden gerçek sayfa çıktısı `curl`+`grep` ile eskisiyle karşılaştırıldı (görsel/metin birebir aynı) → yeni admin PHP dosyaları `php -l` ile sözdizimi kontrolünden geçti → yeni test dosyası gerçek HTTP istekleriyle (`admin-panel/tests/_test_helpers.php` deseni, Türkçe/emoji test verisi PHP dosyasının içine yazıldı, **asla shell/curl argümanı olarak geçilmedi**) çalıştırılıp gerçek veri dosyasının teste başlamadan önceki hâline **byte-byte döndüğü** doğrulandı → tüm önceki test dosyaları (regresyon) tekrar çalıştırıldı, hepsi yeşil kaldı. En sonda `src/data/pages.json`'a geçici bir test sayfası eklenip **tam `npm run build`** çalıştırıldı (pages.json boşken `/sayfa/[slug]`'ın `generateStaticParams()` boş dönüp build'i kırması, bu oturumdan önce de var olan, ilgisiz bir durum — bkz. aşağıdaki not) ve build sonunda test sayfası temizlendi.
+
+**Yerel PHP ortamı notu:** Bu oturumda `php` PATH'te değildi; gerçek kurulum `winget` ile geldiği için `C:\Users\umutcan.celik\AppData\Local\Microsoft\WinGet\Packages\PHP.PHP.8.3_Microsoft.Winget.Source_8wekyb3d8bbwe\php.exe` altında bulundu (GD/WebP/mbstring/curl hepsi açık). PATH'e eklenmesi gelecekteki oturumlar için `php -l`/testleri kolaylaştırır ama zorunlu değil.
+
+**⚠️ Bu oturumda dokunulmayan, bağımsız/önceden var olan bir durum:** `npm run build`, `src/data/pages.json` şu an boş (`{}`) olduğu için `/sayfa/[slug]`'ın `generateStaticParams()`'ı boş dizi döndürüp `output:"export"` kısıtlaması yüzünden hata veriyor (Next.js "en az bir route üretilmeli" diyor). Bu, Faz 6'nın önceki bir turunda da bilinen bir durumdu (o turlarda da build doğrulaması geçici bir test sayfasıyla yapılıp sonra temizleniyordu) — bu oturumdaki hiçbir değişiklikle ilgisi yok, `git status` ile `pages.json`'ın untracked olduğu da doğrulandı. Kalıcı bir çözüm (ör. en az 1 gerçek sayfa oluşturmak, ya da route'u `dynamicParams`/fallback ile boş listeye tolere eder hale getirmek) kullanıcı kararını gerektiriyor, bu oturumda kapsam dışı bırakıldı.
+
+**Hâlâ karar bekleyenler (değişmedi):** İlk kod commit'inin ne zaman yapılacağı, cPanel'e gerçek deploy testinin ne zaman yapılacağı, navbar'a otomatik link ekleme (zaten var — bkz. "Navbar Linkleri" — ama sadece "Sayfalar" için, diğer 6 yeni alan için otomatik menü linki eklenmedi, istenirse ayrı bir iş).

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
+import { getAboutContent } from '@/data/aboutContent';
 import { gsap } from '@/lib/gsapConfig';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
 import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect';
@@ -8,7 +9,8 @@ import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect';
 const MOBILE_QUERY = '(max-width: 767px)';
 
 export const AboutUs = () => {
-  const { t } = useLanguage();
+  const { language } = useLanguage();
+  const about = getAboutContent(language);
   const containerRef = useRef<HTMLElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
@@ -114,7 +116,7 @@ export const AboutUs = () => {
     return () => ctx.revert();
   }, []);
 
-  const beats = (t as any).about?.beats || [];
+  const beats = about.beats;
 
   return (
     <section
@@ -127,13 +129,13 @@ export const AboutUs = () => {
       <div className="relative max-w-7xl mx-auto z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
         <div ref={textRef} className="flex flex-col justify-center">
           <div className="inline-block px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-sm font-medium tracking-widest text-white/80 mb-6 w-max">
-            {t.about.title}
+            {about.title}
           </div>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8">
-            {(t as any).about?.text1}
+            {about.text1}
           </h2>
           <p className="text-lg md:text-xl text-gray-400 leading-relaxed max-w-2xl">
-            {(t as any).about?.text2}
+            {about.text2}
           </p>
         </div>
 

@@ -27,37 +27,6 @@
     "title_part2": "Aydınlatıyoruz",
     "subtitle": "Yenilikçi aydınlatma ve elektrik donanımları"
   },
-  "about": {
-    "title": "Hakkımızda",
-    "text1": "Biz sadece ışık üretmiyoruz; karanlığa meydan okuyan, yıllara direnen teknolojiler tasarlıyoruz.",
-    "text2": "Geleceğin aydınlatma teknolojilerini bugünden tasarlayarak, hem yurt içinde hem de küresel pazarlarda güvenilir çözümler sunuyoruz.",
-    "beats": [
-      {
-        "title": "Filament Ampulde Tek Üretici",
-        "text": "Türkiye, Avrupa ve Ortadoğu'da filament ampul üreten tek üreticiyiz. Kendi LED panel ve plastik enjeksiyon üretim hatlarımızla kaliteyi baştan sona kontrol ediyoruz."
-      },
-      {
-        "title": "Yüksek Teknoloji ve %89 Otomasyon",
-        "text": "Üretim hatlarımızda %89 otomasyon oranına ulaştık. ERP, MAS ve WMS gibi gelişmiş dijital sistemlerle üretimden depoya kadar tüm süreçleri anlık izliyor ve yönetiyoruz."
-      },
-      {
-        "title": "Ar-Ge ve Akredite Laboratuvar",
-        "text": "TSE onaylı akredite laboratuvarımız ve kendi Ar-Ge merkezimizle yenilikçi ürünler geliştiriyor; 2013'te kurulan otomasyon ekibimizin gücüyle teknolojimizi sürekli ileriye taşıyoruz."
-      },
-      {
-        "title": "Uluslararası Kalite Kontrol Sistemi",
-        "text": "Hammadde (IQC), proses (IPQC) ve çıkış (OQC) süreçlerini AQL örnekleme planına göre uyguluyor; ürünlerimizi fonksiyonellik, ömür ve çeşitli elektriksel testlerden geçiriyoruz."
-      },
-      {
-        "title": "OPEX ve Kusursuzluk Vizyonu",
-        "text": "Operasyonel verimlilik stratejisi (OPEX) ile verimliliği maksimuma çıkarırken, üretim hatalarını 1500 ppm'in altına düşürme ve kalite performansını %99'a çıkarma hedefiyle çalışıyoruz."
-      },
-      {
-        "title": "Işık kaynakları üretiyor ve dünyaya satıyoruz",
-        "text": "Çevre dostu ve enerji verimli ürünlerimiz, her yıl yeni patent başvurularımız ve ESD korumalı üretim altyapımızla sürdürülebilir bir küresel marka olma yolunda ilerliyoruz."
-      }
-    ]
-  },
   "certifications": {
     "title": "Sertifikalarımız",
     "subtitle": "Kalite ve güvenilirlik anlayışımızı belgeleyen sertifikalarımız ve tescillerimiz.",
@@ -250,14 +219,6 @@
   },
   "company_video": {
     "discover": "Işığın Arkasındaki Gücü Keşfedin"
-  },
-  "mission_page": {
-    "title": "Misyon",
-    "content": "Kendal Elektrik olarak, aydınlatma sektöründe yenilikçi, güvenilir ve sürdürülebilir çözümler sunarak müşterilerimize, ortaklarımıza ve topluma değer katmayı hedefliyoruz. Ar-Ge ve üretim yeteneklerimizle, hem Türkiye'de hem de küresel olarak en yüksek kalite ve performansa sahip aydınlatma ürünleri geliştirerek sektöre öncülük eden bir marka olmaya kararlıyız."
-  },
-  "vision_page": {
-    "title": "Vizyon",
-    "content": "2026 yılına kadar, müşteri memnuniyeti ve operasyonel mükemmellikte uluslararası standartları belirleyen lider bir aydınlatma markası olarak küresel pazarda güçlü bir konuma ulaşmak. Bu vizyonla, sürdürülebilirlik, yenilikçilik ve güvenilirlik temelleri üzerinde büyümeyi ve etkili çözümler sunarak ve teknolojik gelişmelerle ilerleyerek sektörde öne çıkmayı hedefliyoruz."
   },
   "production_page": {
     "title": "Üretim",

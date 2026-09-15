@@ -1,0 +1,260 @@
+[
+  {
+    "id": "ref-43",
+    "name": "Volkswagen",
+    "location": "Çorlu – Tekirdağ",
+    "image": "references/turkiye/ref-43.webp"
+  },
+  {
+    "id": "ref-16",
+    "name": "Ducati",
+    "location": "Ataşehir – İstanbul",
+    "image": "references/turkiye/ref-16.webp"
+  },
+  {
+    "id": "ref-24",
+    "name": "Hard Rock Cafe",
+    "location": "Beyoğlu – İstanbul",
+    "image": "references/turkiye/ref-24.webp"
+  },
+  {
+    "id": "ref-30",
+    "name": "Levi's",
+    "location": "Beyoğlu – İstanbul",
+    "image": "references/turkiye/ref-30.webp"
+  },
+  {
+    "id": "ref-42",
+    "name": "Vitra",
+    "location": "Nişantaşı – İstanbul",
+    "image": "references/turkiye/ref-42.webp"
+  },
+  {
+    "id": "ref-41",
+    "name": "Triumph",
+    "location": "Ataşehir – İstanbul",
+    "image": "references/turkiye/ref-41.webp"
+  },
+  {
+    "id": "ref-12",
+    "name": "Çanakkale Seramik",
+    "location": "Çanakkale",
+    "image": "references/turkiye/ref-12.webp"
+  },
+  {
+    "id": "ref-32",
+    "name": "Mavi Jeans Akbatı AVM",
+    "location": "İstanbul",
+    "image": "references/turkiye/ref-32.webp"
+  },
+  {
+    "id": "ref-21",
+    "name": "FLO",
+    "location": "Sultanbeyli – İstanbul",
+    "image": "references/turkiye/ref-21.webp"
+  },
+  {
+    "id": "ref-36",
+    "name": "Penti",
+    "location": "Kadıköy – İstanbul",
+    "image": "references/turkiye/ref-36.webp"
+  },
+  {
+    "id": "ref-28",
+    "name": "Koton Meydan AVM",
+    "location": "İstanbul",
+    "image": "references/turkiye/ref-28.webp"
+  },
+  {
+    "id": "ref-22",
+    "name": "Flormar Akbatı AVM",
+    "location": "İstanbul",
+    "image": "references/turkiye/ref-22.webp"
+  },
+  {
+    "id": "ref-15",
+    "name": "City's Mahalle",
+    "location": "İstanbul",
+    "image": "references/turkiye/ref-15.webp"
+  },
+  {
+    "id": "ref-33",
+    "name": "MEF Üniversitesi",
+    "location": "Maslak – İstanbul",
+    "image": "references/turkiye/ref-33.webp"
+  },
+  {
+    "id": "ref-20",
+    "name": "Fethiye & Hasan Gümüşdağ Camii",
+    "location": "Küçükçekmece – İstanbul",
+    "image": "references/turkiye/ref-20.webp"
+  },
+  {
+    "id": "ref-06",
+    "name": "Borusan Oto",
+    "location": "Adana",
+    "image": "references/turkiye/ref-06.webp"
+  },
+  {
+    "id": "ref-07",
+    "name": "Borusan Oto",
+    "location": "Ataşehir – İstanbul",
+    "image": "references/turkiye/ref-07.webp"
+  },
+  {
+    "id": "ref-08",
+    "name": "Borusan Oto",
+    "location": "Avcılar – İstanbul",
+    "image": "references/turkiye/ref-08.webp"
+  },
+  {
+    "id": "ref-09",
+    "name": "Borusan Oto",
+    "location": "Çatalca – İstanbul",
+    "image": "references/turkiye/ref-09.webp"
+  },
+  {
+    "id": "ref-10",
+    "name": "Borusan Oto",
+    "location": "Samandıra – İstanbul",
+    "image": "references/turkiye/ref-10.webp"
+  },
+  {
+    "id": "ref-13",
+    "name": "Capitol AVM",
+    "location": "İstanbul",
+    "image": "references/turkiye/ref-13.webp"
+  },
+  {
+    "id": "ref-35",
+    "name": "Meydan AVM",
+    "location": "Ümraniye – İstanbul",
+    "image": "references/turkiye/ref-35.webp"
+  },
+  {
+    "id": "ref-26",
+    "name": "İpekyolu Emar AVM",
+    "location": "İstanbul",
+    "image": "references/turkiye/ref-26.webp"
+  },
+  {
+    "id": "ref-38",
+    "name": "Sport In Street Atlaspark AVM",
+    "location": "İstanbul",
+    "image": "references/turkiye/ref-38.webp"
+  },
+  {
+    "id": "ref-31",
+    "name": "Love My Body Vadistanbul AVM",
+    "location": "İstanbul",
+    "image": "references/turkiye/ref-31.webp"
+  },
+  {
+    "id": "ref-14",
+    "name": "Çetinkaya Varlıbaş AVM",
+    "location": "Trabzon",
+    "image": "references/turkiye/ref-14.webp"
+  },
+  {
+    "id": "ref-03",
+    "name": "Altınyıldız Axis AVM",
+    "location": "İstanbul",
+    "image": "references/turkiye/ref-03.webp"
+  },
+  {
+    "id": "ref-23",
+    "name": "Gastronometro",
+    "location": "Güneşli – İstanbul",
+    "image": "references/turkiye/ref-23.webp"
+  },
+  {
+    "id": "ref-34",
+    "name": "Met Global",
+    "location": "Şişli – İstanbul",
+    "image": "references/turkiye/ref-34.webp"
+  },
+  {
+    "id": "ref-25",
+    "name": "İmza Giyim – Merkez Ofis",
+    "location": "Küçükçekmece – İstanbul",
+    "image": "references/turkiye/ref-25.webp"
+  },
+  {
+    "id": "ref-29",
+    "name": "Kyocera",
+    "location": "Üsküdar – İstanbul",
+    "image": "references/turkiye/ref-29.webp"
+  },
+  {
+    "id": "ref-37",
+    "name": "Saray Alüminyum",
+    "location": "Güneşli – İstanbul",
+    "image": "references/turkiye/ref-37.webp"
+  },
+  {
+    "id": "ref-39",
+    "name": "Strada Kış Bahçesi",
+    "location": "Bahçeşehir – İstanbul",
+    "image": "references/turkiye/ref-39.webp"
+  },
+  {
+    "id": "ref-04",
+    "name": "Arıcıoğlu Otomotiv",
+    "location": "Beyoğlu – İstanbul",
+    "image": "references/turkiye/ref-04.webp"
+  },
+  {
+    "id": "ref-05",
+    "name": "Arıcıoğlu Otomotiv",
+    "location": "Esenler – İstanbul",
+    "image": "references/turkiye/ref-05.webp"
+  },
+  {
+    "id": "ref-17",
+    "name": "Duygum Tekstil",
+    "location": "Bakırköy – İstanbul",
+    "image": "references/turkiye/ref-17.webp"
+  },
+  {
+    "id": "ref-40",
+    "name": "Süpermarket",
+    "location": "Gebze – Kocaeli",
+    "image": "references/turkiye/ref-40.webp"
+  },
+  {
+    "id": "ref-01",
+    "name": "Açelya Trend",
+    "location": "Çerkezköy – Tekirdağ",
+    "image": "references/turkiye/ref-01.webp"
+  },
+  {
+    "id": "ref-02",
+    "name": "Aksesuar Group",
+    "location": "Florya – İstanbul",
+    "image": "references/turkiye/ref-02.webp"
+  },
+  {
+    "id": "ref-11",
+    "name": "Camper",
+    "location": "Beyoğlu – İstanbul",
+    "image": "references/turkiye/ref-11.webp"
+  },
+  {
+    "id": "ref-27",
+    "name": "Koleksiyon Mobilya",
+    "location": "Ankara",
+    "image": "references/turkiye/ref-27.webp"
+  },
+  {
+    "id": "ref-18",
+    "name": "E-Bebek Kadir Has AVM",
+    "location": "İstanbul",
+    "image": "references/turkiye/ref-18.webp"
+  },
+  {
+    "id": "ref-19",
+    "name": "Elle Capacity AVM",
+    "location": "İstanbul",
+    "image": "references/turkiye/ref-19.webp"
+  }
+]

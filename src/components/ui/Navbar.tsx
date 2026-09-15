@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import type React from 'react';
 import { useEffect, useState } from 'react';
 import { useLenis } from '@/components/engine/SmoothScrollProvider';
+import { getNavLinks } from '@/data/navLinks';
 import { getAssetPath, isGithubPagesBuild } from '@/lib/basePath';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
 import { LanguageSwitcher } from './LanguageSwitcher';
@@ -264,6 +265,22 @@ export const Navbar = () => {
     },
   ];
 
+  const customLinks = getNavLinks();
+  const visibleNavGroups =
+    customLinks.length > 0
+      ? [
+          ...navGroups,
+          {
+            label: language === 'tr' ? 'Sayfalarımız' : 'Our Pages',
+            links: customLinks.map((link) => ({
+              id: `custom_${link.id}`,
+              href: link.url,
+              label: link.label[language],
+            })),
+          },
+        ]
+      : navGroups;
+
   return (
     <>
       <nav className="fixed top-0 left-0 w-full z-50 px-4 md:px-6 py-5 md:py-6 flex items-center justify-between bg-black/60 backdrop-blur-md text-white border-b border-white/5 transition-colors duration-300">
@@ -282,7 +299,7 @@ export const Navbar = () => {
         </Link>
 
         <div className="hidden lg:flex items-center gap-8 text-sm flex-1 justify-center h-full">
-          {navGroups.map((group, gIdx) => (
+          {visibleNavGroups.map((group, gIdx) => (
             <div key={gIdx} className="group relative py-2 cursor-pointer">
               <div className="flex items-center gap-1 hover:opacity-100 opacity-80 transition-opacity">
                 {group.label}
@@ -422,7 +439,7 @@ export const Navbar = () => {
         }`}
       >
         <div className="flex flex-col p-6 gap-6 pb-32 pt-8">
-          {navGroups.map((group, gIdx) => (
+          {visibleNavGroups.map((group, gIdx) => (
             <div key={gIdx} className="border-b border-white/10 pb-4">
               <button
                 onClick={() =>

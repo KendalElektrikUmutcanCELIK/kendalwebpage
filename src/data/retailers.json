@@ -1,0 +1,42 @@
+[
+  {
+    "id": "bim",
+    "name": "BİM",
+    "logo": "retail/bim-logo.webp"
+  },
+  {
+    "id": "a101",
+    "name": "A101",
+    "logo": "retail/a101-logo.webp"
+  },
+  {
+    "id": "koctas",
+    "name": "Koçtaş",
+    "logo": "retail/koctas-logo.webp"
+  },
+  {
+    "id": "tarim",
+    "name": "Türkiye Tarım Kredi Kooperatif Market",
+    "logo": "retail/tarim-logo.webp"
+  },
+  {
+    "id": "bizim",
+    "name": "Bizim Toptan",
+    "logo": "retail/bizim-logo.webp"
+  },
+  {
+    "id": "sec",
+    "name": "Seç Market",
+    "logo": "retail/sec-logo.webp"
+  },
+  {
+    "id": "avansas",
+    "name": "Avansas",
+    "logo": "retail/avansas-logo.webp"
+  },
+  {
+    "id": "anpa",
+    "name": "ANPA Gross",
+    "logo": "retail/anpa-logo.webp"
+  }
+]

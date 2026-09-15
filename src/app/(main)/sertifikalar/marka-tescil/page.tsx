@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import React from 'react';
 import { CertificateGallery } from '@/components/sections/CertificateGallery';
+import { getCertificateImages } from '@/data/certificates';
 import { getAssetPath } from '@/lib/basePath';
 
 export const metadata: Metadata = {
@@ -10,13 +11,8 @@ export const metadata: Metadata = {
   alternates: { canonical: '/sertifikalar/marka-tescil' },
 };
 
-const IMAGES = [
-  'kendal-elektrik-marka-tescil-belgesi-1.webp',
-  'kendal-elektrik-marka-tescil-belgesi-2.webp',
-  'kendal-elektrik-marka-tescil-belgesi-3.webp',
-  'kendal-elektrik-marka-tescil-belgesi-4.webp',
-].map((file) =>
-  getAssetPath(`/images/certifications/marka-tescil-belgeleri/${file}`),
+const IMAGES = getCertificateImages('marka-tescil').map((file) =>
+  getAssetPath(`/images/${file}`),
 );
 
 export default function MarkaTescilSertifikalariPage() {

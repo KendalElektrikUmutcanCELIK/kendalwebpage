@@ -1,0 +1,22 @@
+{
+  "iso": [
+    "certifications/iso-belgeleri/emc-1.webp",
+    "certifications/iso-belgeleri/iso9001-2015.webp",
+    "certifications/iso-belgeleri/iso14001-2015.webp",
+    "certifications/iso-belgeleri/iso45001-2018.webp",
+    "certifications/iso-belgeleri/iso27001-2022.webp",
+    "certifications/iso-belgeleri/pca-9001-2015.webp",
+    "certifications/iso-belgeleri/pca-14001-2015.webp",
+    "certifications/iso-belgeleri/pca-45001-2018.webp"
+  ],
+  "tse": [
+    "certifications/tse-belgeleri/tse-belgesi.webp",
+    "certifications/tse-belgeleri/kdl4140-tse.webp"
+  ],
+  "marka-tescil": [
+    "certifications/marka-tescil-belgeleri/kendal-elektrik-marka-tescil-belgesi-1.webp",
+    "certifications/marka-tescil-belgeleri/kendal-elektrik-marka-tescil-belgesi-2.webp",
+    "certifications/marka-tescil-belgeleri/kendal-elektrik-marka-tescil-belgesi-3.webp",
+    "certifications/marka-tescil-belgeleri/kendal-elektrik-marka-tescil-belgesi-4.webp"
+  ]
+}

@@ -97,12 +97,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['form_action'] ?? '') === '
                 if ($uploadError !== null) {
                     $error = $uploadError;
                 } elseif (is_uploaded_file($_FILES['photo']['tmp_name'])) {
-                    $uploadDir = __DIR__ . '/data/uploads/urunler';
-                    if (!is_dir($uploadDir)) {
-                        mkdir($uploadDir, 0755, true);
+                    if (!is_dir(PRODUCTS_IMAGE_DIR)) {
+                        mkdir(PRODUCTS_IMAGE_DIR, 0755, true);
                     }
                     $destFilename = strtolower($id) . '.webp';
-                    $destPath = $uploadDir . '/' . $destFilename;
+                    $destPath = PRODUCTS_IMAGE_DIR . '/' . $destFilename;
                     $result = compress_product_image($_FILES['photo']['tmp_name'], $destPath);
                     if (!$result['ok']) {
                         $error = 'Fotoğraf işlenemedi: ' . $result['error'];

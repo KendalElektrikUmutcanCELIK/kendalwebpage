@@ -1,0 +1,22 @@
+{
+  "tr": {
+    "mission": {
+      "title": "Misyon",
+      "content": "Kendal Elektrik olarak, aydınlatma sektöründe yenilikçi, güvenilir ve sürdürülebilir çözümler sunarak müşterilerimize, ortaklarımıza ve topluma değer katmayı hedefliyoruz. Ar-Ge ve üretim yeteneklerimizle, hem Türkiye'de hem de küresel olarak en yüksek kalite ve performansa sahip aydınlatma ürünleri geliştirerek sektöre öncülük eden bir marka olmaya kararlıyız."
+    },
+    "vision": {
+      "title": "Vizyon",
+      "content": "2026 yılına kadar, müşteri memnuniyeti ve operasyonel mükemmellikte uluslararası standartları belirleyen lider bir aydınlatma markası olarak küresel pazarda güçlü bir konuma ulaşmak. Bu vizyonla, sürdürülebilirlik, yenilikçilik ve güvenilirlik temelleri üzerinde büyümeyi ve etkili çözümler sunarak ve teknolojik gelişmelerle ilerleyerek sektörde öne çıkmayı hedefliyoruz."
+    }
+  },
+  "en": {
+    "mission": {
+      "title": "Mission",
+      "content": "As Kendal Elektrik, we aim to add value to our customers, partners, and society by providing innovative, reliable, and sustainable solutions in the lighting sector. With our R&D and production capabilities, we are committed to being a leading brand in the sector by developing lighting products with the highest quality and performance both in Turkey and globally."
+    },
+    "vision": {
+      "title": "Vision",
+      "content": "To reach a strong position in the global market as a leading lighting brand that sets international standards in customer satisfaction and operational excellence by 2026. With this vision, we aim to grow on the foundations of sustainability, innovation, and reliability, and to stand out in the sector by providing effective solutions and advancing with technological developments."
+    }
+  }
+}

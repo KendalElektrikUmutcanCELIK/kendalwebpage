@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/json_format.php';
+
 define('PAGES_JSON_PATH', __DIR__ . '/../../src/data/pages.json');
 define('PAGES_BACKUP_DIR', __DIR__ . '/../data/backups');
 define('PAGES_IMAGE_DIR', __DIR__ . '/../../public/images/sayfalar');
@@ -73,10 +75,11 @@ function save_pages(array $pages): void
         prune_old_pages_backups();
     }
 
-    $json = json_encode($pages, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    $pagesForEncoding = $pages === [] ? new stdClass() : $pages;
+    $json = json_encode_2space($pagesForEncoding, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     if ($json === false && json_last_error() === JSON_ERROR_UTF8) {
-        $pages = fix_utf8_recursive($pages);
-        $json = json_encode($pages, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        $pagesForEncoding = fix_utf8_recursive($pages);
+        $json = json_encode_2space($pagesForEncoding, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     }
     if ($json === false) {
         throw new RuntimeException('Sayfa verisi JSON olarak kodlanamadı: ' . json_last_error_msg());

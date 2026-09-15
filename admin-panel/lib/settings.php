@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/json_format.php';
+
 define('SETTINGS_JSON_PATH', __DIR__ . '/../../src/data/settings.json');
 define('SETTINGS_BACKUP_DIR', __DIR__ . '/../data/backups');
 
@@ -29,10 +31,10 @@ function save_settings(array $settings): void
         copy(SETTINGS_JSON_PATH, SETTINGS_BACKUP_DIR . '/settings-' . date('Ymd-His') . '.json');
     }
 
-    $json = json_encode($settings, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    $json = json_encode_2space($settings, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     if ($json === false && json_last_error() === JSON_ERROR_UTF8) {
         $settings = fix_utf8_recursive($settings);
-        $json = json_encode($settings, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        $json = json_encode_2space($settings, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     }
     if ($json === false) {
         throw new RuntimeException('Ayarlar JSON olarak kodlanamadı: ' . json_last_error_msg());

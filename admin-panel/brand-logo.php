@@ -2,7 +2,10 @@
 require __DIR__ . '/config.php';
 require_admin_login();
 require __DIR__ . '/lib/upload.php';
+require __DIR__ . '/lib/atomic_write.php';
 require __DIR__ . '/includes/layout.php';
+
+define('BRAND_LOGO_DIR', __DIR__ . '/../public/images/brands');
 
 $brands = [
     'k2' => 'K2',
@@ -32,34 +35,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && is_post_too_large()) {
         $origName = $_FILES['logo']['name'];
         $ext = strtolower(pathinfo($origName, PATHINFO_EXTENSION));
 
-        $allowedExt = ['svg', 'png', 'webp', 'jpg', 'jpeg'];
-        if (!in_array($ext, $allowedExt, true)) {
-            $error = 'Sadece SVG, PNG, WEBP veya JPG dosyası yükleyebilirsin.';
-        } elseif ($ext === 'svg') {
+        if ($ext !== 'svg') {
+            $error = 'Sadece SVG dosyası yükleyebilirsin — sitenin tüm marka logosu referansları özellikle .svg uzantısını arıyor, başka bir format siteye hiç yansımaz.';
+        } else {
             $content = file_get_contents($tmpFile);
             if ($content === false || !str_contains($content, '<svg')) {
                 $error = 'Geçerli bir SVG dosyası değil.';
             } else {
-                $uploadDir = __DIR__ . '/data/uploads/brands';
-                if (!is_dir($uploadDir)) {
-                    mkdir($uploadDir, 0755, true);
+                if (!is_dir(BRAND_LOGO_DIR)) {
+                    mkdir(BRAND_LOGO_DIR, 0755, true);
                 }
-                $destPath = $uploadDir . '/' . $brand . '-logo.svg';
-                $tmpDest = $destPath . '.tmp';
-                file_put_contents($tmpDest, $content);
-                rename($tmpDest, $destPath);
-            }
-        } else {
-            $info = @getimagesize($tmpFile);
-            if ($info === false) {
-                $error = 'Dosya bir görsel olarak okunamadı.';
-            } else {
-                $uploadDir = __DIR__ . '/data/uploads/brands';
-                if (!is_dir($uploadDir)) {
-                    mkdir($uploadDir, 0755, true);
+                $destPath = BRAND_LOGO_DIR . '/' . $brand . '-logo.svg';
+                if (!atomic_write($destPath, $content)) {
+                    $error = 'Logo kaydedilemedi (dosya kilitli olabilir, tekrar dene).';
                 }
-                $destPath = $uploadDir . '/' . $brand . '-logo.' . $ext;
-                move_uploaded_file($tmpFile, $destPath);
             }
         }
 
@@ -70,15 +59,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && is_post_too_large()) {
     }
 }
 
-/** Yüklenmiş bir logo varsa onu, yoksa gerçek sitenin mevcut logosunu döner. */
+/** Gerçek sitedeki mevcut logo URL'sini döner (site her zaman .svg arıyor). */
 function current_logo_url(string $brand): string
 {
-    $dir = __DIR__ . '/data/uploads/brands';
-    foreach (['svg', 'png', 'webp', 'jpg', 'jpeg'] as $ext) {
-        if (file_exists("$dir/$brand-logo.$ext")) {
-            return "data/uploads/brands/$brand-logo.$ext";
-        }
-    }
     return "/images/brands/$brand-logo.svg";
 }
 render_header('Marka Logoları', 'brand-logo');
@@ -103,8 +86,8 @@ render_header('Marka Logoları', 'brand-logo');
         <img src="<?= htmlspecialchars(current_logo_url($key), ENT_QUOTES, 'UTF-8') ?>" alt="<?= $label ?>" style="background:#111;">
         <span class="hint">Mevcut logo. Yeni bir dosya seçip kaydedersen bunun yerine geçer.</span>
       </div>
-      <input type="file" name="logo" accept=".svg,.png,.webp,.jpg,.jpeg">
-      <p class="hint">Maksimum dosya boyutu: 5 MB.</p>
+      <input type="file" name="logo" accept=".svg">
+      <p class="hint">Sadece SVG dosyası (site sadece bu formatı gösteriyor). Maksimum dosya boyutu: 5 MB.</p>
     </div>
     <div class="form-actions">
       <button type="submit" class="btn btn-primary"><?= $label ?> Logosunu Kaydet</button>

@@ -6,11 +6,22 @@ $cookieFile = sys_get_temp_dir() . '/admin_edge_test_cookies.txt';
 $pass = 0;
 $fail = 0;
 
+$dataPath = __DIR__ . '/../../src/data/products.json';
+$originalProducts = file_get_contents($dataPath);
+
 [, $loginPage] = req('http://localhost:8899/admin-panel/login.php', $cookieFile);
 preg_match('/name="csrf_token" value="([^"]+)"/', $loginPage, $m);
 req('http://localhost:8899/admin-panel/login.php', $cookieFile, ['csrf_token' => $m[1], 'password' => 'degistir123']);
 
-echo "=== 1. XSS: isim alanına <script> etiketi ===" . PHP_EOL;
+echo "=== 0. Geçici test ürünü (DENEME) oluştur ===" . PHP_EOL;
+req('http://localhost:8899/admin-panel/product-edit.php', $cookieFile, [
+    'model' => 'DENEME', 'name_tr' => 'DENEME Test Ürünü', 'name_en' => 'DENEME Test Product',
+    'brand' => 'k2', 'category_tr' => 'Test', 'category_en' => 'Test',
+    'attr_tr_label[0]' => 'Watt', 'attr_tr_value[0]' => '1W',
+]);
+check('DENEME oluşturuldu', isset(json_decode(file_get_contents($dataPath), true)['DENEME']));
+
+echo PHP_EOL . "=== 1. XSS: isim alanına <script> etiketi ===" . PHP_EOL;
 $xssPayload = '<script>alert("XSS")</script>DENEME';
 [$status] = req('http://localhost:8899/admin-panel/product-edit.php?id=DENEME', $cookieFile, [
     'model' => 'DENEME', 'name_tr' => $xssPayload, 'name_en' => 'DENEME',
@@ -35,7 +46,7 @@ $longText = str_repeat('A', 10000);
     'attr_tr_label[0]' => 'Watt', 'attr_tr_value[0]' => '1W',
 ]);
 check('Çok uzun metin çökmeden kaydediliyor (302)', $status2 === 302);
-$saved = json_decode(file_get_contents(__DIR__ . '/../data/products.json'), true);
+$saved = json_decode(file_get_contents($dataPath), true);
 check('Uzun metin tam olarak kaydedildi', strlen($saved['DENEME']['name']['tr'] ?? '') === 10000);
 
 echo PHP_EOL . "=== 3. Sahte görsel dosyası (.jpg uzantılı ama aslında metin) ===" . PHP_EOL;
@@ -57,7 +68,7 @@ $injectionPayload = "../../../etc/passwd";
     'brand' => 'k2', 'category_tr' => 'Test', 'category_en' => 'Test',
     'attr_tr_label[0]' => 'Watt', 'attr_tr_value[0]' => '1W',
 ]);
-$saved4 = json_decode(file_get_contents(__DIR__ . '/../data/products.json'), true);
+$saved4 = json_decode(file_get_contents($dataPath), true);
 $generatedId = null;
 foreach ($saved4 as $id => $p) {
     if (($p['name']['tr'] ?? '') === 'Injection Test') { $generatedId = $id; break; }
@@ -65,8 +76,7 @@ foreach ($saved4 as $id => $p) {
 check('Path traversal karakterleri ID üretiminde temizlendi', $generatedId !== null && !str_contains($generatedId, '/') && !str_contains($generatedId, '.'));
 echo "  (Üretilen ID: " . ($generatedId ?? 'YOK') . ")" . PHP_EOL;
 if ($generatedId) {
-    unset($saved4[$generatedId]);
-    file_put_contents(__DIR__ . '/../data/products.json', json_encode($saved4, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+    req("http://localhost:8899/admin-panel/product-edit.php?id=$generatedId", $cookieFile, ['form_action' => 'delete_product']);
 }
 
 echo PHP_EOL . "=== 5. Emoji ve çok dilli Unicode girişi ===" . PHP_EOL;
@@ -77,18 +87,22 @@ $emojiName = 'DENEME 💡 LED Ampul ⚡ 太阳能 مصباح';
     'attr_tr_label[0]' => 'Renk 🎨', 'attr_tr_value[0]' => '✨ Beyaz',
 ]);
 check('Emoji/çok dilli metinle kayıt başarılı (302)', $status5 === 302);
-$saved5 = json_decode(file_get_contents(__DIR__ . '/../data/products.json'), true);
+$saved5 = json_decode(file_get_contents($dataPath), true);
 check('Emoji içeren isim tam/bozulmadan kaydedildi', ($saved5['DENEME']['name']['tr'] ?? '') === $emojiName);
 check('Emoji içeren özellik değeri tam/bozulmadan kaydedildi', ($saved5['DENEME']['attributes']['tr'][0]['value'] ?? '') === '✨ Beyaz');
 [, $editPage5] = req('http://localhost:8899/admin-panel/product-edit.php?id=DENEME', $cookieFile);
 check('Emoji/Unicode düzenleme sayfasında doğru görüntüleniyor', str_contains($editPage5, $emojiName));
 
-$products = json_decode(file_get_contents(__DIR__ . '/../data/products.json'), true);
-$products['DENEME']['name'] = ['tr' => 'DENEME Test Ürünü', 'en' => 'DENEME Test Product'];
-$products['DENEME']['attributes'] = ['tr' => [['label' => 'Watt', 'value' => '1W']], 'en' => [['label' => 'Watt', 'value' => '1W']]];
-file_put_contents(__DIR__ . '/../data/products.json', json_encode($products, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
-@unlink(__DIR__ . '/../data/uploads/urunler/deneme.webp');
-@unlink(__DIR__ . '/../data/uploads/urunler/deneme.jpg');
+echo PHP_EOL . "=== 6. Temizlik: DENEME'yi sil, gerçek veriyi eski hâline döndür ===" . PHP_EOL;
+req('http://localhost:8899/admin-panel/product-edit.php?id=DENEME', $cookieFile, ['form_action' => 'delete_product']);
+$finalContent = file_get_contents($dataPath);
+check('Dosya byte-byte teste başlamadan önceki hâliyle aynı', $finalContent === $originalProducts);
+if ($finalContent !== $originalProducts) {
+    echo "⚠️ UYARI: temizlik tam olmadı, orijinal veri elle geri yükleniyor!" . PHP_EOL;
+    file_put_contents($dataPath, $originalProducts);
+}
+@unlink(__DIR__ . '/../../public/images/urunler/deneme.webp');
+@unlink(__DIR__ . '/../../public/images/urunler/deneme.jpg');
 
 echo PHP_EOL . "=== SONUÇ: $pass geçti, $fail başarısız ===" . PHP_EOL;
 exit($fail > 0 ? 1 : 0);

@@ -17,9 +17,37 @@ render_header('Panel', 'dashboard');
     <span class="quick-link-title">Marka Logoları</span>
     <span class="quick-link-desc">K2, Vanti, Global logolarını değiştir</span>
   </a>
+  <a href="retailers.php" class="quick-link-card">
+    <span class="quick-link-title">Zincir Marketler</span>
+    <span class="quick-link-desc">Anasayfadaki market logo şeridini düzenle</span>
+  </a>
+  <a href="projects.php" class="quick-link-card">
+    <span class="quick-link-title">Projeler</span>
+    <span class="quick-link-desc">Referans projeler şeridini düzenle</span>
+  </a>
+  <a href="certificates.php" class="quick-link-card">
+    <span class="quick-link-title">Sertifikalar</span>
+    <span class="quick-link-desc">ISO, TSE ve marka tescil belgelerini düzenle</span>
+  </a>
+  <a href="about.php" class="quick-link-card">
+    <span class="quick-link-title">Hakkımızda</span>
+    <span class="quick-link-desc">Anasayfa "Hakkımızda" metni ve zaman çizelgesi</span>
+  </a>
+  <a href="mission-vision.php" class="quick-link-card">
+    <span class="quick-link-title">Misyon ve Vizyon</span>
+    <span class="quick-link-desc">Misyon ve Vizyon sayfasının metnini düzenle</span>
+  </a>
+  <a href="news.php" class="quick-link-card">
+    <span class="quick-link-title">Haberler</span>
+    <span class="quick-link-desc">Haber ekle/düzenle/sil, galeri ve metin paragrafları</span>
+  </a>
   <a href="pages.php" class="quick-link-card">
     <span class="quick-link-title">Sayfalar</span>
     <span class="quick-link-desc">Blok tabanlı yeni sayfalar oluştur</span>
+  </a>
+  <a href="navbar-links.php" class="quick-link-card">
+    <span class="quick-link-title">Navbar Linkleri</span>
+    <span class="quick-link-desc">Üst menüye sayfa/link ekle</span>
   </a>
   <a href="settings.php" class="quick-link-card">
     <span class="quick-link-title">Site Ayarları</span>

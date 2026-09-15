@@ -60,15 +60,9 @@ export function IletisimClient() {
       className="bg-black text-white pt-36 pb-12 px-6 relative z-10 overflow-hidden"
     >
       <div
-        className="absolute top-0 left-0 w-[80vw] h-full pointer-events-none opacity-80 mix-blend-screen"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[120vw] h-[90vh] pointer-events-none opacity-100 mix-blend-screen"
         style={{
-          background: 'radial-gradient(ellipse at -10% 30%, #6366f1 0%, transparent 75%)',
-        }}
-      />
-      <div
-        className="absolute top-0 right-0 w-[80vw] h-full pointer-events-none opacity-70 mix-blend-screen"
-        style={{
-          background: 'radial-gradient(ellipse at 110% 30%, #ec4899 0%, transparent 75%)',
+          background: 'radial-gradient(ellipse at 50% 0%, #6B7B30 0%, transparent 80%)',
         }}
       />
 
@@ -82,7 +76,7 @@ export function IletisimClient() {
 
         <div className="contact-blocks grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           {/* İletişim Bilgileri */}
-          <div className="contact-block bg-white/[0.03] border border-white/10 rounded-3xl p-6 md:p-7">
+          <div className="contact-block p-6 md:p-7">
             <ul className="space-y-4">
               <li className="flex items-start gap-4">
                 <div className="flex-shrink-0 w-10 h-10 bg-[var(--brand-red)]/10 border border-[var(--brand-red)]/30 rounded-xl flex items-center justify-center text-[var(--brand-red)]">
@@ -167,9 +161,9 @@ export function IletisimClient() {
               href="https://www.google.com/maps/place/Kendal+Elektrik+A.%C5%9E./@41.0699578,28.3202748,17z/data=!3m1!4b1!4m6!3m5!1s0x14b541f701f7e257:0xe2e0245245cd5b6f!8m2!3d41.0699539!4d28.3251457!16s%2Fg%2F11r35kq4hq"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative block w-full h-64 md:h-72 lg:flex-1 overflow-hidden rounded-3xl border border-white/10 text-left transition-colors hover:border-[var(--brand-red)]/40"
+              className="group relative block w-full h-64 md:h-72 lg:flex-1 overflow-hidden rounded-3xl text-left transition-transform hover:scale-[1.02]"
             >
-              <div className="relative w-full h-full bg-white/5">
+              <div className="relative w-full h-full">
                 <Image
                   src={getAssetPath('/images/footer-location-map.webp')}
                   alt="Kendal Elektrik konum haritası"

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import React from 'react';
 import { CertificateGallery } from '@/components/sections/CertificateGallery';
+import { getCertificateImages } from '@/data/certificates';
 import { getAssetPath } from '@/lib/basePath';
 
 export const metadata: Metadata = {
@@ -9,8 +10,8 @@ export const metadata: Metadata = {
   alternates: { canonical: '/sertifikalar/tse' },
 };
 
-const IMAGES = ['tse-belgesi.webp', 'kdl4140-tse.webp'].map((file) =>
-  getAssetPath(`/images/certifications/tse-belgeleri/${file}`),
+const IMAGES = getCertificateImages('tse').map((file) =>
+  getAssetPath(`/images/${file}`),
 );
 
 export default function TseSertifikalariPage() {

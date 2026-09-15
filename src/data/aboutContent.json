@@ -1,0 +1,64 @@
+{
+  "tr": {
+    "title": "Hakkımızda",
+    "text1": "Biz sadece ışık üretmiyoruz; karanlığa meydan okuyan, yıllara direnen teknolojiler tasarlıyoruz.",
+    "text2": "Geleceğin aydınlatma teknolojilerini bugünden tasarlayarak, hem yurt içinde hem de küresel pazarlarda güvenilir çözümler sunuyoruz.",
+    "beats": [
+      {
+        "title": "Filament Ampulde Tek Üretici",
+        "text": "Türkiye, Avrupa ve Ortadoğu'da filament ampul üreten tek üreticiyiz. Kendi LED panel ve plastik enjeksiyon üretim hatlarımızla kaliteyi baştan sona kontrol ediyoruz."
+      },
+      {
+        "title": "Yüksek Teknoloji ve %89 Otomasyon",
+        "text": "Üretim hatlarımızda %89 otomasyon oranına ulaştık. ERP, MAS ve WMS gibi gelişmiş dijital sistemlerle üretimden depoya kadar tüm süreçleri anlık izliyor ve yönetiyoruz."
+      },
+      {
+        "title": "Ar-Ge ve Akredite Laboratuvar",
+        "text": "TSE onaylı akredite laboratuvarımız ve kendi Ar-Ge merkezimizle yenilikçi ürünler geliştiriyor; 2013'te kurulan otomasyon ekibimizin gücüyle teknolojimizi sürekli ileriye taşıyoruz."
+      },
+      {
+        "title": "Uluslararası Kalite Kontrol Sistemi",
+        "text": "Hammadde (IQC), proses (IPQC) ve çıkış (OQC) süreçlerini AQL örnekleme planına göre uyguluyor; ürünlerimizi fonksiyonellik, ömür ve çeşitli elektriksel testlerden geçiriyoruz."
+      },
+      {
+        "title": "OPEX ve Kusursuzluk Vizyonu",
+        "text": "Operasyonel verimlilik stratejisi (OPEX) ile verimliliği maksimuma çıkarırken, üretim hatalarını 1500 ppm'in altına düşürme ve kalite performansını %99'a çıkarma hedefiyle çalışıyoruz."
+      },
+      {
+        "title": "Işık kaynakları üretiyor ve dünyaya satıyoruz",
+        "text": "Çevre dostu ve enerji verimli ürünlerimiz, her yıl yeni patent başvurularımız ve ESD korumalı üretim altyapımızla sürdürülebilir bir küresel marka olma yolunda ilerliyoruz."
+      }
+    ]
+  },
+  "en": {
+    "title": "About Us",
+    "text1": "Kendal Elektrik is a leading brand in the electrical materials sector with its innovative approach and quality-oriented production.",
+    "text2": "By designing the lighting technologies of the future today, we provide reliable solutions both domestically and in global markets.",
+    "beats": [
+      {
+        "title": "1997 — Started with an Idea",
+        "text": "We set out with a humble yet passionate vision in the electrical materials sector, backed by 100% Turkish capital."
+      },
+      {
+        "title": "22,000 m² — Production Power",
+        "text": "Today, we manufacture at world standards with our expert team of 150 employees and fully automated production lines."
+      },
+      {
+        "title": "From Mold to Product — In-House",
+        "text": "We guarantee our quality by handling all stages in-house, from crafting our own metal molds to precision injection production."
+      },
+      {
+        "title": "R&D and Automation",
+        "text": "Our products, developed in our own R&D center and TSE-certified accredited lab, are perfected by our dedicated automation team established in 2013."
+      },
+      {
+        "title": "Market Leader in LED Bulbs",
+        "text": "With our eye-friendly 4000K LED technology and diverse product range, we stand at the top of the market in domestic LED bulb production capacity."
+      },
+      {
+        "title": "We produce light sources and sell to the world",
+        "text": "We are rapidly approaching our goal of becoming a true global brand, aiming for top 10 status in Asian, European, and African export markets."
+      }
+    ]
+  }
+}

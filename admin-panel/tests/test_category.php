@@ -8,7 +8,15 @@ $cookieFile = sys_get_temp_dir() . '/admin_cat_test_cookies.txt';
 preg_match('/name="csrf_token" value="([^"]+)"/', $loginPage, $m);
 req('http://localhost:8899/admin-panel/login.php', $cookieFile, ['csrf_token' => $m[1], 'password' => 'degistir123']);
 
-$dataPath = __DIR__ . '/../data/products.json';
+$dataPath = __DIR__ . '/../../src/data/products.json';
+$originalProducts = file_get_contents($dataPath);
+
+echo "=== 0. Geçici test ürünü (DENEME) oluştur ===" . PHP_EOL;
+req('http://localhost:8899/admin-panel/product-edit.php', $cookieFile, [
+    'model' => 'DENEME', 'name_tr' => 'DENEME Test Ürünü', 'name_en' => 'DENEME Test Product',
+    'brand' => 'k2', 'category_tr' => 'Test', 'category_en' => 'Test',
+    'attr_tr_label[0]' => 'Watt', 'attr_tr_value[0]' => '1W',
+]);
 
 echo "=== Mevcut kategorilerden birine tasi (Spotlar) ===" . PHP_EOL;
 [$status] = req('http://localhost:8899/admin-panel/product-edit.php?id=DENEME', $cookieFile, [
@@ -57,7 +65,11 @@ echo "3 kategori de doğru mu: " . var_export(
     true
 ) . PHP_EOL;
 
-$products = json_decode(file_get_contents($dataPath), true);
-$products['DENEME']['category'] = ['tr' => ['Test'], 'en' => ['Test']];
-file_put_contents($dataPath, json_encode($products, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
-echo PHP_EOL . "DENEME kategorisi 'Test'e geri dondu (temizlik)." . PHP_EOL;
+echo PHP_EOL . "=== Temizlik: DENEME'yi sil, gerçek veriyi eski hâline döndür ===" . PHP_EOL;
+req('http://localhost:8899/admin-panel/product-edit.php?id=DENEME', $cookieFile, ['form_action' => 'delete_product']);
+$finalContent = file_get_contents($dataPath);
+echo "Dosya teste başlamadan önceki hâliyle aynı mı: " . var_export($finalContent === $originalProducts, true) . PHP_EOL;
+if ($finalContent !== $originalProducts) {
+    echo "⚠️ UYARI: temizlik tam olmadı, orijinal veri elle geri yükleniyor!" . PHP_EOL;
+    file_put_contents($dataPath, $originalProducts);
+}
