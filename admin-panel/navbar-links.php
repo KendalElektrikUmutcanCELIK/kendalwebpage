@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($labelTr === '' || $url === '') {
             $error = 'Başlık (Türkçe) ve adres zorunludur.';
-        } elseif (!str_starts_with($url, '/') && !preg_match('#^https?://#', $url)) {
+        } elseif (strpos($url, '/') !== 0 && !preg_match('#^https?://#', $url)) {
             $error = 'Adres "/" ile başlamalı (site içi) veya http(s):// ile başlamalı (dış site).';
         } else {
             $links[] = [

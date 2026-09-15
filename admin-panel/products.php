@@ -16,7 +16,7 @@ $filtered = array_filter($products, function ($p) use ($q, $brand) {
     }
     if ($q !== '') {
         $haystack = mb_strtolower(($p['id'] ?? '') . ' ' . ($p['model'] ?? '') . ' ' . ($p['name']['tr'] ?? ''), 'UTF-8');
-        if (!str_contains($haystack, mb_strtolower($q, 'UTF-8'))) {
+        if (strpos($haystack, mb_strtolower($q, 'UTF-8')) === false) {
             return false;
         }
     }

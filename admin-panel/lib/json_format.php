@@ -8,8 +8,9 @@ declare(strict_types=1);
  * admin panel bir dosyayı ilk kez kaydettiğinde tüm dosya 4 boşluğa "yeniden biçimlenip"
  * git diff'te alakasız devasa bir fark oluşturmaz.
  * @param mixed $data
+ * @return string|false
  */
-function json_encode_2space($data, int $extraFlags = 0): string|false
+function json_encode_2space($data, int $extraFlags = 0)
 {
     $json = json_encode($data, JSON_PRETTY_PRINT | $extraFlags);
     if ($json === false) {

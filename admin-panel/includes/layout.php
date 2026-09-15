@@ -13,6 +13,7 @@ function render_header(string $title, string $active = ''): void
         'mission-vision' => ['mission-vision.php', 'Misyon ve Vizyon'],
         'news' => ['news.php', 'Haberler'],
         'pages' => ['pages.php', 'Sayfalar'],
+        'home-blocks' => ['home-blocks.php', 'Anasayfa Blokları'],
         'navbar-links' => ['navbar-links.php', 'Navbar Linkleri'],
         'settings' => ['settings.php', 'Site Ayarları'],
         'deploy' => ['deploy.php', 'Yayınla'],
@@ -32,7 +33,7 @@ function render_header(string $title, string $active = ''): void
   <div class="app-shell">
     <aside class="sidebar">
       <div class="sidebar-brand">
-        <span class="sidebar-brand-mark">K</span>
+        <img src="assets/kendal-icon.png" alt="Kendal Elektrik" class="sidebar-brand-mark">
         <span class="sidebar-brand-text">Kendal Elektrik</span>
       </div>
       <nav class="sidebar-nav">

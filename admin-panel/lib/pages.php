@@ -176,7 +176,7 @@ function generate_unique_page_slug(string $title, array $existingPages, string $
         if (in_array($firstSegment, $reservedTop, true)) {
             return true;
         }
-        if (!str_contains($candidate, '/') && in_array($candidate, $reservedProducts, true)) {
+        if (strpos($candidate, '/') === false && in_array($candidate, $reservedProducts, true)) {
             return true;
         }
         return false;
@@ -206,30 +206,35 @@ function generate_block_id(): string
 function new_empty_block(string $type): array
 {
     $id = generate_block_id();
-    return match ($type) {
-        'heading_text' => ['id' => $id, 'type' => $type, 'data' => [
-            'heading' => ['tr' => '', 'en' => ''],
-            'body' => ['tr' => '', 'en' => ''],
-        ]],
-        'text_image' => ['id' => $id, 'type' => $type, 'data' => [
-            'heading' => ['tr' => '', 'en' => ''],
-            'text' => ['tr' => '', 'en' => ''],
-            'image' => '',
-            'imageAlt' => ['tr' => '', 'en' => ''],
-            'imagePosition' => 'right',
-        ]],
-        'image_gallery' => ['id' => $id, 'type' => $type, 'data' => [
-            'title' => ['tr' => '', 'en' => ''],
-            'images' => [],
-        ]],
-        'cta' => ['id' => $id, 'type' => $type, 'data' => [
-            'heading' => ['tr' => '', 'en' => ''],
-            'text' => ['tr' => '', 'en' => ''],
-            'buttonLabel' => ['tr' => '', 'en' => ''],
-            'buttonUrl' => '',
-        ]],
-        default => throw new InvalidArgumentException('Geçersiz blok tipi: ' . $type),
-    };
+    switch ($type) {
+        case 'heading_text':
+            return ['id' => $id, 'type' => $type, 'data' => [
+                'heading' => ['tr' => '', 'en' => ''],
+                'body' => ['tr' => '', 'en' => ''],
+            ]];
+        case 'text_image':
+            return ['id' => $id, 'type' => $type, 'data' => [
+                'heading' => ['tr' => '', 'en' => ''],
+                'text' => ['tr' => '', 'en' => ''],
+                'image' => '',
+                'imageAlt' => ['tr' => '', 'en' => ''],
+                'imagePosition' => 'right',
+            ]];
+        case 'image_gallery':
+            return ['id' => $id, 'type' => $type, 'data' => [
+                'title' => ['tr' => '', 'en' => ''],
+                'images' => [],
+            ]];
+        case 'cta':
+            return ['id' => $id, 'type' => $type, 'data' => [
+                'heading' => ['tr' => '', 'en' => ''],
+                'text' => ['tr' => '', 'en' => ''],
+                'buttonLabel' => ['tr' => '', 'en' => ''],
+                'buttonUrl' => '',
+            ]];
+        default:
+            throw new InvalidArgumentException('Geçersiz blok tipi: ' . $type);
+    }
 }
 
 /** @param array<int, array<string, mixed>> $blocks */

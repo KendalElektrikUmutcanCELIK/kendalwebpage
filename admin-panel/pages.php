@@ -14,7 +14,7 @@ if ($q !== '') {
     $needle = mb_strtolower($q, 'UTF-8');
     $pages = array_filter($pages, function ($p) use ($needle) {
         $haystack = mb_strtolower(($p['title']['tr'] ?? '') . ' ' . ($p['slug'] ?? ''), 'UTF-8');
-        return str_contains($haystack, $needle);
+        return strpos($haystack, $needle) !== false;
     });
 }
 

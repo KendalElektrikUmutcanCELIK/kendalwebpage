@@ -141,7 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && is_post_too_large()) {
                     $buttonUrl = trim((string) ($_POST['button_url'] ?? ''));
                     if ($buttonLabel['tr'] === '' || $buttonUrl === '') {
                         $error = 'Buton metni ve adresi zorunludur.';
-                    } elseif (!str_starts_with($buttonUrl, '/') && !preg_match('#^https?://#', $buttonUrl)) {
+                    } elseif (strpos($buttonUrl, '/') !== 0 && !preg_match('#^https?://#', $buttonUrl)) {
                         $error = 'Buton adresi "/" ile başlamalı (site içi) veya http(s):// ile başlamalı (dış site).';
                     } else {
                         $data = [

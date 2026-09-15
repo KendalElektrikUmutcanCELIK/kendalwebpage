@@ -15,13 +15,22 @@ function compress_product_image(string $sourcePath, string $destPath, int $maxSi
 
     [$origWidth, $origHeight, $type] = $info;
 
-    $src = match ($type) {
-        IMAGETYPE_JPEG => @imagecreatefromjpeg($sourcePath),
-        IMAGETYPE_PNG => @imagecreatefrompng($sourcePath),
-        IMAGETYPE_WEBP => function_exists('imagecreatefromwebp') ? @imagecreatefromwebp($sourcePath) : false,
-        IMAGETYPE_GIF => @imagecreatefromgif($sourcePath),
-        default => false,
-    };
+    switch ($type) {
+        case IMAGETYPE_JPEG:
+            $src = @imagecreatefromjpeg($sourcePath);
+            break;
+        case IMAGETYPE_PNG:
+            $src = @imagecreatefrompng($sourcePath);
+            break;
+        case IMAGETYPE_WEBP:
+            $src = function_exists('imagecreatefromwebp') ? @imagecreatefromwebp($sourcePath) : false;
+            break;
+        case IMAGETYPE_GIF:
+            $src = @imagecreatefromgif($sourcePath);
+            break;
+        default:
+            $src = false;
+    }
 
     if ($src === false) {
         return ['ok' => false, 'error' => 'Desteklenmeyen görsel formatı (JPEG/PNG/WEBP/GIF olmalı).'];

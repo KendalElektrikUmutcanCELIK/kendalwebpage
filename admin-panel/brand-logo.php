@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && is_post_too_large()) {
             $error = 'Sadece SVG dosyası yükleyebilirsin — sitenin tüm marka logosu referansları özellikle .svg uzantısını arıyor, başka bir format siteye hiç yansımaz.';
         } else {
             $content = file_get_contents($tmpFile);
-            if ($content === false || !str_contains($content, '<svg')) {
+            if ($content === false || strpos($content, '<svg') === false) {
                 $error = 'Geçerli bir SVG dosyası değil.';
             } else {
                 if (!is_dir(BRAND_LOGO_DIR)) {

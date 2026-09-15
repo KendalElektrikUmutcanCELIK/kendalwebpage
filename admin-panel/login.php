@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$locked) {
 </head>
 <body class="login-body">
   <div class="login-box">
-    <div class="login-mark">K</div>
+    <img src="assets/kendal-icon.png" alt="Kendal Elektrik" class="login-mark">
     <h1>Kendal Elektrik</h1>
     <p class="subtitle">Yönetim Paneli</p>
 

@@ -9,9 +9,10 @@
   --sidebar-bg: #17181c;
   --sidebar-text: rgba(255, 255, 255, 0.62);
   --sidebar-text-active: #ffffff;
-  --radius: 10px;
+  --radius: 14px;
   --shadow-sm: 0 1px 2px rgba(16, 16, 20, 0.04);
   --shadow-md: 0 8px 24px rgba(16, 16, 20, 0.08);
+  --shadow-red: 0 10px 24px -8px rgba(227, 0, 15, 0.35);
 }
 
 * {
@@ -52,17 +53,13 @@ a {
 }
 
 .login-box .login-mark {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: var(--brand-red);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  object-fit: cover;
+  display: block;
   margin: 0 auto 20px;
+  box-shadow: var(--shadow-red);
 }
 
 .login-box h1 {
@@ -106,19 +103,21 @@ a {
 
 .login-box button {
   width: 100%;
-  padding: 11px 14px;
+  padding: 12px 14px;
   border: none;
-  border-radius: 9px;
-  background: var(--brand-red);
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--brand-red), var(--brand-red-dark));
   color: #fff;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.15s;
+  box-shadow: 0 6px 16px -4px rgba(227, 0, 15, 0.5);
+  transition: box-shadow 0.15s, transform 0.15s;
 }
 
 .login-box button:hover {
-  background: var(--brand-red-dark);
+  box-shadow: 0 8px 20px -4px rgba(227, 0, 15, 0.6);
+  transform: translateY(-1px);
 }
 
 .login-box button:disabled {
@@ -157,55 +156,55 @@ a {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 6px 10px 24px;
+  padding: 6px 10px 20px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .sidebar-brand-mark {
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  background: var(--brand-red);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  object-fit: cover;
   flex-shrink: 0;
+  box-shadow: var(--shadow-red);
 }
 
 .sidebar-brand-text {
   color: #fff;
   font-weight: 600;
   font-size: 14px;
+  letter-spacing: -0.01em;
 }
 
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
   flex: 1;
 }
 
 .sidebar-link {
   display: block;
   padding: 9px 12px;
-  border-radius: 8px;
+  border-radius: 9px;
   font-size: 13.5px;
   font-weight: 500;
   text-decoration: none;
   color: var(--sidebar-text);
-  transition: background 0.15s, color 0.15s;
+  transition: background 0.15s, color 0.15s, transform 0.15s;
 }
 
 .sidebar-link:hover {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.07);
   color: var(--sidebar-text-active);
+  transform: translateX(2px);
 }
 
 .sidebar-link.is-active {
-  background: var(--brand-red);
+  background: linear-gradient(135deg, var(--brand-red), var(--brand-red-dark));
   color: #fff;
+  box-shadow: 0 4px 14px -3px rgba(227, 0, 15, 0.55);
 }
 
 .sidebar-logout {
@@ -277,7 +276,7 @@ a {
   align-items: center;
   gap: 6px;
   padding: 9px 16px;
-  border-radius: 8px;
+  border-radius: 9px;
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text);
@@ -285,23 +284,26 @@ a {
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
-  transition: border-color 0.15s, background 0.15s;
+  transition: border-color 0.15s, background 0.15s, transform 0.15s, box-shadow 0.15s;
 }
 
 .btn:hover {
   border-color: #c8c8cd;
   background: #fafafa;
+  transform: translateY(-1px);
 }
 
 .btn-primary {
-  background: var(--brand-red);
+  background: linear-gradient(135deg, var(--brand-red), var(--brand-red-dark));
   border-color: var(--brand-red);
   color: #fff;
+  box-shadow: 0 4px 12px -3px rgba(227, 0, 15, 0.45);
 }
 
 .btn-primary:hover {
-  background: var(--brand-red-dark);
+  background: linear-gradient(135deg, var(--brand-red-dark), var(--brand-red-dark));
   border-color: var(--brand-red-dark);
+  box-shadow: 0 6px 16px -3px rgba(227, 0, 15, 0.55);
 }
 
 .success-banner,

@@ -12,7 +12,7 @@ usort($items, fn ($a, $b) => (int) $b['id'] <=> (int) $a['id']);
 
 if ($q !== '') {
     $needle = mb_strtolower($q, 'UTF-8');
-    $items = array_filter($items, fn ($n) => str_contains(mb_strtolower($n['title'] . ' ' . $n['id'], 'UTF-8'), $needle));
+    $items = array_filter($items, fn ($n) => strpos(mb_strtolower($n['title'] . ' ' . $n['id'], 'UTF-8'), $needle) !== false);
 }
 
 render_header('Haberler', 'news');

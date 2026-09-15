@@ -164,7 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && is_post_too_large()) {
         $text = trim((string) ($_POST['paragraph_text'] ?? ''));
         if ($text === '') {
             $error = 'Paragraf metni boş olamaz.';
-        } elseif (isset($news[$lang][$idx]['content'][$index]) && !str_starts_with($news[$lang][$idx]['content'][$index], '[IMAGE]')) {
+        } elseif (isset($news[$lang][$idx]['content'][$index]) && strpos($news[$lang][$idx]['content'][$index], '[IMAGE]') !== 0) {
             $news[$lang][$idx]['content'][$index] = $text;
             save_news($news);
             header('Location: news-edit.php?id=' . urlencode($editId) . '&saved=1#content-' . $lang);
@@ -293,7 +293,7 @@ render_header($isNew ? 'Yeni Haber' : 'Haber Düzenle', 'news');
     </div>
 
     <?php foreach ($item['content'] as $i => $paragraph):
-        $isImage = str_starts_with($paragraph, '[IMAGE]');
+        $isImage = strpos($paragraph, '[IMAGE]') === 0;
     ?>
       <div class="block-editor-card">
         <div class="block-editor-head">

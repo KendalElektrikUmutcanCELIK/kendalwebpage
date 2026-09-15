@@ -429,4 +429,72 @@ Kullanıcı önce `/sayfa/{slug}` yerine düz `/{slug}` istedi (`/misyon-ve-vizy
 
 Kullanıcı, anasayfanın (Hero → Hakkımızda → Markalarımız → ... sırasıyla `HomeClient.tsx`'te sabit kodlu) bölümleri arasına admin panelden **yeni bir blok ekleyebilme** istiyor — ör. "Hakkımızda ile Markalarımız arasına" diye örnek verdi. Şu an bu mümkün değil: anasayfa bölümlerinin hem sırası hem sayısı kodda sabit, sadece mevcut bölümlerin İÇERİĞİ (bu oturumda yapılan 6 alan dahil) düzenlenebiliyor. "Sayfalar" özelliği (blok editörü) tamamen ayrı bir adreste yaşıyor, anasayfanın içine giremiyor.
 
-**Kapsamın ne olduğu netleşmedi, ileride konuşulacak** ama olası yaklaşım: `HomeClient.tsx`'in mevcut sabit bölüm listesine, aralara opsiyonel "custom block" enjekte edilebilen bir yapı eklemek (`pages.json`'daki blok tiplerini — Başlık+Metin, Metin+Görsel, Buton, Görsel Galerisi — yeniden kullanarak, ama bu sefer "hangi iki sabit bölüm arasına" bilgisiyle). Riski: anasayfa bu projenin en çok GSAP/ScrollTrigger animasyonu olan yeri (`GsapContext`, her section'ın kendi `gsap.context()`'i) — araya dinamik/opsiyonel bir blok sokmak scroll senkronunu/pin'leri bozabilir, dikkatli tasarlanmalı. **Kullanıcı "şimdi yapma" dedi, sadece kayıt altına alındı.**
+**Kapsamın ne olduğu netleşmedi, ileride konuşulacak** ama olası yaklaşım: `HomeClient.tsx`'in mevcut sabit bölüm listesine, aralara opsiyonel "custom block" enjekte edilebilen bir yapı eklemek (`pages.json`'daki blok tiplerini — Başlık+Metin, Metin+Görsel, Buton, Görsel Galerisi — yeniden kullanarak, ama bu sefer "hangi iki sabit bölüm arasına" bilgisiyle). Riski: anasayfa bu projenin en çok GSAP/ScrollTrigger animasyonu olan yeri (`GsapContext`, her section'ın kendi `gsap.context()`'i) — araya dinamik/opsiyonel bir blok sokmak scroll senkronunu/pin'leri bozabilir, dikkatli tasarlanmalı. **Kullanıcı "şimdi yapma" dedi, sadece kayıt altına alındı.** (2026-09-15 sonraki tur notu: kullanıcı "birazdan buna başla derim" dedi — henüz başlanmadı, onay bekleniyor.)
+
+**Navbar/footer linkleri konusunda netleşen karar (2026-09-15):** Kullanıcı yeni alanların (Zincir Marketler, Projeler, Sertifikalar, Hakkımızda, Misyon-Vizyon, Haberler) menüye **otomatik** link vermesini istemiyor — "bu hep elle olacak, otomatik olmayacak zaten" dedi. Yani mevcut "Navbar Linkleri" bölümünden elle link ekleme yeterli, bu konuda ek bir iş kalemi YOK, kapandı.
+
+## 🚨 Kaza: kendalelektrik.com.tr'ye yanlışlıkla gerçek deploy oldu, kurtarıldı (2026-09-15)
+
+Bu bölüm, ileride bir oturumun "neden bu tetikleyici kapalı, neden böyle duruyor" diye şaşırmaması için — **kullanıcı özellikle "uzun süre böyle kapalı kalsın, yanlışlıkla açmayalım" dedi, bunu unutma.**
+
+**Ne oldu:** `deploy.php`/GitHub secrets kurulumu sırasında (bkz. yukarıdaki "Otomatik Yayın" bölümü), `deploy-cpanel.yml`'nin otomatik `push:` tetikleyicisi hâlâ GitHub'da aktifti (benim yerel düzeltmem henüz push edilmemişti). Kullanıcının paralel çalışması `main`'e bir şey push edince, bu workflow **gerçekten** `kendalelektrik.com.tr`'nin canlı cPanel'ine (FTP ile, `CPANEL_FTP_*` secret'ları kullanarak) yeni Next.js sitesini yüklemeye başladı — **gerçek OpenCart sitesinin `public_html`'i böylece yeni site dosyalarıyla karıştı/üzerine yazıldı** (`gh run cancel` ile 2 saatten uzun süredir asılı kalan çalışma iptal edildi, ama o ana kadar kısmen yüklenmişti).
+
+**Nasıl kurtarıldı (veri kaybı OLMADI):**
+- Veritabanına hiç dokunulmadı (FTP-Deploy-Action sadece dosya taşıyor, DB bağlantısı yok) — OpenCart'ın siparişleri/ürünleri/müşterileri hep güvendeydi.
+- Kullanıcının elinde **zaten güncel bir yedek vardı** (`Eski WEB SİTESİ yedeklemesi/public_html.zip`, ~4GB + ayrı bir `DB` klasörü, 11.09.2026 tarihli) — bu, cPanel File Manager'a yüklenip (`public_html` önce `public_html_bozuk` diye yeniden adlandırılıp, silinmeden) extract edildi, iç içe çıkan `public_html/public_html/*` bir üst seviyeye taşındı, üzerine geçici bir bakım sayfası (`index.html`) konup en son o da silinerek gerçek `index.php` devreye sokuldu.
+- Sonuç: site tamamen eski hâline döndü, hiçbir veri kaybı olmadı — ama bir kaç saatlik stresli bir kurtarma operasyonu gerekti.
+
+**Alınan kalıcı önlem:** `.github/workflows/deploy-cpanel.yml`'deki `on: push:` tetikleyicisi **yorum satırına alındı** (silinmedi), sadece `workflow_dispatch:` (elle çalıştırma) aktif bırakıldı. Bu değişiklik GitHub'a commit+push edildi, doğrulandı (`git show origin/main:.github/workflows/deploy-cpanel.yml` ile kontrol edildi). **Kullanıcı talimatı: bu, uzun süre böyle (kapalı) kalacak — tekrar otomatik hale getirmek ayrı, bilinçli bir karar olmalı, yanlışlıkla/unutularak açılmamalı.** Kalıcı çözüm (gerçek cPanel'e geçmeye hazır olunduğunda) muhtemelen: (a) push tetikleyicisini geri açmadan önce admin panelin de o sunucuya yüklenip test edilmesi, (b) belki otomatik yerine hep elle ("Run workflow") tetikleme tercih edilmesi — henüz karara bağlanmadı.
+
+**Ayrı, tamamen izole bir gelişme:** Aynı gün, gerçek siteden bağımsız, **`kendalelektrik.com`** (`.com`, `.com.tr` değil — Natro/Plesk üzerinde, Windows sunucu) test/deneme alanı olarak keşfedildi ve oraya da (ayrı bir workflow, `deploy-test-kendalelektrikcom.yml`, sadece elle tetiklenir) bir deploy denemesi başlatıldı — bu kaza değil, kasıtlı bir testti, gerçek siteyle hiçbir ilgisi yok, admin panelin PHP 7.4 sorunu da hâlâ orada geçerli (bkz. yukarıdaki ilgili not).
+
+## Admin panel PHP 7.4 uyumluluğu — gerçek hatalar bulunup düzeltildi (2026-09-15)
+
+`kendalelektrik.com` (Plesk, PHP 7.4) üzerinde admin panel elle (zip+extract, GitHub Actions'tan bağımsız) test edilirken çoğu sayfa **HTTP 500** verdi. Plesk'in "Logs" ekranından **tam ve kesin** hata bulundu (tahmin değil):
+
+```
+PHP Parse error: syntax error, unexpected '|', expecting '{'
+in ...\admin\lib\json_format.php on line 12
+```
+
+`json_encode_2space(): string|false` — **union return type**, PHP 8.0+'a özgü. Bu dosya neredeyse her admin sayfası tarafından `require` edildiği için (fonksiyon çağrılsın çağrılmasın, PHP bir dosyayı parse ederken TÜM sözdizimini kontrol ediyor) tek satır neredeyse tüm paneli çökertiyordu.
+
+**Tüm `admin-panel/` (test dosyaları hariç — onlar sunucuya hiç gitmiyor) PHP 8+'a özgü sözdizimi için tek tek tarandı ve düzeltildi:**
+- `lib/json_format.php` — union return type kaldırıldı (`@return string|false` docblock'a taşındı).
+- `lib/pages.php` (`new_empty_block()`), `lib/image.php` (`compress_product_image()`) — `match` ifadeleri `switch`'e çevrildi (davranış birebir korundu, `default` dahil).
+- 9 yerde (`brand-logo.php`, `page-edit.php`, `navbar-links.php`, `news.php`, `news-edit.php` ×2, `pages.php`, `products.php`, `lib/pages.php`) `str_contains()`/`str_starts_with()` → `strpos() !== false` / `strpos() === 0` eşdeğerleriyle değiştirildi.
+- Tarama yöntemi: `grep` ile `str_contains|str_starts_with|str_ends_with|match\s*\(|: \w+\|\w+` deseni tüm `admin-panel/*.php` üzerinde — düzeltme sonrası tekrar taranıp gerçek (deploy edilen) dosyalarda sıfır kaldığı doğrulandı.
+- Tüm yerel testler (18 test dosyası, ~330 kontrol) PHP 8.3'te tekrar çalıştırılıp regresyon olmadığı doğrulandı — bu değişiklikler `strpos`/`switch` gibi hem 7.4 hem 8.x'te aynı davranan yapılar kullandığı için davranış değişmedi, sadece sözdizimi geriye uyumlu hale geldi.
+
+**Not:** `admin-panel/tests/*.php` ve `_local-test-router.php` bilerek düzeltilmedi — bunlar hiçbir zaman gerçek sunucuya yüklenmiyor, sadece yerel PHP 8.3 ile çalıştırılıyor.
+
+**Ayrıca yapıldı:** Arayüzde "K" harfli kırmızı kutu yerine gerçek Kendal Elektrik logosu (`public/kendal-icon.png`'den `admin-panel/assets/kendal-icon.png`'e kopyalandı — admin panel kendi başına bağımsız kalsın diye ana projenin `public/` klasörüne bağımlı değil) kullanıldı; kartlara/butonlara/sidebar'a gölge, gradyan ve hover animasyonları eklendi (`--radius` 10px→14px, `.quick-link-card`/`.product-card` artık dururken de gölgeli + üzerine gelince kırmızı üst çizgi beliriyor).
+
+## Anasayfa blokları özelliği tamamlandı (2026-09-15, kullanıcı onayıyla — "Hakkımızda ile Markalarımız arasına" istekti)
+
+Daha önce "Sıradaki onaylı iş" olarak not edilen özellik tamamlandı: admin panelden anasayfanın (`HomeClient.tsx`) sabit bölümleri arasına opsiyonel blok ekleme.
+
+- [x] `src/data/homeBlocks.json` — 8 sabit "bölge" (`after-hero`, `after-about`, `after-brands`, `after-stats`, `after-catalog-cta`, `after-video`, `after-global-presence`, `after-news-preview`), her biri boş bir blok dizisiyle başlıyor. `src/data/homeBlocks.ts` — tipler + `getHomeBlocks()` + admin panelle birebir aynı sırada tutulması gereken `HOME_BLOCK_SLOTS` etiket listesi.
+- [x] `src/components/blocks/HomeCustomBlocks.tsx` — "Sayfalar" özelliğindeki mevcut `PageBlock`/`BlockRenderer` sistemini yeniden kullanıyor (yeni bir blok tipi icat edilmedi). **Katman 1 garantisi:** bölge boşsa `null` döner, DOM'a hiç girmez, `gsap.context()` bile kurulmaz — yani hiç blok eklenmemişken anasayfa ÖNCEKİYLE BYTE-BYTE AYNI (dev server'da doğrulandı: `grep -c "page-blocks"` → 0). Kendi `gsap.context()`'i kendi `containerRef`'ine bağlı olduğu için (proje genelindeki "her section kendi context'i" kuralına uygun) diğer bölümlerin scroll/pin animasyonlarıyla çakışma riski yok.
+- [x] `HomeClient.tsx`'e 8 bölgenin hepsi ilgili yerlere eklendi (`<HomeCustomBlocks slot="after-about" />` gibi).
+- [x] `admin-panel/lib/homeblocks.php` (load/validate/save, `pages.php`'deki `new_empty_block()`/`find_block_index()`/`save_block_image()` fonksiyonlarını olduğu gibi yeniden kullanıyor — dosya adı çakışmasın diye görsel dosya öneki `home-{slot}-{blockId}` şeklinde) + `admin-panel/home-blocks.php` (genel bakış: 8 bölge + blok sayıları → bir bölgeye tıklayınca `page-edit.php`'deki blok editörünün birebir aynısı, sadece sayfa başlığı/slug kısmı yok).
+- [x] Sidebar ve dashboard'a eklendi.
+- [x] `test_home_blocks.php` yazıldı (13 kontrol: bölge izolasyonu — bir bölgeye eklenen diğerini etkilemiyor, Türkçe/emoji başlık, gerçek görsel yükleme + dosya adı izolasyonu, sıralama, silme + görsel temizliği, byte-byte temizlik) — ilk çalıştırmada 13/13 geçti. Tüm eski testler (19 dosya) regresyon için tekrar çalıştırıldı, hepsi yeşil.
+- [x] Gerçek doğrulama: `homeBlocks.json`'a geçici bir test bloğu eklenip `npm run dev` ile anasayfada gerçekten göründüğü doğrulandı, sonra **tam `npm run build`** ile de doğrulanıp temizlendi.
+
+**Sonuç:** Kullanıcının "Hakkımızda ile Markalarımız arasına blok ekleme" isteği tam olarak karşılandı, üstelik 8 farklı bölgeye genelleştirildi (sadece o ikisi arasına değil).
+
+## 🐌 YARIN BAKILACAK: GitHub Actions → FTP deploy neden bu kadar yavaş? (2026-09-15 notu)
+
+Kullanıcı bunu yarın araştırmak istiyor — sadece not düşülüyor, henüz bir şey yapılmadı.
+
+**Gözlemlenen:** Hem gerçek `kendalelektrik.com.tr`'ye kazara olan deploy hem de `kendalelektrik.com` test deploy'u, `SamKirkland/FTP-Deploy-Action` ile **2 saatten fazla sürüp hâlâ bitmeden** elle iptal edilmek zorunda kalındı ("first publish" senaryosu, yani hedef klasör boşken).
+
+**Muhtemel sebep (kesinleşmedi, sadece analiz):** `npm run build` çıktısı `out/` klasöründe **38.078 dosya** üretiyor (~5125 route × route başına ortalama 7-8 dosya — Next.js App Router her route için sadece `index.html` değil, `index.txt`, `__next._full.txt`, `__next._index.txt`, `__next._tree.txt`, RSC payload dosyaları gibi birden fazla dosya üretiyor). FTP protokolü, her dosya/klasör için ayrı bir round-trip gerektiriyor — binlerce küçük dosyada bu ciddi yavaşlığa yol açıyor. Bugün, aynı `out/` klasörünü **zip'leyip Plesk'in "Extract" özelliğiyle açmak** (elle) sadece birkaç dakika sürdü — aynı veri, çok daha hızlı.
+
+**Yarın bakılabilecek yönler:**
+1. **`out/` içindeki dosya sayısını gerçekten azaltmak mümkün mü?** (Next.js'in App Router static export formatı bu kadar dosya üretiyor, muhtemelen kontrol edilemez — ama kesinleşmedi, araştırılmalı.)
+2. **FTP yerine SFTP/rsync destekleniyor mu?** (Plesk/cPanel'de SSH erişimi varsa, rsync tek bağlantıda binlerce dosyayı çok daha hızlı senkronize eder — FTP'nin dosya-başına-round-trip sorununu ortadan kaldırır.)
+3. **GitHub Actions'ta "zip'le, tek dosya FTP ile at, sunucuda script ile aç" yaklaşımı otomatikleştirilebilir mi?** (Bugün elle yaptığımızın otomasyonu — ama sunucuda zip açacak bir mekanizma [cPanel/Plesk API, ya da SSH] gerekiyor, sadece FTP ile bu mümkün değil çünkü FTP "uzaktan komut çalıştırma" desteklemiyor.)
+4. **`SamKirkland/FTP-Deploy-Action`'ın ayarlarında paralellik/performans seçeneği var mı?** (Dokümantasyonuna bakılmalı — bazı FTP deploy action'ları çoklu bağlantı/paralel yükleme destekliyor.)
+5. Gereksiz dosya var mı kontrolü — kullanıcı bunu da istedi, ama yukarıdaki analiz zaten dosyaların Next.js'in kendi ürettiği, muhtemelen "gereksiz" değil "zorunlu" dosyalar olduğunu gösteriyor; yine de `out/` içinde büyük/atlanabilir bir şey var mı diye bir kez bakılabilir.

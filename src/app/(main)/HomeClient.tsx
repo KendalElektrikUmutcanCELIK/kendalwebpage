@@ -12,6 +12,7 @@ import { Hero } from '@/components/sections/Hero';
 import { NewsPreview } from '@/components/sections/NewsPreview';
 import { NewsTicker } from '@/components/sections/NewsTicker';
 import { OurBrands } from '@/components/sections/OurBrands';
+import { HomeCustomBlocks } from '@/components/blocks/HomeCustomBlocks';
 import { ApertureTransition } from '@/components/shared/ApertureTransition';
 
 export function HomeClient() {
@@ -26,14 +27,22 @@ export function HomeClient() {
       >
         <NewsTicker />
         <Hero />
+        <HomeCustomBlocks slot="after-hero" />
         <AboutUs />
+        <HomeCustomBlocks slot="after-about" />
         <OurBrands />
+        <HomeCustomBlocks slot="after-brands" />
 
         <CompanyStats />
+        <HomeCustomBlocks slot="after-stats" />
         <CatalogCTA />
+        <HomeCustomBlocks slot="after-catalog-cta" />
         <CompanyVideo />
+        <HomeCustomBlocks slot="after-video" />
         <GlobalPresence />
+        <HomeCustomBlocks slot="after-global-presence" />
         <NewsPreview />
+        <HomeCustomBlocks slot="after-news-preview" />
       </div>
     </main>
   );

@@ -45,6 +45,10 @@ render_header('Panel', 'dashboard');
     <span class="quick-link-title">Sayfalar</span>
     <span class="quick-link-desc">Blok tabanlı yeni sayfalar oluştur</span>
   </a>
+  <a href="home-blocks.php" class="quick-link-card">
+    <span class="quick-link-title">Anasayfa Blokları</span>
+    <span class="quick-link-desc">Anasayfa bölümleri arasına içerik ekle</span>
+  </a>
   <a href="navbar-links.php" class="quick-link-card">
     <span class="quick-link-title">Navbar Linkleri</span>
     <span class="quick-link-desc">Üst menüye sayfa/link ekle</span>
