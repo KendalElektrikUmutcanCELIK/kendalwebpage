@@ -1,0 +1,41 @@
+name: Build and deploy to test site (kendalelektrik.com)
+
+# Şimdilik SADECE elle tetikleniyor (workflow_dispatch) — ilk kurulumda FTP
+# bilgilerinin/hedef klasörün doğru olduğundan emin olana kadar otomatik push
+# tetikleyicisi eklenmedi. Birkaç kez elle "Run workflow" ile denenip sorunsuz
+# çalıştığı görülünce, deploy-cpanel.yml'deki push tetikleyicisine benzer bir
+# blok buraya da eklenebilir.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: "test-kendalelektrikcom-deploy"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (production mode, root domain — GH Pages basePath YOK)
+        run: npm run build
+
+      - name: Deploy to kendalelektrik.com via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.TEST_FTP_SERVER }}
+          username: ${{ secrets.TEST_FTP_USERNAME }}
+          password: ${{ secrets.TEST_FTP_PASSWORD }}
+          local-dir: ./out/
+          server-dir: ${{ secrets.TEST_FTP_SERVER_DIR }}

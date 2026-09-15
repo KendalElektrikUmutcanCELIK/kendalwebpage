@@ -1,13 +1,18 @@
 name: Build and deploy to cPanel
 
 on:
-  push:
-    branches: ["main"]
-    paths:
-      - "src/**"
-      - "public/**"
-      - "package.json"
-      - "package-lock.json"
+  # Otomatik push tetikleyicisi GEÇİCİ OLARAK KAPALI (2026-09-15) — kendalelektrik.com.tr
+  # gerçek canlı OpenCart sitesinin üzerine erken/yanlışlıkla yazılmaması için. Şimdilik
+  # kendalelektrik.com (test/deneme alanı, deploy-test-kendalelektrikcom.yml) üzerinde
+  # çalışılıyor. cPanel'e gerçekten geçmeye hazır olunca aşağıdaki "push:" bloğunu
+  # tekrar aç (silinmedi, sadece yorum satırına alındı).
+  # push:
+  #   branches: ["main"]
+  #   paths:
+  #     - "src/**"
+  #     - "public/**"
+  #     - "package.json"
+  #     - "package-lock.json"
   workflow_dispatch:
 
 concurrency:
