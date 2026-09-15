@@ -4,10 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { getAssetPath } from '@/lib/basePath';
+import siteSettings from '@/data/settings.json';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
 
 export const Footer = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const contact = siteSettings[language];
   const currentYear = new Date().getFullYear();
 
   return (
@@ -64,7 +66,7 @@ export const Footer = () => {
 
               <div className="absolute inset-x-0 bottom-0 px-4 pb-3 pt-6">
                 <p className="text-xs leading-relaxed text-gray-200 group-hover:text-white transition-colors">
-                  {(t as any).footer?.address}
+                  {contact.address}
                 </p>
                 <span className="mt-1.5 inline-flex items-center gap-1 text-xs font-semibold text-white opacity-80 group-hover:opacity-100 transition-opacity">
                   {(t as any).footer?.map_cta || 'Haritada Aç'}
@@ -94,10 +96,10 @@ export const Footer = () => {
                 {(t as any).footer?.phone_label || 'İletişim Hattı'}
               </span>
               <a
-                href={`tel:${(t as any).footer?.phone}`}
+                href={`tel:${contact.phone}`}
                 className="hover:text-[var(--brand-red)] transition-colors"
               >
-                {(t as any).footer?.phone}
+                {contact.phone}
               </a>
             </li>
             <li>
@@ -105,10 +107,10 @@ export const Footer = () => {
                 {(t as any).footer?.sales_phone_label || 'Satış Destek Hattı'}
               </span>
               <a
-                href={`tel:${(t as any).footer?.sales_phone}`}
+                href={`tel:${contact.salesPhone}`}
                 className="hover:text-[var(--brand-red)] transition-colors"
               >
-                {(t as any).footer?.sales_phone}
+                {contact.salesPhone}
               </a>
             </li>
             <li>
@@ -117,18 +119,18 @@ export const Footer = () => {
                   'Teknik Servis Hattı'}
               </span>
               <a
-                href={`tel:${(t as any).footer?.support_phone}`}
+                href={`tel:${contact.supportPhone}`}
                 className="hover:text-[var(--brand-red)] transition-colors"
               >
-                {(t as any).footer?.support_phone}
+                {contact.supportPhone}
               </a>
             </li>
             <li className="pt-2">
               <a
-                href="mailto:info@kendalelektrik.com.tr"
+                href={`mailto:${siteSettings.email}`}
                 className="hover:text-[var(--brand-red)] transition-colors"
               >
-                {(t as any).footer?.email}
+                {siteSettings.email}
               </a>
             </li>
           </ul>
@@ -159,7 +161,7 @@ export const Footer = () => {
 
           <div className="flex gap-4">
             <a
-              href="https://www.facebook.com/kendalelektrik/"
+              href={siteSettings.facebookUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-[var(--brand-red)] transition-colors"
@@ -170,7 +172,7 @@ export const Footer = () => {
               </svg>
             </a>
             <a
-              href="https://www.linkedin.com/company/kendal-elektrik-ayd%C4%B1nlatma-a-%C5%9F/"
+              href={siteSettings.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-[var(--brand-red)] transition-colors"
@@ -181,7 +183,7 @@ export const Footer = () => {
               </svg>
             </a>
             <a
-              href="https://www.instagram.com/kendalelektrik.k2ledsystems/"
+              href={siteSettings.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-[var(--brand-red)] transition-colors"

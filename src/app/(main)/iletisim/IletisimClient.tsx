@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useRef } from 'react';
 import { getAssetPath } from '@/lib/basePath';
+import siteSettings from '@/data/settings.json';
 import { gsap } from '@/lib/gsapConfig';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
 import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect';
@@ -32,6 +33,7 @@ const MailIcon = () => (
 export function IletisimClient() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { t, language } = useLanguage();
+  const contact = siteSettings[language];
 
   useIsomorphicLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -91,10 +93,10 @@ export function IletisimClient() {
                     {(t as any).footer?.phone_label || 'İletişim Hattı'}
                   </span>
                   <a
-                    href={`tel:${(t as any).footer?.phone || '+90 212 482 75 90'}`}
+                    href={`tel:${contact.phone}`}
                     className="text-xl font-bold text-white hover:text-[var(--brand-red)] transition-colors"
                   >
-                    {(t as any).footer?.phone || '0212 482 75 90 - 91'}
+                    {contact.phone}
                   </a>
                 </div>
               </li>
@@ -108,10 +110,10 @@ export function IletisimClient() {
                     {(t as any).footer?.sales_phone_label || 'Satış Destek Hattı'}
                   </span>
                   <a
-                    href={`tel:${(t as any).footer?.sales_phone || '0850 259 41 41'}`}
+                    href={`tel:${contact.salesPhone}`}
                     className="text-xl font-bold text-white hover:text-[var(--brand-red)] transition-colors"
                   >
-                    {(t as any).footer?.sales_phone || '0850 259 41 41'}
+                    {contact.salesPhone}
                   </a>
                 </div>
               </li>
@@ -125,10 +127,10 @@ export function IletisimClient() {
                     {(t as any).footer?.support_phone_label || 'Teknik Servis Hattı'}
                   </span>
                   <a
-                    href={`tel:${(t as any).footer?.support_phone || '444 34 98'}`}
+                    href={`tel:${contact.supportPhone}`}
                     className="text-xl font-bold text-white hover:text-[var(--brand-red)] transition-colors"
                   >
-                    {(t as any).footer?.support_phone || '444 34 98'}
+                    {contact.supportPhone}
                   </a>
                 </div>
               </li>
@@ -142,10 +144,10 @@ export function IletisimClient() {
                     E-Posta
                   </span>
                   <a
-                    href="mailto:info@kendalelektrik.com.tr"
+                    href={`mailto:${siteSettings.email}`}
                     className="text-lg font-medium text-gray-300 hover:text-[var(--brand-red)] transition-colors"
                   >
-                    {(t as any).footer?.email || 'info@kendalelektrik.com.tr'}
+                    {siteSettings.email}
                   </a>
                 </div>
               </li>
@@ -187,8 +189,7 @@ export function IletisimClient() {
 
                 <div className="absolute inset-x-0 bottom-0 px-6 pb-6 pt-12">
                   <p className="text-sm leading-relaxed text-gray-100 group-hover:text-white transition-colors">
-                    {(t as any).footer?.address ||
-                      'Selimpaşa Org. San. Böl. 5008 Sokak No:6 Selimpaşa Silivri/İSTANBUL'}
+                    {contact.address}
                   </p>
                   <span className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-white bg-white/10 backdrop-blur-md px-4 py-2 rounded-full opacity-90 group-hover:opacity-100 group-hover:bg-[var(--brand-red)] transition-all">
                     {(t as any).footer?.map_cta || 'Haritada Aç'}

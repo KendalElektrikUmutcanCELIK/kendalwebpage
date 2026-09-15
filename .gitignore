@@ -48,3 +48,12 @@ graphify-out/
 # ürün bilgi formu üretim çıktıları (her çalıştırmada yeniden üretilir)
 urun_bilgi_formu_calisma_log.txt
 urun_bilgi_formu_rapor.json
+
+# admin panel gizli bilgileri (şifre hash'i + GitHub token) - asla commit edilmemeli,
+# cPanel'e admin-panel/ yüklenirken git'ten BAĞIMSIZ olarak elle/FTP ile taşınır
+admin-panel/config.php
+
+# admin panelin otomatik yedekleri ve yüklenen dosyalar - çalışma zamanı verisi,
+# her kayıtta yeni dosya üretir, git'te tutulursa sınırsız büyür
+admin-panel/data/backups/
+admin-panel/data/uploads/

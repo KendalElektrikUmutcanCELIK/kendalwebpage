@@ -1,0 +1,21 @@
+# config.php'nin dogrudan tarayicidan istenmesini engelle (savunma katmani -
+# normalde PHP dosyalari zaten calistirilip sonucu donduruluyor, kaynak kodu
+# sizdirmiyor, ama yanlis sunucu yapilandirmasina karsi ekstra guvenlik).
+<Files "config.php">
+  Require all denied
+</Files>
+
+# Urun verisi (products.json) ve yedekler GIRIS YAPMADAN dogrudan
+# tarayicidan indirilebilir olmamali - sadece admin-panel'in kendi PHP
+# kodu (require ile, HTTP disinda) bunlari okuyabilmeli.
+<FilesMatch "\.json$">
+  Require all denied
+</FilesMatch>
+
+# Not: data/backups/ klasorunu de web'den tamamen kapatmak icin ayrica
+# admin-panel/data/backups/.htaccess dosyasina bak (URL yolundan bagimsiz
+# calissin diye buraya degil, doğrudan o klasore konuldu).
+# data/uploads/ ise KASITLI olarak herkese acik - urun fotograflari/logolar
+# <img> ile gosterilmesi gerekiyor.
+
+Options -Indexes

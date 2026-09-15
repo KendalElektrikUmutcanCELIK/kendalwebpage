@@ -10,7 +10,7 @@ import React, {
 import en from './en.json';
 import tr from './tr.json';
 
-type Language = 'tr' | 'en';
+export type Language = 'tr' | 'en';
 type Dictionary = typeof tr;
 
 interface LanguageContextType {

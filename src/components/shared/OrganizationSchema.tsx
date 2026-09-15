@@ -1,4 +1,5 @@
 import React from 'react';
+import siteSettings from '@/data/settings.json';
 
 export const OrganizationSchema = () => {
   const schema = {
@@ -33,9 +34,9 @@ export const OrganizationSchema = () => {
       },
     ],
     sameAs: [
-      'https://www.facebook.com/kendalelektrik',
-      'https://www.instagram.com/kendalelektrik.k2ledsystems/',
-      'https://www.linkedin.com/company/kendal-elektrik-ayd%C4%B1nlatma-a-%C5%9F/',
+      siteSettings.facebookUrl,
+      siteSettings.instagramUrl,
+      siteSettings.linkedinUrl,
     ],
   };
 

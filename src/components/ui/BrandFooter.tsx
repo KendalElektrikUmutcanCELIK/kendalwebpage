@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { getAssetPath, getBrandHomeHref } from '@/lib/basePath';
+import siteSettings from '@/data/settings.json';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
 
 interface BrandFooterProps {
@@ -11,7 +12,8 @@ interface BrandFooterProps {
 }
 
 export const BrandFooter = ({ brandName }: BrandFooterProps) => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const contact = siteSettings[language];
   const isK2 = brandName === 'k2';
   const logoSrc = isK2
     ? getAssetPath('/images/brands/k2-logo.svg')
@@ -73,7 +75,7 @@ export const BrandFooter = ({ brandName }: BrandFooterProps) => {
               <div className="absolute inset-x-0 bottom-0 px-4 pb-3 pt-6">
                 <p className="text-xs leading-relaxed text-gray-200 transition-colors group-hover:text-white">
                   {(t as any).brand_pages?.footer?.address_prefix || 'Adres: '}
-                  Selimpaşa Org. San. Böl. 5008 Sokak No:6 Selimpaşa Silivri/İSTANBUL
+                  {contact.address}
                 </p>
                 <span className="mt-1.5 inline-flex items-center gap-1 text-xs font-semibold text-white opacity-80 transition-opacity group-hover:opacity-100">
                   {(t as any).brand_pages?.footer?.map_cta || 'Haritada Aç'}
@@ -104,10 +106,10 @@ export const BrandFooter = ({ brandName }: BrandFooterProps) => {
                   'İletişim Hattı'}
               </span>
               <a
-                href={`tel:${(t as any).footer?.phone}`}
+                href={`tel:${contact.phone}`}
                 className="hover:text-[var(--brand-red)] transition-colors"
               >
-                {(t as any).footer?.phone}
+                {contact.phone}
               </a>
             </li>
             <li>
@@ -116,10 +118,10 @@ export const BrandFooter = ({ brandName }: BrandFooterProps) => {
                   'Satış Destek Hattı'}
               </span>
               <a
-                href={`tel:${(t as any).footer?.sales_phone}`}
+                href={`tel:${contact.salesPhone}`}
                 className="hover:text-[var(--brand-red)] transition-colors"
               >
-                {(t as any).footer?.sales_phone}
+                {contact.salesPhone}
               </a>
             </li>
             <li>
@@ -128,18 +130,18 @@ export const BrandFooter = ({ brandName }: BrandFooterProps) => {
                   'Teknik Servis Hattı'}
               </span>
               <a
-                href={`tel:${(t as any).footer?.support_phone}`}
+                href={`tel:${contact.supportPhone}`}
                 className="hover:text-[var(--brand-red)] transition-colors"
               >
-                {(t as any).footer?.support_phone}
+                {contact.supportPhone}
               </a>
             </li>
             <li className="pt-2">
               <a
-                href="mailto:info@kendalelektrik.com.tr"
+                href={`mailto:${siteSettings.email}`}
                 className="hover:text-[var(--brand-red)] transition-colors"
               >
-                info@kendalelektrik.com.tr
+                {siteSettings.email}
               </a>
             </li>
           </ul>
@@ -176,7 +178,7 @@ export const BrandFooter = ({ brandName }: BrandFooterProps) => {
 
           <div className="flex gap-4">
             <a
-              href="https://www.facebook.com/kendalelektrik/"
+              href={siteSettings.facebookUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-zinc-400 hover:text-[var(--brand-red)] transition-colors"
@@ -187,7 +189,7 @@ export const BrandFooter = ({ brandName }: BrandFooterProps) => {
               </svg>
             </a>
             <a
-              href="https://www.linkedin.com/company/kendal-elektrik-ayd%C4%B1nlatma-a-%C5%9F/"
+              href={siteSettings.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-zinc-400 hover:text-[var(--brand-red)] transition-colors"
@@ -198,7 +200,7 @@ export const BrandFooter = ({ brandName }: BrandFooterProps) => {
               </svg>
             </a>
             <a
-              href="https://www.instagram.com/kendalelektrik.k2ledsystems/"
+              href={siteSettings.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-zinc-400 hover:text-[var(--brand-red)] transition-colors"
