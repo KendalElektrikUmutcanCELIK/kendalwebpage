@@ -101,3 +101,36 @@ function github_curl_put(string $url, array $payload): array
     curl_close($ch);
     return [(int) $status, (string) $body];
 }
+
+/**
+ * Verilen workflow dosyasını (ör. "deploy-test-kendalelektrikcom.yml") GITHUB_BRANCH
+ * üzerinde workflow_dispatch ile tetikler — gerçek siteyi yeniden derleyip FTP ile yayınlar.
+ * @return array{ok: bool, error?: string}
+ */
+function github_trigger_workflow(string $workflowFile): array
+{
+    if (!github_deploy_configured()) {
+        return ['ok' => false, 'error' => 'GitHub bağlantısı henüz kurulmadı (config.php içinde GITHUB_TOKEN/GITHUB_REPO boş).'];
+    }
+
+    $url = GITHUB_API_BASE . '/repos/' . GITHUB_REPO . '/actions/workflows/' . rawurlencode($workflowFile) . '/dispatches';
+    $ch = curl_init($url);
+    curl_setopt_array($ch, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => json_encode(['ref' => GITHUB_BRANCH]),
+        CURLOPT_HTTPHEADER => array_merge(github_api_headers(), ['Content-Type: application/json']),
+        CURLOPT_TIMEOUT => 20,
+    ]);
+    $body = curl_exec($ch);
+    $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($status === 204) {
+        return ['ok' => true];
+    }
+
+    $decoded = json_decode((string) $body, true);
+    $message = is_array($decoded) ? ($decoded['message'] ?? 'Bilinmeyen hata') : 'Bilinmeyen hata';
+    return ['ok' => false, 'error' => "GitHub Actions tetiklenemedi (HTTP $status): $message. Token'ın \"Actions: Read and write\" iznine sahip olduğundan emin ol."];
+}

@@ -68,7 +68,7 @@ Kod üzerinde değişiklik yaptıktan sonra bunları çalıştırıp hâlâ heps
 
 Admin panelde "Yayınla" sayfası (`deploy.php`), Site Ayarları ve Sayfalar'daki değişiklikleri gerçek siteye göndermek için var. Şu an **kurulmadı** — `config.php` içindeki `GITHUB_TOKEN`/`GITHUB_REPO` boş olduğu sürece sayfa güvenli bir "henüz kurulmadı" mesajı gösterir, hiçbir hata vermez.
 
-**Nasıl çalışıyor (özet):** Yayınla → admin panel değişen dosyayı GitHub'a gönderir → GitHub Actions (`.github/workflows/deploy-cpanel.yml`) bunu görüp otomatik `npm run build` çalıştırır → sonucu FTP ile cPanel'e yükler → ~10-15 dk içinde site güncellenir.
+**Nasıl çalışıyor (özet):** Yayınla → admin panel değişen 12 veri dosyasının hepsini (`src/data/*.json`: ürünler, marketler, projeler, sertifikalar, haberler, sayfalar, anasayfa blokları, navbar linkleri, hakkımızda/misyon-vizyon, site ayarları, slug-map) GitHub'a gönderir → hepsi başarılıysa GitHub Actions workflow'unu (`.github/workflows/deploy-test-kendalelektrikcom.yml`) API üzerinden `workflow_dispatch` ile tetikler → o da `npm run build` çalıştırıp sonucu FTP ile `kendalelektrik.com`'a yükler → ~5-10 dk içinde site güncellenir. (`deploy-cpanel.yml`, yani `.com.tr` hedefi, kasıtlı olarak devre dışı — buraya dokunmuyor.)
 
 **Kurulum için gerekenler (iki ayrı yerde, biri GitHub'da biri admin panelde):**
 
