@@ -35,7 +35,7 @@ export const Loader = ({ onComplete }: { onComplete: () => void }) => {
       setTimeout(() => {
         currentProgress = 100;
         setProgress(100);
-      }, 2000); 
+      }, 2000);
     };
 
     if (document.readyState === 'complete') {

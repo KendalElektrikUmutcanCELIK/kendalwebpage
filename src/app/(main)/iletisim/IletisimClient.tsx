@@ -2,14 +2,19 @@
 
 import Image from 'next/image';
 import { useRef } from 'react';
-import { getAssetPath } from '@/lib/basePath';
 import siteSettings from '@/data/settings.json';
+import { getAssetPath } from '@/lib/basePath';
 import { gsap } from '@/lib/gsapConfig';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
 import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect';
 
 const PhoneIcon = () => (
-  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <svg
+    className="w-6 h-6"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -20,7 +25,12 @@ const PhoneIcon = () => (
 );
 
 const MailIcon = () => (
-  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <svg
+    className="w-6 h-6"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -62,7 +72,8 @@ export function IletisimClient() {
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[120vw] h-[90vh] pointer-events-none opacity-100 mix-blend-screen"
         style={{
-          background: 'radial-gradient(ellipse at 50% 0%, #6B7B30 0%, transparent 80%)',
+          background:
+            'radial-gradient(ellipse at 50% 0%, #6B7B30 0%, transparent 80%)',
         }}
       />
 
@@ -101,7 +112,8 @@ export function IletisimClient() {
                 </div>
                 <div>
                   <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">
-                    {(t as any).footer?.sales_phone_label || 'Satış Destek Hattı'}
+                    {(t as any).footer?.sales_phone_label ||
+                      'Satış Destek Hattı'}
                   </span>
                   <a
                     href={`tel:${contact.salesPhone}`}
@@ -118,7 +130,8 @@ export function IletisimClient() {
                 </div>
                 <div>
                   <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">
-                    {(t as any).footer?.support_phone_label || 'Teknik Servis Hattı'}
+                    {(t as any).footer?.support_phone_label ||
+                      'Teknik Servis Hattı'}
                   </span>
                   <a
                     href={`tel:${contact.supportPhone}`}
@@ -154,7 +167,9 @@ export function IletisimClient() {
               {language === 'tr' ? 'Adres' : 'Address'}
             </span>
             <h2 className="text-2xl font-bold text-white mb-5 tracking-tight">
-              {language === 'tr' ? 'Merkez Ofis & Fabrika' : 'Headquarters & Factory'}
+              {language === 'tr'
+                ? 'Merkez Ofis & Fabrika'
+                : 'Headquarters & Factory'}
             </h2>
 
             <a
@@ -195,7 +210,11 @@ export function IletisimClient() {
                       strokeWidth={2}
                       className="h-4 w-4 transition-transform group-hover:translate-x-1"
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5-5 5M6 12h12" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M13 7l5 5-5 5M6 12h12"
+                      />
                     </svg>
                   </span>
                 </div>

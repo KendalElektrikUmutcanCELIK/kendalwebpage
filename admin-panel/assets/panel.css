@@ -50,7 +50,10 @@
   gap: 6px;
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+  transition:
+    border-color 0.18s,
+    box-shadow 0.18s,
+    transform 0.18s;
 }
 
 .quick-link-card::before {
@@ -108,7 +111,9 @@
   border: 1px solid var(--border);
   border-radius: 8px;
   font-size: 13px;
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
 }
 
 .filter-bar input[type="text"]:focus,
@@ -146,7 +151,10 @@
   text-decoration: none;
   color: inherit;
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.18s, border-color 0.18s, transform 0.18s;
+  transition:
+    box-shadow 0.18s,
+    border-color 0.18s,
+    transform 0.18s;
 }
 
 .product-card:hover {
@@ -226,7 +234,9 @@
   border-radius: 8px;
   font-size: 14px;
   font-family: inherit;
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
 }
 
 .form-row input[type="text"]:focus,
@@ -277,7 +287,9 @@
   border: 1px solid var(--border);
   border-radius: 8px;
   font-size: 13px;
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
 }
 
 .attribute-row input:focus {

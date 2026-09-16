@@ -1,21 +1,12 @@
 import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
-import React from 'react';
 import { PageBlocksClient } from '@/components/blocks/PageBlocksClient';
-import { BreadcrumbSchema } from '@/components/shared/BreadcrumbSchema';
-import { ProductSchema } from '@/components/shared/ProductSchema';
 import { getAllCustomPageSlugs, getCustomPageBySlug } from '@/data/pages';
 import {
-  BRAND_HOSTS,
-  getAllSlugs,
   getProductBySlug,
   getProductCanonicalUrl,
-  getProductImageUrl,
-  getSlugByProductId,
+  slugMap,
 } from '@/data/products';
-import { getProductPdfFile } from '@/lib/getProductPdfForm';
-import { buildProductDescription } from '@/lib/productMetadata';
-import { ProductDetailClient } from './ProductDetailClient';
 
 /**
  * Ürün kısa linkleri (slug-map.json, hep tek segment) ve panelden oluşturulan
@@ -45,6 +36,7 @@ const RESERVED_TOP_LEVEL_SLUGS = new Set([
   'sitemap',
   'icon',
   'brand',
+  'urun-yonlendirme',
 ]);
 
 function decodeSlugSegments(segments: string[]): string[] {
@@ -59,25 +51,6 @@ export async function generateMetadata({
   const { slug } = await params;
   const segments = decodeSlugSegments(slug);
   const joinedSlug = segments.join('/');
-  const product = segments.length === 1 ? getProductBySlug(segments[0]) : null;
-
-  if (product) {
-    const description = buildProductDescription(product);
-    const canonicalUrl = getProductCanonicalUrl(product);
-
-    return {
-      title: `${product.name.tr} | Kendal Elektrik`,
-      description,
-      alternates: { canonical: canonicalUrl },
-      openGraph: {
-        title: `${product.name.tr} | Kendal Elektrik`,
-        description,
-        type: 'website',
-        url: canonicalUrl,
-        images: [{ url: getProductImageUrl(product.image) }],
-      },
-    };
-  }
 
   if (!RESERVED_TOP_LEVEL_SLUGS.has(segments[0])) {
     const page = getCustomPageBySlug(joinedSlug);
@@ -94,19 +67,33 @@ export async function generateMetadata({
   };
 }
 
+/**
+ * Ürünler burada artık HİÇ statik sayfa olarak üretilmiyor — ne kanonik ne
+ * eski/alternatif slug'lar. Sitenin kendi linkleri zaten hep marka route'unu
+ * (brand/[brandName]/urunler/[category]/[slug]) kullanıyor, bu kısa link
+ * sadece dışarıdan gelen eski bağlantılar için var; o yüzden hepsi tek bir
+ * yönlendirme dosyasına (scripts/generate-legacy-redirects.js →
+ * public/legacy-redirects.json) ve tek bir ortak sayfaya
+ * (src/app/(main)/urun-yonlendirme/) bağlandı. Bkz. o script'in başındaki
+ * yorum. Burada sadece admin panelden oluşturulan serbest sayfalar üretiliyor.
+ */
 export function generateStaticParams() {
-  const productSlugs = getAllSlugs();
-  const productSlugSet = new Set(productSlugs);
-  const customPageSlugs = getAllCustomPageSlugs().filter((slug) => {
-    const firstSegment = slug.split('/')[0];
-    if (RESERVED_TOP_LEVEL_SLUGS.has(firstSegment)) return false;
-    if (!slug.includes('/') && productSlugSet.has(slug)) return false;
-    return true;
-  });
-  return [
-    ...productSlugs.map((slug) => ({ slug: [slug] })),
-    ...customPageSlugs.map((slug) => ({ slug: slug.split('/') })),
-  ];
+  const customPageParams = getAllCustomPageSlugs()
+    .filter((slug) => {
+      const firstSegment = slug.split('/')[0];
+      if (RESERVED_TOP_LEVEL_SLUGS.has(firstSegment)) return false;
+      if (!slug.includes('/') && slug in slugMap) return false;
+      return true;
+    })
+    .map((slug) => ({ slug: slug.split('/') }));
+
+  // "output: export" bir catch-all route için en az bir path ister. Şu an
+  // hiç admin-panel sayfası yoksa (pages.json boş) liste boş kalır — build'i
+  // kırmamak için zararsız bir yer tutucu ekliyoruz, o path normal 404
+  // olarak render olur.
+  return customPageParams.length > 0
+    ? customPageParams
+    : [{ slug: ['__bos__'] }];
 }
 
 export default async function SlugPage({
@@ -120,40 +107,7 @@ export default async function SlugPage({
   const product = segments.length === 1 ? getProductBySlug(segments[0]) : null;
 
   if (product) {
-    const canonicalSlug = getSlugByProductId(product.id);
-    if (canonicalSlug && canonicalSlug !== segments[0]) {
-      redirect(`/${encodeURIComponent(canonicalSlug)}`);
-    }
-
-    const pdfFormFile = getProductPdfFile(product.model, product.name.tr);
-    const canonicalUrl = getProductCanonicalUrl(product);
-    const category = product.category?.tr?.[0];
-    const brandUrunlerUrl = `${BRAND_HOSTS[product.brand || 'k2'] || BRAND_HOSTS.k2}/urunler`;
-    const brandCategoryUrl = category
-      ? `${brandUrunlerUrl}?category=${encodeURIComponent(category)}`
-      : brandUrunlerUrl;
-
-    return (
-      <>
-        <ProductSchema product={product} canonicalUrl={canonicalUrl} />
-        <BreadcrumbSchema
-          items={[
-            { name: 'Anasayfa', url: 'https://www.kendalelektrik.com/' },
-            { name: 'Ürünler', url: brandUrunlerUrl },
-            ...(category
-              ? [
-                  {
-                    name: category,
-                    url: brandCategoryUrl,
-                  },
-                ]
-              : []),
-            { name: product.name.tr, url: canonicalUrl },
-          ]}
-        />
-        <ProductDetailClient product={product} pdfFormFile={pdfFormFile} />
-      </>
-    );
+    redirect(getProductCanonicalUrl(product));
   }
 
   if (!RESERVED_TOP_LEVEL_SLUGS.has(segments[0])) {

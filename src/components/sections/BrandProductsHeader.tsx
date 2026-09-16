@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import type React from 'react';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
 
 interface BrandProductsHeaderProps {
@@ -52,7 +52,10 @@ const GLYPHS: Record<GlyphName, (className?: string) => React.JSX.Element> = {
     >
       <path d="M9 3h6l1.5 5h-9L9 3Z" strokeLinejoin="round" />
       <path d="M7.5 8h9L14 14h-4L7.5 8Z" strokeLinejoin="round" />
-      <path d="M9.5 17.5 8 21M14.5 17.5 16 21M12 17.5V21" strokeLinecap="round" />
+      <path
+        d="M9.5 17.5 8 21M14.5 17.5 16 21M12 17.5V21"
+        strokeLinecap="round"
+      />
     </svg>
   ),
   fan: (className) => (

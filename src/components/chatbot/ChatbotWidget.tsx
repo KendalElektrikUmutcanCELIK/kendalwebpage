@@ -322,7 +322,6 @@ export const ChatbotWidget = () => {
               <p className={`truncate text-sm font-semibold ${panel.title}`}>
                 {lang === 'tr' ? 'Kendal Asistan' : 'Kendal Assistant'}
               </p>
-
             </div>
             <button
               type="button"
@@ -372,7 +371,8 @@ export const ChatbotWidget = () => {
                   {m.links && m.links.length > 0 && (
                     <div className="mt-2.5 flex flex-col gap-1.5">
                       {m.links.map((l) => {
-                        const resolvedHref = typeof l.href === 'string' ? l.href : l.href[lang];
+                        const resolvedHref =
+                          typeof l.href === 'string' ? l.href : l.href[lang];
                         return l.external ? (
                           <a
                             key={resolvedHref}

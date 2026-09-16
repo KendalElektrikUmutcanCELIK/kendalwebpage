@@ -248,8 +248,8 @@ export const PrivacyContent = () => {
             </p>
             <ul className="list-disc pl-6 text-gray-300 leading-relaxed mb-10 space-y-2">
               <li>
-                Müşteri Hizmetleri Grubu: www.kendalelektrik.com adresinden
-                bize ulaşabilirsiniz. Veya 0212 482 75 90 - 91 no’lu telefondan
+                Müşteri Hizmetleri Grubu: www.kendalelektrik.com adresinden bize
+                ulaşabilirsiniz. Veya 0212 482 75 90 - 91 no’lu telefondan
                 arayabilirsiniz.
               </li>
               <li>

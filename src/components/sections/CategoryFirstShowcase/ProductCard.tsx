@@ -121,86 +121,88 @@ export function ProductCard({
       <div className="flex flex-col overflow-hidden bg-gradient-to-b from-zinc-50 to-white">
         <div className="pt-3 sm:pt-5" />
         <div className="relative aspect-square flex items-center justify-center">
-        <div
-          className={`absolute w-2/3 h-2/3 rounded-full blur-3xl opacity-60 group-hover:opacity-100 transition-opacity duration-500 ${blobClass}`}
-        />
+          <div
+            className={`absolute w-2/3 h-2/3 rounded-full blur-3xl opacity-60 group-hover:opacity-100 transition-opacity duration-500 ${blobClass}`}
+          />
 
-        {canCompare && (
-          <button
-            type="button"
-            title={isCompareMaxed ? compareTexts.max_reached : compareTexts.add}
-            disabled={isCompareMaxed}
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              onToggleCompare(product);
-            }}
-            className={`absolute top-2 left-2 sm:top-3 sm:left-3 z-20 flex items-center gap-1 sm:gap-1.5 pl-1 pr-1.5 py-1 sm:pl-1.5 sm:pr-2.5 sm:py-1.5 rounded-full text-[9px] sm:text-[11px] font-bold border shadow-sm transition-all duration-200 ${
-              isCompared
-                ? isK2
-                  ? 'bg-orange-500 border-orange-500 text-white'
-                  : isVanti
-                    ? 'bg-blue-600 border-blue-600 text-white'
-                    : 'bg-zinc-900 border-zinc-900 text-white'
-                : isCompareMaxed
-                  ? 'bg-white/80 border-zinc-200 text-zinc-300 cursor-not-allowed'
-                  : 'bg-white/90 backdrop-blur-sm border-zinc-200 text-zinc-500 hover:border-zinc-300 hover:text-zinc-700'
-            }`}
-          >
-            <span
-              className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center flex-shrink-0 ${isCompared ? 'bg-white/25 border-white/60' : 'border-zinc-300'}`}
+          {canCompare && (
+            <button
+              type="button"
+              title={
+                isCompareMaxed ? compareTexts.max_reached : compareTexts.add
+              }
+              disabled={isCompareMaxed}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                onToggleCompare(product);
+              }}
+              className={`absolute top-2 left-2 sm:top-3 sm:left-3 z-20 flex items-center gap-1 sm:gap-1.5 pl-1 pr-1.5 py-1 sm:pl-1.5 sm:pr-2.5 sm:py-1.5 rounded-full text-[9px] sm:text-[11px] font-bold border shadow-sm transition-all duration-200 ${
+                isCompared
+                  ? isK2
+                    ? 'bg-orange-500 border-orange-500 text-white'
+                    : isVanti
+                      ? 'bg-blue-600 border-blue-600 text-white'
+                      : 'bg-zinc-900 border-zinc-900 text-white'
+                  : isCompareMaxed
+                    ? 'bg-white/80 border-zinc-200 text-zinc-300 cursor-not-allowed'
+                    : 'bg-white/90 backdrop-blur-sm border-zinc-200 text-zinc-500 hover:border-zinc-300 hover:text-zinc-700'
+              }`}
             >
-              {isCompared && (
-                <svg
-                  className="w-2.5 h-2.5 text-white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={3}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-              )}
-            </span>
-            {isCompared ? compareTexts.added : compareTexts.add}
-          </button>
-        )}
+              <span
+                className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center flex-shrink-0 ${isCompared ? 'bg-white/25 border-white/60' : 'border-zinc-300'}`}
+              >
+                {isCompared && (
+                  <svg
+                    className="w-2.5 h-2.5 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={3}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                )}
+              </span>
+              {isCompared ? compareTexts.added : compareTexts.add}
+            </button>
+          )}
 
-        <Image
-          src={getAssetPath('/images/' + product.image)}
-          alt={displayName}
-          fill
-          sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
-          style={{
-            maskImage:
-              'radial-gradient(ellipse 70% 70% at 50% 52%, black 68%, transparent 100%)',
-            WebkitMaskImage:
-              'radial-gradient(ellipse 70% 70% at 50% 52%, black 68%, transparent 100%)',
-          }}
-          className="relative z-10 object-contain p-2 sm:p-3 scale-[1.08] group-hover:scale-[1.15] group-hover:-translate-y-1 transition-transform duration-500 ease-out"
-        />
+          <Image
+            src={getAssetPath('/images/' + product.image)}
+            alt={displayName}
+            fill
+            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
+            style={{
+              maskImage:
+                'radial-gradient(ellipse 70% 70% at 50% 52%, black 68%, transparent 100%)',
+              WebkitMaskImage:
+                'radial-gradient(ellipse 70% 70% at 50% 52%, black 68%, transparent 100%)',
+            }}
+            className="relative z-10 object-contain p-2 sm:p-3 scale-[1.08] group-hover:scale-[1.15] group-hover:-translate-y-1 transition-transform duration-500 ease-out"
+          />
 
-        <span
-          className={`absolute bottom-2 right-2 sm:bottom-3 sm:right-3 z-20 w-7 h-7 sm:w-9 sm:h-9 rounded-full flex items-center justify-center scale-0 group-hover:scale-100 transition-transform duration-300 ease-out shadow-lg ${ctaClass}`}
-        >
-          <svg
-            className="w-3.5 h-3.5 sm:w-4 sm:h-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+          <span
+            className={`absolute bottom-2 right-2 sm:bottom-3 sm:right-3 z-20 w-7 h-7 sm:w-9 sm:h-9 rounded-full flex items-center justify-center scale-0 group-hover:scale-100 transition-transform duration-300 ease-out shadow-lg ${ctaClass}`}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2.5}
-              d="M17 8l4 4m0 0l-4 4m4-4H3"
-            />
-          </svg>
-        </span>
+            <svg
+              className="w-3.5 h-3.5 sm:w-4 sm:h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2.5}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </span>
         </div>
       </div>
 

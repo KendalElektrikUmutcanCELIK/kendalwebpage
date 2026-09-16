@@ -49,6 +49,9 @@ graphify-out/
 urun_bilgi_formu_calisma_log.txt
 urun_bilgi_formu_rapor.json
 
+# eski ürün slug yönlendirme tablosu (her build'de scripts/generate-legacy-redirects.js ile yeniden üretilir)
+public/legacy-redirects.json
+
 # admin panel gizli bilgileri (şifre hash'i + GitHub token) - asla commit edilmemeli,
 # cPanel'e admin-panel/ yüklenirken git'ten BAĞIMSIZ olarak elle/FTP ile taşınır
 admin-panel/config.php

@@ -2,7 +2,13 @@ import Link from 'next/link';
 import type { CtaBlockData } from '@/data/pages';
 import type { Language } from '@/lib/i18n/LanguageProvider';
 
-export function CtaBlock({ data, language }: { data: CtaBlockData; language: Language }) {
+export function CtaBlock({
+  data,
+  language,
+}: {
+  data: CtaBlockData;
+  language: Language;
+}) {
   if (!data.buttonUrl || !data.buttonLabel?.[language]) {
     return null;
   }
@@ -24,7 +30,12 @@ export function CtaBlock({ data, language }: { data: CtaBlockData; language: Lan
         </p>
       )}
       {isExternal ? (
-        <a href={data.buttonUrl} target="_blank" rel="noopener noreferrer" className={buttonClass}>
+        <a
+          href={data.buttonUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={buttonClass}
+        >
           {data.buttonLabel[language]}
         </a>
       ) : (

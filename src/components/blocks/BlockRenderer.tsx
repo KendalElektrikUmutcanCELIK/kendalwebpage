@@ -5,7 +5,13 @@ import { HeadingTextBlock } from './HeadingTextBlock';
 import { ImageGalleryBlock } from './ImageGalleryBlock';
 import { TextImageBlock } from './TextImageBlock';
 
-export function BlockRenderer({ block, language }: { block: PageBlock; language: Language }) {
+export function BlockRenderer({
+  block,
+  language,
+}: {
+  block: PageBlock;
+  language: Language;
+}) {
   switch (block.type) {
     case 'heading_text':
       return <HeadingTextBlock data={block.data} language={language} />;

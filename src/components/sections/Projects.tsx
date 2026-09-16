@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 import React, { useEffect, useRef } from 'react';
-import { getAssetPath } from '@/lib/basePath';
 import { referenceProjects } from '@/data/projects';
+import { getAssetPath } from '@/lib/basePath';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
 
 const REFERENCE_DATA = referenceProjects;

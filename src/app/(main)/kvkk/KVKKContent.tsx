@@ -623,12 +623,12 @@ export const KVKKContent = () => {
                 your request containing the necessary information identifying
                 your identity and your explanations regarding your right that
                 you request to use among the rights specified in Article 11 of
-                the KVKK Law; by filling out the form at
-                www.kendalelektrik.com, hand-delivering a signed copy of the
-                form along with identifying documents to Şahkulu Mahallesi
-                Büyükhendek cad. No 28 Beyoğlu/Istanbul address, sending it via
-                a notary public or other methods specified in the KVKK Law, or
-                you can send the relevant form to info@kendalelektrik.com.tr.
+                the KVKK Law; by filling out the form at www.kendalelektrik.com,
+                hand-delivering a signed copy of the form along with identifying
+                documents to Şahkulu Mahallesi Büyükhendek cad. No 28
+                Beyoğlu/Istanbul address, sending it via a notary public or
+                other methods specified in the KVKK Law, or you can send the
+                relevant form to info@kendalelektrik.com.tr.
               </p>
               <p className="mb-8">
                 We would like to emphasize that in cases where your personal

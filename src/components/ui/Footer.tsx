@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { getAssetPath } from '@/lib/basePath';
 import siteSettings from '@/data/settings.json';
+import { getAssetPath } from '@/lib/basePath';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
 
 export const Footer = () => {
@@ -78,7 +78,11 @@ export const Footer = () => {
                     strokeWidth={2}
                     className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5-5 5M6 12h12" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M13 7l5 5-5 5M6 12h12"
+                    />
                   </svg>
                 </span>
               </div>

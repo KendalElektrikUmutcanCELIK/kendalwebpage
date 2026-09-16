@@ -31,7 +31,10 @@ export function PageBlocksClient({ page }: { page: CustomPage }) {
   }, []);
 
   return (
-    <div ref={containerRef} className="bg-black text-white pt-36 pb-24 px-6 min-h-screen">
+    <div
+      ref={containerRef}
+      className="bg-black text-white pt-36 pb-24 px-6 min-h-screen"
+    >
       <div className="max-w-5xl mx-auto">
         <div className="mb-12">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white opacity-90 mb-4">

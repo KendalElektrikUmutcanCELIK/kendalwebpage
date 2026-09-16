@@ -92,7 +92,9 @@ a {
   border-radius: 9px;
   font-size: 14px;
   margin-bottom: 18px;
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
 }
 
 .login-box input[type="password"]:focus {
@@ -112,7 +114,9 @@ a {
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 6px 16px -4px rgba(227, 0, 15, 0.5);
-  transition: box-shadow 0.15s, transform 0.15s;
+  transition:
+    box-shadow 0.15s,
+    transform 0.15s;
 }
 
 .login-box button:hover {
@@ -192,7 +196,10 @@ a {
   font-weight: 500;
   text-decoration: none;
   color: var(--sidebar-text);
-  transition: background 0.15s, color 0.15s, transform 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s,
+    transform 0.15s;
 }
 
 .sidebar-link:hover {
@@ -284,7 +291,11 @@ a {
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
-  transition: border-color 0.15s, background 0.15s, transform 0.15s, box-shadow 0.15s;
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    transform 0.15s,
+    box-shadow 0.15s;
 }
 
 .btn:hover {
@@ -301,7 +312,11 @@ a {
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--brand-red-dark), var(--brand-red-dark));
+  background: linear-gradient(
+    135deg,
+    var(--brand-red-dark),
+    var(--brand-red-dark)
+  );
   border-color: var(--brand-red-dark);
   box-shadow: 0 6px 16px -3px rgba(227, 0, 15, 0.55);
 }

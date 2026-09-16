@@ -1,4 +1,8 @@
-import { getAssetPath, getBrandExternalHref, getBrandUrunlerHref } from '@/lib/basePath';
+import {
+  getAssetPath,
+  getBrandExternalHref,
+  getBrandUrunlerHref,
+} from '@/lib/basePath';
 
 export interface ChatLink {
   label: { tr: string; en: string };
@@ -66,7 +70,7 @@ const CATALOG_NODE: ChatNode = {
       label: { tr: 'Kataloğu İncele 📥', en: 'Browse Catalog 📥' },
       href: {
         tr: getAssetPath('/kendal-elektrik-katalog-2026.pdf'),
-        en: getAssetPath('/en-catalog.pdf')
+        en: getAssetPath('/en-catalog.pdf'),
       },
       external: true,
     },
@@ -128,8 +132,8 @@ const MAIN_NODES: Record<string, ChatNode> = {
       en: 'Can you tell me about K2?',
     },
     answer: {
-      tr: "K2, 'Aydınlatmanın Zirvesi' vizyonuyla hareket eden profesyonel aydınlatma markamız. Spot, LED panel, projektör, magnet ray sistemleri, solar armatürler ve dekoratif aydınlatmaya uzanan geniş bir ürün gamı sunuyor. Yurt dışına da ihracat yapıyoruz.",
-      en: "K2 is our professional lighting brand, driven by the vision of being 'The Summit of Lighting.' It offers a wide range from spotlights, LED panels, and projectors to magnetic track systems, solar fixtures, and decorative lighting. We also export K2 products internationally.",
+      tr: "K2, ismini dünyanın en zorlu ve prestijli dağlarından birinden alan, 'Aydınlatmanın Zirvesi' vizyonuyla hareket eden profesyonel markamızdır. Endüstriyel ve mimari projeleriniz için üst düzey kalite ve dayanıklılık sunan K2 çatısı altında; LED paneller, spotlar, projektörler, manyetik sistemler, solar armatürler ve dekoratif çözümler gibi pek çok profesyonel aydınlatma seçeneği yer almaktadır.",
+      en: "K2 is our professional brand, named after one of the world's most challenging and prestigious mountains, driven by the vision of being 'The Summit of Lighting.' Offering top-level quality and durability for industrial and architectural projects, K2 features a wide selection of professional lighting solutions, including LED panels, spotlights, projectors, magnetic systems, solar fixtures, and decorative lighting.",
     },
     links: [
       {
@@ -166,8 +170,8 @@ const MAIN_NODES: Record<string, ChatNode> = {
       en: 'Can you tell me about Global?',
     },
     answer: {
-      tr: 'Global, LED ampul, panel, şerit ve projektör gibi genel kullanım aydınlatma ürünlerini uygun fiyatlarla sunduğumuz markamız. Türkiye genelinde 77 ilde yetkili bayimiz var.',
-      en: 'Global is our brand for general-purpose lighting products — LED bulbs, panels, strips, and projectors — at accessible prices. We have authorized dealers in 77 provinces across Turkey.',
+      tr: 'Global, LED ampul, panel, şerit ve projektör gibi genel kullanım aydınlatma ürünlerini uygun fiyatlarla sunduğumuz markamız.',
+      en: 'Global is our brand for general-purpose lighting products — LED bulbs, panels, strips, and projectors — at accessible prices.',
     },
     links: [
       {

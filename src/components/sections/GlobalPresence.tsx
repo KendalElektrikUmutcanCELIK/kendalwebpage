@@ -71,8 +71,7 @@ export const GlobalPresence = () => {
 
   const [shouldMountGlobe, setShouldMountGlobe] = useState(false);
 
-  useEffect(() => {
-  }, []);
+  useEffect(() => {}, []);
 
   useIsomorphicLayoutEffect(() => {
     const ctx = gsap.context(() => {

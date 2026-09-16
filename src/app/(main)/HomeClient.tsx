@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { HomeCustomBlocks } from '@/components/blocks/HomeCustomBlocks';
 import { Loader } from '@/components/loader/Loader';
 import { AboutUs } from '@/components/sections/AboutUs';
 import { CatalogCTA } from '@/components/sections/CatalogCTA';
-
 import { CompanyStats } from '@/components/sections/CompanyStats';
 import { CompanyVideo } from '@/components/sections/CompanyVideo';
 import { GlobalPresence } from '@/components/sections/GlobalPresence';
@@ -12,7 +12,6 @@ import { Hero } from '@/components/sections/Hero';
 import { NewsPreview } from '@/components/sections/NewsPreview';
 import { NewsTicker } from '@/components/sections/NewsTicker';
 import { OurBrands } from '@/components/sections/OurBrands';
-import { HomeCustomBlocks } from '@/components/blocks/HomeCustomBlocks';
 import { ApertureTransition } from '@/components/shared/ApertureTransition';
 
 export function HomeClient() {

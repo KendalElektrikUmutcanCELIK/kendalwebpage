@@ -28,7 +28,9 @@ export function TextImageBlock({
           className="object-cover"
         />
       </div>
-      <div className={`w-full md:w-1/2 ${imageFirst ? 'md:order-2' : 'md:order-1'}`}>
+      <div
+        className={`w-full md:w-1/2 ${imageFirst ? 'md:order-2' : 'md:order-1'}`}
+      >
         <h2 className="text-3xl font-bold mb-4 text-white tracking-tight">
           {data.heading?.[language] ?? ''}
         </h2>

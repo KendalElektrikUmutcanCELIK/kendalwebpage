@@ -41,6 +41,22 @@ RewriteCond %{REQUEST_URI} !^/(_next|images|urun-bilgi-formlari|brand)(/|$)
 RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]+$
 RewriteRule ^(.*)$ /brand/global/$1 [L]
 
+# --- Ürün slug yönlendirmesi (sadece ana domain) ---
+# (main)/[...slug] artık ürünler için HİÇ statik sayfa üretmiyor — sitenin
+# kendi linkleri zaten hep marka route'unu (brand/[brandName]/urunler/...)
+# kullanıyor, bu kısa link (kendalelektrik.com/{slug}) sadece dışarıdan gelen
+# eski bağlantılar için var (deploy'daki dosya sayısını ciddi azaltmak için,
+# bkz. scripts/generate-legacy-redirects.js). Bir ürün slug'ına (gerçek bir
+# dosya/klasöre karşılık gelmeyen tek segmentli istek) gelindiğinde, tek bir
+# ortak sayfaya (urun-yonlendirme) rewrite edilir; o sayfa
+# public/legacy-redirects.json'dan doğru ürünü bulup tarayıcıda oraya atlar.
+RewriteCond %{HTTP_HOST} ^(www\.)?kendalelektrik\.com$ [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} ^/[^/]+/?$
+RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]+$
+RewriteRule ^ /urun-yonlendirme/ [L]
+
 # --- Özel 404 sayfası (Next'in ürettiği statik 404.html) ---
 ErrorDocument 404 /404.html
 

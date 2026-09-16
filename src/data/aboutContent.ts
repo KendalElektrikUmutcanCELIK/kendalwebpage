@@ -1,5 +1,5 @@
-import aboutContentData from './aboutContent.json';
 import type { Language } from '@/lib/i18n/LanguageProvider';
+import aboutContentData from './aboutContent.json';
 
 export interface AboutBeat {
   title: string;
@@ -13,8 +13,10 @@ export interface AboutContent {
   beats: AboutBeat[];
 }
 
-const aboutContent: Record<Language, AboutContent> =
-  aboutContentData as Record<Language, AboutContent>;
+const aboutContent: Record<Language, AboutContent> = aboutContentData as Record<
+  Language,
+  AboutContent
+>;
 
 export const getAboutContent = (language: Language): AboutContent =>
   aboutContent[language];

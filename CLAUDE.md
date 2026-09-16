@@ -58,12 +58,27 @@ src/app/
 │   │                            #   CompanyVideo, NewsTicker, NewsPreview, CatalogCTA, ApertureTransition
 │   │                            #   (Certifications moved off the homepage to its own /sertifikalar route)
 │   │
-│   ├── [slug]/                  # SHORT product URL: /{slug} — e.g. /ges230-20w-torch-led-ampul-beyaz
-│   │   ├── page.tsx              # generateStaticParams = getAllSlugs() (every slug-map.json key, incl. non-canonical)
-│   │   │                         # generateMetadata (inline, does NOT reuse lib/productMetadata.ts — duplicated logic)
-│   │   │                         # redirects to canonical slug if decodedSlug !== getSlugByProductId(product.id)
-│   │   │                         # renders ProductDetailClient + ProductSchema + BreadcrumbSchema
-│   │   └── ProductDetailClient.tsx  # "use client" — main product detail UI, brand-themed
+│   ├── [...slug]/                # SHORT product URL: /{slug} — e.g. /ges230-20w-torch-led-ampul-beyaz
+│   │   │                         # (catch-all, not [slug] — also serves admin-panel custom pages from pages.json)
+│   │   ├── page.tsx              # generateStaticParams = ONLY custom-page slugs (pages.json) — as of 2026-09-16
+│   │   │                         # this route builds ZERO product pages, canonical or not. The site's own links
+│   │   │                         # never point here (always brand/[brandName]/urunler/...), so ALL product slugs
+│   │   │                         # (all 4200 slug-map.json keys) redirect via urun-yonlendirme/ below instead of
+│   │   │                         # being pre-built — cut static-export file count from 32k to ~7.6k.
+│   │   │                         # If a segment DOES match a product slug (dev mode only — never happens in a
+│   │   │                         # static-export build since none are in generateStaticParams), the page component
+│   │   │                         # immediately redirect()s to getProductCanonicalUrl(product) (absolute brand URL).
+│   │   └── ProductDetailClient.tsx  # "use client" — main product detail UI, brand-themed; NOT used by this route
+│   │                                 # anymore (it never renders a product) — imported cross-route by
+│   │                                 # brand/[brandName]/urunler/[category]/[slug]/page.tsx, the actual renderer.
+│   │
+│   ├── urun-yonlendirme/         # Product-slug resolver: (main)/.htaccess + web.config rewrite ANY single-segment
+│   │   └── page.tsx              # request that isn't a real file/dir here (i.e. every product slug, canonical or
+│   │                             # legacy). Client component fetches public/legacy-redirects.json (built by
+│   │                             # scripts/generate-legacy-redirects.js, runs before `next build`, gitignored —
+│   │                             # maps ALL 4200 slug-map.json keys → canonical brand-subdomain URL) and
+│   │                             # window.location.replace()s there. Keeps every short/legacy link working without
+│   │                             # pre-building a single static page for any of them.
 │   │
 │   │   # NOTE: `(main)/urunler` (brand-neutral canonical product listing/detail under www) was REMOVED
 │   │   # ("http://localhost:3000/urunler kaldırıldı" commit). The only canonical product route left is

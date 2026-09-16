@@ -5,7 +5,7 @@ import { Certifications } from '@/components/sections/Certifications';
 export const metadata: Metadata = {
   title: 'Sertifikalarımız | Kendal Elektrik',
   description:
-    'Kendal Elektrik\'in ISO, TSE, Entegre Kalite Politikası, Yerli Malı ve Türk Patent - Marka Tescil sertifikaları.',
+    "Kendal Elektrik'in ISO, TSE, Entegre Kalite Politikası, Yerli Malı ve Türk Patent - Marka Tescil sertifikaları.",
   alternates: { canonical: '/sertifikalar' },
 };
 

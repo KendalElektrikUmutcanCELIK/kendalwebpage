@@ -1,5 +1,5 @@
-import missionVisionData from './missionVision.json';
 import type { Language } from '@/lib/i18n/LanguageProvider';
+import missionVisionData from './missionVision.json';
 
 export interface MissionVisionEntry {
   title: string;

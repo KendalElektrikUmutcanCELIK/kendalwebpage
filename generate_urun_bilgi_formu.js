@@ -34,7 +34,8 @@ function combineValue(trCombined, enCombined) {
   if (trCombined.trim().toLowerCase() === enCombined.trim().toLowerCase()) {
     return trCombined;
   }
-  const separator = trCombined.includes('/') || enCombined.includes('/') ? ' — ' : ' / ';
+  const separator =
+    trCombined.includes('/') || enCombined.includes('/') ? ' — ' : ' / ';
   return `${trCombined}${separator}${enCombined}`;
 }
 
@@ -59,21 +60,33 @@ function buildRows(product) {
 
   const rows = [];
   for (const [label, { trValues, enValues }] of grouped) {
-    rows.push({ label, value: combineValue(trValues.join(' / '), enValues.join(' / ')) });
+    rows.push({
+      label,
+      value: combineValue(trValues.join(' / '), enValues.join(' / ')),
+    });
   }
 
   const catTr = product.category?.tr?.[0];
   const catEn = product.category?.en?.[0];
   if (catTr && catEn) {
-    rows.push({ label: 'Kategori / Category', value: combineValue(catTr, catEn) });
+    rows.push({
+      label: 'Kategori / Category',
+      value: combineValue(catTr, catEn),
+    });
   }
-  rows.push({ label: 'Marka / Brand', value: (product.brand || 'k2').toUpperCase() });
+  rows.push({
+    label: 'Marka / Brand',
+    value: (product.brand || 'k2').toUpperCase(),
+  });
   return rows;
 }
 
 function rowsToHtml(rows) {
   return rows
-    .map((r) => `<tr><td class="label">${r.label}</td><td class="value">${r.value}</td></tr>`)
+    .map(
+      (r) =>
+        `<tr><td class="label">${r.label}</td><td class="value">${r.value}</td></tr>`,
+    )
     .join('\n                    ');
 }
 
@@ -331,7 +344,8 @@ function buildHtml(product, { kendalLogo, brandLogo, productImage }) {
 
 function validateProduct(product) {
   if (!product.name?.tr || !product.name?.en) return 'name.tr/en eksik';
-  if (!product.attributes?.tr?.length || !product.attributes?.en?.length) return 'attributes.tr/en eksik';
+  if (!product.attributes?.tr?.length || !product.attributes?.en?.length)
+    return 'attributes.tr/en eksik';
   if (!product.image) return 'image alanı eksik';
   const imgPath = path.join(repoPath, 'public/images', product.image);
   if (!fs.existsSync(imgPath)) return `görsel bulunamadı: ${product.image}`;
@@ -342,14 +356,19 @@ async function generateOne(browser, kendalLogo, product) {
   const brand = product.brand || 'k2';
   const brandLogoPath = BRAND_LOGOS[brand] || BRAND_LOGOS.k2;
   const brandLogo = toBase64DataUri(brandLogoPath);
-  const productImage = toBase64DataUri(path.join(repoPath, 'public/images', product.image));
+  const productImage = toBase64DataUri(
+    path.join(repoPath, 'public/images', product.image),
+  );
 
   const html = buildHtml(product, { kendalLogo, brandLogo, productImage });
 
   const page = await browser.newPage();
   try {
     await page.setContent(html, { waitUntil: 'networkidle0' });
-    const pdfPath = path.join(OUTPUT_DIR, `${product.model} Ürün Bilgi Formu.pdf`);
+    const pdfPath = path.join(
+      OUTPUT_DIR,
+      `${product.model} Ürün Bilgi Formu.pdf`,
+    );
     await page.pdf({
       path: pdfPath,
       format: 'A4',
@@ -383,7 +402,9 @@ function findProductsMissingPdf() {
     const model = (product.model || '').toUpperCase();
     const nameTr = (product.name?.tr || '').toUpperCase();
     return !existing.some(
-      (code) => model.includes(code.toUpperCase()) || nameTr.includes(code.toUpperCase()),
+      (code) =>
+        model.includes(code.toUpperCase()) ||
+        nameTr.includes(code.toUpperCase()),
     );
   });
 }
@@ -429,7 +450,11 @@ async function main() {
         const result = await generateOne(browser, kendalLogo, product);
         successCount++;
         if (result.size < 20_000 || result.size > 5_000_000) {
-          warnings.push({ id, model: product.model, reason: `olağandışı dosya boyutu: ${result.size} byte` });
+          warnings.push({
+            id,
+            model: product.model,
+            reason: `olağandışı dosya boyutu: ${result.size} byte`,
+          });
         }
       } catch (e) {
         failed.push({ id, model: product.model, reason: e.message });
@@ -450,15 +475,18 @@ async function main() {
 
   if (blocked.length) {
     console.log('\nEngellenenler:');
-    for (const b of blocked) console.log(` - ${b.id} (${b.model || '?'}): ${b.reason}`);
+    for (const b of blocked)
+      console.log(` - ${b.id} (${b.model || '?'}): ${b.reason}`);
   }
   if (failed.length) {
     console.log('\nHata alanlar:');
-    for (const f of failed) console.log(` - ${f.id} (${f.model || '?'}): ${f.reason}`);
+    for (const f of failed)
+      console.log(` - ${f.id} (${f.model || '?'}): ${f.reason}`);
   }
   if (warnings.length) {
     console.log('\nUyarılar:');
-    for (const w of warnings) console.log(` - ${w.id} (${w.model || '?'}): ${w.reason}`);
+    for (const w of warnings)
+      console.log(` - ${w.id} (${w.model || '?'}): ${w.reason}`);
   }
 
   const reportPath = path.join(repoPath, 'urun_bilgi_formu_rapor.json');
