@@ -14,19 +14,19 @@ const BRAND_META: Record<
   { host: string; title: string; description: string }
 > = {
   k2: {
-    host: 'https://k2.kendalelektrik.com.tr',
+    host: 'https://k2.kendalelektrik.com',
     title: 'Ürünlerimiz | K2 Led System',
     description:
       "K2 Led System'e ait tüm yerli üretim LED aydınlatma armatürlerini inceleyin.",
   },
   vanti: {
-    host: 'https://vanti.kendalelektrik.com.tr',
+    host: 'https://vanti.kendalelektrik.com',
     title: 'Ürünlerimiz | Vanti',
     description:
       'Vanti markasına ait tüm vantilatör ve havalandırma ürünlerini inceleyin.',
   },
   global: {
-    host: 'https://global.kendalelektrik.com.tr',
+    host: 'https://global.kendalelektrik.com',
     title: 'Ürünlerimiz | Kendal Global',
     description:
       'Kendal Global markasına ait tüm aydınlatma ve elektrik ürünlerini inceleyin.',

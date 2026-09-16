@@ -4,7 +4,7 @@ import type { NextConfig } from 'next';
 // hedefi var:
 //  - GitHub Pages: geliştirme sürecinde yöneticinin önizleyebilmesi için,
 //    repo adı alt dizin olduğundan basePath/assetPrefix gerekiyor.
-//  - cPanel (kendalelektrik.com.tr): gerçek üretim ortamı, kök dizine
+//  - cPanel (kendalelektrik.com): gerçek üretim ortamı, kök dizine
 //    yükleniyor, basePath OLMAMALI.
 // `next build` varsayılan olarak cPanel hedefini üretir. GitHub Pages
 // build'i NEXT_PUBLIC_BUILD_MODE=ghpages ile tetiklenir (bkz.

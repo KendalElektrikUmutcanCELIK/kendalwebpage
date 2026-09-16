@@ -23,7 +23,7 @@ render_header('Yayınla', 'deploy');
 <div class="panel-header">
   <h1>Yayınla</h1>
 </div>
-<p class="page-subtitle">Site Ayarları ve Sayfalar'daki değişiklikleri gerçek siteye gönderir. Yayınladıktan ~10-15 dakika sonra www.kendalelektrik.com.tr güncellenmiş olur.</p>
+<p class="page-subtitle">Site Ayarları ve Sayfalar'daki değişiklikleri gerçek siteye gönderir. Yayınladıktan ~10-15 dakika sonra www.kendalelektrik.com güncellenmiş olur.</p>
 
 <?php if (!github_deploy_configured()): ?>
   <div class="error-banner">

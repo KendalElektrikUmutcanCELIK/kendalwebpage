@@ -6,8 +6,8 @@ export const OrganizationSchema = () => {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Kendal Elektrik',
-    url: 'https://www.kendalelektrik.com.tr',
-    logo: 'https://www.kendalelektrik.com.tr/images/kendal-logo.svg',
+    url: 'https://www.kendalelektrik.com',
+    logo: 'https://www.kendalelektrik.com/images/kendal-logo.svg',
     foundingDate: '1997',
     description: 'Innovative lighting and electrical equipment manufacturer.',
     address: {

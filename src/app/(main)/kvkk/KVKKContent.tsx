@@ -133,7 +133,7 @@ export const KVKKContent = () => {
                   <strong>Faks:</strong> 0212 243 18 96
                 </li>
                 <li>
-                  <strong>İnternet Sitesi:</strong> www.kendalelektrik.com.tr
+                  <strong>İnternet Sitesi:</strong> www.kendalelektrik.com
                 </li>
                 <li>
                   <strong>Eposta Adresi:</strong> info@kendalelektrik.com.tr
@@ -307,7 +307,7 @@ export const KVKKContent = () => {
                 tespit edici gerekli bilgiler ile KVK Kanunu’nun 11. maddesinde
                 belirtilen haklardan kullanmayı talep ettiğiniz hakkınıza
                 yönelik açıklamalarınızı içeren talebinizi;
-                www.kendalelektrik.com.tr adresindeki formu doldurarak, formun
+                www.kendalelektrik.com adresindeki formu doldurarak, formun
                 imzalı bir nüshasını Şahkulu Mahallesi Büyükhendek cad. No 28
                 Beyoğlu/İstanbul /İstanbul adresine kimliğinizi tespit edici
                 belgeler ile bizzat elden iletebilir, noter kanalıyla veya KVK
@@ -447,7 +447,7 @@ export const KVKKContent = () => {
                   <strong>Fax:</strong> +90 212 243 18 96
                 </li>
                 <li>
-                  <strong>Website:</strong> www.kendalelektrik.com.tr
+                  <strong>Website:</strong> www.kendalelektrik.com
                 </li>
                 <li>
                   <strong>Email Address:</strong> info@kendalelektrik.com.tr
@@ -624,7 +624,7 @@ export const KVKKContent = () => {
                 your identity and your explanations regarding your right that
                 you request to use among the rights specified in Article 11 of
                 the KVKK Law; by filling out the form at
-                www.kendalelektrik.com.tr, hand-delivering a signed copy of the
+                www.kendalelektrik.com, hand-delivering a signed copy of the
                 form along with identifying documents to Şahkulu Mahallesi
                 Büyükhendek cad. No 28 Beyoğlu/Istanbul address, sending it via
                 a notary public or other methods specified in the KVKK Law, or

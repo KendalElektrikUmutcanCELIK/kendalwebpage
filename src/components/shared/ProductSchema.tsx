@@ -36,7 +36,7 @@ export const ProductSchema = ({
     name: product.name.tr,
     sku: product.model,
     image: [product.image, ...(product.images || [])].map(
-      (img) => `https://www.kendalelektrik.com.tr${getProductImageUrl(img)}`,
+      (img) => `https://www.kendalelektrik.com${getProductImageUrl(img)}`,
     ),
     description: `${product.name.tr}${category ? ` - ${category}` : ''} (${product.model})`,
     category,
@@ -47,7 +47,7 @@ export const ProductSchema = ({
     manufacturer: {
       '@type': 'Organization',
       name: 'Kendal Elektrik',
-      url: 'https://www.kendalelektrik.com.tr',
+      url: 'https://www.kendalelektrik.com',
     },
     ...(isDomesticProduction ? { countryOfOrigin: 'TR' } : {}),
     additionalProperty: attributes

@@ -17,7 +17,7 @@ Genel plan için proje kökündeki `ADMIN_PANEL_PLAN.md` dosyasına bakın. Bu R
 - `settings.php` — footer'daki paylaşılan iletişim bilgileri/sosyal medya linkleri. Doğrudan `src/data/settings.json`'a (gerçek site verisi) yazıyor ve `Footer.tsx`/`BrandFooter.tsx`/`IletisimClient.tsx`/`OrganizationSchema.tsx` buradan okuyor. Kaydettiğinde bir sonraki build/dev-server yenilemesinde gerçek siteye yansır.
 
 **Blok tabanlı yeni sayfalar (Faz 6, sürüyor):**
-- `pages.php`/`page-edit.php` — blok tabanlı serbest sayfa oluşturma/düzenleme/silme. `settings.php` gibi izole değil, doğrudan `src/data/pages.json`'a (gerçek site verisi) yazıyor; sayfalar `www.kendalelektrik.com.tr/sayfa/{slug}` adresinde yayınlanır (`src/app/(main)/sayfa/[slug]/`). Slug oluşturulduktan sonra değiştirilemez. Blok editörü: 4 blok tipi (Başlık+Metin, Metin+Görsel, Buton/CTA, Görsel Galerisi) eklenebilir/silinebilir/sıralanabilir; fotoğraflar mevcut `compress_product_image()` ile otomatik WebP'ye çevrilip gerçek `public/images/sayfalar/` altına kaydediliyor. "Sayfayı Sil" ile sayfa ve tüm görselleri kalıcı silinebilir. **Sağlamlaştırma:** `save_pages()` her kayıttan önce yapısal bütünlüğü doğruluyor (bkz. `ADMIN_PANEL_PLAN.md` Faz 6 Aşama 5), ayrıca Next.js tarafındaki blok bileşenleri boş/doldurulmamış bloklarda `null` dönerek build'i asla kırmıyor — gerçek bir `npm run build` ile kanıtlandı.
+- `pages.php`/`page-edit.php` — blok tabanlı serbest sayfa oluşturma/düzenleme/silme. `settings.php` gibi izole değil, doğrudan `src/data/pages.json`'a (gerçek site verisi) yazıyor; sayfalar `www.kendalelektrik.com/sayfa/{slug}` adresinde yayınlanır (`src/app/(main)/sayfa/[slug]/`). Slug oluşturulduktan sonra değiştirilemez. Blok editörü: 4 blok tipi (Başlık+Metin, Metin+Görsel, Buton/CTA, Görsel Galerisi) eklenebilir/silinebilir/sıralanabilir; fotoğraflar mevcut `compress_product_image()` ile otomatik WebP'ye çevrilip gerçek `public/images/sayfalar/` altına kaydediliyor. "Sayfayı Sil" ile sayfa ve tüm görselleri kalıcı silinebilir. **Sağlamlaştırma:** `save_pages()` her kayıttan önce yapısal bütünlüğü doğruluyor (bkz. `ADMIN_PANEL_PLAN.md` Faz 6 Aşama 5), ayrıca Next.js tarafındaki blok bileşenleri boş/doldurulmamış bloklarda `null` dönerek build'i asla kırmıyor — gerçek bir `npm run build` ile kanıtlandı.
 
 **Navbar Linkleri:**
 - `navbar-links.php` — ana sitenin üst menüsüne (navbar) "Sayfalarımız" başlığı altında ek link ekleme/silme/sıralama. Doğrudan gerçek `src/data/navLinks.json`'a yazıyor; `Navbar.tsx` bunu okuyup **hiç link yoksa menüye ek bir bölüm eklemiyor** (mevcut menüde hiçbir değişiklik/regresyon olmuyor), en az 1 link varsa "Sayfalarımız" adında yeni bir açılır grup görünüyor. "Sayfalar" bölümünde oluşturulan bir sayfayı seçip adresini otomatik doldurma kolaylığı var.
@@ -84,7 +84,7 @@ Admin panelde "Yayınla" sayfası (`deploy.php`), Site Ayarları ve Sayfalar'dak
    - cPanel → **FTP Hesapları (FTP Accounts)** → yeni bir FTP hesabı oluştur (mümkünse ana hesabı değil, sadece `public_html`'e erişimi olan ayrı/kısıtlı bir hesap — güvenlik için).
    - Sunucu adresi (host), kullanıcı adı, şifreyi not al.
    - GitHub'da bu reponun sayfası → **Settings → Secrets and variables → Actions → New repository secret** ile şu 4 secret'ı ekle:
-     - `CPANEL_FTP_SERVER` (ör. `ftp.kendalelektrik.com.tr`)
+     - `CPANEL_FTP_SERVER` (ör. `ftp.kendalelektrik.com`)
      - `CPANEL_FTP_USERNAME`
      - `CPANEL_FTP_PASSWORD`
      - `CPANEL_FTP_SERVER_DIR` (hedef klasör, ör. `/public_html/`)
@@ -97,7 +97,7 @@ Her ikisi de tamamlanmadan "Yayınla" gerçek bir şey yapmaz (GitHub tarafı ol
 
 `admin-panel/` klasörünün **içeriğini** (klasörün kendisini değil) cPanel'de `public_html/admin/` altına yükleyin. Örn: Dosya Yöneticisi veya FTP ile `admin-panel/login.php` dosyası sunucuda `public_html/admin/login.php` olarak durmalı.
 
-Yükledikten sonra `https://www.kendalelektrik.com.tr/admin/` adresinden erişilebilir olur.
+Yükledikten sonra `https://www.kendalelektrik.com/admin/` adresinden erişilebilir olur.
 
 ## ⚠️ Şifreyi değiştirme (canlıya almadan önce ZORUNLU)
 

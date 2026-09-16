@@ -11,8 +11,8 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 # Kendal Webpage — Production Readiness Denetim Rolleri
 
 Bu proje `http://localhost:3000` üzerinde geliştiriliyor, canlıda
-`https://www.kendalelektrik.com.tr` (kök domain, cPanel/Apache, static export)
-altında yayınlanacak. Ayrıca `k2./vanti./global.kendalelektrik.com.tr`
+`https://www.kendalelektrik.com` (kök domain, cPanel/Apache, static export)
+altında yayınlanacak. Ayrıca `k2./vanti./global.kendalelektrik.com`
 subdomain'leri `public/.htaccess` üzerinden `/brand/{marka}/...` içine
 rewrite ediliyor (bkz. CLAUDE.md "Deployment model").
 
@@ -26,7 +26,7 @@ raporları okuyup çelişkileri çözer ve gerçekten kritik maddeleri koda uygu
   `*.localhost:3000` linkleri kasıtlıdır, sorun değildir — bkz. `OurBrands.tsx`,
   `Navbar.tsx`, `ProductDetailClient.tsx`).
 - `metadataBase`, `alternates.canonical`, OpenGraph/Twitter `url`/`images`
-  değerleri `https://www.kendalelektrik.com.tr` ile tutarlı mı.
+  değerleri `https://www.kendalelektrik.com` ile tutarlı mı.
 - `OrganizationSchema`, `ProductSchema`, `NewsArticleSchema`,
   `BreadcrumbSchema` içindeki URL'ler doğru domaine mi işaret ediyor.
 - `sitemap.ts` / `robots.ts` eksiksiz mi (yeni eklenmiş route var da

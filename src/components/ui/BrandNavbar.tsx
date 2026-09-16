@@ -240,7 +240,7 @@ export const BrandNavbar = ({ brandName }: BrandNavbarProps) => {
             {(t as any).brand_pages?.navbar?.cta || 'Bize Ulaşın'}
           </Link>
           <Link
-            href="https://www.kendalelektrik.com.tr"
+            href="https://www.kendalelektrik.com"
             className="mt-2 py-4 rounded-2xl flex items-center justify-center bg-[#111] hover:bg-black transition-colors shadow-lg border border-zinc-800"
           >
             <Image 
@@ -256,7 +256,7 @@ export const BrandNavbar = ({ brandName }: BrandNavbarProps) => {
 
       {/* Right Side Vertical Kendal Return Button (Desktop Only) */}
       <Link
-        href="https://www.kendalelektrik.com.tr"
+        href="https://www.kendalelektrik.com"
         className="fixed right-0 top-1/2 z-40 hidden md:flex items-center justify-center bg-[#111] shadow-[0_-4px_20px_rgba(0,0,0,0.5)] rounded-t-2xl px-6 py-4 border border-b-0 border-zinc-800 transition-all duration-300 origin-center -rotate-90 translate-x-[calc(50%-34px)] -translate-y-1/2 hover:translate-x-[calc(50%-44px)]"
       >
         <Image 

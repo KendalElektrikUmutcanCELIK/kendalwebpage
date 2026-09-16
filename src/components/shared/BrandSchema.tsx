@@ -7,25 +7,25 @@ const BRAND_INFO: Record<
   k2: {
     name: 'K2 Led System',
     description: 'Yerli üretim LED aydınlatma armatürleri markası.',
-    logo: 'https://www.kendalelektrik.com.tr/images/brands/k2-logo.svg',
+    logo: 'https://www.kendalelektrik.com/images/brands/k2-logo.svg',
   },
   vanti: {
     name: 'Vanti',
     description: 'Vantilatör ve havalandırma ürünleri markası.',
-    logo: 'https://www.kendalelektrik.com.tr/images/brands/vanti-logo.svg',
+    logo: 'https://www.kendalelektrik.com/images/brands/vanti-logo.svg',
   },
   global: {
     name: 'Kendal Global',
     description:
       'Uluslararası pazarlara yönelik aydınlatma ve elektrik ürünleri markası.',
-    logo: 'https://www.kendalelektrik.com.tr/images/brands/global-logo.svg',
+    logo: 'https://www.kendalelektrik.com/images/brands/global-logo.svg',
   },
 };
 
 const BRAND_HOSTS: Record<string, string> = {
-  k2: 'https://k2.kendalelektrik.com.tr',
-  vanti: 'https://vanti.kendalelektrik.com.tr',
-  global: 'https://global.kendalelektrik.com.tr',
+  k2: 'https://k2.kendalelektrik.com',
+  vanti: 'https://vanti.kendalelektrik.com',
+  global: 'https://global.kendalelektrik.com',
 };
 
 export const BrandSchema = ({ brandName }: { brandName: string }) => {
@@ -42,7 +42,7 @@ export const BrandSchema = ({ brandName }: { brandName: string }) => {
     parentOrganization: {
       '@type': 'Organization',
       name: 'Kendal Elektrik',
-      url: 'https://www.kendalelektrik.com.tr',
+      url: 'https://www.kendalelektrik.com',
     },
   };
 

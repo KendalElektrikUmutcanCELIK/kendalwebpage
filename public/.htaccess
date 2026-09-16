@@ -9,8 +9,8 @@ RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # --- Ana domain için www zorunlu kıl (brand subdomain'lerini etkilemez) ---
-RewriteCond %{HTTP_HOST} ^kendalelektrik\.com\.tr$ [NC]
-RewriteRule ^(.*)$ https://www.kendalelektrik.com.tr/$1 [L,R=301]
+RewriteCond %{HTTP_HOST} ^kendalelektrik\.com$ [NC]
+RewriteRule ^(.*)$ https://www.kendalelektrik.com/$1 [L,R=301]
 
 # --- Eski ürün URL'lerinde "*" karakteri geçen linkler (ör. eski siteden gelen
 # .../kasa*beyaz adresleri): statik export bu karakteri dosya adında
@@ -26,17 +26,17 @@ RewriteRule ^ /%1-%2 [R=301,L]
 # bu iş burada yapılıyor. ÖNKOŞUL: cPanel'de bu 3 subdomain, ana sitenin
 # document root'u ile AYNI klasöre bakmalı (ayrı bir alt klasöre değil),
 # aksi halde _next/images gibi paylaşılan dosyalar bulunamaz.
-RewriteCond %{HTTP_HOST} ^k2\.kendalelektrik\.com\.tr$ [NC]
+RewriteCond %{HTTP_HOST} ^k2\.kendalelektrik\.com$ [NC]
 RewriteCond %{REQUEST_URI} !^/(_next|images|urun-bilgi-formlari|brand)(/|$)
 RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]+$
 RewriteRule ^(.*)$ /brand/k2/$1 [L]
 
-RewriteCond %{HTTP_HOST} ^vanti\.kendalelektrik\.com\.tr$ [NC]
+RewriteCond %{HTTP_HOST} ^vanti\.kendalelektrik\.com$ [NC]
 RewriteCond %{REQUEST_URI} !^/(_next|images|urun-bilgi-formlari|brand)(/|$)
 RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]+$
 RewriteRule ^(.*)$ /brand/vanti/$1 [L]
 
-RewriteCond %{HTTP_HOST} ^global\.kendalelektrik\.com\.tr$ [NC]
+RewriteCond %{HTTP_HOST} ^global\.kendalelektrik\.com$ [NC]
 RewriteCond %{REQUEST_URI} !^/(_next|images|urun-bilgi-formlari|brand)(/|$)
 RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]+$
 RewriteRule ^(.*)$ /brand/global/$1 [L]

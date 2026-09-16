@@ -321,7 +321,7 @@ function buildHtml(product, { kendalLogo, brandLogo, productImage }) {
     </div>
 
     <div class="footer">
-        Daha fazla bilgi için / For more information: <a href="https://www.kendalelektrik.com.tr">www.kendalelektrik.com.tr</a>
+        Daha fazla bilgi için / For more information: <a href="https://www.kendalelektrik.com">www.kendalelektrik.com</a>
         | <img src="${kendalLogo}" alt="Kendal Elektrik Logo" />
     </div>
 </body>

@@ -154,7 +154,7 @@ export const BrandFooter = ({ brandName }: BrandFooterProps) => {
           <ul className="space-y-3 text-sm mb-8">
             <li>
               <a
-                href="https://www.kendalelektrik.com.tr/kvkk"
+                href="https://www.kendalelektrik.com/kvkk"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-[var(--brand-red)] transition-colors"
@@ -165,7 +165,7 @@ export const BrandFooter = ({ brandName }: BrandFooterProps) => {
             </li>
             <li>
               <a
-                href="https://www.kendalelektrik.com.tr/gizlilik-cerez-politikasi"
+                href="https://www.kendalelektrik.com/gizlilik-cerez-politikasi"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-[var(--brand-red)] transition-colors"

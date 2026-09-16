@@ -13,13 +13,13 @@ export const NewsArticleSchema = ({ news }: { news: NewsItem }) => {
     '@context': 'https://schema.org',
     '@type': 'NewsArticle',
     headline: news.title,
-    image: news.images.map((img) => `https://www.kendalelektrik.com.tr${img}`),
+    image: news.images.map((img) => `https://www.kendalelektrik.com${img}`),
     ...(isoDate ? { datePublished: isoDate } : {}),
     author: [
       {
         '@type': 'Organization',
         name: 'Kendal Elektrik',
-        url: 'https://www.kendalelektrik.com.tr',
+        url: 'https://www.kendalelektrik.com',
       },
     ],
     publisher: {
@@ -27,13 +27,13 @@ export const NewsArticleSchema = ({ news }: { news: NewsItem }) => {
       name: 'Kendal Elektrik',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.kendalelektrik.com.tr/images/kendal-logo.svg',
+        url: 'https://www.kendalelektrik.com/images/kendal-logo.svg',
       },
     },
     description: news.content[0]?.slice(0, 155) ?? '',
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://www.kendalelektrik.com.tr/haberler/${news.id}`,
+      '@id': `https://www.kendalelektrik.com/haberler/${news.id}`,
     },
   };
 

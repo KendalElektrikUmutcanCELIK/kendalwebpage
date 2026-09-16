@@ -175,7 +175,7 @@ export const Navbar = () => {
               ? 'http://k2.localhost:3000'
               : isGithubPagesBuild
                 ? '/brand/k2'
-                : 'https://k2.kendalelektrik.com.tr',
+                : 'https://k2.kendalelektrik.com',
           external: true,
           label: (
             <div className="flex items-center gap-3">
@@ -201,7 +201,7 @@ export const Navbar = () => {
               ? 'http://vanti.localhost:3000'
               : isGithubPagesBuild
                 ? '/brand/vanti'
-                : 'https://vanti.kendalelektrik.com.tr',
+                : 'https://vanti.kendalelektrik.com',
           external: true,
           label: (
             <div className="flex items-center gap-3">
@@ -227,7 +227,7 @@ export const Navbar = () => {
               ? 'http://global.localhost:3000'
               : isGithubPagesBuild
                 ? '/brand/global'
-                : 'https://global.kendalelektrik.com.tr',
+                : 'https://global.kendalelektrik.com',
           external: true,
           label: (
             <div className="flex items-center gap-3">

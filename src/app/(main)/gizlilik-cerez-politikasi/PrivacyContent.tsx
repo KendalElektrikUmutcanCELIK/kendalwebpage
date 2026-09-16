@@ -19,7 +19,7 @@ export const PrivacyContent = () => {
               (“Şirket”, “biz” ya da “bizim”) müşterilerimizin gizlilik
               haklarının sürdürülmesine önem veriyor ve saygı gösteriyoruz. Bu
               doğrultuda işbu Gizlilik Politikasını oluşturduk.
-              www.kendalelektrik.com.tr Sitesini (“Site”) ziyaret ettiğinizde
+              www.kendalelektrik.com Sitesini (“Site”) ziyaret ettiğinizde
               edinebileceğiniz bilgilerden tarafınızı haberdar etmek ve neden
               müşteri bilgilerine ihtiyaç duyduğumuz, bilgileri hangi amaçlarla
               kullandığımız, hangi koşullar altında bilgileri ifşa etmek zorunda
@@ -248,7 +248,7 @@ export const PrivacyContent = () => {
             </p>
             <ul className="list-disc pl-6 text-gray-300 leading-relaxed mb-10 space-y-2">
               <li>
-                Müşteri Hizmetleri Grubu: www.kendalelektrik.com.tr adresinden
+                Müşteri Hizmetleri Grubu: www.kendalelektrik.com adresinden
                 bize ulaşabilirsiniz. Veya 0212 482 75 90 - 91 no’lu telefondan
                 arayabilirsiniz.
               </li>
@@ -337,7 +337,7 @@ export const PrivacyContent = () => {
               our customers' privacy rights. Accordingly, we have created this
               Privacy Policy. We have created this privacy policy statement to
               inform you about the information you may obtain when you visit the
-              www.kendalelektrik.com.tr Site (“Site”) and to enlighten you about
+              www.kendalelektrik.com Site (“Site”) and to enlighten you about
               why we need customer information, for what purposes we use the
               information, under what conditions we may have to disclose the
               information, and how you can restrict us regarding the use of such
@@ -550,7 +550,7 @@ export const PrivacyContent = () => {
             <ul className="list-disc pl-6 text-gray-300 leading-relaxed mb-10 space-y-2">
               <li>
                 Customer Service Group: You can reach us at
-                www.kendalelektrik.com.tr. Or you can call 0212 482 75 90 - 91.
+                www.kendalelektrik.com. Or you can call 0212 482 75 90 - 91.
               </li>
               <li>
                 If you have any brochure or message sent to us, please state

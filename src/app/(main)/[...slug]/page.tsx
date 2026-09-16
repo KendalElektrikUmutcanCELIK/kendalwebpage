@@ -138,7 +138,7 @@ export default async function SlugPage({
         <ProductSchema product={product} canonicalUrl={canonicalUrl} />
         <BreadcrumbSchema
           items={[
-            { name: 'Anasayfa', url: 'https://www.kendalelektrik.com.tr/' },
+            { name: 'Anasayfa', url: 'https://www.kendalelektrik.com/' },
             { name: 'Ürünler', url: brandUrunlerUrl },
             ...(category
               ? [

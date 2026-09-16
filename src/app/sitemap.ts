@@ -4,7 +4,7 @@ import { BRAND_HOSTS, getProductCanonicalUrl, products } from '@/data/products';
 
 export const dynamic = 'force-static';
 
-const WWW_HOST = 'https://www.kendalelektrik.com.tr';
+const WWW_HOST = 'https://www.kendalelektrik.com';
 const BRAND_KEYS = ['k2', 'vanti', 'global'] as const;
 const HOSTS = ['www', ...BRAND_KEYS] as const;
 

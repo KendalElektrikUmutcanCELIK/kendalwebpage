@@ -26,10 +26,10 @@ This document contains high-level routing, component inventory, data schemas, an
 
 The site is built as a **static export** and deployed to two different targets from the same codebase (`next.config.ts`):
 
-- **Production (cPanel, `kendalelektrik.com.tr`)**: root path, `NEXT_PUBLIC_BUILD_MODE` unset. `output: "export"`, `images.unoptimized: true`, `trailingSlash: true`.
+- **Production (cPanel, `kendalelektrik.com`)**: root path, `NEXT_PUBLIC_BUILD_MODE` unset. `output: "export"`, `images.unoptimized: true`, `trailingSlash: true`.
 - **GitHub Pages preview**: `NEXT_PUBLIC_BUILD_MODE=ghpages` (set in `.github/workflows/nextjs.yml`) → adds `basePath`/`assetPrefix: "/kendalwebpage"` since it's served from a repo-name subpath.
 - Every static asset reference (images, PDFs, icons) **must** go through `getAssetPath()` / `getBasePath()` (`src/lib/basePath.ts`) so it resolves correctly under both targets — used in 37+ files. When adding new image/PDF references, use this helper, don't hardcode `/images/...`.
-- There is **no `headers()` config** in `next.config.ts` — this is intentional: `output: "export"` doesn't support it. Security headers (CSP, HSTS, X-Frame-Options) are instead served by Apache via `public/.htaccess` on the cPanel side.
+- There is **no `headers()` config** in `next.config.ts` — this is intentional: `output: "export"` doesn't support it. Security headers (CSP, HSTS, X-Frame-Options) and the k2/vanti/global subdomain→`/brand/{name}` rewrite are instead served at the web-server level: `public/.htaccess` (Apache/mod_rewrite, cPanel `.com.tr` target) and `public/web.config` (IIS URL Rewrite, Windows/Plesk `kendalelektrik.com` target) carry the *same* rules in each server's own syntax — both ship in `public/` and get copied to the export root; whichever server a given host runs picks up the file it understands. Keep the two in sync when the rewrite/header logic changes.
 - No `redirects()`/`rewrites()` config either. The one redirect the app needs (canonical product slug) is done at runtime via `next/navigation`'s `redirect()` inside the page component — see the `[slug]` section below.
 - `images.qualities: [25, 50, 70, 75, 80, 100]` is set in all environments.
 
@@ -288,7 +288,7 @@ There is **no central `src/types/` domain-types folder** — domain types (`Prod
 
 ## Go-live / cPanel migration
 
-There is a pending migration from the old OpenCart (PHP) site at `kendalelektrik.com.tr` to this Next.js static export. See **`CPANEL_DEPLOYMENT_PLAN.md`** at the repo root for the full audit (subdomain routing feasibility, `.htaccess` rewrite, checklist) — read it before doing any deploy-related work on this project.
+There is a pending migration from the old OpenCart (PHP) site at `kendalelektrik.com.tr` to this Next.js static export, now targeting `kendalelektrik.com` (`.com`, not `.com.tr`) as the permanent production domain going forward — see [`CPANEL_DEPLOYMENT_PLAN.md`](CPANEL_DEPLOYMENT_PLAN.md) for the full audit (subdomain routing feasibility, `.htaccess` rewrite, checklist), though it and `ADMIN_PANEL_PLAN.md` still describe `kendalelektrik.com` as a separate test domain from an earlier stage — that's now superseded, `.com` is the real target. Email (`info@kendalelektrik.com.tr`) and the external `sanalpos`/`b2b` subdomains stay on `.com.tr` — they're separate systems, not part of this site. Read the deployment plan before doing any deploy-related work on this project.
 
 ## Adding products / processing photos
 

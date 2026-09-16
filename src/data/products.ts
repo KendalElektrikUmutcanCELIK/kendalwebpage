@@ -91,9 +91,9 @@ export function getSlugByProductId(id: string): string | undefined {
 }
 
 export const BRAND_HOSTS: Record<string, string> = {
-  k2: 'https://k2.kendalelektrik.com.tr',
-  vanti: 'https://vanti.kendalelektrik.com.tr',
-  global: 'https://global.kendalelektrik.com.tr',
+  k2: 'https://k2.kendalelektrik.com',
+  vanti: 'https://vanti.kendalelektrik.com',
+  global: 'https://global.kendalelektrik.com',
 };
 
 export interface CategoryGroupDef {

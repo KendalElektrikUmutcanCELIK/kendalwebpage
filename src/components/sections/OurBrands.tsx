@@ -17,7 +17,7 @@ const brands = [
         ? 'http://k2.localhost:3000'
         : isGithubPagesBuild
           ? '/brand/k2'
-          : 'https://k2.kendalelektrik.com.tr',
+          : 'https://k2.kendalelektrik.com',
     glow: '#f97316',
   },
   {
@@ -28,7 +28,7 @@ const brands = [
         ? 'http://vanti.localhost:3000'
         : isGithubPagesBuild
           ? '/brand/vanti'
-          : 'https://vanti.kendalelektrik.com.tr',
+          : 'https://vanti.kendalelektrik.com',
     glow: '#3b82f6',
   },
   {
@@ -39,7 +39,7 @@ const brands = [
         ? 'http://global.localhost:3000'
         : isGithubPagesBuild
           ? '/brand/global'
-          : 'https://global.kendalelektrik.com.tr',
+          : 'https://global.kendalelektrik.com',
     glow: '#facc15',
   },
 ];

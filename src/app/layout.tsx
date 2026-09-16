@@ -13,7 +13,7 @@ import { LightTemperatureProvider } from '@/lib/LightTemperatureProvider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.kendalelektrik.com.tr'),
+  metadataBase: new URL('https://www.kendalelektrik.com'),
   title: 'Kendal Elektrik - Global Manufacturer Since 1997',
   description: 'Innovative lighting and electrical equipment.',
   icons: {
