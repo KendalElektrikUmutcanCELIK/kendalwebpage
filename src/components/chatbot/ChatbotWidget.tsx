@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
+import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect';
 import { CHATBOT_CONTEXTS, type ChatLink, MENU_BACK } from './chatbotContent';
 
 interface Msg {
@@ -71,8 +72,10 @@ export const ChatbotWidget = () => {
   // correct when navigating between brand pages without a full reload.
   // The hostname-based subdomain case always gets a full page load on
   // brand switches, so it naturally re-evaluates too.
-  // biome-ignore lint/correctness/useExhaustiveDependencies: pathname is a trigger-only dep — the effect re-reads window.location.pathname itself rather than using the hook value directly.
-  useEffect(() => {
+  // useIsomorphicLayoutEffect (not useEffect): runs before the browser
+  // paints, so a fresh full-page load never flashes the 'main' (red)
+  // default before correcting to the actual brand color.
+  useIsomorphicLayoutEffect(() => {
     const host = window.location.hostname;
     if (host.startsWith('k2')) setAccentKey('k2');
     else if (host.startsWith('vanti')) setAccentKey('vanti');
