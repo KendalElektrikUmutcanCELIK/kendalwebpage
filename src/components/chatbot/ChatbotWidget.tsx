@@ -73,19 +73,32 @@ export const ChatbotWidget = () => {
   // The hostname-based subdomain case always gets a full page load on
   // brand switches, so it naturally re-evaluates too.
   // useIsomorphicLayoutEffect (not useEffect): runs before the browser
-  // paints, so a fresh full-page load never flashes the 'main' (red)
-  // default before correcting to the actual brand color.
+  // paints, avoiding an extra flash between hydration and this correction.
+  // It can't prevent the very first (pre-hydration) paint of a hard page
+  // load though — that one is handled separately by the beforeInteractive
+  // script in layout.tsx, which sets the --chatbot-* CSS vars the launcher
+  // button's style reads, before the browser paints anything at all. This
+  // effect keeps those same vars in sync afterwards (e.g. for the GH Pages
+  // path-based case, where switching brands is a soft navigation and the
+  // vars need updating without a fresh page load to re-run that script).
   useIsomorphicLayoutEffect(() => {
     const host = window.location.hostname;
-    if (host.startsWith('k2')) setAccentKey('k2');
-    else if (host.startsWith('vanti')) setAccentKey('vanti');
-    else if (host.startsWith('global')) setAccentKey('global');
+    let key: AccentKey = 'main';
+    if (host.startsWith('k2')) key = 'k2';
+    else if (host.startsWith('vanti')) key = 'vanti';
+    else if (host.startsWith('global')) key = 'global';
     else {
       const match = window.location.pathname.match(
         /\/brand\/(k2|vanti|global)(?:\/|$)/,
       );
-      setAccentKey(match ? (match[1] as AccentKey) : 'main');
+      if (match) key = match[1] as AccentKey;
     }
+    setAccentKey(key);
+    const c = ACCENTS[key];
+    const root = document.documentElement.style;
+    root.setProperty('--chatbot-bg', c.bg);
+    root.setProperty('--chatbot-text', c.text);
+    root.setProperty('--chatbot-glow', c.glow);
   }, [pathname]);
 
   useEffect(() => {
@@ -245,9 +258,9 @@ export const ChatbotWidget = () => {
         }`}
         style={{
           bottom: buttonBottom,
-          backgroundColor: accent.bg,
-          color: accent.text,
-          boxShadow: `0 8px 28px ${accent.glow}`,
+          backgroundColor: 'var(--chatbot-bg)',
+          color: 'var(--chatbot-text)',
+          boxShadow: '0 8px 28px var(--chatbot-glow)',
         }}
       >
         {isOpen ? (

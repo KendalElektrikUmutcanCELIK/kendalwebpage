@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import type React from 'react';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { getCategoryGroupForCategory, type Product } from '@/data/products';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
@@ -94,6 +94,13 @@ export default function CategoryFirstShowcase({
   );
   const [currentPage, setCurrentPage] = useState<number>(urlPage);
   const [searchQuery, setSearchQuery] = useState(urlQuery);
+  // Pending debounced URL update from typing in the search box (see
+  // handleSearchChange below) — any other call to updateUrl (category
+  // click, clear button, pagination) must cancel it first, otherwise it
+  // can fire later and stomp the URL with a stale search term.
+  const searchUrlTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
 
   useEffect(() => {
     const group = searchParams?.get('group') || null;
@@ -113,6 +120,10 @@ export default function CategoryFirstShowcase({
     page: number,
     query: string,
   ) => {
+    if (searchUrlTimeoutRef.current) {
+      clearTimeout(searchUrlTimeoutRef.current);
+      searchUrlTimeoutRef.current = null;
+    }
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       if (group) params.set('group', group);
@@ -499,12 +510,28 @@ export default function CategoryFirstShowcase({
     updateUrl(selectedGroup, null, 1, '');
   };
 
+  // Typing updates local state immediately (so the input never drops
+  // keystrokes), but the URL sync is debounced — updating it on every
+  // keystroke would fire router.replace() dozens of times per second,
+  // whose resulting searchParams change re-triggers the effect above that
+  // reads search state back OUT of the URL, racing the next keystroke and
+  // making fast typing look like it only accepts one letter at a time.
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
     setSearchQuery(val);
     setCurrentPage(1);
-    updateUrl(selectedGroup, selectedCategory, 1, val);
+    if (searchUrlTimeoutRef.current) clearTimeout(searchUrlTimeoutRef.current);
+    searchUrlTimeoutRef.current = setTimeout(() => {
+      updateUrl(selectedGroup, selectedCategory, 1, val);
+    }, 400);
   };
+
+  useEffect(() => {
+    return () => {
+      if (searchUrlTimeoutRef.current)
+        clearTimeout(searchUrlTimeoutRef.current);
+    };
+  }, []);
 
   const hasAnyFilterOptions =
     availableFilters.casings.length > 1 ||

@@ -33,6 +33,17 @@ body {
   --brand-red-deep: #B3000C;
   --global-bg: #000000;
   --global-text: #ffffff;
+
+  /* ChatbotWidget's launcher button color, keyed by brand (main/k2/vanti/global).
+     Set synchronously by a beforeInteractive script in layout.tsx (see
+     ChatbotWidget.tsx) BEFORE the browser's first paint, based on hostname —
+     the button's inline style reads this var instead of a literal color so a
+     hard page load on a brand subdomain never flashes 'main' red before
+     correcting to the brand color (React only knows the real hostname after
+     hydration, which is already too late to prevent a first-paint flash). */
+  --chatbot-bg: #E3000F;
+  --chatbot-text: #ffffff;
+  --chatbot-glow: rgba(227, 0, 15, 0.45);
 }
 
 /*
