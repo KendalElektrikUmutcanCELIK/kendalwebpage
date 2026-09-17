@@ -9,7 +9,7 @@ import { useLanguage } from '@/lib/i18n/LanguageProvider';
 import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect';
 
 export const RetailPresence = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const containerRef = useRef<HTMLElement>(null);
 
   useIsomorphicLayoutEffect(() => {
@@ -72,7 +72,7 @@ export const RetailPresence = () => {
                 className="retail-category-block flex flex-col bg-[var(--global-text)]/5 dark:bg-white/5 p-6 md:p-8 rounded-3xl border border-[var(--global-text)]/10 backdrop-blur-sm"
               >
                 <h3 className="text-xl md:text-2xl font-semibold mb-6 text-[var(--global-text)] opacity-90 text-center">
-                  {category.name}
+                  {category.name[language]}
                 </h3>
                 {/* Kategori içindeki marketler 2x2 grid */}
                 <div className="grid grid-cols-2 gap-4 h-full">
@@ -114,7 +114,7 @@ export const RetailPresence = () => {
               return (
                 <div className="retail-category-block lg:col-span-2 flex flex-col bg-[var(--global-text)]/5 dark:bg-white/5 p-6 md:p-8 rounded-3xl border border-[var(--global-text)]/10 backdrop-blur-sm">
                   <h3 className="text-xl md:text-2xl font-semibold mb-6 text-[var(--global-text)] opacity-90 text-center">
-                    {bottomCategory.name}
+                    {bottomCategory.name[language]}
                   </h3>
                   {/* Alt Kategori içindeki marketler 4x1 grid (Mobilde 2x2) */}
                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 h-full">

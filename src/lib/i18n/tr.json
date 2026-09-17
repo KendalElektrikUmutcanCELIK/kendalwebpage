@@ -19,7 +19,8 @@
     "brands": "Markalarımız & Ürünlerimiz",
     "catalog": "Katalog & Fiyat Listesi",
     "certifications": "Sertifikalar",
-    "references": "Referanslarımız"
+    "references": "Referanslarımız",
+    "contact": "İletişim"
   },
   "hero": {
     "badge": "1997'den Beri Küresel Üretici",
@@ -31,10 +32,13 @@
     "title": "Sertifikalarımız",
     "subtitle": "Kalite ve güvenilirlik anlayışımızı belgeleyen sertifikalarımız ve tescillerimiz.",
     "iso": "ISO Yönetim Sistemi Sertifikaları",
+    "iso_subtitle": "Kalite, çevre, iş sağlığı ve güvenliği ile bilgi güvenliği yönetim sistemlerimize ait sertifikalarımız.",
     "tse": "TSE Ürün Onay Sertifikaları",
+    "tse_subtitle": "Ürünlerimizin Türk Standartları Enstitüsü tarafından onaylandığını gösteren belgeler.",
     "kalite": "Entegre Kalite Politikası",
     "yerli": "Yerli Malı Belgeleri",
-    "marka_tescil": "Türk Patent - Marka Tescil Belgeleri"
+    "marka_tescil": "Türk Patent - Marka Tescil Belgeleri",
+    "marka_tescil_subtitle": "Kendal Elektrik markalarına ait resmi marka tescil belgelerimiz."
   },
   "products": {
     "title": "Ürün Galerisi",
@@ -179,6 +183,10 @@
       "principles_desc": "Kendal Elektrik ailesi olarak benimsediğimiz temel insan kaynakları prensipleri.",
       "human_rights_title": "İnsan Hakları ve Çalışan Hakları Politikası",
       "human_rights_desc": "Evrensel değerlere, eşitliğe ve işçi haklarına verdiğimiz önem."
+    },
+    "stats": {
+      "experience_label": "Yıllık Tecrübe",
+      "employment_label": "İstihdam"
     }
   },
   "company_stats": {

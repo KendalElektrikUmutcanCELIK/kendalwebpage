@@ -19,7 +19,8 @@
     "brands": "Our Brands & Products",
     "catalog": "Catalog",
     "certifications": "Certifications",
-    "references": "Our References"
+    "references": "Our References",
+    "contact": "Contact"
   },
   "hero": {
     "badge": "Global Manufacturer Since 1997",
@@ -31,10 +32,13 @@
     "title": "Our Certifications",
     "subtitle": "Certificates and registrations documenting our commitment to quality and reliability.",
     "iso": "ISO Management System Certificates",
+    "iso_subtitle": "Our certificates for quality, environmental, occupational health & safety, and information security management systems.",
     "tse": "TSE Product Approval Certificates",
+    "tse_subtitle": "Documents confirming that our products are approved by the Turkish Standards Institute.",
     "kalite": "Integrated Quality Policy",
     "yerli": "Domestic Product Certificates",
-    "marka_tescil": "Trademark Registration Certificates"
+    "marka_tescil": "Trademark Registration Certificates",
+    "marka_tescil_subtitle": "Our official trademark registration certificates for the Kendal Elektrik brands."
   },
   "products": {
     "title": "Product Gallery",
@@ -179,6 +183,10 @@
       "principles_desc": "The fundamental human resources principles we embrace as the Kendal Elektrik family.",
       "human_rights_title": "Human Rights & Employee Rights Policy",
       "human_rights_desc": "Our commitment to universal values, equality, and workers' rights."
+    },
+    "stats": {
+      "experience_label": "Years of Experience",
+      "employment_label": "Employees"
     }
   },
   "company_stats": {

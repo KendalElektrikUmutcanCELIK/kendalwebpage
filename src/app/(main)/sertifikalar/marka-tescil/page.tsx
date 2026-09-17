@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import React from 'react';
 import { CertificateGallery } from '@/components/sections/CertificateGallery';
 import { getCertificateImages } from '@/data/certificates';
 import { getAssetPath } from '@/lib/basePath';
@@ -16,11 +15,5 @@ const IMAGES = getCertificateImages('marka-tescil').map((file) =>
 );
 
 export default function MarkaTescilSertifikalariPage() {
-  return (
-    <CertificateGallery
-      title="Türk Patent - Marka Tescil Belgeleri"
-      subtitle="Kendal Elektrik markalarına ait resmi marka tescil belgelerimiz."
-      images={IMAGES}
-    />
-  );
+  return <CertificateGallery certKey="marka_tescil" images={IMAGES} />;
 }

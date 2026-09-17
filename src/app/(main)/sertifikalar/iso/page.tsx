@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import React from 'react';
 import { CertificateGallery } from '@/components/sections/CertificateGallery';
 import { getCertificateImages } from '@/data/certificates';
 import { getAssetPath } from '@/lib/basePath';
@@ -16,11 +15,5 @@ const IMAGES = getCertificateImages('iso').map((file) =>
 );
 
 export default function IsoSertifikalariPage() {
-  return (
-    <CertificateGallery
-      title="ISO Yönetim Sistemi Sertifikaları"
-      subtitle="Kalite, çevre, iş sağlığı ve güvenliği ile bilgi güvenliği yönetim sistemlerimize ait sertifikalarımız."
-      images={IMAGES}
-    />
-  );
+  return <CertificateGallery certKey="iso" images={IMAGES} />;
 }

@@ -369,7 +369,7 @@ export const Navbar = () => {
               href="/iletisim"
               className="flex items-center gap-1 hover:opacity-100 opacity-80 transition-opacity"
             >
-              İletişim
+              {(t as any).nav?.contact || 'İletişim'}
             </Link>
           </div>
         </div>
@@ -517,7 +517,7 @@ export const Navbar = () => {
               className="flex items-center justify-between w-full text-lg font-medium text-white mb-2 hover:text-[var(--brand-red)] transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              İletişim
+              {(t as any).nav?.contact || 'İletişim'}
             </Link>
           </div>
 

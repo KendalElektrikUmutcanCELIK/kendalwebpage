@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import React from 'react';
 import { CertificateGallery } from '@/components/sections/CertificateGallery';
 import { getCertificateImages } from '@/data/certificates';
 import { getAssetPath } from '@/lib/basePath';
@@ -15,11 +14,5 @@ const IMAGES = getCertificateImages('tse').map((file) =>
 );
 
 export default function TseSertifikalariPage() {
-  return (
-    <CertificateGallery
-      title="TSE Ürün Onay Sertifikaları"
-      subtitle="Ürünlerimizin Türk Standartları Enstitüsü tarafından onaylandığını gösteren belgeler."
-      images={IMAGES}
-    />
-  );
+  return <CertificateGallery certKey="tse" images={IMAGES} />;
 }

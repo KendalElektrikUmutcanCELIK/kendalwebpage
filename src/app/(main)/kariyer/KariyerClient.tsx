@@ -2,23 +2,23 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { getAssetPath } from '@/lib/basePath';
 import { gsap } from '@/lib/gsapConfig';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
 import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect';
-
-// Ana sayfadaki CompanyStats verileriyle aynı kaynak (yeni içerik değil, mevcut rakamların kariyer bağlamında tekrarı).
-const CAREER_STATS = [
-  { value: '29', label: 'Yıllık Tecrübe' },
-  { value: '350+', label: 'İstihdam' },
-];
 
 export function KariyerClient() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { t } = useLanguage();
 
   const career = (t as any).career;
+
+  // Ana sayfadaki CompanyStats verileriyle aynı kaynak (yeni içerik değil, mevcut rakamların kariyer bağlamında tekrarı).
+  const CAREER_STATS = [
+    { value: '29', label: career?.stats?.experience_label || 'Yıllık Tecrübe' },
+    { value: '350+', label: career?.stats?.employment_label || 'İstihdam' },
+  ];
 
   const links = [
     {

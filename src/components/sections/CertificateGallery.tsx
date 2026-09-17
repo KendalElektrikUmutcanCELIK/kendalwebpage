@@ -2,18 +2,22 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useLanguage } from '@/lib/i18n/LanguageProvider';
 
 interface CertificateGalleryProps {
-  title: string;
-  subtitle?: string;
+  certKey: 'iso' | 'tse' | 'marka_tescil';
   images: string[];
 }
 
 export const CertificateGallery = ({
-  title,
-  subtitle,
+  certKey,
   images,
 }: CertificateGalleryProps) => {
+  const { t } = useLanguage();
+  const certifications = (t as any).certifications;
+  const title = certifications?.[certKey];
+  const subtitle = certifications?.[`${certKey}_subtitle`];
+
   return (
     <section className="w-full relative bg-black pt-36 pb-20 md:pb-28 px-6 min-h-screen overflow-hidden">
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -39,7 +43,7 @@ export const CertificateGallery = ({
               d="M15 19l-7-7 7-7"
             />
           </svg>
-          Sertifikalar
+          {(t as any).nav?.certifications || 'Sertifikalar'}
         </Link>
 
         <div className="mb-12">
