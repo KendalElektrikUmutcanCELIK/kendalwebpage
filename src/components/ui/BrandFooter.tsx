@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
+import { BrandHomeLink } from '@/components/shared/BrandHomeLink';
 import siteSettings from '@/data/settings.json';
 import { getAssetPath, getBrandHomeHref } from '@/lib/basePath';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
@@ -28,7 +28,7 @@ export const BrandFooter = ({ brandName }: BrandFooterProps) => {
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
         <div className="md:col-span-1 text-center flex flex-col items-center">
-          <Link
+          <BrandHomeLink
             href={getBrandHomeHref(brandName)}
             className="font-bold text-2xl md:text-3xl tracking-tight mb-6 flex flex-col items-center gap-4 hover:opacity-80 transition-opacity"
           >
@@ -41,7 +41,7 @@ export const BrandFooter = ({ brandName }: BrandFooterProps) => {
                 className="h-14 w-auto object-contain"
               />
             </div>
-          </Link>
+          </BrandHomeLink>
           <a
             href="https://www.google.com/maps/place/Kendal+Elektrik+A.%C5%9E./@41.0699578,28.3202748,17z/data=!3m1!4b1!4m6!3m5!1s0x14b541f701f7e257:0xe2e0245245cd5b6f!8m2!3d41.0699539!4d28.3251457!16s%2Fg%2F11r35kq4hq"
             target="_blank"

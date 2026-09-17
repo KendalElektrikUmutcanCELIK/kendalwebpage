@@ -68,7 +68,7 @@ Kod üzerinde değişiklik yaptıktan sonra bunları çalıştırıp hâlâ heps
 
 Admin panelde "Yayınla" sayfası (`deploy.php`), Site Ayarları ve Sayfalar'daki değişiklikleri gerçek siteye göndermek için var. Şu an **kurulmadı** — `config.php` içindeki `GITHUB_TOKEN`/`GITHUB_REPO` boş olduğu sürece sayfa güvenli bir "henüz kurulmadı" mesajı gösterir, hiçbir hata vermez.
 
-**Nasıl çalışıyor (özet):** Yayınla → admin panel değişen 12 veri dosyasının hepsini (`src/data/*.json`: ürünler, marketler, projeler, sertifikalar, haberler, sayfalar, anasayfa blokları, navbar linkleri, hakkımızda/misyon-vizyon, site ayarları, slug-map) GitHub'a gönderir → hepsi başarılıysa GitHub Actions workflow'unu (`.github/workflows/deploy-test-kendalelektrikcom.yml`) API üzerinden `workflow_dispatch` ile tetikler → o da `npm run build` çalıştırıp sonucu FTP ile `kendalelektrik.com`'a yükler → ~5-10 dk içinde site güncellenir. (`deploy-cpanel.yml`, yani `.com.tr` hedefi, kasıtlı olarak devre dışı — buraya dokunmuyor.)
+**Nasıl çalışıyor (özet):** Yayınla → admin panel değişen 12 veri dosyasının hepsini (`src/data/*.json`: ürünler, marketler, projeler, sertifikalar, haberler, sayfalar, anasayfa blokları, navbar linkleri, hakkımızda/misyon-vizyon, site ayarları, slug-map) GitHub'a gönderir → hepsi başarılıysa GitHub Actions workflow'unu (`.github/workflows/deploy-test-kendalelektrikcom.yml`) API üzerinden `workflow_dispatch` ile tetikler → o da `npm run build` çalıştırıp sonucu FTP ile `kendalelektrik.com`'a yükler → birkaç saat içinde (FTP tek tek dosya kopyaladığı için yavaş) site güncellenir. (Eski `deploy-cpanel.yml`, yani `.com.tr` hedefi, proje tamamen `.com`'a taşındığı için 2026-09-17'de kaldırıldı — bu projenin artık `.tr` ile hiçbir bağlantısı yok.)
 
 **Kurulum için gerekenler (iki ayrı yerde, biri GitHub'da biri admin panelde):**
 
@@ -80,16 +80,16 @@ Admin panelde "Yayınla" sayfası (`deploy.php`), Site Ayarları ve Sayfalar'dak
    - **Generate token** → çıkan kodu kopyala (bir daha gösterilmez!) → `admin-panel/config.php` içindeki `GITHUB_TOKEN` satırına yapıştır.
    - Aynı dosyada `GITHUB_REPO`'yu da `kullaniciadi/kendalwebpage` formatında doldur (GitHub repo sayfasının adresinden görülür).
 
-2. **cPanel FTP bilgileri** (GitHub Actions'ın build sonucunu cPanel'e yükleyebilmesi için — bunlar GitHub'a, admin panele değil):
-   - cPanel → **FTP Hesapları (FTP Accounts)** → yeni bir FTP hesabı oluştur (mümkünse ana hesabı değil, sadece `public_html`'e erişimi olan ayrı/kısıtlı bir hesap — güvenlik için).
+2. **`kendalelektrik.com` FTP bilgileri** (GitHub Actions'ın build sonucunu `.com`'a yükleyebilmesi için — bunlar GitHub'a, admin panele değil):
+   - Plesk → yeni bir FTP hesabı oluştur (mümkünse ana hesabı değil, sadece ilgili klasöre erişimi olan ayrı/kısıtlı bir hesap — güvenlik için).
    - Sunucu adresi (host), kullanıcı adı, şifreyi not al.
    - GitHub'da bu reponun sayfası → **Settings → Secrets and variables → Actions → New repository secret** ile şu 4 secret'ı ekle:
-     - `CPANEL_FTP_SERVER` (ör. `ftp.kendalelektrik.com`)
-     - `CPANEL_FTP_USERNAME`
-     - `CPANEL_FTP_PASSWORD`
-     - `CPANEL_FTP_SERVER_DIR` (hedef klasör, ör. `/public_html/`)
+     - `TEST_FTP_SERVER`
+     - `TEST_FTP_USERNAME`
+     - `TEST_FTP_PASSWORD`
+     - `TEST_FTP_SERVER_DIR` (hedef klasör)
 
-Her ikisi de tamamlanmadan "Yayınla" gerçek bir şey yapmaz (GitHub tarafı olmadan admin panel dosyayı gönderemez; FTP secret'ları olmadan GitHub Actions build'i cPanel'e yükleyemez).
+Her ikisi de tamamlanmadan "Yayınla" gerçek bir şey yapmaz (GitHub tarafı olmadan admin panel dosyayı gönderemez; FTP secret'ları olmadan GitHub Actions build'i `.com`'a yükleyemez).
 
 **Bir kereye mahsus, ayrı bir adım:** Bu ikisi kurulmadan önce bile, `admin-panel/`, blok editörü bileşenleri ve `/sayfa` route'u gibi bu gece yazılan KOD henüz hiç commit edilmedi. "Yayınla" butonu sadece VERİ dosyalarını (`settings.json`/`pages.json`) günceller — GitHub'ın bu kodu ilk kez görebilmesi için önce bir kerelik normal bir commit+push gerekiyor. Bu, kullanıcı onayı gerektiren ayrı bir adım (bkz. `ADMIN_PANEL_PLAN.md`).
 

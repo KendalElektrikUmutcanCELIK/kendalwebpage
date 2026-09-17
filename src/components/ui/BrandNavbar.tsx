@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import { BrandHomeLink } from '@/components/shared/BrandHomeLink';
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
 import {
   getAssetPath,
@@ -100,7 +101,7 @@ export const BrandNavbar = ({ brandName }: BrandNavbarProps) => {
         }`}
       >
         <div className="flex items-center justify-between w-full relative">
-          <Link
+          <BrandHomeLink
             href={homeHref}
             className="relative flex items-center hover:opacity-80 transition-all duration-300 z-50 hover:scale-105"
           >
@@ -112,15 +113,15 @@ export const BrandNavbar = ({ brandName }: BrandNavbarProps) => {
               priority
               className={`w-auto object-contain transition-all duration-300 ${scrolled ? 'h-7 md:h-8' : 'h-8 md:h-10'}`}
             />
-          </Link>
+          </BrandHomeLink>
 
           <div className="hidden lg:flex items-center gap-2 text-[15px] font-semibold absolute left-1/2 -translate-x-1/2">
-            <Link
+            <BrandHomeLink
               href={homeHref}
               className={`px-4 py-2 rounded-full transition-all duration-300 text-zinc-600 ${theme.hoverText} ${theme.hoverBg}`}
             >
               {(t as any).brand_pages?.navbar?.home || 'Ana Sayfa'}
-            </Link>
+            </BrandHomeLink>
             <Link
               href={urunlerHref}
               className={`px-4 py-2 rounded-full transition-all duration-300 text-zinc-600 ${theme.hoverText} ${theme.hoverBg}`}
@@ -134,7 +135,7 @@ export const BrandNavbar = ({ brandName }: BrandNavbarProps) => {
               <LanguageSwitcher />
             </div>
 
-            <Link
+            <BrandHomeLink
               href={`${homeHref}#iletisim`}
               className={`hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 shadow-lg hover:-translate-y-0.5 hover:shadow-xl ${theme.btn}`}
             >
@@ -154,7 +155,7 @@ export const BrandNavbar = ({ brandName }: BrandNavbarProps) => {
                   d="M14 5l7 7m0 0l-7 7m7-7H3"
                 />
               </svg>
-            </Link>
+            </BrandHomeLink>
 
             <div className="md:hidden">
               <LanguageSwitcher />
@@ -218,13 +219,13 @@ export const BrandNavbar = ({ brandName }: BrandNavbarProps) => {
               : '-translate-y-8 opacity-0'
           }`}
         >
-          <Link
+          <BrandHomeLink
             href={homeHref}
             className="text-white/80 hover:text-white transition-colors py-2 border-b border-white/10"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             {(t as any).brand_pages?.navbar?.home || 'Ana Sayfa'}
-          </Link>
+          </BrandHomeLink>
           <Link
             href={urunlerHref}
             className="text-white/80 hover:text-white transition-colors py-2 border-b border-white/10"
@@ -232,13 +233,13 @@ export const BrandNavbar = ({ brandName }: BrandNavbarProps) => {
           >
             {(t as any).brand_pages?.navbar?.products || 'Ürünler'}
           </Link>
-          <Link
+          <BrandHomeLink
             href={`${homeHref}#iletisim`}
             className={`mt-4 py-4 rounded-2xl flex items-center justify-center gap-2 shadow-xl ${theme.btn}`}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             {(t as any).brand_pages?.navbar?.cta || 'Bize Ulaşın'}
-          </Link>
+          </BrandHomeLink>
           <Link
             href="https://www.kendalelektrik.com"
             className="mt-2 py-4 rounded-2xl flex items-center justify-center bg-[#111] hover:bg-black transition-colors shadow-lg border border-zinc-800"
