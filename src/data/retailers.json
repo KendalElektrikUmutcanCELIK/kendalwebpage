@@ -2,41 +2,73 @@
   {
     "id": "bim",
     "name": "BİM",
-    "logo": "retail/bim-logo.webp"
+    "logo": "retail/bim-logo.webp",
+    "categoryId": "ulusal"
   },
   {
     "id": "a101",
     "name": "A101",
-    "logo": "retail/a101-logo.webp"
-  },
-  {
-    "id": "koctas",
-    "name": "Koçtaş",
-    "logo": "retail/koctas-logo.webp"
+    "logo": "retail/a101-logo.webp",
+    "categoryId": "ulusal"
   },
   {
     "id": "tarim",
     "name": "Türkiye Tarım Kredi Kooperatif Market",
-    "logo": "retail/tarim-logo.webp"
-  },
-  {
-    "id": "bizim",
-    "name": "Bizim Toptan",
-    "logo": "retail/bizim-logo.webp"
+    "logo": "retail/tarim-logo.webp",
+    "categoryId": "ulusal"
   },
   {
     "id": "sec",
     "name": "Seç Market",
-    "logo": "retail/sec-logo.webp"
-  },
-  {
-    "id": "avansas",
-    "name": "Avansas",
-    "logo": "retail/avansas-logo.webp"
+    "logo": "retail/sec-logo.webp",
+    "categoryId": "ulusal"
   },
   {
     "id": "anpa",
     "name": "ANPA Gross",
-    "logo": "retail/anpa-logo.webp"
+    "logo": "retail/anpa-logo.webp",
+    "categoryId": "gross"
+  },
+  {
+    "id": "bizim",
+    "name": "Bizim Toptan",
+    "logo": "retail/bizim-logo.webp",
+    "categoryId": "gross"
+  },
+  {
+    "id": "kayserigross",
+    "name": "Kayseri Gross Market",
+    "logo": "retail/kayseri-gross-market.webp",
+    "categoryId": "gross"
+  },
+  {
+    "id": "showgross",
+    "name": "Show Gross Market",
+    "logo": "retail/show-gross-market.webp",
+    "categoryId": "gross"
+  },
+  {
+    "id": "koctas",
+    "name": "Koçtaş",
+    "logo": "retail/koctas-logo.webp",
+    "categoryId": "ozel"
+  },
+  {
+    "id": "avansas",
+    "name": "Avansas",
+    "logo": "retail/avansas-logo.webp",
+    "categoryId": "ozel"
+  },
+  {
+    "id": "tansas",
+    "name": "Tansaş Market",
+    "logo": "retail/tansas-market.webp",
+    "categoryId": "ozel"
+  },
+  {
+    "id": "sehzade",
+    "name": "Şehzade Market",
+    "logo": "retail/sehzade-market.webp",
+    "categoryId": "ozel"
   }
 ]
