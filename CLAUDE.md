@@ -211,28 +211,33 @@ Each brand (`k2`/`vanti`/`global`) has a large, self-contained one-page story (h
 1. **GSAP pattern** (~30+ occurrences): `useRef` + `useIsomorphicLayoutEffect` wrapping `gsap.context(() => {...}, scopeRef)`, cleanup via `ctx.revert()`. `gsap`/`ScrollTrigger` imported from the shared `@/lib/gsapConfig` wrapper everywhere **except** the three `brand/*CreativePage.tsx` files, which import `gsap`/`ScrollTrigger` directly and call `gsap.registerPlugin(ScrollTrigger)` themselves at module scope — a deliberate but inconsistent second setup path.
 2. **R3F perf gating**: two different strategies exist — `useInView()`-driven `frameloop` toggling (Globe, homepage) vs. `document.visibilitychange`-driven toggling (K2Scene/VantiScene, brand pages). Scroll-reactive uniforms are driven either via a `scrollProgressRef` passed down from a parent `ScrollTrigger.create({onUpdate})` (Globe), or via a **module-level mutable singleton variable** updated by a raw `window.scroll` listener inside the scene component itself (`globalScrollProgress` in GlobalScene, `k2DawnProgress` in K2Scene) — the latter is a hacky pattern worth knowing about before refactoring those scenes. (`LightCore.tsx` on the homepage hero looks similar at a glance but isn't R3F at all — see `engine/` above.)
 3. **Scroll-sync coordination convention**: whenever code does a programmatic `lenis.scrollTo(...)`, it (a) sets `window.isProgrammaticScroll = true`, (b) adds a `disable-cv` class to `<body>` (disables `content-visibility` to avoid layout jumps during the animated scroll), (c) on complete dispatches a custom `window` event `scroll-refresh`, which `GsapContext` listens for to trigger a debounced `ScrollTrigger.refresh()`. This exact triple repeats in `Navbar.tsx` (twice) and `ScrollToTop.tsx` — follow it exactly if adding new programmatic-scroll code, or `ScrollTrigger` positions will desync after `content-visibility:auto` toggles.
-4. **i18n split**: most of `sections/`/`ui/` use the shared `useLanguage()`/`t.*` dictionary system, but all three `brand/*/*CreativePage.tsx` files define their own local bilingual `translations = {tr:{...}, en:{...}}` object and only read `language` from `useLanguage()`. Don't assume brand-page copy lives in `src/lib/i18n/*.json` — it doesn't.
+4. **i18n split**: most of `sections/`/`ui/` use the shared `useLanguage()`/`t.*` dictionary system, but all three `brand/*/*CreativePage.tsx` files define their own local per-language `translations = {tr:{...}, en:{...}, ar:{...}, es:{...}, de:{...}, zh:{...}}` object (all 6 populated as of the 2026-09-18 rollout) and only read `language` from `useLanguage()`. Don't assume brand-page copy lives in `src/lib/i18n/*.json` — it doesn't. Always index it via `translations[language as keyof typeof translations] || translations.tr` (or `translations.en`) — a bare `translations[language]` isn't guaranteed to exist if a future language gets added to `Language` before this object's copy for it.
 5. **Removed as dead code**: `engine/LightCore.tsx`, `sections/BrandHero.tsx`, `BrandAbout.tsx`, `BrandProductShowcase.tsx`, `brand/shared/ProductCarousel.tsx`, `src/data/products_backup.json` — all confirmed unused (zero imports) and deleted. `sections/BrandProductsHeader.tsx` is **not** related — it's used by `brand/[brandName]/urunler/page.tsx`, don't lump it in with the others.
 6. **Nested scrollable elements need `data-lenis-prevent`**: the app-wide Lenis instance (`SmoothScrollProvider.tsx`) captures wheel/touch on the whole document by default, including over a `position:fixed` overlay with its own internal scroll (a modal, a dropdown, the chatbot panel) — without the attribute, scrolling inside that element scrolls the page behind it instead. Lenis checks for this attribute natively (`lenis/dist/lenis.mjs`, no config needed on the provider side). Also watch for the classic flex `min-height:auto` trap on any `flex-1 overflow-y-auto` child of a `flex flex-col` — it silently refuses to shrink and never actually scrolls unless paired with `min-h-0`.
 
 ### `src/data/` (Static Data) — full schemas
 
-#### `products.json` + `src/data/products.ts` (data-access layer)
+#### `products.json` + `src/data/products.ts` + `src/data/productsServer.ts` (data-access layer)
 **Shape**: flat `Record<string, Product>` keyed by product id — **no nested category tree**. 856 products as of this writing. Brand split: `k2`=755, `vanti`=53, `global`=48. Category/attribute/variant counts below predate later cleanups and haven't been re-verified — treat as approximate, re-check with a quick script before relying on exact figures. 53 distinct TR category names (top: LED Paneller 127, Spotlar 116, LED Ampuller 91, Vantilatörler 53...). `images[]` (multi-image gallery, always in *addition* to `image` — the UI itself prepends `product.image` when building the gallery, see `ProductDetailClient.tsx`'s `allImages`, so don't duplicate the primary photo into this array) present on 94 products. Most of those pair a current product photo with the *previous* photo it replaced, kept as a second gallery image (see the photo-swap workflow memory) rather than a second angle/color. `variantOptions` present on 901/923 (sub-keys: `watt` 710, `light` 425, `casing` 142, `socket` 28, rare `tip`/`color`/`açıklama`/`batarya`/`işık gücü`) — this count predates the cleanup too, re-verify before relying on it.
+
+**`products.ts` vs `productsServer.ts` split (2026-09-18, added for the multi-language rollout — see that section below):** `products.ts` is client-safe and never imports `products.json`; `productsServer.ts` is SERVER-ONLY and holds the actual `products` map (imported from `products.json`) plus every function that needs the full catalog (`getProductBySlug`, `getSlugByProductId`, `getProductVariations`). This split exists because Turbopack bundles at file granularity: importing even one unrelated export from a file that also statically imports `products.json` drags the whole ~1.4MB+ JSON (all languages, every product) into any client bundle that touches it — there is no per-binding tree-shaking. `productsServer.ts` must only ever be imported from server components (`page.tsx` files, `sitemap.ts`); a `"use client"` component reaching it — even transitively — reintroduces the leak. `products.ts` still has `getSlugForProduct(product)`, the client-safe slug helper that works off a product object already in hand instead of looking one up from the full map.
 
 TypeScript type (defined in `products.ts`, not in the JSON itself):
 ```ts
 export interface ProductAttribute { label: string; value: string; }
 export interface Product {
   id: string; model: string; image: string; images?: string[];
-  name: { tr: string; en: string };
-  attributes: { tr: ProductAttribute[]; en: ProductAttribute[] };
-  category?: { tr: string[]; en: string[] };
+  name: LocalizedField<string>;
+  attributes: LocalizedField<ProductAttribute[]>;
+  category?: LocalizedField<string[]>;
   brand?: string;
   variantOptions?: { watt?: string|null; socket?: string|null; light?: string|null; casing?: string|null };
 }
+// LocalizedField<T> (src/lib/i18n/localized.ts) = { tr: T; en: T } & Partial<Record<Language, T>>
+// — tr/en are required (fully populated), ar/es/de/zh are optional and filled in
+// incrementally; resolveLocalized(field, language) reads it with an en→tr fallback.
 ```
-Example record (abridged, `products["4206"]`):
+Example record (abridged, `products["4206"]`) — **as of this writing `attributes`/`name`/`category` are only translated into tr/en; ar/es/de/zh fall back to en via `resolveLocalized()` until the catalog translation pass lands (see "Multi-language rollout" below)**:
 ```json
 {
   "id": "4206", "model": "GDL41425WPANARA", "image": "urunler/gdl414.webp",
@@ -244,15 +249,11 @@ Example record (abridged, `products["4206"]`):
 }
 ```
 
-Key functions in `products.ts`:
-- `getProductBySlug(slug)` — resolves via `slugMap[slug]`, falls back to treating `slug` as a raw product id.
-- `getAllSlugs()` — `Object.keys(slugMap)`, used for `(main)/[slug]` static params.
-- `getSlugByProductId(id)` — derives canonical slug from `slugify(name.tr)`, checks it maps back to the same id in `slugMap`; else falls back to the first matching entry in a reverse `idToSlugMap`.
-- `slugify()` — lowercases, maps Turkish chars (ı,ü,ö,ş,ğ,ç) to ASCII, spaces/specials → `-`.
-- `getProductImageUrl(image)` — `getAssetPath('/images/' + image)`.
-- `BRAND_HOSTS` — brand → canonical domain map (k2/vanti/global subdomains).
-- `CATEGORY_GROUPS` — K2's two top-level menu groups: `armatur` (19 category names) and `digerleri` (17 names).
-- `getCategoryGroupForCategory`, `getProductCategorySlug`, `getProductCanonicalUrl` — used by SEO metadata and static route generation.
+listing pages (`brand/[brandName]/urunler/page.tsx`, brand homepage) never pass the full `Product` (with `attributes`) to their client components — they map through `toProductListItem()` first (`ProductListItem = Omit<Product, 'attributes'>`, defined in `products.ts`). The compare-modal feature (`CategoryFirstShowcase/index.tsx`) needs full attributes for ≤3 products at a time; rather than shipping everyone's attributes to every visitor, it lazily `fetch()`es `public/product-attributes.json` (generated at build time by `scripts/generate-product-attributes.js`, gitignored, id → `attributes`) only when the compare tray is actually opened. Detail pages (`brand/[brandName]/urunler/[category]/[slug]/page.tsx`) are server components and pass the full `Product` straight through — no lazy-loading needed there, since a server component's own imports never ship to the client, only the props it explicitly returns for that one product.
+
+Key functions:
+- `products.ts` (client-safe): `getSlugForProduct(product)`, `getProductCategorySlug(product)`, `getProductCanonicalUrl(product)`, `toProductListItem(product)`, `CATEGORY_GROUPS`, `getCategoryGroupForCategory`, `BRAND_HOSTS`, `getProductImageUrl(image)`, `getAllSlugs()`, `slugMap`.
+- `productsServer.ts` (server-only): `products` (the full map), `getProductBySlug(slug)`, `getSlugByProductId(id)`, `getProductVariations(product)` (same-base-model color/watt/casing variants for the detail page's option chips — returns a lean `{id, variantOptions}[]`, never full products).
 
 #### `slug-map.json`
 Flat `Record<slug, productId>`, 4206 entries (839 distinct product ids) as of the `311514b` "Veri Temizliği Yapıldı" cleanup. Example:
@@ -263,17 +264,12 @@ As of that cleanup, **0 orphan slugs** — every value resolves to a `products.j
 
 Route usage: `(main)/[slug]/page.tsx` generates a page for **every** slug-map entry (including non-canonical), then `redirect()`s to the canonical slug at render time if they differ. `brand/[brandName]/urunler/[category]/[slug]` instead builds `generateStaticParams` from `Object.values(products)` directly — one page per product, canonical slugs only.
 
-#### `news.ts`, `news-tr.ts`, `news-en.ts`
-`news.ts` is a thin re-export layer:
-```ts
-export { newsDataTR, newsDataEN }; export type { NewsItem };
-export const newsData = newsDataTR; // default/back-compat
-```
-`news-tr.ts`/`news-en.ts` are parallel arrays (not a key-value dictionary) matched by shared string `id`s, ~37 items each:
+#### `news.json` + `src/data/news.ts` + `src/lib/newsClient.ts`
+`news.json` is `Record<Language, NewsItem[]>` — one array per language, matched across languages by shared string `id`s (~37 items each, tr/en/ar/es/de/zh all fully translated as of the 2026-09-18 multi-language rollout):
 ```ts
 export interface NewsItem { id: string; title: string; date: string; images: string[]; content: string[]; }
 ```
-`date` is free text (TR: `"13 Nisan 2024"`, EN: `"Apr 13, 2024"`) — **not ISO** — so sorting uses `src/lib/newsDate.ts`'s `parseNewsDate()`. Consumers: `HaberlerListesiClient.tsx` and `NewsDetailClient.tsx` (pick `newsDataEN`/`newsDataTR` by current language), `sections/NewsPreview.tsx` (imports `news-tr`/`news-en` directly, bypassing `news.ts`), `app/sitemap.ts`.
+`date` is free text per language (TR: `"13 Nisan 2024"`, EN: `"Apr 13, 2024"`) — **not ISO** — so sorting uses `src/lib/newsDate.ts`'s `parseNewsDate()` (TR/EN month names only; other languages' dates still sort correctly for EN/TR-formatted content but wouldn't parse their own month names — not currently an issue since sorting only needs relative order, not display). `news.ts`'s `getNewsData(language)` (with an en→tr fallback, same pattern as `resolveLocalized`) is **server-only in effect** — it's fine to call from `page.tsx` files (`haberler/[id]/page.tsx`'s `generateStaticParams`/metadata, `NewsArticleSchema`) but must not be imported by a `"use client"` component, because `news.json` is ~450KB across all 6 languages and Turbopack would bundle the whole thing into that client chunk (see the `productsServer.ts` split above for the same class of issue). The three client components that actually render news content — `sections/NewsPreview.tsx`, `haberler/HaberlerListesiClient.tsx`, `haberler/[id]/NewsDetailClient.tsx` — instead use `useNewsData(language)` from `src/lib/newsClient.ts`, which `fetch()`es `public/news/{lang}.json` (generated per-language at build time by `scripts/generate-news-data.js`, gitignored, ~55-90KB each) and returns `null` until it resolves. `news-tr.ts`/`news-en.ts` (the old thin per-language wrapper files) were deleted in that same rollout — `news.ts` now reads `news.json` directly for all 6 languages.
 
 #### Other `src/data/` files
 - **`exportCountries.ts`** — TS (not JSON). `ExportCountry {id, flag, nameTr, nameEn, lat, lon}`, `HQ` (Turkey centroid), `EXPORT_COUNTRIES` (40 countries). Used by `brand/shared/ExportMapInner.tsx`.
@@ -289,8 +285,9 @@ export interface NewsItem { id: string; title: string; date: string; images: str
 - **`getProductPdfForm.ts`** — server-side (`fs`/`path`, build/SSG time only) scan of `public/urun-bilgi-formlari/`; `getProductPdfFile(model, nameTr)` matches a PDF whose filename-derived code is contained in the model or TR name. Used by all three product-detail `page.tsx` files for the "Ürün Bilgi Formu" download link.
 - **`newsDate.ts`** — `parseNewsDate(dateStr)` parses free-text TR/EN dates into a sortable `Date.UTC(...)` number (separate TR/EN month-name dictionaries); returns `0` on no match. Used by `HaberlerListesiClient.tsx`, `NewsPreview.tsx`.
 - **`productMetadata.ts`** — `getProductDetailMetadata(product)` builds Next `Metadata` (title/description/canonical). Shared by `urunler/[category]/[slug]` and `brand/.../[category]/[slug]` — **not** by `(main)/[slug]/page.tsx`, which still inlines its own near-duplicate `generateMetadata` logic.
-- **`i18n/LanguageProvider.tsx`** — `Language = "tr"|"en"`, persisted to `localStorage["kendal-language"]`, syncs `document.documentElement.lang`. `useLanguage()` throws if used outside the provider. Consumed in 40 files — the site-wide UI-text i18n mechanism (distinct from the news/product data i18n, which is done via parallel data structures, not this dictionary).
-- **`i18n/tr.json` / `en.json`** — parallel nested dictionaries (`nav.about`, etc.), 319 lines each.
+- **`i18n/LanguageProvider.tsx`** — `Language = "tr"|"en"|"ar"|"es"|"de"|"zh"` (widened 2026-09-18, was `"tr"|"en"` only — see "Multi-language rollout" below). Persisted to both `localStorage["kendal-language"]` and a `.kendalelektrik.com`-scoped cookie (so the choice survives cross-subdomain navigation to k2./vanti./global., which is why this already "just worked" when the rollout added cross-brand persistence to the requirements). First-visit default (no stored preference) is detected from `navigator.languages`/`navigator.language`, falling back to `'tr'` — deliberately browser-language, not IP/geo-based. Also sets `document.documentElement.dir = 'rtl'` for Arabic (`RTL_LANGUAGES`), `'ltr'` otherwise, via the same `useIsomorphicLayoutEffect` anti-flash pattern used for the text itself. `useLanguage()` throws if used outside the provider. Consumed in 40+ files — the site-wide UI-text i18n mechanism (distinct from the news/product data i18n, which is done via parallel data structures, not this dictionary).
+- **`i18n/tr.json` / `en.json` / `ar.json` / `es.json` / `de.json` / `zh.json`** — parallel nested dictionaries (`nav.about`, etc.), ~307-320 lines each, all 6 fully translated.
+- **`i18n/localized.ts`** — `LocalizedField<T> = { tr: T; en: T } & Partial<Record<Language, T>>` and `resolveLocalized(field, language)` (returns `field[language] ?? field.en ?? field.tr`). The shared pattern for every *content* data type (products, news, settings, retailers, nav links, custom `pages.json` blocks) that predates the 6-language rollout and is being translated incrementally — unlike the UI dictionary above, which is already fully translated for all 6. Always read a `LocalizedField` through `resolveLocalized()`, never `field[language]` directly (that's `T | undefined` for the optional languages and will throw at render time for content not yet translated into that language).
 
 ### TypeScript type locations
 There is **no central `src/types/` domain-types folder** — domain types (`Product`, `ProductAttribute`, `NewsItem`, `ExportCountry`, `CategoryGroupDef`) are each defined inline in their owning data file (`products.ts`, `news-tr.ts`/`news-en.ts` duplicated, `exportCountries.ts`). The only file under `src/types/` is `topojson-client.d.ts`, a hand-written ambient module declaration for the untyped `topojson-client` npm package.
@@ -300,10 +297,32 @@ There is **no central `src/types/` domain-types folder** — domain types (`Prod
 2. **3D Elements:** R3F scenes (`Globe` and the three brand `*Scene.tsx` files) are always `dynamic({ssr:false})`, full-bleed backgrounds, frameloop-gated for perf.
 3. **Product Catalog:** Flat `products.json` (858 items) + `slug-map.json` (4206 slugs, many-to-one with products) drive the two detail routes (legacy `(main)/[slug]` + canonical `brand/[brandName]/urunler/[category]/[slug]`); `CategoryFirstShowcase` is the shared browsing UI for brand product pages, with all filter/search/page state synced to the URL.
 4. **Static export, dual deploy target:** everything must work with `output:"export"` (no server-side code paths at runtime) and resolve correctly under both the root domain and the GitHub Pages subpath via `getAssetPath()`.
+5. **Multi-language (tr/en/ar/es/de/zh):** see "Multi-language rollout" below for full status. UI chrome and most content is fully translated; the product catalog (`name`/`attributes`/`category`) is the one remaining large gap and still falls back to English for the 4 newer languages. Large per-language datasets (product catalog, news) are fetched lazily per-language from `public/` rather than statically imported, because Turbopack's file-granularity bundling would otherwise ship every language's content to every visitor — see that section for the exact mechanism before adding a new large translated dataset.
 
 ## Go-live: kendalelektrik.com (not .tr)
 
 This project's production domain is `kendalelektrik.com` (`.com`, Windows/Plesk/IIS, Natro hosting) — it fully replaces the old OpenCart (PHP) site that used to live at `kendalelektrik.com.tr`. As of 2026-09-17, the project has **no deploy connection to `.tr` at all**: the old `deploy-cpanel.yml` workflow, `public/.htaccess` (Apache config), and `CPANEL_DEPLOYMENT_PLAN.md` were all deleted, since they existed solely for that old `.com.tr` cPanel/Apache target. Deploys go out via `.github/workflows/deploy-test-kendalelektrikcom.yml` (`workflow_dispatch`-only, manual trigger) to `.com`'s FTP via `TEST_FTP_*` GitHub secrets. `ADMIN_PANEL_PLAN.md` has the full incident history — including a 2026-09-15 accident where a still-live `push:` trigger on the old `.tr` workflow caused a real accidental deploy to the live OpenCart production site (recovered from backup, no data loss) — **never re-add an automatic trigger or any workflow/config that targets `.tr` without an explicit, fresh instruction to do so.** The support email `info@kendalelektrik.com.tr` and the external `sanalpos`/`b2b` subdomains intentionally stay on `.com.tr` — they're separate live business systems, not part of this site's deploy.
+
+## Multi-language rollout (tr/en/ar/es/de/zh) — status as of 2026-09-18
+
+The site is mid-rollout from 2 languages (tr/en) to 6 (+ ar/es/de/zh). Infrastructure is complete and load-bearing content is either fully translated or safely falls back — nothing is broken in any language today. This section is the map for continuing the remaining content translation work.
+
+**Done (infrastructure + content):**
+- `Language` type, `LanguageProvider.tsx` (cookie/localStorage persistence, browser-language auto-detect on first visit, RTL for Arabic), `LanguageSwitcher.tsx` (dropdown, was a bare TR/EN toggle before).
+- `src/lib/i18n/localized.ts`'s `LocalizedField<T>`/`resolveLocalized()` pattern — the standard way any *content* data type (as opposed to the UI dictionary) supports partial per-language translation with graceful fallback. Applied to: `Product` (`products.ts`), `NewsItem` (`news.json`), `settings.json`, `retailers.ts`'s `RetailCategory`, `navLinks.ts`'s `NavLink`, `pages.ts`'s `LocalizedText` (admin-panel custom page blocks).
+- **Fully translated content** (all 6 languages, no fallback needed): UI dictionary (`i18n/{tr,en,ar,es,de,zh}.json`), `settings.json`, `aboutContent.json`, `missionVision.json`, `retailers.ts`'s category names, all three `brand/*/*CreativePage.tsx` inline `translations` objects (K2/Vanti/Global) + `VantiProductFamilies.tsx`'s fan-family names, `chatbot/chatbotContent.ts` (all 4 brand-scoped Q&A trees, ~90 nodes), `news.json` (all 37 articles).
+- **Performance work that came out of this** (independent value, not just rollout-enabling): the `products.ts`/`productsServer.ts` split and `toProductListItem()` (see the products section above), `public/product-attributes.json` lazy-fetch for the compare modal, and `public/news/{lang}.json` lazy-fetch via `newsClient.ts` — all exist because Turbopack bundles at file granularity, not per-export, so a client component importing even one unrelated function from a file that also holds a large data import (full product catalog, full 6-language news set) ships that whole file's data to the browser. **If you add a new large data file with a similar "small client-safe helpers + huge dataset" shape, budget for the same split** — it's not obvious until you inspect the actual built `_next/static/chunks/*.js` output (`grep` for a distinctive string from the data, check whether the containing chunk is referenced as an eager `<script>` in the page's exported HTML).
+
+**Not yet translated (still tr/en-only, falls back to en for ar/es/de/zh):**
+- **Product catalog** (`products.json`): `name`, `attributes` (the big one — ~6,000 label/value rows across 856 products), `category` — all still only have `tr`/`en` keys. This is the only remaining major content gap and by far the largest (products.json is ~1.4MB at 2 languages; a full 6-language pass would roughly triple the text volume for these three fields). **This is the natural next step** if resuming this work.
+- `CATEGORY_GROUPS` in `products.ts` (K2's two menu-group names, `{tr,en}` only) — small, easy to pick up alongside the catalog pass.
+
+**If resuming the product-catalog translation:**
+1. `Product.name`/`.attributes`/`.category` are already typed `LocalizedField<...>` — no type changes needed, just add `ar`/`es`/`de`/`zh` keys to each product's JSON record.
+2. Translate in batches via `Edit` on `products.json` directly (same JSON-structure approach used for `news.json` this session) — a single giant `Edit` call against a large JSON file reliably fails silently ("string not found") past some size threshold; keep each `old_string`/`new_string` to roughly 10-20 products' worth of text and verify with `node -e "require('./src/data/products.json')"` after each batch.
+3. Re-run `node scripts/generate-product-attributes.js` after any `products.json` change (or just re-run `npm run build`, which does it automatically) so `public/product-attributes.json` stays in sync — the compare modal reads that generated file, not `products.json` directly.
+4. High-value shortcut: many `attributes` labels (`Watt`, `Lümen`, `Kasa Tipi`, `Duy Tipi`, `Renk`, casing/color values like `Beyaz`/`Ararenk`/`Günışığı`) repeat across hundreds of products — build a label/value → translation lookup once (script or by hand) instead of re-translating the same handful of terms thousands of times.
+5. `name` should generally be a light localization (product/model codes like `GDL414`, `KES180` stay as-is; only the descriptive Turkish words around them need translating) rather than a full re-write — check a few already-bilingual `tr`/`en` pairs in the file to see the existing convention before starting.
 
 ## Adding products / processing photos
 
