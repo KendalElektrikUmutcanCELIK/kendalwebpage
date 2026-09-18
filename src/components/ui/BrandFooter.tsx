@@ -6,6 +6,7 @@ import { BrandHomeLink } from '@/components/shared/BrandHomeLink';
 import siteSettings from '@/data/settings.json';
 import { getAssetPath, getBrandHomeHref } from '@/lib/basePath';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
+import { resolveLocalized } from '@/lib/i18n/localized';
 
 interface BrandFooterProps {
   brandName: string;
@@ -13,7 +14,7 @@ interface BrandFooterProps {
 
 export const BrandFooter = ({ brandName }: BrandFooterProps) => {
   const { t, language } = useLanguage();
-  const contact = siteSettings[language];
+  const contact = resolveLocalized(siteSettings, language);
   const isK2 = brandName === 'k2';
   const logoSrc = isK2
     ? getAssetPath('/images/brands/k2-logo.svg')

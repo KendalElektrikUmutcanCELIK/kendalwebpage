@@ -1,9 +1,7 @@
+import type { LocalizedField } from '@/lib/i18n/localized';
 import pagesJson from './pages.json';
 
-export interface LocalizedText {
-  tr: string;
-  en: string;
-}
+export type LocalizedText = LocalizedField<string>;
 
 export interface HeadingTextBlockData {
   heading: LocalizedText;

@@ -2,8 +2,10 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import type { Product } from '@/data/products';
+import type { ProductListItem } from '@/data/products';
 import { getAssetPath } from '@/lib/basePath';
+import type { Language } from '@/lib/i18n/LanguageProvider';
+import { resolveLocalized } from '@/lib/i18n/localized';
 import { getProductCardUrl } from './helpers';
 
 function stripVariantTokens(name: string): string {
@@ -48,8 +50,8 @@ interface CompareTexts {
 }
 
 interface ProductCardProps {
-  product: Product;
-  language: string;
+  product: ProductListItem;
+  language: Language;
   brandName: string;
   isBrandRoute: boolean;
   isK2: boolean;
@@ -59,7 +61,7 @@ interface ProductCardProps {
   isCompared: boolean;
   isCompareMaxed: boolean;
   compareTexts: CompareTexts;
-  onToggleCompare: (product: Product) => void;
+  onToggleCompare: (product: ProductListItem) => void;
   index?: number;
 }
 
@@ -81,8 +83,7 @@ export function ProductCard({
   const productUrl = getProductCardUrl(product, brandName, isBrandRoute);
   const isVanti = brandName === 'vanti';
 
-  let displayName =
-    product.name[language as keyof typeof product.name] || product.name.tr;
+  let displayName = resolveLocalized(product.name, language);
   if (isGlobal) {
     displayName = stripVariantTokens(displayName);
   }

@@ -2,11 +2,8 @@ import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 import { PageBlocksClient } from '@/components/blocks/PageBlocksClient';
 import { getAllCustomPageSlugs, getCustomPageBySlug } from '@/data/pages';
-import {
-  getProductBySlug,
-  getProductCanonicalUrl,
-  slugMap,
-} from '@/data/products';
+import { getProductCanonicalUrl, slugMap } from '@/data/products';
+import { getProductBySlug } from '@/data/productsServer';
 
 /**
  * Ürün kısa linkleri (slug-map.json, hep tek segment) ve panelden oluşturulan

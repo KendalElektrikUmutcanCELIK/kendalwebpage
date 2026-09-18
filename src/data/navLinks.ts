@@ -1,8 +1,9 @@
+import type { LocalizedField } from '@/lib/i18n/localized';
 import navLinksJson from './navLinks.json';
 
 export interface NavLink {
   id: string;
-  label: { tr: string; en: string };
+  label: LocalizedField<string>;
   url: string;
 }
 

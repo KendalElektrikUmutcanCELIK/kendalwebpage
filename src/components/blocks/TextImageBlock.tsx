@@ -2,6 +2,7 @@ import Image from 'next/image';
 import type { TextImageBlockData } from '@/data/pages';
 import { getAssetPath } from '@/lib/basePath';
 import type { Language } from '@/lib/i18n/LanguageProvider';
+import { resolveLocalized } from '@/lib/i18n/localized';
 
 export function TextImageBlock({
   data,
@@ -22,7 +23,7 @@ export function TextImageBlock({
       >
         <Image
           src={getAssetPath(`/images/${data.image}`)}
-          alt={data.imageAlt?.[language] ?? ''}
+          alt={(data.imageAlt && resolveLocalized(data.imageAlt, language)) ?? ''}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover"
@@ -32,10 +33,10 @@ export function TextImageBlock({
         className={`w-full md:w-1/2 ${imageFirst ? 'md:order-2' : 'md:order-1'}`}
       >
         <h2 className="text-3xl font-bold mb-4 text-white tracking-tight">
-          {data.heading?.[language] ?? ''}
+          {(data.heading && resolveLocalized(data.heading, language)) ?? ''}
         </h2>
         <p className="text-gray-300 leading-relaxed text-lg font-light whitespace-pre-line">
-          {data.text?.[language] ?? ''}
+          {(data.text && resolveLocalized(data.text, language)) ?? ''}
         </p>
       </div>
     </div>

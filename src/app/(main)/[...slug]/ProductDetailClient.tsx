@@ -5,14 +5,25 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import type React from 'react';
 import { useEffect, useState } from 'react';
-import { getProductImageUrl, type Product, products } from '@/data/products';
+import {
+  getProductImageUrl,
+  type Product,
+  type ProductVariation,
+} from '@/data/products';
 import { getAssetPath, getBrandUrunlerHref } from '@/lib/basePath';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
+import { resolveLocalized } from '@/lib/i18n/localized';
 
 interface ProductDetailClientProps {
   product: Product;
   brandName?: 'k2' | 'vanti' | 'global';
   pdfFormFile?: string | null;
+  // Same-base-model variants of `product` (different color temp/casing/watt/
+  // socket), computed server-side by the page component via
+  // getProductVariations() — see that function's comment in products.ts for
+  // why this must stay a lean {id, variantOptions}[] and not the full
+  // Product map.
+  variations: ProductVariation[];
 }
 
 const VANTI_VIDEOS: Record<string, string> = {
@@ -234,13 +245,14 @@ export function ProductDetailClient({
   product,
   brandName,
   pdfFormFile,
+  variations,
 }: ProductDetailClientProps) {
   const router = useRouter();
   const { language } = useLanguage();
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
-  const name = product.name[language] || product.name.tr;
-  const attributes = product.attributes[language] || product.attributes.tr;
+  const name = resolveLocalized(product.name, language);
+  const attributes = resolveLocalized(product.attributes, language);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const currentImage = selectedImage || product.image;
   const imageUrl = getProductImageUrl(currentImage);
@@ -345,7 +357,8 @@ export function ProductDetailClient({
 
   const homeHref = '/';
   const categoryName =
-    product.category?.[language]?.[0] || product.category?.tr?.[0] || null;
+    (product.category && resolveLocalized(product.category, language)?.[0]) ||
+    null;
   const productBrand = brandName || product.brand || 'k2';
   // isLight: zaten marka sayfaları bağlamındayız — getBrandUrunlerHref cPanel'de
   // (alt alan adı rewrite'ı sayesinde) göreli '/urunler', GH Pages'te (alt alan
@@ -357,44 +370,6 @@ export function ProductDetailClient({
       ? `/brand/${productBrand}/urunler`
       : `http://${productBrand}.localhost:3000/urunler`;
   const categoryHref = `${categoryBase}${categoryName ? `?category=${encodeURIComponent(categoryName)}` : ''}`;
-
-  const isDimensionToken = (token: string) =>
-    /^\d+[x*×]\d+$/i.test(token || '');
-  const getBaseName = (name: string) => {
-    const words = (name || '').trim().split(' ');
-    const firstWordUpper = words[0]?.toUpperCase();
-    if (
-      firstWordUpper === 'K2' ||
-      firstWordUpper === 'GLOBAL' ||
-      firstWordUpper === 'VANTİ' ||
-      firstWordUpper === 'VANTI'
-    ) {
-      return words
-        .filter(
-          (w: string) =>
-            !w.match(/^\d+W$/i) &&
-            !w.match(/^(E14|E27|GU10|G9|R7S)$/i) &&
-            ![
-              'SARI',
-              'BEYAZ',
-              'ARARENK',
-              'GÜNIŞIĞI',
-              'MAVİ',
-              'YEŞİL',
-              'KIRMIZI',
-              'AMBER',
-              'GÜN IŞIĞI',
-            ].includes(w.toUpperCase()),
-        )
-        .join(' ');
-    }
-    return isDimensionToken(words[1]) ? `${words[0]} ${words[1]}` : words[0];
-  };
-
-  const baseModel = getBaseName(product.name.tr);
-  const variations = Object.values(products).filter((p) => {
-    return getBaseName(p.name.tr) === baseModel;
-  });
 
   const allAttrs = attributes || [];
   const rawSpecs = allAttrs.filter(

@@ -9,6 +9,7 @@ import { useLenis } from '@/components/engine/SmoothScrollProvider';
 import { getNavLinks } from '@/data/navLinks';
 import { getAssetPath, isGithubPagesBuild } from '@/lib/basePath';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
+import { resolveLocalized } from '@/lib/i18n/localized';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
 export const Navbar = () => {
@@ -275,7 +276,7 @@ export const Navbar = () => {
             links: customLinks.map((link) => ({
               id: `custom_${link.id}`,
               href: link.url,
-              label: link.label[language],
+              label: resolveLocalized(link.label, language),
             })),
           },
         ]

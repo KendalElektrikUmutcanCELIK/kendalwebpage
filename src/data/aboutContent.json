@@ -60,5 +60,129 @@
         "text": "We are rapidly approaching our goal of becoming a true global brand, aiming for top 10 status in Asian, European, and African export markets."
       }
     ]
+  },
+  "ar": {
+    "title": "من نحن",
+    "text1": "نحن لا ننتج الضوء فحسب؛ بل نصمم تقنيات تتحدى الظلام وتصمد أمام السنين.",
+    "text2": "من خلال تصميم تقنيات الإضاءة المستقبلية اليوم، نقدّم حلولاً موثوقة سواء في الداخل أو في الأسواق العالمية.",
+    "beats": [
+      {
+        "title": "الشركة الوحيدة في إنتاج المصابيح ذات الفتيل",
+        "text": "نحن الشركة الوحيدة التي تُنتج المصابيح ذات الفتيل في تركيا وأوروبا والشرق الأوسط. نتحكم بالجودة من البداية إلى النهاية بفضل خطوط إنتاج ألواح LED والحقن البلاستيكي الخاصة بنا."
+      },
+      {
+        "title": "تقنية عالية وأتمتة بنسبة 89%",
+        "text": "وصلنا إلى نسبة أتمتة 89% في خطوط إنتاجنا. نراقب وندير جميع العمليات من الإنتاج إلى المستودعات لحظياً بأنظمة رقمية متقدمة مثل ERP وMAS وWMS."
+      },
+      {
+        "title": "البحث والتطوير ومختبر معتمد",
+        "text": "نطوّر منتجات مبتكرة بفضل مختبرنا المعتمد من TSE ومركز البحث والتطوير الخاص بنا؛ ونواصل تطوير تقنيتنا بقوة فريق الأتمتة الذي تأسس عام 2013."
+      },
+      {
+        "title": "نظام مراقبة جودة دولي",
+        "text": "نطبّق عمليات فحص المواد الخام (IQC) والفحص أثناء التصنيع (IPQC) والفحص عند الخروج (OQC) وفق خطة أخذ العينات AQL؛ ونُخضع منتجاتنا لاختبارات وظيفية وعمرية وكهربائية متنوعة."
+      },
+      {
+        "title": "رؤية الكفاءة التشغيلية والتميز",
+        "text": "نعمل على تعظيم الكفاءة من خلال استراتيجية الكفاءة التشغيلية (OPEX)، بهدف خفض أخطاء الإنتاج إلى أقل من 1500 جزء في المليون ورفع أداء الجودة إلى 99%."
+      },
+      {
+        "title": "ننتج مصادر الضوء ونبيعها للعالم",
+        "text": "نمضي قدماً نحو أن نصبح علامة تجارية عالمية مستدامة بفضل منتجاتنا الصديقة للبيئة وكفاءتها في استهلاك الطاقة، وطلبات براءات الاختراع الجديدة سنوياً، وبنيتنا الإنتاجية المحمية من التفريغ الكهروستاتيكي."
+      }
+    ]
+  },
+  "es": {
+    "title": "Sobre Nosotros",
+    "text1": "No solo producimos luz; diseñamos tecnologías que desafían la oscuridad y resisten el paso de los años.",
+    "text2": "Diseñando hoy las tecnologías de iluminación del futuro, ofrecemos soluciones confiables tanto a nivel nacional como en los mercados globales.",
+    "beats": [
+      {
+        "title": "Único fabricante de bombillas de filamento",
+        "text": "Somos el único fabricante de bombillas de filamento en Turquía, Europa y Oriente Medio. Controlamos la calidad de principio a fin con nuestras propias líneas de producción de paneles LED e inyección de plástico."
+      },
+      {
+        "title": "Alta tecnología y 89% de automatización",
+        "text": "Hemos alcanzado una tasa de automatización del 89% en nuestras líneas de producción. Supervisamos y gestionamos todos los procesos, desde la producción hasta el almacén, en tiempo real con sistemas digitales avanzados como ERP, MAS y WMS."
+      },
+      {
+        "title": "I+D y laboratorio acreditado",
+        "text": "Desarrollamos productos innovadores en nuestro laboratorio acreditado por TSE y nuestro propio centro de I+D; seguimos impulsando nuestra tecnología con la fuerza de nuestro equipo de automatización, fundado en 2013."
+      },
+      {
+        "title": "Sistema internacional de control de calidad",
+        "text": "Aplicamos los procesos de materia prima (IQC), proceso (IPQC) y salida (OQC) conforme al plan de muestreo AQL; sometemos nuestros productos a diversas pruebas de funcionalidad, vida útil y eléctricas."
+      },
+      {
+        "title": "Visión de excelencia operativa (OPEX)",
+        "text": "Con nuestra estrategia de excelencia operativa (OPEX), maximizamos la eficiencia mientras trabajamos para reducir los defectos de producción por debajo de 1500 ppm y elevar el rendimiento de calidad al 99%."
+      },
+      {
+        "title": "Producimos fuentes de luz y las vendemos al mundo",
+        "text": "Avanzamos hacia nuestro objetivo de convertirnos en una marca verdaderamente global y sostenible, gracias a nuestros productos ecológicos y eficientes energéticamente, nuestras nuevas solicitudes de patente cada año y nuestra infraestructura de producción protegida contra descargas electrostáticas."
+      }
+    ]
+  },
+  "de": {
+    "title": "Über Uns",
+    "text1": "Wir produzieren nicht nur Licht; wir entwickeln Technologien, die der Dunkelheit trotzen und den Jahren standhalten.",
+    "text2": "Indem wir die Beleuchtungstechnologien der Zukunft schon heute entwerfen, bieten wir sowohl im Inland als auch auf globalen Märkten zuverlässige Lösungen.",
+    "beats": [
+      {
+        "title": "Einziger Hersteller von Filament-Glühbirnen",
+        "text": "Wir sind der einzige Hersteller von Filament-Glühbirnen in der Türkei, Europa und dem Nahen Osten. Mit unseren eigenen LED-Panel- und Kunststoffspritzguss-Produktionslinien kontrollieren wir die Qualität von Anfang bis Ende."
+      },
+      {
+        "title": "Hochtechnologie und 89 % Automatisierung",
+        "text": "Wir haben in unseren Produktionslinien eine Automatisierungsrate von 89 % erreicht. Mit fortschrittlichen digitalen Systemen wie ERP, MAS und WMS überwachen und steuern wir alle Prozesse von der Produktion bis zum Lager in Echtzeit."
+      },
+      {
+        "title": "F&E und akkreditiertes Labor",
+        "text": "Mit unserem TSE-zertifizierten, akkreditierten Labor und unserem eigenen F&E-Zentrum entwickeln wir innovative Produkte; mit der Kraft unseres 2013 gegründeten Automatisierungsteams treiben wir unsere Technologie stetig voran."
+      },
+      {
+        "title": "Internationales Qualitätskontrollsystem",
+        "text": "Wir wenden die Prozesse für Rohstoffe (IQC), Fertigung (IPQC) und Ausgang (OQC) gemäß dem AQL-Stichprobenplan an und unterziehen unsere Produkte verschiedenen Funktions-, Lebensdauer- und elektrischen Tests."
+      },
+      {
+        "title": "OPEX- und Exzellenzvision",
+        "text": "Mit unserer Strategie für operative Exzellenz (OPEX) maximieren wir die Effizienz und arbeiten daran, Produktionsfehler auf unter 1500 ppm zu senken und die Qualitätsleistung auf 99 % zu steigern."
+      },
+      {
+        "title": "Wir produzieren Lichtquellen und verkaufen sie in die ganze Welt",
+        "text": "Dank unserer umweltfreundlichen und energieeffizienten Produkte, unserer jährlichen neuen Patentanmeldungen und unserer ESD-geschützten Produktionsinfrastruktur sind wir auf dem Weg, eine nachhaltige globale Marke zu werden."
+      }
+    ]
+  },
+  "zh": {
+    "title": "关于我们",
+    "text1": "我们不仅仅生产光源，更在设计能够挑战黑暗、历久弥新的技术。",
+    "text2": "通过在今天设计未来的照明技术，我们在国内外市场都提供值得信赖的解决方案。",
+    "beats": [
+      {
+        "title": "灯丝灯泡领域的唯一制造商",
+        "text": "我们是土耳其、欧洲及中东地区唯一生产灯丝灯泡的制造商。凭借自有的LED平板和塑料注塑生产线，我们从始至终掌控产品质量。"
+      },
+      {
+        "title": "高科技与89%自动化率",
+        "text": "我们的生产线自动化率已达89%。通过ERP、MAS、WMS等先进数字系统，实时监控并管理从生产到仓储的全部流程。"
+      },
+      {
+        "title": "研发与认证实验室",
+        "text": "凭借通过TSE认证的实验室和自有研发中心，我们不断开发创新产品；并依托2013年成立的自动化团队持续推动技术进步。"
+      },
+      {
+        "title": "国际质量控制体系",
+        "text": "我们按照AQL抽样方案执行原材料检验（IQC）、过程检验（IPQC）和出货检验（OQC），并对产品进行功能性、寿命及各类电气测试。"
+      },
+      {
+        "title": "卓越运营（OPEX）愿景",
+        "text": "通过运营效率战略（OPEX），我们在追求效率最大化的同时，致力于将生产缺陷率降至1500 ppm以下，并将质量绩效提升至99%。"
+      },
+      {
+        "title": "我们生产光源，并销往全世界",
+        "text": "凭借环保节能的产品、每年新增的专利申请，以及防静电（ESD）保护的生产基础设施，我们正稳步迈向成为可持续发展的全球品牌。"
+      }
+    ]
   }
 }

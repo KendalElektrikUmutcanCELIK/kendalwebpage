@@ -6,6 +6,7 @@ import siteSettings from '@/data/settings.json';
 import { getAssetPath } from '@/lib/basePath';
 import { gsap } from '@/lib/gsapConfig';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
+import { resolveLocalized } from '@/lib/i18n/localized';
 import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect';
 
 const PhoneIcon = () => (
@@ -43,7 +44,7 @@ const MailIcon = () => (
 export function IletisimClient() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { t, language } = useLanguage();
-  const contact = siteSettings[language];
+  const contact = resolveLocalized(siteSettings, language);
 
   useIsomorphicLayoutEffect(() => {
     const ctx = gsap.context(() => {

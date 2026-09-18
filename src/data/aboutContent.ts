@@ -19,4 +19,4 @@ const aboutContent: Record<Language, AboutContent> = aboutContentData as Record<
 >;
 
 export const getAboutContent = (language: Language): AboutContent =>
-  aboutContent[language];
+  aboutContent[language] ?? aboutContent.en ?? aboutContent.tr;

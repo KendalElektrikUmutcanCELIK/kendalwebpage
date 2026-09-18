@@ -5,6 +5,7 @@ import { BlockRenderer } from '@/components/blocks/BlockRenderer';
 import type { CustomPage } from '@/data/pages';
 import { gsap } from '@/lib/gsapConfig';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
+import { resolveLocalized } from '@/lib/i18n/localized';
 import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect';
 
 export function PageBlocksClient({ page }: { page: CustomPage }) {
@@ -38,7 +39,7 @@ export function PageBlocksClient({ page }: { page: CustomPage }) {
       <div className="max-w-5xl mx-auto">
         <div className="mb-12">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white opacity-90 mb-4">
-            {page.title?.[language] ?? ''}
+            {(page.title && resolveLocalized(page.title, language)) ?? ''}
           </h1>
           <div className="h-1.5 w-16 bg-[var(--brand-red)] rounded-full" />
         </div>

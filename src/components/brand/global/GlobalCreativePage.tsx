@@ -7,7 +7,7 @@ import type React from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { CategoryShowcase } from '@/components/brand/shared/CategoryShowcase';
 import { DealerMap } from '@/components/brand/shared/DealerMap';
-import type { Product } from '@/data/products';
+import type { ProductListItem } from '@/data/products';
 import { getAssetPath, getBrandUrunlerHref } from '@/lib/basePath';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
 import { GlobalPreloader } from './GlobalPreloader';
@@ -19,7 +19,7 @@ if (typeof window !== 'undefined') {
 const GLOBAL_ACCENT = '#e6b800';
 
 interface GlobalCreativePageProps {
-  allProducts: Product[];
+  allProducts: ProductListItem[];
 }
 
 const translations = {
@@ -99,6 +99,166 @@ const translations = {
     sec3Text:
       'Brighter, longer-lasting, and boundary-pushing high-tech designs.',
     catalogBtn: 'Explore Products',
+  },
+  ar: {
+    heroSub: 'حلول إضاءة شاملة',
+    heroTitle: 'بُعد جديد للضوء',
+    explore: 'اكتشف الضوء',
+    whyEyebrow: 'لماذا Global؟',
+    whyHeading: 'اسم موثوق في عالم الإضاءة.',
+    whySubtext:
+      'تستمد Global قوتها من 29 عاماً من الخبرة الإنتاجية لدى كندال إلكتريك.',
+    trustStats: [
+      {
+        value: 'من الأسماء الموثوقة في القطاع',
+        label: 'بين علامات الإضاءة',
+      },
+      {
+        numericTarget: 9.6,
+        suffix: ' / 10',
+        label: 'متوسط رضا العملاء',
+      },
+      { value: 'أقل من 0.5%', label: 'نسبة الإرجاع' },
+    ],
+    sec1Title: 'قوة مثالية',
+    sec1Text:
+      'بضمان كندال إلكتريك، أكثر الحلول سطوعاً وقوة لإضاءة مشاريعكم.',
+    sec2Title: 'أداء بلا حدود',
+    sec2Text:
+      'شبكة إضاءة فريدة تجعلك تشعر بطاقة الضوء في كل مكان، من المنشآت الصناعية إلى المساحات السكنية.',
+    popularLabel: 'فئات المنتجات',
+    popularTitle: 'فئاتنا',
+    categoryCountLabel: 'منتج',
+    viewAllLabel: 'جميع الفئات',
+    dealerEyebrow: 'شبكتنا المحلية',
+    dealerTitle: 'شبكة قوية تحمل الضوء إلى كل ركن من تركيا.',
+    dealerBadge: 'لدينا موزعون معتمدون في 77 ولاية',
+    dealerLabel: 'موزع معتمد',
+    dealerHint: 'مرّر المؤشر على ولاية لاستكشاف شبكة موزعينا.',
+    sec3Title: 'ضوء المستقبل',
+    sec3Text:
+      'تصاميم عالية التقنية أكثر سطوعاً وطول عمر وتتجاوز الحدود.',
+    catalogBtn: 'استكشف المنتجات',
+  },
+  es: {
+    heroSub: 'SOLUCIONES INTEGRALES DE ILUMINACIÓN',
+    heroTitle: 'UNA NUEVA DIMENSIÓN DE LUZ',
+    explore: 'Descubre la Luz',
+    whyEyebrow: '¿Por Qué Global?',
+    whyHeading: 'Un nombre confiable en iluminación.',
+    whySubtext:
+      'Global se fortalece con los 29 años de experiencia en fabricación de Kendal Elektrik.',
+    trustStats: [
+      {
+        value: 'Un Nombre de Confianza del Sector',
+        label: 'Entre las Marcas de Iluminación',
+      },
+      {
+        numericTarget: 9.6,
+        suffix: ' / 10',
+        label: 'Satisfacción Media del Cliente',
+      },
+      { value: 'Menos del 0.5%', label: 'Tasa de Devolución' },
+    ],
+    sec1Title: 'Potencia Impecable',
+    sec1Text:
+      'Con la garantía de Kendal Elektrik, las soluciones más brillantes y potentes para iluminar sus proyectos.',
+    sec2Title: 'Rendimiento Sin Límites',
+    sec2Text:
+      'Una red de iluminación única que le hace sentir la energía de la luz en todas partes, desde instalaciones industriales hasta espacios habitables.',
+    popularLabel: 'Categorías de Productos',
+    popularTitle: 'Nuestras Categorías',
+    categoryCountLabel: 'Productos',
+    viewAllLabel: 'Todas las Categorías',
+    dealerEyebrow: 'Nuestra Red Nacional',
+    dealerTitle: 'Una red poderosa que lleva la luz a cada rincón de Turquía.',
+    dealerBadge: 'Distribuidores Autorizados en 77 Provincias',
+    dealerLabel: 'Distribuidor Autorizado',
+    dealerHint: 'Pase el cursor sobre una provincia para explorar nuestra red de distribuidores.',
+    sec3Title: 'La Luz del Futuro',
+    sec3Text:
+      'Diseños de alta tecnología más brillantes, duraderos y que superan los límites.',
+    catalogBtn: 'Explorar Productos',
+  },
+  de: {
+    heroSub: 'UMFASSENDE BELEUCHTUNGSLÖSUNGEN',
+    heroTitle: 'EINE NEUE DIMENSION DES LICHTS',
+    explore: 'Licht Entdecken',
+    whyEyebrow: 'Warum Global?',
+    whyHeading: 'Ein vertrauenswürdiger Name in der Beleuchtung.',
+    whySubtext:
+      'Global wird durch die 29-jährige Produktionserfahrung von Kendal Elektrik gestärkt.',
+    trustStats: [
+      {
+        value: 'Ein Vertrauenswürdiger Name der Branche',
+        label: 'Unter den Beleuchtungsmarken',
+      },
+      {
+        numericTarget: 9.6,
+        suffix: ' / 10',
+        label: 'Durchschnittliche Kundenzufriedenheit',
+      },
+      { value: 'Unter 0,5 %', label: 'Rücklaufquote' },
+    ],
+    sec1Title: 'Makellose Kraft',
+    sec1Text:
+      'Mit der Garantie von Kendal Elektrik die hellsten und stärksten Lösungen, um Ihre Projekte zu beleuchten.',
+    sec2Title: 'Grenzenlose Leistung',
+    sec2Text:
+      'Ein einzigartiges Beleuchtungsnetzwerk, das die Energie des Lichts überall spüren lässt — von Industrieanlagen bis zu Wohnräumen.',
+    popularLabel: 'Produktkategorien',
+    popularTitle: 'Unsere Kategorien',
+    categoryCountLabel: 'Produkte',
+    viewAllLabel: 'Alle Kategorien',
+    dealerEyebrow: 'Unser Inlandsnetzwerk',
+    dealerTitle: 'Ein starkes Netzwerk, das Licht in jeden Winkel der Türkei bringt.',
+    dealerBadge: 'Autorisierte Händler in 77 Provinzen',
+    dealerLabel: 'Autorisierter Händler',
+    dealerHint: 'Fahren Sie mit der Maus über eine Provinz, um unser Händlernetzwerk zu erkunden.',
+    sec3Title: 'Das Licht der Zukunft',
+    sec3Text:
+      'Hellere, langlebigere und grenzüberschreitende Hightech-Designs.',
+    catalogBtn: 'Produkte Entdecken',
+  },
+  zh: {
+    heroSub: '全方位照明解决方案',
+    heroTitle: '光的全新维度',
+    explore: '探索光影',
+    whyEyebrow: '为什么选择 Global？',
+    whyHeading: '照明领域值得信赖的名字。',
+    whySubtext:
+      'Global 凭借 Kendal Elektrik 29年的生产经验不断壮大。',
+    trustStats: [
+      {
+        value: '行业信赖的品牌之一',
+        label: '在照明品牌中',
+      },
+      {
+        numericTarget: 9.6,
+        suffix: ' / 10',
+        label: '平均客户满意度',
+      },
+      { value: '低于0.5%', label: '退货率' },
+    ],
+    sec1Title: '卓越动力',
+    sec1Text:
+      '在 Kendal Elektrik 的品质保证下，为您的项目提供最明亮、最强劲的照明解决方案。',
+    sec2Title: '无限性能',
+    sec2Text:
+      '从工业设施到生活空间，独特的照明网络让您随处感受到光的能量。',
+    popularLabel: '产品分类',
+    popularTitle: '我们的分类',
+    categoryCountLabel: '产品',
+    viewAllLabel: '所有分类',
+    dealerEyebrow: '我们的国内网络',
+    dealerTitle: '将光明带到土耳其每个角落的强大网络。',
+    dealerBadge: '在77个省份拥有授权经销商',
+    dealerLabel: '授权经销商',
+    dealerHint: '将鼠标悬停在省份上以探索我们的经销商网络。',
+    sec3Title: '未来之光',
+    sec3Text:
+      '更明亮、更持久、突破极限的高科技设计。',
+    catalogBtn: '探索产品',
   },
 };
 

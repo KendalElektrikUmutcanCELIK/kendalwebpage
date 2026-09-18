@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { CtaBlockData } from '@/data/pages';
 import type { Language } from '@/lib/i18n/LanguageProvider';
+import { resolveLocalized } from '@/lib/i18n/localized';
 
 export function CtaBlock({
   data,
@@ -9,7 +10,12 @@ export function CtaBlock({
   data: CtaBlockData;
   language: Language;
 }) {
-  if (!data.buttonUrl || !data.buttonLabel?.[language]) {
+  const heading = data.heading && resolveLocalized(data.heading, language);
+  const text = data.text && resolveLocalized(data.text, language);
+  const buttonLabel =
+    data.buttonLabel && resolveLocalized(data.buttonLabel, language);
+
+  if (!data.buttonUrl || !buttonLabel) {
     return null;
   }
 
@@ -19,14 +25,14 @@ export function CtaBlock({
 
   return (
     <div className="page-block bg-white/[0.03] border border-white/10 rounded-3xl p-8 md:p-10 text-center">
-      {data.heading?.[language] && (
+      {heading && (
         <h2 className="text-3xl font-bold mb-3 text-white tracking-tight">
-          {data.heading[language]}
+          {heading}
         </h2>
       )}
-      {data.text?.[language] && (
+      {text && (
         <p className="text-gray-300 leading-relaxed text-lg font-light mb-6 max-w-2xl mx-auto">
-          {data.text[language]}
+          {text}
         </p>
       )}
       {isExternal ? (
@@ -36,11 +42,11 @@ export function CtaBlock({
           rel="noopener noreferrer"
           className={buttonClass}
         >
-          {data.buttonLabel[language]}
+          {buttonLabel}
         </a>
       ) : (
         <Link href={data.buttonUrl} className={buttonClass}>
-          {data.buttonLabel[language]}
+          {buttonLabel}
         </Link>
       )}
     </div>

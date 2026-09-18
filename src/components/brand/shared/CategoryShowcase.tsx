@@ -3,13 +3,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { type CSSProperties, useMemo } from 'react';
-import { getCategoryGroupForCategory, type Product } from '@/data/products';
+import {
+  getCategoryGroupForCategory,
+  type ProductListItem,
+} from '@/data/products';
 import { getAssetPath, getBrandUrunlerHref } from '@/lib/basePath';
 
 interface CategoryShowcaseProps {
   label: string;
   title: string;
-  allProducts: Product[];
+  allProducts: ProductListItem[];
   language: string;
   brandName: string;
   accent: string;

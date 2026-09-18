@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { newsData } from '@/data/news';
-import { BRAND_HOSTS, getProductCanonicalUrl, products } from '@/data/products';
+import { BRAND_HOSTS, getProductCanonicalUrl } from '@/data/products';
+import { products } from '@/data/productsServer';
 
 export const dynamic = 'force-static';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { NewsItem } from '@/data/news-tr';
+import type { NewsItem } from '@/data/news';
 import { parseNewsDate } from '@/lib/newsDate';
 
 export const NewsArticleSchema = ({ news }: { news: NewsItem }) => {

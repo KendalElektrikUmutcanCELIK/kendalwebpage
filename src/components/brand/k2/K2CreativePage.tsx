@@ -7,7 +7,7 @@ import type React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { CategoryShowcase } from '@/components/brand/shared/CategoryShowcase';
 import { ExportMap } from '@/components/brand/shared/ExportMap';
-import type { Product } from '@/data/products';
+import type { ProductListItem } from '@/data/products';
 import { getAssetPath, getBrandUrunlerHref } from '@/lib/basePath';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
 import { K2Preloader } from './K2Preloader';
@@ -68,7 +68,7 @@ function ShieldIcon({ className }: { className?: string }) {
 }
 
 interface K2CreativePageProps {
-  allProducts: Product[];
+  allProducts: ProductListItem[];
 }
 
 const translations = {
@@ -145,6 +145,154 @@ const translations = {
     sec3Text:
       "From spotlights, LED panels and floodlights to solar fixtures, magnet systems and decorative lighting, K2's extensive range brings innovative LED solutions to home and office lighting — save energy, invest in the future.",
     catalogBtn: 'Explore Products',
+  },
+  ar: {
+    heroSub: 'قمة الإضاءة',
+    explore: 'اكتشف القصة',
+    whyEyebrow: 'لماذا K2؟',
+    whyHeading: 'العلامة الموثوقة التي تضيء الظلام.',
+    whySubtext:
+      'بضمان كندال إلكتريك، تتميز K2 بتقنية LED الاحترافية ومتانتها.',
+    trustStats: [
+      {
+        value: 'من أبرز العلامات في القطاع',
+        label: 'في مجال إضاءة LED الاحترافية',
+      },
+      {
+        numericTarget: 9.5,
+        suffix: ' / 10',
+        label: 'متوسط رضا العملاء',
+      },
+      { value: 'أقل من 0.5%', label: 'نسبة الإرجاع' },
+    ],
+    sec1Title: 'القمة',
+    sec1Text:
+      "تستمد علامتنا اسمها من جبل K2، أحد أصعب الجبال وأكثرها شهرة لدى متسلقي الجبال، وتعمل برؤية 'إضاءة الظلام'.",
+    sec2Title: 'تشكيلة واسعة',
+    sec2Text:
+      "تمثّل التشكيلة الواسعة من أنظمة إضاءة LED الاحترافية لدى كندال إلكتريك، والحلول التي تركز على كفاءة الطاقة، والمنتجات الزخرفية. تتصدر K2 القطاع كواحدة من أكثر علامات الإضاءة التركية شهرة وموثوقية.",
+    popularLabel: 'فئات المنتجات',
+    popularTitle: 'فئاتنا',
+    categoryCountLabel: 'منتج',
+    viewAllLabel: 'جميع الفئات',
+    exportEyebrow: 'وصول عالمي',
+    exportTitle: 'ضوء K2 لا يعرف حدوداً.',
+    exportHint: 'انقر على نقطة في الخريطة.',
+    sec3Title: 'ظروف قاسية',
+    sec3Text:
+      'من الكشافات وألواح LED والأضواء الكاشفة إلى الأجهزة الشمسية والأنظمة المغناطيسية والإضاءة الزخرفية، تجلب تشكيلة K2 الواسعة حلول LED مبتكرة لإضاءة المنزل والمكتب — وفّر الطاقة، واستثمر في المستقبل.',
+    catalogBtn: 'استكشف المنتجات',
+  },
+  es: {
+    heroSub: 'LA CUMBRE DE LA ILUMINACIÓN',
+    explore: 'Descubre la Historia',
+    whyEyebrow: '¿Por Qué K2?',
+    whyHeading: 'La marca confiable que ilumina la oscuridad.',
+    whySubtext:
+      'Respaldada por la garantía de Kendal Elektrik, K2 destaca por su tecnología LED profesional y durabilidad.',
+    trustStats: [
+      {
+        value: 'Una Marca Líder en el Sector',
+        label: 'En Iluminación LED Profesional',
+      },
+      {
+        numericTarget: 9.5,
+        suffix: ' / 10',
+        label: 'Satisfacción Media del Cliente',
+      },
+      { value: 'Menos del 0.5%', label: 'Tasa de Devolución' },
+    ],
+    sec1Title: 'La Cumbre',
+    sec1Text:
+      "Nuestra marca, que toma su nombre del K2, una de las montañas más difíciles y prestigiosas para los alpinistas, actúa con la visión de 'Iluminar la Oscuridad'.",
+    sec2Title: 'Amplia Gama',
+    sec2Text:
+      "Representa la amplia gama de sistemas profesionales de iluminación LED de Kendal Elektrik, soluciones centradas en la eficiencia energética y productos decorativos. K2 lidera el sector como una de las marcas de iluminación más prestigiosas y confiables de Turquía.",
+    popularLabel: 'Categorías de Productos',
+    popularTitle: 'Nuestras Categorías',
+    categoryCountLabel: 'Productos',
+    viewAllLabel: 'Todas las Categorías',
+    exportEyebrow: 'Alcance Global',
+    exportTitle: 'La luz de K2 no conoce fronteras.',
+    exportHint: 'Haga clic en un punto del mapa.',
+    sec3Title: 'Condiciones Extremas',
+    sec3Text:
+      'Desde focos, paneles LED y proyectores hasta luminarias solares, sistemas magnéticos e iluminación decorativa, la amplia gama de K2 aporta soluciones LED innovadoras para el hogar y la oficina — ahorre energía, invierta en el futuro.',
+    catalogBtn: 'Explorar Productos',
+  },
+  de: {
+    heroSub: 'DER GIPFEL DER BELEUCHTUNG',
+    explore: 'Geschichte Entdecken',
+    whyEyebrow: 'Warum K2?',
+    whyHeading: 'Die vertrauenswürdige Marke, die die Dunkelheit erhellt.',
+    whySubtext:
+      'Mit der Garantie von Kendal Elektrik überzeugt K2 durch professionelle LED-Technologie und Langlebigkeit.',
+    trustStats: [
+      {
+        value: 'Eine Spitzenmarke der Branche',
+        label: 'Im Bereich Professionelle LED-Beleuchtung',
+      },
+      {
+        numericTarget: 9.5,
+        suffix: ' / 10',
+        label: 'Durchschnittliche Kundenzufriedenheit',
+      },
+      { value: 'Unter 0,5 %', label: 'Rücklaufquote' },
+    ],
+    sec1Title: 'Der Gipfel',
+    sec1Text:
+      "Unsere Marke, die ihren Namen vom K2 trägt, einem der schwierigsten und angesehensten Berge für Bergsteiger, verfolgt die Vision 'Die Dunkelheit erhellen'.",
+    sec2Title: 'Breites Sortiment',
+    sec2Text:
+      "Repräsentiert das breite Sortiment professioneller LED-Beleuchtungssysteme, energieeffizienzorientierter Lösungen und dekorativer Produkte von Kendal Elektrik. K2 führt die Branche als eine der angesehensten und vertrauenswürdigsten Beleuchtungsmarken der Türkei an.",
+    popularLabel: 'Produktkategorien',
+    popularTitle: 'Unsere Kategorien',
+    categoryCountLabel: 'Produkte',
+    viewAllLabel: 'Alle Kategorien',
+    exportEyebrow: 'Globale Reichweite',
+    exportTitle: 'Das Licht von K2 kennt keine Grenzen.',
+    exportHint: 'Klicken Sie auf einen Punkt auf der Karte.',
+    sec3Title: 'Extreme Bedingungen',
+    sec3Text:
+      'Von Strahlern, LED-Panels und Flutlichtern bis hin zu Solarleuchten, Magnetsystemen und dekorativer Beleuchtung — das umfangreiche Sortiment von K2 bringt innovative LED-Lösungen für Heim und Büro: Energie sparen, in die Zukunft investieren.',
+    catalogBtn: 'Produkte Entdecken',
+  },
+  zh: {
+    heroSub: '照明之巅',
+    explore: '探索品牌故事',
+    whyEyebrow: '为什么选择 K2？',
+    whyHeading: '照亮黑暗的可信赖品牌。',
+    whySubtext:
+      '在 Kendal Elektrik 的品质保证下，K2 以专业的LED技术和耐用性脱颖而出。',
+    trustStats: [
+      {
+        value: '行业领先品牌之一',
+        label: '专业LED照明领域',
+      },
+      {
+        numericTarget: 9.5,
+        suffix: ' / 10',
+        label: '平均客户满意度',
+      },
+      { value: '低于0.5%', label: '退货率' },
+    ],
+    sec1Title: '巅峰',
+    sec1Text:
+      '我们的品牌名称源自K2峰——登山者眼中最难攀登、最负盛名的高峰之一，秉承"照亮黑暗"的愿景。',
+    sec2Title: '丰富产品线',
+    sec2Text:
+      '代表着 Kendal Elektrik 广泛的专业LED照明系统、以节能为核心的解决方案以及装饰性产品。K2 作为土耳其最负盛名、最值得信赖的照明品牌之一，引领着行业发展。',
+    popularLabel: '产品分类',
+    popularTitle: '我们的分类',
+    categoryCountLabel: '产品',
+    viewAllLabel: '所有分类',
+    exportEyebrow: '全球覆盖',
+    exportTitle: 'K2 的光芒无国界。',
+    exportHint: '点击地图上的位置。',
+    sec3Title: '严苛环境',
+    sec3Text:
+      '从射灯、LED平板灯、投光灯到太阳能灯具、磁吸系统及装饰照明，K2 丰富的产品线为家庭和办公照明带来创新的LED解决方案——节约能源，投资未来。',
+    catalogBtn: '探索产品',
   },
 };
 

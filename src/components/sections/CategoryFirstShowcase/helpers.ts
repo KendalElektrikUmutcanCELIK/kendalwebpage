@@ -1,4 +1,4 @@
-import { getSlugByProductId, type Product } from '@/data/products';
+import { getSlugForProduct, type ProductListItem } from '@/data/products';
 
 export const MAX_COMPARE = 3;
 
@@ -33,11 +33,11 @@ export const getVisiblePages = (current: number, total: number) => {
 };
 
 export function getProductCardUrl(
-  product: Product,
+  product: ProductListItem,
   brandName: string,
   isBrandRoute: boolean,
 ): string {
-  const slug = getSlugByProductId(product.id) || product.id;
+  const slug = getSlugForProduct(product) || product.id;
   const categoryName = product.category?.tr?.[0];
   const categorySlug = categoryName
     ? slugify(categoryName)

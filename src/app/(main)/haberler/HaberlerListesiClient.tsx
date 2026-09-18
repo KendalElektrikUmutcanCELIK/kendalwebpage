@@ -3,17 +3,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { newsDataEN, newsDataTR } from '@/data/news';
 import { getAssetPath } from '@/lib/basePath';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
 import { parseNewsDate } from '@/lib/newsDate';
+import { useNewsData } from '@/lib/newsClient';
 
 export function HaberlerListesiClient() {
   const { language, t } = useLanguage();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
 
-  const allNews = [...(language === 'en' ? newsDataEN : newsDataTR)].sort(
+  const newsData = useNewsData(language);
+  const allNews = [...(newsData ?? [])].sort(
     (a, b) => parseNewsDate(b.date) - parseNewsDate(a.date),
   );
   const totalPages = Math.ceil(allNews.length / itemsPerPage);
@@ -98,7 +99,7 @@ export function HaberlerListesiClient() {
           ))}
         </div>
 
-        {allNews.length === 0 && (
+        {newsData !== null && allNews.length === 0 && (
           <div className="text-center py-24 text-gray-500">
             {language === 'en'
               ? 'No news added yet.'

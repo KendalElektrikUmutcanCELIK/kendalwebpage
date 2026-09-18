@@ -3,17 +3,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { newsDataEN } from '@/data/news-en';
-import { newsDataTR } from '@/data/news-tr';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
 import { parseNewsDate } from '@/lib/newsDate';
+import { useNewsData } from '@/lib/newsClient';
 
 export const NewsPreview = () => {
   const { language, t } = useLanguage();
 
-  const newsArray = language === 'en' ? newsDataEN : newsDataTR;
+  const newsArray = useNewsData(language);
 
-  const latestNews = [...newsArray]
+  const latestNews = [...(newsArray ?? [])]
     .sort((a, b) => parseNewsDate(b.date) - parseNewsDate(a.date))
     .slice(0, 3);
 

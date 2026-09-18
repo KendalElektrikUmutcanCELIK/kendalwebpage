@@ -7,7 +7,7 @@ import Link from 'next/link';
 import type React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { ExportMap } from '@/components/brand/shared/ExportMap';
-import type { Product } from '@/data/products';
+import type { ProductListItem } from '@/data/products';
 
 import { getAssetPath, getBrandUrunlerHref } from '@/lib/basePath';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
@@ -82,7 +82,7 @@ function LeafIcon({ className }: { className?: string }) {
 }
 
 interface VantiCreativePageProps {
-  allProducts: Product[];
+  allProducts: ProductListItem[];
 }
 
 const VANTI_ACCENT = '#0f766e';
@@ -206,6 +206,186 @@ const translations = {
       'Spend the summer cool with the eco-friendly Vanti series that offers high performance with low energy consumption.',
     catalogBtn: 'Explore Products',
   },
+  ar: {
+    heroSub: 'الوجهة الأولى للانتعاش والراحة',
+    explore: 'اشعر بالانتعاش',
+    whyEyebrow: 'لماذا Vanti؟',
+    whyHeading: 'علامة الانتعاش التي تثق بها تركيا.',
+    whySubtext:
+      'بضمان كندال إلكتريك، تتميز Vanti بجودتها ورضا عملائها.',
+    sec1Title: 'نسيم طبيعي',
+    sec1Text:
+      'نصمم أكثر المراوح هدوءاً وقوةً لتشعر بنسيم الطبيعة المنعش في كل ركن من منزلك.',
+    sec2Title: 'تبريد ذكي',
+    sec2Text:
+      'بفضل الدوران واسع الزاوية وهيكل الريش الانسيابي، توزّع الهواء بشكل متجانس وتوفر انتعاشاً فورياً.',
+    familiesLabel: 'عائلات منتجاتنا',
+    familiesTitle: 'ابحث عن المروحة المناسبة لاحتياجاتك',
+    popularLabel: 'فئات المنتجات',
+    popularTitle: 'فئاتنا',
+    categoryCountLabel: 'منتج',
+    viewAllLabel: 'جميع الفئات',
+    exportEyebrow: 'وصول عالمي',
+    exportTitle: 'انتعاش Vanti يُصدَّر من تركيا إلى العالم.',
+    exportHint: 'انقر على نقطة في الخريطة.',
+    videoLabel: 'عن قرب',
+    videoTitle: 'فيديوهات عرض منتجاتنا',
+    videoSubtitle: 'شاهد منتجات Vanti في الاستخدام الفعلي.',
+    videoPlayLabel: 'تشغيل الفيديو',
+    videoCloseLabel: 'إغلاق الفيديو',
+    videoCtaLabel: 'الذهاب إلى المنتج',
+    trustStats: [
+      {
+        value: 'من الأكثر تفضيلاً',
+        label: 'بين علامات المراوح في تركيا',
+      },
+      {
+        numericTarget: 9.4,
+        suffix: ' / 10',
+        label: 'متوسط رضا العملاء',
+      },
+      { value: 'أقل من 0.5%', label: 'نسبة الإرجاع' },
+    ],
+    sec3Title: 'توفير الطاقة',
+    sec3Text:
+      'اقضِ صيفاً منعشاً مع سلسلة Vanti الصديقة للبيئة التي تقدم أداءً عالياً باستهلاك منخفض للطاقة.',
+    catalogBtn: 'استكشف المنتجات',
+  },
+  es: {
+    heroSub: 'LA ÚNICA DIRECCIÓN DEL FRESCOR Y EL CONFORT',
+    explore: 'Siente el Frescor',
+    whyEyebrow: '¿Por Qué Vanti?',
+    whyHeading: 'La marca de frescor en la que confía Turquía.',
+    whySubtext:
+      'Respaldada por la garantía de Kendal Elektrik, Vanti destaca por su calidad y satisfacción del cliente.',
+    sec1Title: 'Brisa Natural',
+    sec1Text:
+      'Diseñamos los ventiladores más silenciosos y potentes para que sienta la brisa refrescante de la naturaleza en cada rincón de su hogar.',
+    sec2Title: 'Enfriamiento Inteligente',
+    sec2Text:
+      'Con oscilación de gran ángulo y una estructura de aspas aerodinámica, distribuye el aire de manera uniforme, brindando frescor instantáneo.',
+    familiesLabel: 'Nuestras Familias de Productos',
+    familiesTitle: 'Encuentre el Ventilador Adecuado para su Espacio',
+    popularLabel: 'Categorías de Productos',
+    popularTitle: 'Nuestras Categorías',
+    categoryCountLabel: 'Productos',
+    viewAllLabel: 'Todas las Categorías',
+    exportEyebrow: 'Alcance Global',
+    exportTitle: 'El frescor de Vanti, exportado desde Turquía al mundo.',
+    exportHint: 'Haga clic en un punto del mapa.',
+    videoLabel: 'De Cerca',
+    videoTitle: 'Nuestros Videos de Demostración',
+    videoSubtitle: 'Vea los productos Vanti en uso real.',
+    videoPlayLabel: 'Reproducir video',
+    videoCloseLabel: 'Cerrar video',
+    videoCtaLabel: 'Ver Producto',
+    trustStats: [
+      {
+        value: 'Una de las Preferidas',
+        label: 'Entre las Marcas de Ventiladores de Turquía',
+      },
+      {
+        numericTarget: 9.4,
+        suffix: ' / 10',
+        label: 'Satisfacción Media del Cliente',
+      },
+      { value: 'Menos del 0.5%', label: 'Tasa de Devolución' },
+    ],
+    sec3Title: 'Ahorro de Energía',
+    sec3Text:
+      'Pase el verano fresco con la serie Vanti, ecológica y de alto rendimiento con bajo consumo energético.',
+    catalogBtn: 'Explorar Productos',
+  },
+  de: {
+    heroSub: 'DIE EINZIGE ADRESSE FÜR KÜHLE UND KOMFORT',
+    explore: 'Frische Spüren',
+    whyEyebrow: 'Warum Vanti?',
+    whyHeading: 'Die Kühlmarke, der die Türkei vertraut.',
+    whySubtext:
+      'Mit der Garantie von Kendal Elektrik überzeugt Vanti durch Qualität und Kundenzufriedenheit.',
+    sec1Title: 'Natürliche Brise',
+    sec1Text:
+      'Wir entwickeln die leisesten und leistungsstärksten Ventilatoren, damit Sie die erfrischende Brise der Natur in jeder Ecke Ihres Zuhauses spüren.',
+    sec2Title: 'Intelligente Kühlung',
+    sec2Text:
+      'Mit Weitwinkel-Schwenkung und aerodynamischer Flügelstruktur verteilt er die Luft gleichmäßig und sorgt für sofortige Frische.',
+    familiesLabel: 'Unsere Produktfamilien',
+    familiesTitle: 'Finden Sie den Richtigen Ventilator für Ihren Bedarf',
+    popularLabel: 'Produktkategorien',
+    popularTitle: 'Unsere Kategorien',
+    categoryCountLabel: 'Produkte',
+    viewAllLabel: 'Alle Kategorien',
+    exportEyebrow: 'Globale Reichweite',
+    exportTitle: 'Die Kühle von Vanti wird von der Türkei in die Welt exportiert.',
+    exportHint: 'Klicken Sie auf einen Punkt auf der Karte.',
+    videoLabel: 'Nahaufnahme',
+    videoTitle: 'Unsere Produktvideos',
+    videoSubtitle: 'Sehen Sie Vanti-Produkte im echten Einsatz.',
+    videoPlayLabel: 'Video abspielen',
+    videoCloseLabel: 'Video schließen',
+    videoCtaLabel: 'Zum Produkt',
+    trustStats: [
+      {
+        value: 'Eine der Bevorzugten Marken',
+        label: 'Unter den Ventilatormarken der Türkei',
+      },
+      {
+        numericTarget: 9.4,
+        suffix: ' / 10',
+        label: 'Durchschnittliche Kundenzufriedenheit',
+      },
+      { value: 'Unter 0,5 %', label: 'Rücklaufquote' },
+    ],
+    sec3Title: 'Energieeinsparung',
+    sec3Text:
+      'Verbringen Sie den Sommer kühl mit der umweltfreundlichen Vanti-Serie, die hohe Leistung bei niedrigem Energieverbrauch bietet.',
+    catalogBtn: 'Produkte Entdecken',
+  },
+  zh: {
+    heroSub: '清凉与舒适的唯一之选',
+    explore: '感受清凉',
+    whyEyebrow: '为什么选择 Vanti？',
+    whyHeading: '土耳其信赖的清凉品牌。',
+    whySubtext:
+      '在 Kendal Elektrik 的品质保证下，Vanti 以其品质和客户满意度脱颖而出。',
+    sec1Title: '自然微风',
+    sec1Text:
+      '我们设计最安静、最强劲的风扇，让您在家中每个角落都能感受到大自然般的清爽微风。',
+    sec2Title: '智能降温',
+    sec2Text:
+      '凭借广角摆动和空气动力学叶片结构，均匀分配气流，带来即时清凉。',
+    familiesLabel: '我们的产品系列',
+    familiesTitle: '为您找到合适的风扇',
+    popularLabel: '产品分类',
+    popularTitle: '我们的分类',
+    categoryCountLabel: '产品',
+    viewAllLabel: '所有分类',
+    exportEyebrow: '全球覆盖',
+    exportTitle: 'Vanti 的清凉，从土耳其出口到世界各地。',
+    exportHint: '点击地图上的位置。',
+    videoLabel: '近距离观看',
+    videoTitle: '产品展示视频',
+    videoSubtitle: '观看 Vanti 产品的实际使用场景。',
+    videoPlayLabel: '播放视频',
+    videoCloseLabel: '关闭视频',
+    videoCtaLabel: '查看产品',
+    trustStats: [
+      {
+        value: '最受青睐的品牌之一',
+        label: '在土耳其风扇品牌中',
+      },
+      {
+        numericTarget: 9.4,
+        suffix: ' / 10',
+        label: '平均客户满意度',
+      },
+      { value: '低于0.5%', label: '退货率' },
+    ],
+    sec3Title: '节能省电',
+    sec3Text:
+      '选择低能耗、高性能的环保 Vanti 系列，清凉度过整个夏天。',
+    catalogBtn: '探索产品',
+  },
 };
 
 export function VantiCreativePage({ allProducts }: VantiCreativePageProps) {
@@ -214,7 +394,8 @@ export function VantiCreativePage({ allProducts }: VantiCreativePageProps) {
   const scrollHintRef = useRef<HTMLDivElement>(null);
   const statNumberRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const { language } = useLanguage();
-  const t = translations[language as keyof typeof translations];
+  const t =
+    translations[language as keyof typeof translations] || translations.tr;
   const [sceneReady, setSceneReady] = useState(false);
 
   useEffect(() => {

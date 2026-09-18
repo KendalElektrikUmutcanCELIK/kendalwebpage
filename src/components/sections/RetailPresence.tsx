@@ -6,6 +6,7 @@ import { retailCategories, retailers } from '@/data/retailers';
 import { getAssetPath } from '@/lib/basePath';
 import { gsap } from '@/lib/gsapConfig';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
+import { resolveLocalized } from '@/lib/i18n/localized';
 import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect';
 
 export const RetailPresence = () => {
@@ -72,7 +73,7 @@ export const RetailPresence = () => {
                 className="retail-category-block flex flex-col bg-[var(--global-text)]/5 dark:bg-white/5 p-6 md:p-8 rounded-3xl border border-[var(--global-text)]/10 backdrop-blur-sm"
               >
                 <h3 className="text-xl md:text-2xl font-semibold mb-6 text-[var(--global-text)] opacity-90 text-center">
-                  {category.name[language]}
+                  {resolveLocalized(category.name, language)}
                 </h3>
                 {/* Kategori içindeki marketler 2x2 grid */}
                 <div className="grid grid-cols-2 gap-4 h-full">

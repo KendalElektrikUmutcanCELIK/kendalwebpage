@@ -52,6 +52,14 @@ urun_bilgi_formu_rapor.json
 # eski ürün slug yönlendirme tablosu (her build'de scripts/generate-legacy-redirects.js ile yeniden üretilir)
 public/legacy-redirects.json
 
+# ürün özellik verisi, /urunler listeleme sayfalarının payload'unu küçük tutmak için
+# products.json'dan ayrıldı (her build'de scripts/generate-product-attributes.js ile yeniden üretilir)
+public/product-attributes.json
+
+# dil bazlı haber verisi, ana sayfa/haberler sayfalarının payload'unu küçük tutmak için
+# news.json'dan ayrıldı (her build'de scripts/generate-news-data.js ile yeniden üretilir)
+public/news/
+
 # admin panel gizli bilgileri (şifre hash'i + GitHub token) - asla commit edilmemeli,
 # cPanel'e admin-panel/ yüklenirken git'ten BAĞIMSIZ olarak elle/FTP ile taşınır
 admin-panel/config.php

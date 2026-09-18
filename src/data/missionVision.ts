@@ -16,4 +16,5 @@ const missionVision: Record<Language, MissionVisionContent> =
 
 export const getMissionVisionContent = (
   language: Language,
-): MissionVisionContent => missionVision[language];
+): MissionVisionContent =>
+  missionVision[language] ?? missionVision.en ?? missionVision.tr;

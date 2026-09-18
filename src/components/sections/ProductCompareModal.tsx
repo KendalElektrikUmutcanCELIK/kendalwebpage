@@ -4,24 +4,31 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useMemo } from 'react';
 import { createPortal } from 'react-dom';
-import type { Product } from '@/data/products';
+import type { Product, ProductListItem } from '@/data/products';
 import { getAssetPath } from '@/lib/basePath';
+import type { Language } from '@/lib/i18n/LanguageProvider';
+import { resolveLocalized } from '@/lib/i18n/localized';
 
 export interface CompareTexts {
   modal_title: string;
   view: string;
   model: string;
   no_value: string;
+  loading?: string;
 }
 
 interface CompareItem {
-  product: Product;
+  product: ProductListItem;
   url: string;
+  // Lazily fetched by the parent (CategoryFirstShowcase) once this modal is
+  // actually opened — undefined until that fetch resolves, see the loading
+  // guard in attributeRows below.
+  attributes?: Product['attributes'];
 }
 
 interface ProductCompareModalProps {
   items: CompareItem[];
-  language: string;
+  language: Language;
   brandName: string;
   texts: CompareTexts;
   onClose: () => void;
@@ -73,6 +80,11 @@ export default function ProductCompareModal({
       ? 'hover:bg-blue-700'
       : 'hover:bg-[#e6c449]';
   const accentSolidText = isK2 || isVanti ? 'text-white' : 'text-zinc-900';
+  const accentSpinner = isK2
+    ? 'border-t-orange-400'
+    : isVanti
+      ? 'border-t-blue-500'
+      : 'border-t-amber-400';
   const accentBorder = isK2
     ? 'border-orange-100'
     : isVanti
@@ -98,15 +110,17 @@ export default function ProductCompareModal({
       ? 'w-[135px] sm:w-[260px] md:w-[300px]'
       : 'w-[150px] sm:w-[260px] md:w-[300px]';
 
+  const attributesLoaded = items.every((item) => item.attributes);
+
   const attributeRows = useMemo(() => {
+    const resolveAttrs = (attributes: Product['attributes'] | undefined) =>
+      attributes ? resolveLocalized(attributes, language) : [];
+
     const labels: string[] = [];
     const seen = new Set<string>();
 
-    items.forEach(({ product }) => {
-      const attrs =
-        product.attributes?.[language as keyof typeof product.attributes] ||
-        product.attributes?.tr ||
-        [];
+    items.forEach(({ attributes }) => {
+      const attrs = resolveAttrs(attributes);
       attrs.forEach((attr) => {
         if (!seen.has(attr.label)) {
           seen.add(attr.label);
@@ -117,11 +131,8 @@ export default function ProductCompareModal({
 
     return labels.map((label) => ({
       label,
-      values: items.map(({ product }) => {
-        const attrs =
-          product.attributes?.[language as keyof typeof product.attributes] ||
-          product.attributes?.tr ||
-          [];
+      values: items.map(({ attributes }) => {
+        const attrs = resolveAttrs(attributes);
         const found = attrs.find((a) => a.label === label);
         return found ? found.value : null;
       }),
@@ -187,9 +198,7 @@ export default function ProductCompareModal({
             <thead>
               <tr className="sticky top-0 z-10 bg-white">
                 {items.map(({ product, url }) => {
-                  const displayName =
-                    product.name[language as keyof typeof product.name] ||
-                    product.name.tr;
+                  const displayName = resolveLocalized(product.name, language);
                   return (
                     <th
                       key={product.id}
@@ -264,7 +273,21 @@ export default function ProductCompareModal({
               </tr>
             </thead>
             <tbody>
-              {attributeRows.map((row, i) => {
+              {!attributesLoaded && (
+                <tr>
+                  <td
+                    colSpan={items.length}
+                    className="py-16 text-center text-zinc-400 text-sm"
+                  >
+                    <div
+                      className={`inline-block w-6 h-6 rounded-full border-2 border-zinc-200 ${accentSpinner} animate-spin mb-3`}
+                    />
+                    <div>{texts.loading || 'Yükleniyor...'}</div>
+                  </td>
+                </tr>
+              )}
+              {attributesLoaded &&
+                attributeRows.map((row, i) => {
                 const palette = rowPalette[i % rowPalette.length];
                 return (
                   <React.Fragment key={row.label}>

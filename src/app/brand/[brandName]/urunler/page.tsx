@@ -6,7 +6,8 @@ import { BrandProductsHeader } from '@/components/sections/BrandProductsHeader';
 import CategoryFirstShowcase from '@/components/sections/CategoryFirstShowcase';
 import { ItemListSchema } from '@/components/shared/ItemListSchema';
 import { WebsiteSearchSchema } from '@/components/shared/WebsiteSearchSchema';
-import { getProductCanonicalUrl, products } from '@/data/products';
+import { getProductCanonicalUrl, toProductListItem } from '@/data/products';
+import { products } from '@/data/productsServer';
 import { getAssetPath } from '@/lib/basePath';
 
 const BRAND_META: Record<
@@ -61,9 +62,9 @@ export default async function BrandProductsPage({
   const { brandName } = resolvedParams;
   const isK2 = brandName === 'k2';
 
-  const allProducts = Object.values(products).filter(
-    (p) => p.brand === brandName,
-  );
+  const allProducts = Object.values(products)
+    .filter((p) => p.brand === brandName)
+    .map(toProductListItem);
 
   const meta = BRAND_META[brandName] || BRAND_META.k2;
 

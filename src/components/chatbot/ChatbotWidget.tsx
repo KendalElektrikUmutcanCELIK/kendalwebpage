@@ -3,9 +3,56 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
+import type { Language } from '@/lib/i18n/LanguageProvider';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
+import { resolveLocalized } from '@/lib/i18n/localized';
 import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect';
 import { CHATBOT_CONTEXTS, type ChatLink, MENU_BACK } from './chatbotContent';
+
+// Small chrome strings (aria-labels, panel title) that live outside the
+// per-context CHATBOT_CONTEXTS trees — kept here since they're the same
+// across all 4 brand contexts.
+const WIDGET_UI: Record<
+  Language,
+  { title: string; openChat: string; closeChat: string; close: string }
+> = {
+  tr: {
+    title: 'Kendal Asistan',
+    openChat: 'Sohbeti aç',
+    closeChat: 'Sohbeti kapat',
+    close: 'Kapat',
+  },
+  en: {
+    title: 'Kendal Assistant',
+    openChat: 'Open chat',
+    closeChat: 'Close chat',
+    close: 'Close',
+  },
+  ar: {
+    title: 'مساعد كندال',
+    openChat: 'فتح المحادثة',
+    closeChat: 'إغلاق المحادثة',
+    close: 'إغلاق',
+  },
+  es: {
+    title: 'Asistente Kendal',
+    openChat: 'Abrir chat',
+    closeChat: 'Cerrar chat',
+    close: 'Cerrar',
+  },
+  de: {
+    title: 'Kendal-Assistent',
+    openChat: 'Chat öffnen',
+    closeChat: 'Chat schließen',
+    close: 'Schließen',
+  },
+  zh: {
+    title: 'Kendal 助手',
+    openChat: '打开聊天',
+    closeChat: '关闭聊天',
+    close: '关闭',
+  },
+};
 
 interface Msg {
   id: string;
@@ -50,7 +97,8 @@ const TYPING_DELAY_MS = 1500;
 
 export const ChatbotWidget = () => {
   const { language } = useLanguage();
-  const lang = language === 'en' ? 'en' : 'tr';
+  const lang = language;
+  const ui = WIDGET_UI[lang];
 
   const [accentKey, setAccentKey] = useState<AccentKey>('main');
   const [isOpen, setIsOpen] = useState(false);
@@ -169,7 +217,11 @@ export const ChatbotWidget = () => {
   const openWidget = () => {
     if (!hasMounted) {
       setMessages([
-        { id: nextId(), role: 'bot', text: context.greeting[lang] },
+        {
+          id: nextId(),
+          role: 'bot',
+          text: resolveLocalized(context.greeting, lang),
+        },
       ]);
       setCurrentOptions(context.rootTopicIds);
       setHasMounted(true);
@@ -188,14 +240,22 @@ export const ChatbotWidget = () => {
     if (id === 'menu') {
       setMessages((prev) => [
         ...prev,
-        { id: nextId(), role: 'user', text: MENU_BACK.label[lang] },
+        {
+          id: nextId(),
+          role: 'user',
+          text: resolveLocalized(MENU_BACK.label, lang),
+        },
       ]);
       setCurrentOptions([]);
       setIsTyping(true);
       typingTimeoutRef.current = setTimeout(() => {
         setMessages((prev) => [
           ...prev,
-          { id: nextId(), role: 'bot', text: MENU_BACK.prompt[lang] },
+          {
+            id: nextId(),
+            role: 'bot',
+            text: resolveLocalized(MENU_BACK.prompt, lang),
+          },
         ]);
         setIsTyping(false);
         setCurrentOptions(context.rootTopicIds);
@@ -208,7 +268,11 @@ export const ChatbotWidget = () => {
 
     setMessages((prev) => [
       ...prev,
-      { id: nextId(), role: 'user', text: node.question[lang] },
+      {
+        id: nextId(),
+        role: 'user',
+        text: resolveLocalized(node.question, lang),
+      },
     ]);
     setCurrentOptions([]);
     setIsTyping(true);
@@ -218,7 +282,7 @@ export const ChatbotWidget = () => {
         {
           id: nextId(),
           role: 'bot',
-          text: node.answer[lang],
+          text: resolveLocalized(node.answer, lang),
           links: node.links,
         },
       ]);
@@ -233,23 +297,18 @@ export const ChatbotWidget = () => {
   const buttonBottom = bannerLiftPx > 0 ? bannerLiftPx + gap : 20;
   const panelBottom = buttonBottom + 56 + gap; // 56 = button height (h-14)
 
-  const chipLabel = (id: string) =>
-    id === 'menu' ? MENU_BACK.label[lang] : context.nodes[id]?.question[lang];
+  const chipLabel = (id: string) => {
+    if (id === 'menu') return resolveLocalized(MENU_BACK.label, lang);
+    const node = context.nodes[id];
+    return node ? resolveLocalized(node.question, lang) : undefined;
+  };
 
   return (
     <>
       <button
         type="button"
         onClick={toggleWidget}
-        aria-label={
-          isOpen
-            ? lang === 'tr'
-              ? 'Sohbeti kapat'
-              : 'Close chat'
-            : lang === 'tr'
-              ? 'Sohbeti aç'
-              : 'Open chat'
-        }
+        aria-label={isOpen ? ui.closeChat : ui.openChat}
         aria-expanded={isOpen}
         className={`chatbot-launcher-pop fixed left-4 sm:left-5 md:left-6 z-40 flex h-14 shrink-0 items-center rounded-full shadow-lg transition-[bottom,transform,width] duration-300 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60 ${
           isOpen
@@ -294,7 +353,7 @@ export const ChatbotWidget = () => {
         )}
         {!isOpen && (
           <span className="hidden whitespace-nowrap text-sm font-semibold sm:inline">
-            {lang === 'tr' ? 'Kendal Asistan' : 'Kendal Assistant'}
+            {ui.title}
           </span>
         )}
       </button>
@@ -302,7 +361,7 @@ export const ChatbotWidget = () => {
       {hasMounted && (
         <div
           role="dialog"
-          aria-label={lang === 'tr' ? 'Kendal Asistan' : 'Kendal Assistant'}
+          aria-label={ui.title}
           className={`fixed left-3 right-3 sm:left-5 sm:right-auto md:left-6 z-40 flex h-[58vh] max-h-[420px] w-auto flex-col overflow-hidden rounded-2xl border ${panel.border} ${panel.bg} shadow-[0_24px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-[bottom,opacity,transform] duration-300 ease-out sm:h-[460px] sm:max-h-[calc(100vh-220px)] sm:w-[380px] ${
             isOpen
               ? 'translate-y-0 scale-100 opacity-100'
@@ -336,13 +395,13 @@ export const ChatbotWidget = () => {
             </div>
             <div className="min-w-0 flex-1">
               <p className={`truncate text-sm font-semibold ${panel.title}`}>
-                {lang === 'tr' ? 'Kendal Asistan' : 'Kendal Assistant'}
+                {ui.title}
               </p>
             </div>
             <button
               type="button"
               onClick={() => setIsOpen(false)}
-              aria-label={lang === 'tr' ? 'Kapat' : 'Close'}
+              aria-label={ui.close}
               className={`shrink-0 rounded-full p-1.5 transition-colors ${panel.closeBtn}`}
             >
               <svg
@@ -388,7 +447,10 @@ export const ChatbotWidget = () => {
                     <div className="mt-2.5 flex flex-col gap-1.5">
                       {m.links.map((l) => {
                         const resolvedHref =
-                          typeof l.href === 'string' ? l.href : l.href[lang];
+                          typeof l.href === 'string'
+                            ? l.href
+                            : resolveLocalized(l.href, lang);
+                        const resolvedLabel = resolveLocalized(l.label, lang);
                         return l.external ? (
                           <a
                             key={resolvedHref}
@@ -397,7 +459,7 @@ export const ChatbotWidget = () => {
                             rel="noopener noreferrer"
                             className={`text-xs font-semibold underline underline-offset-2 transition-colors ${panel.link}`}
                           >
-                            {l.label[lang]}
+                            {resolvedLabel}
                           </a>
                         ) : (
                           <Link
@@ -405,7 +467,7 @@ export const ChatbotWidget = () => {
                             href={resolvedHref}
                             className={`text-xs font-semibold underline underline-offset-2 transition-colors ${panel.link}`}
                           >
-                            {l.label[lang]}
+                            {resolvedLabel}
                           </Link>
                         );
                       })}

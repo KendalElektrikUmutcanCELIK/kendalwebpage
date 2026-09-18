@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/generate-legacy-redirects.js && next build",
+    "build": "node scripts/generate-legacy-redirects.js && node scripts/generate-product-attributes.js && node scripts/generate-news-data.js && next build",
     "start": "next start",
     "lint": "biome lint .",
     "format": "biome format --write .",

@@ -6,10 +6,11 @@ import React from 'react';
 import siteSettings from '@/data/settings.json';
 import { getAssetPath } from '@/lib/basePath';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
+import { resolveLocalized } from '@/lib/i18n/localized';
 
 export const Footer = () => {
   const { t, language } = useLanguage();
-  const contact = siteSettings[language];
+  const contact = resolveLocalized(siteSettings, language);
   const currentYear = new Date().getFullYear();
 
   return (

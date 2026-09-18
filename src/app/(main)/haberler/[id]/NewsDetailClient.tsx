@@ -4,17 +4,17 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import React from 'react';
 import { ImageSlider } from '@/components/ui/ImageSlider';
-import { newsDataEN, newsDataTR } from '@/data/news';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
+import { useNewsData } from '@/lib/newsClient';
 
 export function NewsDetailClient({ id }: { id: string }) {
   const { language, t } = useLanguage();
 
-  const newsData = language === 'en' ? newsDataEN : newsDataTR;
-  const news = newsData.find((n) => n.id === id);
+  const newsData = useNewsData(language);
+  const news = newsData?.find((n) => n.id === id);
 
   if (!news) {
-    return notFound();
+    return null;
   }
 
   return (

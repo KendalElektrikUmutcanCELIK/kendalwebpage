@@ -1,0 +1,289 @@
+{
+  "nav": {
+    "about": "关于我们",
+    "products": "产品",
+    "why_us": "为什么选择我们",
+    "global": "全球网络",
+    "projects": "项目案例",
+    "career": "招聘信息",
+    "sanalpos": "在线支付",
+    "dealer": "B2B 登录",
+    "news": "新闻资讯",
+    "retail": "连锁超市",
+    "video": "宣传片",
+    "production": "生产制造",
+    "mission_vision": "使命与愿景",
+    "group_corporate": "企业信息",
+    "group_brands": "品牌与市场",
+    "group_media": "媒体与案例",
+    "brands": "我们的品牌与产品",
+    "catalog": "产品目录与价目表",
+    "certifications": "认证证书",
+    "references": "客户案例",
+    "contact": "联系我们"
+  },
+  "hero": {
+    "badge": "自1997年起的全球制造商",
+    "title_part1": "点亮",
+    "title_part2": "黑暗",
+    "subtitle": "创新的照明与电气设备"
+  },
+  "certifications": {
+    "title": "我们的认证",
+    "subtitle": "证明我们对质量与可靠性承诺的认证与注册证书。",
+    "iso": "ISO 管理体系认证",
+    "iso_subtitle": "我们的质量、环境、职业健康安全及信息安全管理体系认证。",
+    "tse": "TSE 产品认证证书",
+    "tse_subtitle": "证明我们的产品已通过土耳其标准协会认证的文件。",
+    "kalite": "综合质量方针",
+    "yerli": "本土产品证书",
+    "marka_tescil": "Turk Patent 商标注册证书",
+    "marka_tescil_subtitle": "属于 Kendal Elektrik 各品牌的官方商标注册证书。"
+  },
+  "products": {
+    "title": "产品展示",
+    "categories": {
+      "ampul": "灯泡",
+      "ic_aydinlatma": "室内照明",
+      "serit_led": "LED 灯带",
+      "dis_aydinlatma": "户外照明",
+      "diger": "其他"
+    },
+    "brands": "我们的品牌：K2 LED、K2 Plus、Vanti、Global"
+  },
+  "production": {
+    "title": "生产制造",
+    "text1": "我们公司于2017年开始在该行业开展业务，目前年产能达6000万只，是土耳其最大的灯泡生产工厂。在22,000平方米的厂房内，200名员工借助全自动化生产线，生产LED灯泡、复古灯丝灯泡、明装暗装LED平板灯及射灯、LED投光灯、LED吸顶灯、LED路灯、LED洗墙灯、吊灯、LED店铺射灯以及装饰性线性灯具。",
+    "text2": "Kendal Elektrik 在行业内占据重要地位，密切关注全球技术发展趋势，并率先在土耳其应用这些技术。公司尤其率先在土耳其实现了复古灯丝灯泡的量产。K2 品牌虽是我们公司的自有品牌，但公司同时也为土耳其及海外众多企业代工生产其自有品牌产品。",
+    "text3": "Kendal Elektrik 每年在ERP软件方面持续进行大量投资，并通过 MES/MAS 系统对全部生产过程进行在线监控与实时报告。",
+    "stat1_value": "8000万+",
+    "stat1_label": "年产能",
+    "stat2_value": "350",
+    "stat2_label": "员工人数",
+    "stat3_value": "97/100",
+    "stat3_label": "RBA 国际审核评分"
+  },
+  "why_us": {
+    "title": "为什么选择 Kendal？",
+    "item1_title": "3000+ 款产品",
+    "item1_desc": "丰富的产品线，满足您的一切需求。",
+    "item2_title": "质量认证",
+    "item2_desc": "符合国际标准的 ISO 认证生产。",
+    "item3_title": "本土生产",
+    "item3_desc": "全自动生产线实现100%本土制造。",
+    "item4_title": "覆盖81个省份的网络",
+    "item4_desc": "遍布土耳其各地的强大经销商网络。",
+    "item5_title": "认证品质",
+    "item5_desc": "完全符合国际质量与出口标准的生产体系。",
+    "subtitle": "支撑我们行业领先地位与品质的最重要因素。"
+  },
+  "catalog": {
+    "title": "2026年产品目录与价目表",
+    "subtitle": "通过 Kendal Elektrik 最新价目表，详细了解我们全部的照明与电气解决方案。",
+    "button": "查看"
+  },
+  "video": {
+    "title": "了解我们"
+  },
+  "retail": {
+    "title": "入驻土耳其各大连锁超市"
+  },
+  "cookies": {
+    "message": "我们使用 Cookie 为您提供更好的浏览体验。继续使用本网站即表示您同意我们的 Cookie 政策。",
+    "accept": "接受"
+  },
+  "news": {
+    "items": [
+      "我们与伊斯坦布尔技术大学（İTÜ）合作开展的国产LED芯片研发工作正快速推进。",
+      "凭借新一代LED灯泡系列，我们正在重新定义节能标准。",
+      "我们在国际照明展会上展示了新产品。"
+    ],
+    "preview_title": "最新资讯",
+    "view_all": "查看全部新闻"
+  },
+  "global": {
+    "title": "我们的全球布局",
+    "subtitle": "以土耳其为基地的强大生产实力",
+    "text": "凭借立足土耳其的强大生产实力，我们建立了覆盖4大洲40个国家的稳固出口网络。作为亚洲、欧洲和非洲行业内最大的参与者之一，我们自豪地在国际舞台上代表我们的国家，并凭借坚实的生产基础提供世界级品质。"
+  },
+  "references": {
+    "title": "遍及土耳其全境",
+    "subtitle": "我们持续以 Kendal Elektrik 的品质，为81个省份的无数项目提供照明服务。"
+  },
+  "international_references": {
+    "title": "海外客户案例"
+  },
+  "projects": {
+    "title": "参考项目"
+  },
+  "footer": {
+    "rights": "Kendal Elektrik. 保留所有权利。",
+    "company": "Kendal Elektrik Aydınlatma Elektronik İnşaat Sanayi ve Dış Ticaret A.Ş.",
+    "address": "Selimpaşa Org. San. Böl. 5008 Sokak No:6 Selimpaşa Silivri/伊斯坦布尔",
+    "map_cta": "在地图中打开",
+    "contact_title": "联系我们",
+    "phone": "0212 482 75 90 - 91",
+    "sales_phone": "0850 259 41 41",
+    "support_phone": "444 34 98",
+    "email": "info@kendalelektrik.com.tr",
+    "links_title": "企业信息",
+    "links": {
+      "about": "关于我们",
+      "products": "产品",
+      "production": "生产制造",
+      "certs": "认证证书",
+      "contact": "联系我们"
+    },
+    "legal_title": "法律信息",
+    "legal": {
+      "kvkk": "个人数据保护声明（KVKK）",
+      "privacy": "隐私与 Cookie 政策"
+    },
+    "phone_label": "客服热线",
+    "sales_phone_label": "销售支持热线",
+    "support_phone_label": "技术服务热线"
+  },
+  "career": {
+    "title": "招聘信息",
+    "subtitle": "加入 Kendal Elektrik 大家庭",
+    "hr_policy": {
+      "vision_title": "我们的人力资源愿景",
+      "vision_text": "打造一支积极性高、维护并提升企业形象、重视创新工作与服务精神、并将自身工作视为整体一部分的高素质人才队伍。",
+      "mission_title": "我们的人力资源使命",
+      "mission_text": "为实现公司目标与战略规划人力资源，培训员工，确保各项人事工作以最佳水平完成，并拥有专业化、具备企业代表能力、能在其领域提出创新见解且自信心强的员工队伍。",
+      "policy_title": "人力资源政策",
+      "policy_text": "Kendal Elektrik 的人力资源基本政策是在相关法规和既定政策框架内，遵循效率与盈利原则开展工作。Kendal Elektrik 将持续发展现代化、创新型的企业结构，拥有专业化并能在其领域提出创新见解的员工作为战略目标。",
+      "training_title": "人力资源培训政策",
+      "training_text": "按照效率、效益和节约的原则组织内部培训，以提升员工能力并为其晋升至更高职位做好准备，从而确保拥有专业化并能提出创新见解的员工队伍。通过员工绩效管理体系，旨在将企业目标与员工个人目标相结合，支持个人成就，提升企业整体绩效，以公平、系统、可衡量的方式评估全体员工对实现企业目标的贡献，通过了解员工期望来增强其归属感，并通过营造激励性的工作环境提高劳动生产率。",
+      "health_safety_title": "员工健康与职业安全",
+      "health_safety_text": "Kendal Elektrik 将员工健康与安全视为工作生活与企业文化的自然组成部分，并致力于持续发展这一文化。员工健康与职业安全相关工作严格按照相关法规、义务及标准执行，同时持续跟踪并采纳该领域的最佳实践。在所有活动中，我们都会提前分析潜在风险，并采取积极主动的预防措施。所有员工在入职时及在职期间都会定期接受健康与安全方面的复训。"
+    },
+    "principles": [
+      "根据岗位特性确定所需员工资质，并完成相应的录用流程",
+      "确定并提供提升员工工作能力、业绩与努力所需的培训",
+      "鼓励员工遵循职业道德、效率与盈利原则开展工作，并增强其对企业的归属感",
+      "及时向员工告知与其相关的事项",
+      "持续审查、更新并完善人力资源政策",
+      "在所有工作中采纳社会责任理念与项目，积极参与并加以推动",
+      "进一步强化我们尊重自然、注重环保的员工形象"
+    ],
+    "human_rights": [
+      "作为 Kendal Elektrik，我们将在一切活动中尊重人权、维护普世价值并提升相关意识视为一项基本责任。",
+      "我们承诺在与员工及客户的关系中，依照 Kendal Elektrik 道德准则不进行任何歧视行为。",
+      "我们的管理层有责任防止工作场所中的虐待、歧视或骚扰行为，并在发现此类情况时立即向人力资源部门报告。",
+      "为员工提供一个可以无惧报复地反映问题的开放、可信的沟通环境，是我们的首要任务。",
+      "我们坚持原则，不与任何违反国内外劳动法规——尤其是雇用童工——的机构或组织建立业务往来。",
+      "通过自愿参与由土耳其家庭与社会服务部与世界经济论坛联合发起的《职场平等宣言》，我们支持性别平等，并在招聘与职业发展中基于能力提供平等机会。同时，我们积极支持职场母亲重返工作岗位。",
+      "我们遵循第4857号劳动法的用工政策、对工会组建与集体谈判权利的尊重、我们在职业健康与安全方面的培训，以及我们坚决反对强迫劳动的立场，都是我们无论在公司内部还是与业务伙伴合作中都绝不妥协的标准。"
+    ],
+    "links": {
+      "hr_policy_title": "我们的人力资源政策",
+      "hr_policy_desc": "我们企业的愿景、使命与人力资源战略。",
+      "principles_title": "我们的基本原则",
+      "principles_desc": "作为 Kendal Elektrik 大家庭所秉持的基本人力资源原则。",
+      "human_rights_title": "人权与劳工权益政策",
+      "human_rights_desc": "我们对普世价值、平等与劳工权益的重视。"
+    },
+    "stats": {
+      "experience_label": "年行业经验",
+      "employment_label": "在职员工"
+    }
+  },
+  "company_stats": {
+    "title_part1": "照明领域的",
+    "title_part2": "土耳其",
+    "title_part3": "骄傲",
+    "location_label": "土耳其伊斯坦布尔生产基地",
+    "desc": "Kendal Elektrik 股份公司自1997年踏入该行业以来，凭借其生产实力、品质与创新能力，如今已成为土耳其照明市场最大的制造商之一。凭借不断升级的技术基础设施、始终如一的质量标准，以及日益增长的生产目标，我们正全力以赴，不仅在国内，也在全球范围内持续创造世界级的价值。",
+    "stats": [
+      { "label": "年行业经验", "suffix": "" },
+      { "label": "平方米厂房面积", "suffix": "" },
+      { "label": "员工人数", "suffix": "+" },
+      { "label": "年产能", "suffix": "" },
+      { "label": "不同产品种类", "suffix": "+" },
+      { "label": "覆盖全土耳其的经销商", "suffix": "+" }
+    ]
+  },
+  "brands_strip": {
+    "title": "我们的品牌"
+  },
+  "company_video": {
+    "discover": "探索光影背后的力量"
+  },
+  "production_page": {
+    "title": "生产制造",
+    "content": [
+      "Kendal Elektrik 于2017年在占地22,000平方米的现代化生产基地正式投产，年产照明产品达8000万件，是行业内的领先制造商之一。在高度自动化技术支持的生产体系下，LED灯泡、LED平板灯、灯丝LED灯泡、烛形灯泡、人工组装线、SMD贴片系统以及塑料注塑生产均在同一屋檐下完成。",
+      "作为土耳其、欧洲及中东地区唯一生产灯丝LED灯泡的制造商，Kendal Elektrik 在生产的每一个环节都以国际质量标准为基准。所有来自供应商的原材料及半成品均需经过来料质量检验（IQC），生产过程中执行过程质量控制（IPQC），出货前成品还需再次通过出货质量检验（OQC）进行把关。",
+      "得益于在防静电（ESD）保护区域内进行的生产工艺，电子元件得以免受静电放电的损害，同时产品还需经过电气安全、机械强度、光度性能、功耗、功率因数、电磁兼容性（EMC）、驱动控制、光通量、色温、显色指数（CRI）测量、绝缘电阻、接地电阻、高压测试、漏电流、老化、寿命及跌落测试等全面的质量检验。Kendal Elektrik 借助 ERP、MES 与 WMS 系统支持其数字化生产管理，凭借高产能、先进的自动化基础设施、可追溯的生产流程以及可持续的质量理念，持续将在土耳其制造的创新照明解决方案可靠地输送至世界众多国家。"
+    ]
+  },
+  "brand_info": {
+    "k2": {
+      "title": "关于 K2",
+      "description": "我们的品牌名称源自K2峰——登山者眼中最难攀登、最负盛名的高峰之一，秉承成为“照明之巅”的愿景。K2 代表了 Kendal Elektrik 广泛的专业LED照明系统、以节能为核心的解决方案以及装饰性产品，即便在最严苛的工业与建筑应用条件下，也能提供顶级的品质与耐用性。"
+    },
+    "vanti": {
+      "title": "关于 Vanti",
+      "description": "Vanti 是 Kendal Elektrik 专注于通风、空气调节与现代生活解决方案的专业品牌。凭借智能LED照明吊扇、工业立式风扇、壁挂式及便携式风扇等丰富产品线，Vanti 将强劲的气流与语音控制、遥控等创新功能相结合，为住宅、办公室及商业空间打造清爽宜人的生活环境。"
+    }
+  },
+  "brand_pages": {
+    "navbar": {
+      "home": "首页",
+      "products": "产品",
+      "contact": "联系我们",
+      "cta": "联系我们"
+    },
+    "hero": {
+      "k2_title": "专业照明解决方案",
+      "k2_desc": "K2 品牌为工业与建筑照明提供最高品质标准。",
+      "vanti_title": "清爽宜人的生活空间",
+      "vanti_desc": "通过 Vanti，为您的家庭与办公室发现创新、现代且强劲的风扇科技。",
+      "global_title": "全方位照明与电气解决方案",
+      "global_desc": "Global 品牌以丰富的产品线，提供高品质、值得信赖的照明科技。",
+      "view_products": "查看产品"
+    },
+    "products_page": {
+      "title": "我们的全部产品",
+      "k2_desc": "浏览以下由 K2 LED SYSTEMS 品质保证的全部照明产品。",
+      "vanti_desc": "VANTİ 为您的生活空间增添价值的全部产品。",
+      "global_desc": "浏览以下 Global 品牌在全土耳其提供的优质产品。"
+    },
+    "showcase": {
+      "product_count": "产品",
+      "back_to_categories": "返回分类",
+      "products_found": "件产品。",
+      "view": "查看",
+      "model": "型号：",
+      "search_placeholder": "输入产品名称或型号搜索...",
+      "search_placeholder_mobile": "搜索产品或型号...",
+      "search_results_title": "搜索结果",
+      "search_for": "关于",
+      "search_no_results_title": "未找到结果",
+      "search_no_results_desc": "未找到符合条件的产品，请尝试使用其他关键词重新搜索。",
+      "filters": "筛选",
+      "filters_selected_suffix": "个筛选条件已选择",
+      "filters_empty_hint": "选择筛选条件以缩小产品范围",
+      "filter_tab_casings": "颜色",
+      "filter_tab_watts": "功率",
+      "filter_tab_sockets": "灯头类型",
+      "filter_casing_search_placeholder": "搜索颜色...",
+      "filter_no_results": "未找到结果。",
+      "filter_clear": "清除",
+      "filter_apply": "应用"
+    },
+    "footer": {
+      "address_prefix": "地址：",
+      "map_cta": "在地图中打开",
+      "contact_title": "联系我们",
+      "contact_line": "客服热线",
+      "sales_line": "销售支持热线",
+      "tech_line": "技术服务热线",
+      "legal_title": "法律信息",
+      "kvkk": "个人数据保护声明（KVKK）",
+      "privacy": "隐私与 Cookie 政策",
+      "copyright": "- Kendal Elektrik A.Ş. 旗下企业，保留所有权利。"
+    }
+  }
+}

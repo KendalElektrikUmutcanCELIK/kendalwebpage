@@ -1,8 +1,10 @@
 'use client';
 
 import Image from 'next/image';
-import type { Product } from '@/data/products';
+import type { ProductListItem } from '@/data/products';
 import { getAssetPath } from '@/lib/basePath';
+import type { Language } from '@/lib/i18n/LanguageProvider';
+import { resolveLocalized } from '@/lib/i18n/localized';
 import { MAX_COMPARE } from './helpers';
 
 interface CompareTexts {
@@ -12,12 +14,12 @@ interface CompareTexts {
 }
 
 interface CompareTrayProps {
-  compareItems: { product: Product; url: string }[];
-  language: string;
+  compareItems: { product: ProductListItem; url: string }[];
+  language: Language;
   isK2: boolean;
   brandName: string;
   compareTexts: CompareTexts;
-  onToggleCompare: (product: Product) => void;
+  onToggleCompare: (product: ProductListItem) => void;
   onClear: () => void;
   onOpenCompare: () => void;
 }
@@ -37,9 +39,7 @@ export function CompareTray({
       <div className="pointer-events-auto bg-white/95 backdrop-blur-xl rounded-[1.25rem] sm:rounded-[1.75rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] border border-zinc-100 ring-1 ring-black/[0.02] px-2.5 py-2 sm:px-4 sm:py-3 flex items-center gap-2 sm:gap-4 max-w-[calc(100vw-1.5rem)] sm:max-w-[calc(100vw-2rem)] overflow-x-auto animate-in slide-in-from-bottom-4 fade-in duration-300">
         <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
           {compareItems.map(({ product }) => {
-            const name =
-              product.name[language as keyof typeof product.name] ||
-              product.name.tr;
+            const name = resolveLocalized(product.name, language);
             return (
               <div
                 key={product.id}

@@ -1,0 +1,289 @@
+{
+  "nav": {
+    "about": "Über Uns",
+    "products": "Produkte",
+    "why_us": "Warum Wir",
+    "global": "Unser Globales Netzwerk",
+    "projects": "Projekte",
+    "career": "Karriere",
+    "sanalpos": "Online-Zahlung",
+    "dealer": "B2B-Zugang",
+    "news": "Neuigkeiten",
+    "retail": "Handelsketten",
+    "video": "Imagefilm",
+    "production": "Produktion",
+    "mission_vision": "Mission und Vision",
+    "group_corporate": "Unternehmen",
+    "group_brands": "Marken & Märkte",
+    "group_media": "Medien & Referenzen",
+    "brands": "Unsere Marken & Produkte",
+    "catalog": "Katalog & Preisliste",
+    "certifications": "Zertifikate",
+    "references": "Unsere Referenzen",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "badge": "Globaler Hersteller Seit 1997",
+    "title_part1": "Wir Erleuchten",
+    "title_part2": "die Dunkelheit",
+    "subtitle": "Innovative Beleuchtungs- und Elektrotechnik"
+  },
+  "certifications": {
+    "title": "Unsere Zertifikate",
+    "subtitle": "Zertifikate und Registrierungen, die unser Verständnis von Qualität und Zuverlässigkeit belegen.",
+    "iso": "ISO-Managementsystem-Zertifikate",
+    "iso_subtitle": "Zertifikate unserer Qualitäts-, Umwelt-, Arbeitssicherheits- und Informationssicherheits-Managementsysteme.",
+    "tse": "TSE-Produktzulassungszertifikate",
+    "tse_subtitle": "Dokumente, die belegen, dass unsere Produkte vom Türkischen Normeninstitut zugelassen wurden.",
+    "kalite": "Integrierte Qualitätspolitik",
+    "yerli": "Zertifikate für Inlandsprodukte",
+    "marka_tescil": "Turk Patent - Markenregistrierungszertifikate",
+    "marka_tescil_subtitle": "Unsere offiziellen Markenregistrierungszertifikate der Kendal-Elektrik-Marken."
+  },
+  "products": {
+    "title": "Produktgalerie",
+    "categories": {
+      "ampul": "Glühbirnen",
+      "ic_aydinlatma": "Innenbeleuchtung",
+      "serit_led": "LED-Streifen",
+      "dis_aydinlatma": "Außenbeleuchtung",
+      "diger": "Sonstige"
+    },
+    "brands": "Unsere Marken: K2 LED, K2 Plus, Vanti, Global"
+  },
+  "production": {
+    "title": "Produktion",
+    "text1": "Unser Unternehmen, das seine Tätigkeit im Jahr 2017 aufgenommen hat, ist mit einer jährlichen Produktionskapazität von 60 Millionen Stück derzeit die größte Glühbirnenfabrik der Türkei. Auf einer überdachten Fläche von 22.000 m² produzieren wir mit 200 Mitarbeitern und voller Automatisierung LED-Lampen, rustikale Filament-Glühbirnen, LED-Panels für Auf- und Unterputzmontage sowie Spots, LED-Fluter, LED-Deckenleuchten, LED-Straßenleuchten, LED-Wall-Washer, Hängeleuchten, LED-Ladenspots und dekorative Linearleuchten.",
+    "text2": "Kendal Elektrik, das eine bedeutende Marktposition in der Branche einnimmt, verfolgt die technologischen Entwicklungen weltweit genau und war das erste Unternehmen, das diese in der Türkei umgesetzt hat. Insbesondere war es das erste Unternehmen, das rustikale Filament-Glühbirnen in der Türkei herstellte. Die Marke K2 ist zwar die eigene Marke unseres Unternehmens, gleichzeitig werden aber auch Markenprodukte für zahlreiche Unternehmen im In- und Ausland gefertigt.",
+    "text3": "Kendal Elektrik, das jährlich hohe Investitionen in ERP-Software tätigt, überwacht seine gesamte Produktion online über das MES/MAS-Programm und erstellt Live-Berichte.",
+    "stat1_value": "80 Mio.+",
+    "stat1_label": "Jährliche Produktionskapazität",
+    "stat2_value": "350",
+    "stat2_label": "Mitarbeiter",
+    "stat3_value": "97/100",
+    "stat3_label": "RBA-Punktzahl bei internationaler Prüfung"
+  },
+  "why_us": {
+    "title": "Warum Kendal?",
+    "item1_title": "3000+ Produkte",
+    "item1_desc": "Lösungen für all Ihre Bedürfnisse mit einem breiten Produktsortiment.",
+    "item2_title": "Qualitätszertifikate",
+    "item2_desc": "ISO-zertifizierte Produktion nach internationalen Standards.",
+    "item3_title": "Inlandsproduktion",
+    "item3_desc": "100 % Inlandsproduktion mit unseren vollautomatischen Fertigungslinien.",
+    "item4_title": "Netzwerk in 81 Provinzen",
+    "item4_desc": "Ein starkes Händlernetzwerk, das jeden Winkel der Türkei erreicht.",
+    "item5_title": "Zertifizierte Qualität",
+    "item5_desc": "Produktion in voller Übereinstimmung mit internationalen Qualitäts- und Exportstandards.",
+    "subtitle": "Die wichtigsten Faktoren, die unsere Branchenführerschaft und Qualität untermauern."
+  },
+  "catalog": {
+    "title": "Produktkatalog und Preisliste 2026",
+    "subtitle": "Entdecken Sie alle unsere Beleuchtungs- und Elektrolösungen im Detail mit der aktuellen Kendal-Elektrik-Preisliste.",
+    "button": "Ansehen"
+  },
+  "video": {
+    "title": "Lernen Sie Uns Kennen"
+  },
+  "retail": {
+    "title": "In den Führenden Handelsketten der Türkei"
+  },
+  "cookies": {
+    "message": "Wir verwenden Cookies, um Ihnen ein besseres Erlebnis zu bieten. Durch die Nutzung unserer Website stimmen Sie unserer Cookie-Richtlinie zu.",
+    "accept": "Akzeptieren"
+  },
+  "news": {
+    "items": [
+      "Unsere F&E-Arbeiten an einheimischen LED-Chips schreiten in Zusammenarbeit mit der Technischen Universität Istanbul (İTÜ) zügig voran.",
+      "Mit unserer neuen LED-Lampengeneration setzen wir neue Maßstäbe beim Energiesparen.",
+      "Wir haben unsere neuen Produkte auf der internationalen Beleuchtungsmesse vorgestellt."
+    ],
+    "preview_title": "Aktuelle Neuigkeiten",
+    "view_all": "Alle Neuigkeiten Ansehen"
+  },
+  "global": {
+    "title": "Unsere Globale Präsenz",
+    "subtitle": "Produktionskraft mit Sitz in der Türkei",
+    "text": "Mit unserer in der Türkei ansässigen Produktionskraft verfügen wir über ein starkes Exportnetzwerk, das sich über 40 Länder auf 4 Kontinenten erstreckt. Als einer der größten Akteure der Branche in Asien, Europa und Afrika vertreten wir unser Land mit Stolz auf der globalen Bühne und bieten dank unserer soliden Produktionsinfrastruktur Qualität nach Weltstandard."
+  },
+  "references": {
+    "title": "In der Ganzen Türkei",
+    "subtitle": "Wir beleuchten weiterhin zahlreiche Projekte in 81 Provinzen mit der Qualität von Kendal Elektrik."
+  },
+  "international_references": {
+    "title": "Unsere Referenzen im Ausland"
+  },
+  "projects": {
+    "title": "Referenzprojekte"
+  },
+  "footer": {
+    "rights": "Kendal Elektrik. Alle Rechte vorbehalten.",
+    "company": "Kendal Elektrik Aydınlatma Elektronik İnşaat Sanayi ve Dış Ticaret A.Ş.",
+    "address": "Selimpaşa Org. San. Böl. 5008 Sokak No:6 Selimpaşa Silivri/ISTANBUL",
+    "map_cta": "In der Karte Öffnen",
+    "contact_title": "Kontakt",
+    "phone": "0212 482 75 90 - 91",
+    "sales_phone": "0850 259 41 41",
+    "support_phone": "444 34 98",
+    "email": "info@kendalelektrik.com.tr",
+    "links_title": "Unternehmen",
+    "links": {
+      "about": "Über Uns",
+      "products": "Produkte",
+      "production": "Produktion",
+      "certs": "Zertifikate",
+      "contact": "Kontakt"
+    },
+    "legal_title": "Rechtliches",
+    "legal": {
+      "kvkk": "Datenschutzhinweis (KVKK)",
+      "privacy": "Datenschutz- und Cookie-Richtlinie"
+    },
+    "phone_label": "Kontakt-Hotline",
+    "sales_phone_label": "Vertriebs-Hotline",
+    "support_phone_label": "Technischer Support"
+  },
+  "career": {
+    "title": "Karriere",
+    "subtitle": "Werden Sie Teil der Kendal-Elektrik-Familie",
+    "hr_policy": {
+      "vision_title": "Unsere Personalvision",
+      "vision_text": "Aufbau hochmotivierter, qualifizierter Mitarbeiter, die das Unternehmensimage schützen und stärken, innovative Arbeit in den Vordergrund stellen, Wert auf Service legen und sich selbst als Teil eines Ganzen verstehen.",
+      "mission_title": "Unsere Personalmission",
+      "mission_text": "Planung der Personalressourcen zur Umsetzung der Unternehmensziele und -strategien, Schulung der Mitarbeiter, bestmögliche Abwicklung der Personalprozesse sowie der Aufbau eines selbstbewussten, fachlich spezialisierten Personalstamms mit Repräsentationsfähigkeit und der Fähigkeit, neue Impulse in seinem Bereich zu setzen.",
+      "policy_title": "Personalpolitik",
+      "policy_text": "Die grundlegende Personalpolitik von Kendal Elektrik besteht darin, im Rahmen der geltenden Vorschriften und festgelegten Richtlinien nach den Grundsätzen von Effizienz und Rentabilität zu arbeiten. Kendal Elektrik hat es sich zum strategischen Ziel gesetzt, seine moderne und innovative Unternehmensstruktur kontinuierlich weiterzuentwickeln und über fachlich spezialisierte Mitarbeiter zu verfügen, die neue Impulse in ihrem Bereich setzen können.",
+      "training_title": "Personalschulungspolitik",
+      "training_text": "Durchführung interner Schulungen nach den Grundsätzen von Effizienz, Wirksamkeit und Sparsamkeit, um die Kompetenzen zu steigern und Mitarbeiter auf höhere Positionen vorzubereiten, damit fachlich spezialisierte Mitarbeiter mit der Fähigkeit zu neuen Impulsen zur Verfügung stehen. Mit dem Personal-Leistungsmanagementsystem wird angestrebt, die Unternehmensziele mit den persönlichen Zielen der Mitarbeiter zu vereinen, den individuellen Erfolg zu fördern, den Erfolg des Unternehmens zu steigern, den Beitrag aller Mitarbeiter zur Zielerreichung fair, systematisch und messbar zu bewerten, durch die Ermittlung der Erwartungen der Mitarbeiter deren Bindung an das Unternehmen zu stärken und durch ein motivierendes Arbeitsumfeld die Arbeitsproduktivität zu erhöhen.",
+      "health_safety_title": "Arbeitssicherheit und Gesundheitsschutz",
+      "health_safety_text": "Bei Kendal Elektrik werden die Gesundheit und Sicherheit der Mitarbeiter als natürlicher Bestandteil des Arbeitslebens und der Unternehmenskultur betrachtet, mit dem Ziel, diese Kultur kontinuierlich weiterzuentwickeln. Die Praktiken im Bereich Arbeitssicherheit und Gesundheitsschutz werden gemäß den einschlägigen Vorschriften, Verpflichtungen und Standards umgesetzt, wobei bewährte Verfahren in diesem Bereich fortlaufend verfolgt und angepasst werden. Bei allen Tätigkeiten werden potenzielle Risiken im Voraus analysiert und proaktive Ansätze zu deren Vermeidung entwickelt. Alle Mitarbeiter erhalten sowohl bei ihrem Eintritt als auch in regelmäßigen Abständen während ihrer Beschäftigung Auffrischungsschulungen zu Gesundheit und Sicherheit am Arbeitsplatz."
+    },
+    "principles": [
+      "Ermittlung der für die jeweilige Position geeigneten Personalqualifikationen und Durchführung der entsprechenden Einstellungsprozesse",
+      "Ermittlung und Bereitstellung der erforderlichen Schulungen zur Weiterentwicklung von Arbeitsfähigkeit, Erfolg und Engagement der Mitarbeiter",
+      "Förderung eines an ethischen Grundsätzen sowie Effizienz und Rentabilität orientierten Arbeitsverhaltens und der Unternehmensbindung der Mitarbeiter",
+      "Rechtzeitige Information der Mitarbeiter über sie betreffende Angelegenheiten",
+      "Kontinuierliche Überprüfung, Aktualisierung und Weiterentwicklung der Personalpolitik",
+      "Übernahme, Beteiligung und Förderung des Konzepts der sozialen Verantwortung und entsprechender Projekte in allen Bereichen",
+      "Weitere Stärkung unseres naturbewussten und umweltfreundlichen Mitarbeiterprofils"
+    ],
+    "human_rights": [
+      "Als Kendal Elektrik betrachten wir es als grundlegende Verantwortung, in all unseren Tätigkeiten die Menschenrechte zu achten, universelle Werte zu schützen und das Bewusstsein hierfür zu stärken.",
+      "In unseren Beziehungen zu Mitarbeitern und Kunden verpflichten wir uns, gemäß den Ethikgrundsätzen von Kendal Elektrik keine Diskriminierung auszuüben.",
+      "Unser Management trägt die Verantwortung, Misshandlung, Diskriminierung oder Belästigung am Arbeitsplatz zu verhindern und solche Vorfälle unverzüglich der Personalabteilung zu melden.",
+      "Unsere oberste Priorität ist es, ein offenes und vertrauenswürdiges Kommunikationsumfeld zu schaffen, in dem Beschwerden ohne Angst vor Vergeltung geäußert werden können.",
+      "Wir haben uns zum Grundsatz gemacht, keine Geschäftsbeziehungen mit Institutionen oder Organisationen einzugehen, die gegen nationale und internationale Arbeitsgesetze verstoßen, insbesondere im Hinblick auf Kinderarbeit.",
+      "Mit unserer freiwilligen Teilnahme an der in Zusammenarbeit mit dem türkischen Ministerium für Familie und Soziales sowie dem Weltwirtschaftsforum durchgeführten „Erklärung zur Gleichstellung am Arbeitsplatz“ unterstützen wir die Gleichstellung der Geschlechter und bieten bei Einstellung und Karriereentwicklung gleiche Chancen auf Grundlage von Leistung. Zudem unterstützen wir aktiv die Rückkehr berufstätiger Mütter ins Arbeitsleben.",
+      "Unsere Beschäftigungspolitik im Einklang mit dem Arbeitsgesetz Nr. 4857, unser Respekt vor dem Recht auf gewerkschaftliche Organisation und Tarifverhandlungen, unsere Schulungen zu Arbeitssicherheit und Gesundheitsschutz sowie unsere klare Haltung gegen Zwangsarbeit sind Standards, von denen wir weder im eigenen Unternehmen noch bei unseren Geschäftspartnern abweichen."
+    ],
+    "links": {
+      "hr_policy_title": "Unsere Personalpolitik",
+      "hr_policy_desc": "Die Vision, Mission und Personalstrategien unseres Unternehmens.",
+      "principles_title": "Unsere Grundprinzipien",
+      "principles_desc": "Die grundlegenden Personalgrundsätze, die wir als Kendal-Elektrik-Familie vertreten.",
+      "human_rights_title": "Richtlinie zu Menschenrechten und Arbeitnehmerrechten",
+      "human_rights_desc": "Die Bedeutung, die wir universellen Werten, Gleichstellung und Arbeitnehmerrechten beimessen."
+    },
+    "stats": {
+      "experience_label": "Jahre Erfahrung",
+      "employment_label": "Beschäftigung"
+    }
+  },
+  "company_stats": {
+    "title_part1": "Der Stolz",
+    "title_part2": "der Türkei",
+    "title_part3": "in der Beleuchtung",
+    "location_label": "Produktionsstätte Istanbul, Türkei",
+    "desc": "Kendal Elektrik A.Ş., das seine Branchenreise 1997 begann, zählt heute dank seiner Produktionskraft, Qualität und Innovationskraft zu den größten Herstellern auf dem türkischen Beleuchtungsmarkt. Mit unserer sich ständig weiterentwickelnden technologischen Infrastruktur, unseren kompromisslosen Qualitätsstandards und unseren stetig wachsenden Produktionszielen schaffen wir mit voller Kraft nicht nur in unserem Land, sondern auch auf globaler Ebene Werte nach Weltstandard.",
+    "stats": [
+      { "label": "Jahre Erfahrung", "suffix": "" },
+      { "label": "m² Überdachte Fläche", "suffix": "" },
+      { "label": "Beschäftigte", "suffix": "+" },
+      { "label": "Jährliche Produktionskapazität", "suffix": "" },
+      { "label": "Verschiedene Produkte", "suffix": "+" },
+      { "label": "Händler in der ganzen Türkei", "suffix": "+" }
+    ]
+  },
+  "brands_strip": {
+    "title": "Unsere Marken"
+  },
+  "company_video": {
+    "discover": "Entdecken Sie die Kraft Hinter dem Licht"
+  },
+  "production_page": {
+    "title": "Produktion",
+    "content": [
+      "Kendal Elektrik, das 2017 in einer modernen Produktionsstätte mit 22.000 m² überdachter Fläche seine Tätigkeit aufnahm, zählt mit einer jährlichen Produktionskapazität von 80 Millionen Beleuchtungsprodukten zu den führenden Herstellern der Branche. In einer durch hohe Automatisierungstechnologie unterstützten Produktionsinfrastruktur werden LED-Lampen, LED-Panels, Filament-LED-Lampen, Kerzenlampen, manuelle Montagelinien, SMD-Bestückungssysteme und Kunststoffspritzguss unter einem Dach gefertigt.",
+      "Kendal Elektrik, der einzige Hersteller von Filament-LED-Lampen in der Türkei, Europa und dem Nahen Osten, orientiert sich in jeder Produktionsphase an internationalen Qualitätsstandards. Alle von Lieferanten bezogenen Rohstoffe und Halbfertigprodukte durchlaufen IQC-Prozesse (Incoming Quality Control), während der Produktion werden IPQC-Kontrollen (In Process Quality Control) durchgeführt, und vor dem Versand werden die Endprodukte erneut mittels OQC (Outgoing Quality Control) geprüft.",
+      "Dank der in ESD-geschützten Produktionsbereichen durchgeführten Fertigungsprozesse sind elektronische Bauteile vor elektrostatischer Entladung geschützt, während die Produkte umfassenden Qualitätskontrollen unterzogen werden, darunter elektrische Sicherheit, mechanische Festigkeit, photometrische Leistung, Energieverbrauch, Leistungsfaktor, EMV-Konformität, Treiberkontrolle, Lumenwert, Farbtemperatur, CRI-Messung, Isolationswiderstand, Erdungswiderstand, Hochspannung, Kriechstrom, Alterung, Lebensdauer und Falltests. Kendal Elektrik unterstützt sein digitales Produktionsmanagement mit ERP-, MES- und WMS-Systemen und liefert dank seiner hohen Produktionskapazität, fortschrittlichen Automatisierungsinfrastruktur, nachvollziehbaren Prozesse und seines nachhaltigen Qualitätsverständnisses zuverlässig innovative, in der Türkei gefertigte Beleuchtungslösungen in zahlreiche Länder der Welt."
+    ]
+  },
+  "brand_info": {
+    "k2": {
+      "title": "Über K2",
+      "description": "Unsere Marke, die ihren Namen vom K2 trägt, einem der schwierigsten und angesehensten Berge für Bergsteiger, verfolgt die Vision, der „Gipfel der Beleuchtung“ zu sein. K2, das die breite Palette professioneller LED-Beleuchtungssysteme, energieeffizienzorientierter Lösungen und dekorativer Produkte von Kendal Elektrik repräsentiert, bietet auch unter den anspruchsvollsten Bedingungen erstklassige Qualität und Langlebigkeit für industrielle und architektonische Anforderungen."
+    },
+    "vanti": {
+      "title": "Über Vanti",
+      "description": "Vanti ist die auf Belüftung, Klimatisierung und moderne Wohnlösungen spezialisierte Marke von Kendal Elektrik. Mit einem breiten Produktsortiment aus intelligenten LED-beleuchteten Deckenventilatoren, industriellen Standventilatoren, Wand- und tragbaren Ventilatoren verbindet Vanti eine starke Luftströmung mit innovativen Funktionen wie Sprachsteuerung und Fernbedienung, um in Wohnungen, Büros und Gewerberäumen luftige und kühle Lebensräume zu schaffen."
+    }
+  },
+  "brand_pages": {
+    "navbar": {
+      "home": "Startseite",
+      "products": "Produkte",
+      "contact": "Kontakt",
+      "cta": "Kontaktieren Sie Uns"
+    },
+    "hero": {
+      "k2_title": "Professionelle Beleuchtungslösungen",
+      "k2_desc": "Mit der Marke K2 bieten wir die höchsten Qualitätsstandards in der Industrie- und Architekturbeleuchtung.",
+      "vanti_title": "Luftige und Kühle Lebensräume",
+      "vanti_desc": "Entdecken Sie mit Vanti innovative, moderne und leistungsstarke Ventilatortechnologien für Ihr Zuhause und Büro.",
+      "global_title": "Umfassende Beleuchtungs- und Elektrolösungen",
+      "global_desc": "Mit der Marke Global bieten wir hochwertige und zuverlässige Beleuchtungstechnologien in einem breiten Produktsortiment.",
+      "view_products": "Produkte Ansehen"
+    },
+    "products_page": {
+      "title": "Alle Unsere Produkte",
+      "k2_desc": "Entdecken Sie unten alle unsere Beleuchtungsprodukte, die wir mit der Garantie von K2 LED SYSTEMS anbieten.",
+      "vanti_desc": "Alle unsere Produkte, die mit VANTİ Ihren Lebensräumen einen Mehrwert verleihen.",
+      "global_desc": "Entdecken Sie unten unsere hochwertigen Produkte, die wir in der ganzen Türkei unter der Marke Global anbieten."
+    },
+    "showcase": {
+      "product_count": "Produkt",
+      "back_to_categories": "Zurück zu den Kategorien",
+      "products_found": "Produkte gefunden.",
+      "view": "Ansehen",
+      "model": "Modell:",
+      "search_placeholder": "Suche nach Produktname oder Modellcode...",
+      "search_placeholder_mobile": "Produkt oder Modell suchen...",
+      "search_results_title": "Suchergebnisse",
+      "search_for": "für",
+      "search_no_results_title": "Keine Ergebnisse Gefunden",
+      "search_no_results_desc": "Wir konnten keine Produkte finden, die Ihren Kriterien entsprechen. Bitte versuchen Sie es mit anderen Suchbegriffen.",
+      "filters": "Filter",
+      "filters_selected_suffix": "Filter ausgewählt",
+      "filters_empty_hint": "Wählen Sie einen Filter, um die Produkte einzugrenzen",
+      "filter_tab_casings": "Farben",
+      "filter_tab_watts": "Leistung",
+      "filter_tab_sockets": "Fassungstyp",
+      "filter_casing_search_placeholder": "Farbe suchen...",
+      "filter_no_results": "Keine Ergebnisse gefunden.",
+      "filter_clear": "Zurücksetzen",
+      "filter_apply": "Anwenden"
+    },
+    "footer": {
+      "address_prefix": "Adresse: ",
+      "map_cta": "In der Karte Öffnen",
+      "contact_title": "Kontakt",
+      "contact_line": "Kontakt-Hotline",
+      "sales_line": "Vertriebs-Hotline",
+      "tech_line": "Technischer Support",
+      "legal_title": "Rechtliches",
+      "kvkk": "Datenschutzhinweis (KVKK)",
+      "privacy": "Datenschutz- und Cookie-Richtlinie",
+      "copyright": "- Ein Unternehmen von Kendal Elektrik A.Ş. Alle Rechte vorbehalten."
+    }
+  }
+}

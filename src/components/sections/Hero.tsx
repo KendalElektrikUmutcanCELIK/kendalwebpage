@@ -54,7 +54,7 @@ export const Hero = () => {
           const edgeSize = holeSize + 11;
 
           if (overlayRef.current) {
-            const maskString = `radial-gradient(circle at 27% 41%, transparent ${holeSize}%, black ${edgeSize}%)`;
+            const maskString = `radial-gradient(circle at 24% 55%, transparent ${holeSize}%, black ${edgeSize}%)`;
             overlayRef.current.style.webkitMaskImage = maskString;
             overlayRef.current.style.maskImage = maskString;
           }
@@ -86,12 +86,12 @@ export const Hero = () => {
       <div className="relative md:sticky md:top-0 h-screen w-full overflow-hidden flex flex-col items-center justify-start pt-20 md:pt-[12vh] [@media(max-height:820px)]:md:pt-[8vh]">
         {/* MASAÜSTÜ GÖRSELİ */}
         <Image
-          src={getAssetPath('/images/istanbul-k2-desk.jpg')}
+          src={getAssetPath('/images/yeni-foto.png')}
           alt="Kendal Elektrik Desk"
           fill
           sizes="100vw"
           priority
-          className="hidden md:block object-cover object-center absolute inset-0 z-0 md:scale-100 md:origin-center"
+          className="hidden md:block object-cover object-top absolute inset-0 z-0 md:scale-[1.05] md:origin-top"
         />
 
         {/* MOBİL GÖRSELİ VE LOGO (Sıfır Animasyon, Maksimum Performans) */}
@@ -115,9 +115,9 @@ export const Hero = () => {
           style={{
             backgroundColor: 'rgba(0, 0, 0, 0.95)',
             WebkitMaskImage:
-              'radial-gradient(circle at 27% 41%, transparent 0%, black 11%)',
+              'radial-gradient(circle at 24% 55%, transparent 0%, black 11%)',
             maskImage:
-              'radial-gradient(circle at 27% 41%, transparent 0%, black 11%)',
+              'radial-gradient(circle at 24% 55%, transparent 0%, black 11%)',
           }}
         />
 

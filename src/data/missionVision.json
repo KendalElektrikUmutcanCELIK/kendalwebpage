@@ -18,5 +18,45 @@
       "title": "Vision",
       "content": "To reach a strong position in the global market as a leading lighting brand that sets international standards in customer satisfaction and operational excellence by 2026. With this vision, we aim to grow on the foundations of sustainability, innovation, and reliability, and to stand out in the sector by providing effective solutions and advancing with technological developments."
     }
+  },
+  "ar": {
+    "mission": {
+      "title": "المهمة",
+      "content": "نهدف في كندال إلكتريك إلى تقديم قيمة مضافة لعملائنا وشركائنا والمجتمع من خلال تقديم حلول مبتكرة وموثوقة ومستدامة في قطاع الإضاءة. وبفضل قدراتنا في البحث والتطوير والإنتاج، نحن ملتزمون بأن نكون علامة رائدة في القطاع من خلال تطوير منتجات إضاءة بأعلى مستويات الجودة والأداء، سواء في تركيا أو على المستوى العالمي."
+    },
+    "vision": {
+      "title": "الرؤية",
+      "content": "الوصول بحلول عام 2026 إلى مكانة قوية في السوق العالمية كعلامة تجارية رائدة في مجال الإضاءة تضع المعايير الدولية في رضا العملاء والتميز التشغيلي. ومن خلال هذه الرؤية، نهدف إلى النمو على أسس الاستدامة والابتكار والموثوقية، والتميز في القطاع من خلال تقديم حلول فعالة ومواكبة التطورات التكنولوجية."
+    }
+  },
+  "es": {
+    "mission": {
+      "title": "Misión",
+      "content": "En Kendal Elektrik, aspiramos a aportar valor a nuestros clientes, socios y a la sociedad ofreciendo soluciones innovadoras, confiables y sostenibles en el sector de la iluminación. Con nuestras capacidades de I+D y producción, estamos comprometidos a ser una marca líder en el sector, desarrollando productos de iluminación con la más alta calidad y rendimiento, tanto en Turquía como a nivel global."
+    },
+    "vision": {
+      "title": "Visión",
+      "content": "Alcanzar para 2026 una posición sólida en el mercado global como marca de iluminación líder que establece estándares internacionales en satisfacción del cliente y excelencia operativa. Con esta visión, aspiramos a crecer sobre los pilares de la sostenibilidad, la innovación y la confiabilidad, y a destacar en el sector ofreciendo soluciones eficaces y avanzando con los desarrollos tecnológicos."
+    }
+  },
+  "de": {
+    "mission": {
+      "title": "Mission",
+      "content": "Als Kendal Elektrik ist es unser Ziel, unseren Kunden, Partnern und der Gesellschaft durch innovative, zuverlässige und nachhaltige Lösungen im Beleuchtungssektor einen Mehrwert zu bieten. Mit unseren F&E- und Produktionskapazitäten sind wir entschlossen, durch die Entwicklung von Beleuchtungsprodukten höchster Qualität und Leistung sowohl in der Türkei als auch weltweit eine führende Marke der Branche zu werden."
+    },
+    "vision": {
+      "title": "Vision",
+      "content": "Bis 2026 eine starke Position auf dem globalen Markt als führende Beleuchtungsmarke zu erreichen, die internationale Standards in Kundenzufriedenheit und operativer Exzellenz setzt. Mit dieser Vision streben wir ein Wachstum auf den Grundlagen von Nachhaltigkeit, Innovation und Zuverlässigkeit an und wollen uns in der Branche durch wirksame Lösungen und technologischen Fortschritt hervorheben."
+    }
+  },
+  "zh": {
+    "mission": {
+      "title": "使命",
+      "content": "作为 Kendal Elektrik，我们致力于通过在照明领域提供创新、可靠且可持续的解决方案，为客户、合作伙伴及社会创造价值。凭借我们的研发与生产能力，我们坚定地致力于在土耳其乃至全球范围内开发质量与性能俱佳的照明产品，成为行业的领先品牌。"
+    },
+    "vision": {
+      "title": "愿景",
+      "content": "到2026年，成为在客户满意度和卓越运营方面树立国际标准的领先照明品牌，并在全球市场占据稳固地位。秉承这一愿景，我们致力于在可持续发展、创新和可靠性的基础上不断成长，通过提供高效的解决方案并紧跟技术发展，在行业中脱颖而出。"
+    }
   }
 }

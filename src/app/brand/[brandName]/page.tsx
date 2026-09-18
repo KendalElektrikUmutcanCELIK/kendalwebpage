@@ -4,7 +4,8 @@ import React from 'react';
 import { GlobalCreativePage } from '@/components/brand/global/GlobalCreativePage';
 import { K2CreativePage } from '@/components/brand/k2/K2CreativePage';
 import { VantiCreativePage } from '@/components/brand/vanti/VantiCreativePage';
-import { products } from '@/data/products';
+import { toProductListItem } from '@/data/products';
+import { products } from '@/data/productsServer';
 
 const BRAND_META: Record<
   string,
@@ -64,23 +65,25 @@ export default async function BrandPage({
   const { brandName } = resolvedParams;
 
   if (brandName === 'k2') {
-    const allProducts = Object.values(products).filter((p) => p.brand === 'k2');
+    const allProducts = Object.values(products)
+      .filter((p) => p.brand === 'k2')
+      .map(toProductListItem);
 
     return <K2CreativePage allProducts={allProducts} />;
   }
 
   if (brandName === 'global') {
-    const allProducts = Object.values(products).filter(
-      (p) => p.brand === 'global',
-    );
+    const allProducts = Object.values(products)
+      .filter((p) => p.brand === 'global')
+      .map(toProductListItem);
 
     return <GlobalCreativePage allProducts={allProducts} />;
   }
 
   if (brandName === 'vanti') {
-    const allProducts = Object.values(products).filter(
-      (p) => p.brand === 'vanti',
-    );
+    const allProducts = Object.values(products)
+      .filter((p) => p.brand === 'vanti')
+      .map(toProductListItem);
 
     return <VantiCreativePage allProducts={allProducts} />;
   }

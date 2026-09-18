@@ -4,12 +4,15 @@ import React from 'react';
 import { ProductDetailClient } from '@/app/(main)/[...slug]/ProductDetailClient';
 import { ProductSchema } from '@/components/shared/ProductSchema';
 import {
-  getProductBySlug,
   getProductCanonicalUrl,
   getProductCategorySlug,
+} from '@/data/products';
+import {
+  getProductBySlug,
+  getProductVariations,
   getSlugByProductId,
   products,
-} from '@/data/products';
+} from '@/data/productsServer';
 import { getProductPdfFile } from '@/lib/getProductPdfForm';
 import { getProductDetailMetadata } from '@/lib/productMetadata';
 
@@ -52,6 +55,7 @@ export default async function BrandProductDetailPage({
   }
 
   const pdfFormFile = getProductPdfFile(product.model, product.name.tr);
+  const variations = getProductVariations(product);
 
   return (
     <>
@@ -63,6 +67,7 @@ export default async function BrandProductDetailPage({
         product={product}
         brandName={resolvedParams.brandName as 'k2' | 'vanti' | 'global'}
         pdfFormFile={pdfFormFile}
+        variations={variations}
       />
     </>
   );

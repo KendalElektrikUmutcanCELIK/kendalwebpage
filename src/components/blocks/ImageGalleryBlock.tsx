@@ -2,6 +2,7 @@ import Image from 'next/image';
 import type { ImageGalleryBlockData } from '@/data/pages';
 import { getAssetPath } from '@/lib/basePath';
 import type { Language } from '@/lib/i18n/LanguageProvider';
+import { resolveLocalized } from '@/lib/i18n/localized';
 
 export function ImageGalleryBlock({
   data,
@@ -15,11 +16,13 @@ export function ImageGalleryBlock({
     return null;
   }
 
+  const title = data.title && resolveLocalized(data.title, language);
+
   return (
     <div className="page-block">
-      {data.title?.[language] && (
+      {title && (
         <h2 className="text-3xl font-bold mb-6 text-white tracking-tight">
-          {data.title[language]}
+          {title}
         </h2>
       )}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -30,7 +33,7 @@ export function ImageGalleryBlock({
           >
             <Image
               src={getAssetPath(`/images/${img.url}`)}
-              alt={img.alt?.[language] ?? ''}
+              alt={(img.alt && resolveLocalized(img.alt, language)) ?? ''}
               fill
               sizes="(max-width: 768px) 100vw, 33vw"
               className="object-cover"

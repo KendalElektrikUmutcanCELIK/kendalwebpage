@@ -3,20 +3,21 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { type CSSProperties, useMemo } from 'react';
-import type { Product } from '@/data/products';
+import type { ProductListItem } from '@/data/products';
 import { getAssetPath, getBrandUrunlerHref } from '@/lib/basePath';
+import type { Language } from '@/lib/i18n/LanguageProvider';
+import { resolveLocalized } from '@/lib/i18n/localized';
 
 interface VantiProductFamiliesProps {
   label: string;
   title: string;
-  allProducts: Product[];
-  language: string;
+  allProducts: ProductListItem[];
+  language: Language;
 }
 
 interface FamilyDef {
   key: string;
-  nameTr: string;
-  nameEn: string;
+  name: { tr: string; en: string; ar: string; es: string; de: string; zh: string };
   query: string;
   productId: string;
 }
@@ -24,54 +25,105 @@ interface FamilyDef {
 const FAMILIES: FamilyDef[] = [
   {
     key: 'tavan',
-    nameTr: 'Tavan Vantilatörleri',
-    nameEn: 'Ceiling Fans',
+    name: {
+      tr: 'Tavan Vantilatörleri',
+      en: 'Ceiling Fans',
+      ar: 'مراوح السقف',
+      es: 'Ventiladores de Techo',
+      de: 'Deckenventilatoren',
+      zh: '吊扇',
+    },
     query: 'tavan vanti',
     productId: 'KCF306',
   },
   {
     key: 'sanayi',
-    nameTr: 'Sanayi Tipi Vantilatörler',
-    nameEn: 'Industrial Fans',
+    name: {
+      tr: 'Sanayi Tipi Vantilatörler',
+      en: 'Industrial Fans',
+      ar: 'مراوح صناعية',
+      es: 'Ventiladores Industriales',
+      de: 'Industrieventilatoren',
+      zh: '工业风扇',
+    },
     query: 'sanayi',
     productId: 'KCF291',
   },
   {
     key: 'ayakli',
-    nameTr: 'Ayaklı Vantilatörler',
-    nameEn: 'Stand Fans',
+    name: {
+      tr: 'Ayaklı Vantilatörler',
+      en: 'Stand Fans',
+      ar: 'مراوح واقفة',
+      es: 'Ventiladores de Pie',
+      de: 'Standventilatoren',
+      zh: '落地扇',
+    },
     query: 'ayakl',
     productId: 'KCF272L',
   },
   {
     key: 'duvar',
-    nameTr: 'Duvar Tipi Vantilatörler',
-    nameEn: 'Wall Fans',
+    name: {
+      tr: 'Duvar Tipi Vantilatörler',
+      en: 'Wall Fans',
+      ar: 'مراوح حائط',
+      es: 'Ventiladores de Pared',
+      de: 'Wandventilatoren',
+      zh: '壁扇',
+    },
     query: 'duvar ti',
     productId: 'KCF299D',
   },
   {
     key: 'masaustu',
-    nameTr: 'Masaüstü Fanlar',
-    nameEn: 'Desktop Fans',
+    name: {
+      tr: 'Masaüstü Fanlar',
+      en: 'Desktop Fans',
+      ar: 'مراوح مكتبية',
+      es: 'Ventiladores de Escritorio',
+      de: 'Tischventilatoren',
+      zh: '桌面风扇',
+    },
     query: 'masaüstü',
     productId: 'KCF295',
   },
   {
     key: 'sarjli',
-    nameTr: 'Şarjlı El Vantilatörleri',
-    nameEn: 'Rechargeable Hand Fans',
+    name: {
+      tr: 'Şarjlı El Vantilatörleri',
+      en: 'Rechargeable Hand Fans',
+      ar: 'مراوح يدوية قابلة للشحن',
+      es: 'Ventiladores de Mano Recargables',
+      de: 'Akku-Handventilatoren',
+      zh: '充电式手持风扇',
+    },
     query: 'şarj',
     productId: 'KCF700',
   },
   {
     key: 'banyo',
-    nameTr: 'Banyo Aspiratörleri',
-    nameEn: 'Bathroom Extractor Fans',
+    name: {
+      tr: 'Banyo Aspiratörleri',
+      en: 'Bathroom Extractor Fans',
+      ar: 'شفاطات الحمام',
+      es: 'Extractores de Baño',
+      de: 'Bad-Lüfter',
+      zh: '浴室排气扇',
+    },
     query: 'banyo',
     productId: 'KSP120',
   },
 ];
+
+const PRODUCT_WORD: Record<Language, { one: string; many: string }> = {
+  tr: { one: 'Ürün', many: 'Ürün' },
+  en: { one: 'Product', many: 'Products' },
+  ar: { one: 'منتج', many: 'منتجات' },
+  es: { one: 'Producto', many: 'Productos' },
+  de: { one: 'Produkt', many: 'Produkte' },
+  zh: { one: '产品', many: '产品' },
+};
 
 export function VantiProductFamilies({
   label,
@@ -79,7 +131,6 @@ export function VantiProductFamilies({
   allProducts,
   language,
 }: VantiProductFamiliesProps) {
-  const lang = language === 'en' ? 'en' : 'tr';
   const catalogBase = getBrandUrunlerHref('vanti');
 
   const families = useMemo(() => {
@@ -143,15 +194,13 @@ export function VantiProductFamilies({
                 </span>
                 <div className="min-w-0 flex-1">
                   <h4 className="font-bold text-lg md:text-xl leading-snug text-teal-950 truncate">
-                    {lang === 'en' ? f.nameEn : f.nameTr}
+                    {resolveLocalized(f.name, language)}
                   </h4>
                   <p className="text-sm text-teal-700/60 font-medium mt-0.5">
                     {f.count}{' '}
-                    {lang === 'en'
-                      ? f.count === 1
-                        ? 'Product'
-                        : 'Products'
-                      : 'Ürün'}
+                    {f.count === 1
+                      ? PRODUCT_WORD[language].one
+                      : PRODUCT_WORD[language].many}
                   </p>
                 </div>
                 <svg
