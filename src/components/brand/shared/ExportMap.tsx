@@ -2,6 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import { useEffect, useRef, useState } from 'react';
+import type { Language } from '@/lib/i18n/LanguageProvider';
 
 const ExportMapInner = dynamic(() => import('./ExportMapInner'), {
   ssr: false,
@@ -14,7 +15,8 @@ interface ExportMapProps {
   eyebrow: string;
   title: string;
   hint: string;
-  language: string;
+  mobileSummary: string;
+  language: Language;
   accent: string;
   theme?: 'dark' | 'light';
   /** Theme for the eyebrow/title card and hint text, relative to the page
@@ -27,6 +29,7 @@ export function ExportMap({
   eyebrow,
   title,
   hint,
+  mobileSummary,
   language,
   accent,
   theme = 'dark',
@@ -100,9 +103,7 @@ export function ExportMap({
           <p
             className={`text-center text-base leading-relaxed rounded-[2rem] border p-8 ${textBgClass}`}
           >
-            {language === 'en'
-              ? 'With our Turkey-based manufacturing power, we export to 40 countries across 4 continents.'
-              : 'Türkiye merkezli üretim gücümüzle 4 kıtada 40 ülkeye ihracat yapıyoruz.'}
+            {mobileSummary}
           </p>
         </div>
       ) : (

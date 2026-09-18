@@ -2,259 +2,560 @@
   {
     "id": "ref-43",
     "name": "Volkswagen",
-    "location": "Çorlu – Tekirdağ",
+    "location": {
+      "tr": "Çorlu – Tekirdağ",
+      "en": "Çorlu – Tekirdağ",
+      "ar": "تشورلو – تكيرداغ",
+      "es": "Çorlu – Tekirdağ",
+      "de": "Çorlu – Tekirdağ",
+      "zh": "乔尔卢 – 泰基尔达"
+    },
     "image": "references/turkiye/ref-43.webp"
   },
   {
     "id": "ref-16",
     "name": "Ducati",
-    "location": "Ataşehir – İstanbul",
+    "location": {
+      "tr": "Ataşehir – İstanbul",
+      "en": "Ataşehir – İstanbul",
+      "ar": "أتاشهير – إسطنبول",
+      "es": "Ataşehir – Estambul",
+      "de": "Ataşehir – Istanbul",
+      "zh": "阿塔谢希尔 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-16.webp"
   },
   {
     "id": "ref-24",
     "name": "Hard Rock Cafe",
-    "location": "Beyoğlu – İstanbul",
+    "location": {
+      "tr": "Beyoğlu – İstanbul",
+      "en": "Beyoğlu – İstanbul",
+      "ar": "بي أوغلو – إسطنبول",
+      "es": "Beyoğlu – Estambul",
+      "de": "Beyoğlu – Istanbul",
+      "zh": "贝伊奥卢 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-24.webp"
   },
   {
     "id": "ref-30",
     "name": "Levi's",
-    "location": "Beyoğlu – İstanbul",
+    "location": {
+      "tr": "Beyoğlu – İstanbul",
+      "en": "Beyoğlu – İstanbul",
+      "ar": "بي أوغلو – إسطنبول",
+      "es": "Beyoğlu – Estambul",
+      "de": "Beyoğlu – Istanbul",
+      "zh": "贝伊奥卢 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-30.webp"
   },
   {
     "id": "ref-42",
     "name": "Vitra",
-    "location": "Nişantaşı – İstanbul",
+    "location": {
+      "tr": "Nişantaşı – İstanbul",
+      "en": "Nişantaşı – İstanbul",
+      "ar": "نيشانتاشي – إسطنبول",
+      "es": "Nişantaşı – Estambul",
+      "de": "Nişantaşı – Istanbul",
+      "zh": "尼相塔什 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-42.webp"
   },
   {
     "id": "ref-41",
     "name": "Triumph",
-    "location": "Ataşehir – İstanbul",
+    "location": {
+      "tr": "Ataşehir – İstanbul",
+      "en": "Ataşehir – İstanbul",
+      "ar": "أتاشهير – إسطنبول",
+      "es": "Ataşehir – Estambul",
+      "de": "Ataşehir – Istanbul",
+      "zh": "阿塔谢希尔 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-41.webp"
   },
   {
     "id": "ref-12",
     "name": "Çanakkale Seramik",
-    "location": "Çanakkale",
+    "location": {
+      "tr": "Çanakkale",
+      "en": "Çanakkale",
+      "ar": "تشاناكالي",
+      "es": "Çanakkale",
+      "de": "Çanakkale",
+      "zh": "恰纳卡莱"
+    },
     "image": "references/turkiye/ref-12.webp"
   },
   {
     "id": "ref-32",
     "name": "Mavi Jeans Akbatı AVM",
-    "location": "İstanbul",
+    "location": {
+      "tr": "İstanbul",
+      "en": "İstanbul",
+      "ar": "إسطنبول",
+      "es": "Estambul",
+      "de": "Istanbul",
+      "zh": "伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-32.webp"
   },
   {
     "id": "ref-21",
     "name": "FLO",
-    "location": "Sultanbeyli – İstanbul",
+    "location": {
+      "tr": "Sultanbeyli – İstanbul",
+      "en": "Sultanbeyli – İstanbul",
+      "ar": "سلطان بيلي – إسطنبول",
+      "es": "Sultanbeyli – Estambul",
+      "de": "Sultanbeyli – Istanbul",
+      "zh": "苏丹贝伊利 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-21.webp"
   },
   {
     "id": "ref-36",
     "name": "Penti",
-    "location": "Kadıköy – İstanbul",
+    "location": {
+      "tr": "Kadıköy – İstanbul",
+      "en": "Kadıköy – İstanbul",
+      "ar": "كاديكوي – إسطنبول",
+      "es": "Kadıköy – Estambul",
+      "de": "Kadıköy – Istanbul",
+      "zh": "卡德柯伊 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-36.webp"
   },
   {
     "id": "ref-28",
     "name": "Koton Meydan AVM",
-    "location": "İstanbul",
+    "location": {
+      "tr": "İstanbul",
+      "en": "İstanbul",
+      "ar": "إسطنبول",
+      "es": "Estambul",
+      "de": "Istanbul",
+      "zh": "伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-28.webp"
   },
   {
     "id": "ref-22",
     "name": "Flormar Akbatı AVM",
-    "location": "İstanbul",
+    "location": {
+      "tr": "İstanbul",
+      "en": "İstanbul",
+      "ar": "إسطنبول",
+      "es": "Estambul",
+      "de": "Istanbul",
+      "zh": "伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-22.webp"
   },
   {
     "id": "ref-15",
     "name": "City's Mahalle",
-    "location": "İstanbul",
+    "location": {
+      "tr": "İstanbul",
+      "en": "İstanbul",
+      "ar": "إسطنبول",
+      "es": "Estambul",
+      "de": "Istanbul",
+      "zh": "伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-15.webp"
   },
   {
     "id": "ref-33",
     "name": "MEF Üniversitesi",
-    "location": "Maslak – İstanbul",
+    "location": {
+      "tr": "Maslak – İstanbul",
+      "en": "Maslak – İstanbul",
+      "ar": "ماسلاك – إسطنبول",
+      "es": "Maslak – Estambul",
+      "de": "Maslak – Istanbul",
+      "zh": "马斯拉克 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-33.webp"
   },
   {
     "id": "ref-20",
     "name": "Fethiye & Hasan Gümüşdağ Camii",
-    "location": "Küçükçekmece – İstanbul",
+    "location": {
+      "tr": "Küçükçekmece – İstanbul",
+      "en": "Küçükçekmece – İstanbul",
+      "ar": "كوتشوك تشكمجة – إسطنبول",
+      "es": "Küçükçekmece – Estambul",
+      "de": "Küçükçekmece – Istanbul",
+      "zh": "库丘克切克梅杰 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-20.webp"
   },
   {
     "id": "ref-06",
     "name": "Borusan Oto",
-    "location": "Adana",
+    "location": {
+      "tr": "Adana",
+      "en": "Adana",
+      "ar": "أضنة",
+      "es": "Adana",
+      "de": "Adana",
+      "zh": "阿达纳"
+    },
     "image": "references/turkiye/ref-06.webp"
   },
   {
     "id": "ref-07",
     "name": "Borusan Oto",
-    "location": "Ataşehir – İstanbul",
+    "location": {
+      "tr": "Ataşehir – İstanbul",
+      "en": "Ataşehir – İstanbul",
+      "ar": "أتاشهير – إسطنبول",
+      "es": "Ataşehir – Estambul",
+      "de": "Ataşehir – Istanbul",
+      "zh": "阿塔谢希尔 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-07.webp"
   },
   {
     "id": "ref-08",
     "name": "Borusan Oto",
-    "location": "Avcılar – İstanbul",
+    "location": {
+      "tr": "Avcılar – İstanbul",
+      "en": "Avcılar – İstanbul",
+      "ar": "أفجلار – إسطنبول",
+      "es": "Avcılar – Estambul",
+      "de": "Avcılar – Istanbul",
+      "zh": "阿夫吉拉尔 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-08.webp"
   },
   {
     "id": "ref-09",
     "name": "Borusan Oto",
-    "location": "Çatalca – İstanbul",
+    "location": {
+      "tr": "Çatalca – İstanbul",
+      "en": "Çatalca – İstanbul",
+      "ar": "تشاتالجا – إسطنبول",
+      "es": "Çatalca – Estambul",
+      "de": "Çatalca – Istanbul",
+      "zh": "恰塔尔贾 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-09.webp"
   },
   {
     "id": "ref-10",
     "name": "Borusan Oto",
-    "location": "Samandıra – İstanbul",
+    "location": {
+      "tr": "Samandıra – İstanbul",
+      "en": "Samandıra – İstanbul",
+      "ar": "سامانديرا – إسطنبول",
+      "es": "Samandıra – Estambul",
+      "de": "Samandıra – Istanbul",
+      "zh": "萨曼德拉 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-10.webp"
   },
   {
     "id": "ref-13",
     "name": "Capitol AVM",
-    "location": "İstanbul",
+    "location": {
+      "tr": "İstanbul",
+      "en": "İstanbul",
+      "ar": "إسطنبول",
+      "es": "Estambul",
+      "de": "Istanbul",
+      "zh": "伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-13.webp"
   },
   {
     "id": "ref-35",
     "name": "Meydan AVM",
-    "location": "Ümraniye – İstanbul",
+    "location": {
+      "tr": "Ümraniye – İstanbul",
+      "en": "Ümraniye – İstanbul",
+      "ar": "أمرانية – إسطنبول",
+      "es": "Ümraniye – Estambul",
+      "de": "Ümraniye – Istanbul",
+      "zh": "于姆拉尼耶 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-35.webp"
   },
   {
     "id": "ref-26",
     "name": "İpekyolu Emar AVM",
-    "location": "İstanbul",
+    "location": {
+      "tr": "İstanbul",
+      "en": "İstanbul",
+      "ar": "إسطنبول",
+      "es": "Estambul",
+      "de": "Istanbul",
+      "zh": "伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-26.webp"
   },
   {
     "id": "ref-38",
     "name": "Sport In Street Atlaspark AVM",
-    "location": "İstanbul",
+    "location": {
+      "tr": "İstanbul",
+      "en": "İstanbul",
+      "ar": "إسطنبول",
+      "es": "Estambul",
+      "de": "Istanbul",
+      "zh": "伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-38.webp"
   },
   {
     "id": "ref-31",
     "name": "Love My Body Vadistanbul AVM",
-    "location": "İstanbul",
+    "location": {
+      "tr": "İstanbul",
+      "en": "İstanbul",
+      "ar": "إسطنبول",
+      "es": "Estambul",
+      "de": "Istanbul",
+      "zh": "伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-31.webp"
   },
   {
     "id": "ref-14",
     "name": "Çetinkaya Varlıbaş AVM",
-    "location": "Trabzon",
+    "location": {
+      "tr": "Trabzon",
+      "en": "Trabzon",
+      "ar": "طرابزون",
+      "es": "Trabzon",
+      "de": "Trabzon",
+      "zh": "特拉布宗"
+    },
     "image": "references/turkiye/ref-14.webp"
   },
   {
     "id": "ref-03",
     "name": "Altınyıldız Axis AVM",
-    "location": "İstanbul",
+    "location": {
+      "tr": "İstanbul",
+      "en": "İstanbul",
+      "ar": "إسطنبول",
+      "es": "Estambul",
+      "de": "Istanbul",
+      "zh": "伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-03.webp"
   },
   {
     "id": "ref-23",
     "name": "Gastronometro",
-    "location": "Güneşli – İstanbul",
+    "location": {
+      "tr": "Güneşli – İstanbul",
+      "en": "Güneşli – İstanbul",
+      "ar": "غونشلي – إسطنبول",
+      "es": "Güneşli – Estambul",
+      "de": "Güneşli – Istanbul",
+      "zh": "居内什利 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-23.webp"
   },
   {
     "id": "ref-34",
     "name": "Met Global",
-    "location": "Şişli – İstanbul",
+    "location": {
+      "tr": "Şişli – İstanbul",
+      "en": "Şişli – İstanbul",
+      "ar": "شيشلي – إسطنبول",
+      "es": "Şişli – Estambul",
+      "de": "Şişli – Istanbul",
+      "zh": "希什利 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-34.webp"
   },
   {
     "id": "ref-25",
     "name": "İmza Giyim – Merkez Ofis",
-    "location": "Küçükçekmece – İstanbul",
+    "location": {
+      "tr": "Küçükçekmece – İstanbul",
+      "en": "Küçükçekmece – İstanbul",
+      "ar": "كوتشوك تشكمجة – إسطنبول",
+      "es": "Küçükçekmece – Estambul",
+      "de": "Küçükçekmece – Istanbul",
+      "zh": "库丘克切克梅杰 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-25.webp"
   },
   {
     "id": "ref-29",
     "name": "Kyocera",
-    "location": "Üsküdar – İstanbul",
+    "location": {
+      "tr": "Üsküdar – İstanbul",
+      "en": "Üsküdar – İstanbul",
+      "ar": "أسكودار – إسطنبول",
+      "es": "Üsküdar – Estambul",
+      "de": "Üsküdar – Istanbul",
+      "zh": "于斯屈达尔 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-29.webp"
   },
   {
     "id": "ref-37",
     "name": "Saray Alüminyum",
-    "location": "Güneşli – İstanbul",
+    "location": {
+      "tr": "Güneşli – İstanbul",
+      "en": "Güneşli – İstanbul",
+      "ar": "غونشلي – إسطنبول",
+      "es": "Güneşli – Estambul",
+      "de": "Güneşli – Istanbul",
+      "zh": "居内什利 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-37.webp"
   },
   {
     "id": "ref-39",
     "name": "Strada Kış Bahçesi",
-    "location": "Bahçeşehir – İstanbul",
+    "location": {
+      "tr": "Bahçeşehir – İstanbul",
+      "en": "Bahçeşehir – İstanbul",
+      "ar": "باهتشه شهير – إسطنبول",
+      "es": "Bahçeşehir – Estambul",
+      "de": "Bahçeşehir – Istanbul",
+      "zh": "巴赫切谢希尔 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-39.webp"
   },
   {
     "id": "ref-04",
     "name": "Arıcıoğlu Otomotiv",
-    "location": "Beyoğlu – İstanbul",
+    "location": {
+      "tr": "Beyoğlu – İstanbul",
+      "en": "Beyoğlu – İstanbul",
+      "ar": "بي أوغلو – إسطنبول",
+      "es": "Beyoğlu – Estambul",
+      "de": "Beyoğlu – Istanbul",
+      "zh": "贝伊奥卢 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-04.webp"
   },
   {
     "id": "ref-05",
     "name": "Arıcıoğlu Otomotiv",
-    "location": "Esenler – İstanbul",
+    "location": {
+      "tr": "Esenler – İstanbul",
+      "en": "Esenler – İstanbul",
+      "ar": "أسنلر – إسطنبول",
+      "es": "Esenler – Estambul",
+      "de": "Esenler – Istanbul",
+      "zh": "埃森莱尔 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-05.webp"
   },
   {
     "id": "ref-17",
     "name": "Duygum Tekstil",
-    "location": "Bakırköy – İstanbul",
+    "location": {
+      "tr": "Bakırköy – İstanbul",
+      "en": "Bakırköy – İstanbul",
+      "ar": "باكركوي – إسطنبول",
+      "es": "Bakırköy – Estambul",
+      "de": "Bakırköy – Istanbul",
+      "zh": "巴克尔柯伊 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-17.webp"
   },
   {
     "id": "ref-40",
     "name": "Süpermarket",
-    "location": "Gebze – Kocaeli",
+    "location": {
+      "tr": "Gebze – Kocaeli",
+      "en": "Gebze – Kocaeli",
+      "ar": "جبزة – كوجائيلي",
+      "es": "Gebze – Kocaeli",
+      "de": "Gebze – Kocaeli",
+      "zh": "格布泽 – 科贾埃利"
+    },
     "image": "references/turkiye/ref-40.webp"
   },
   {
     "id": "ref-01",
     "name": "Açelya Trend",
-    "location": "Çerkezköy – Tekirdağ",
+    "location": {
+      "tr": "Çerkezköy – Tekirdağ",
+      "en": "Çerkezköy – Tekirdağ",
+      "ar": "تشركزكوي – تكيرداغ",
+      "es": "Çerkezköy – Tekirdağ",
+      "de": "Çerkezköy – Tekirdağ",
+      "zh": "切尔克兹柯伊 – 泰基尔达"
+    },
     "image": "references/turkiye/ref-01.webp"
   },
   {
     "id": "ref-02",
     "name": "Aksesuar Group",
-    "location": "Florya – İstanbul",
+    "location": {
+      "tr": "Florya – İstanbul",
+      "en": "Florya – İstanbul",
+      "ar": "فلوريا – إسطنبول",
+      "es": "Florya – Estambul",
+      "de": "Florya – Istanbul",
+      "zh": "弗洛里亚 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-02.webp"
   },
   {
     "id": "ref-11",
     "name": "Camper",
-    "location": "Beyoğlu – İstanbul",
+    "location": {
+      "tr": "Beyoğlu – İstanbul",
+      "en": "Beyoğlu – İstanbul",
+      "ar": "بي أوغلو – إسطنبول",
+      "es": "Beyoğlu – Estambul",
+      "de": "Beyoğlu – Istanbul",
+      "zh": "贝伊奥卢 – 伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-11.webp"
   },
   {
     "id": "ref-27",
     "name": "Koleksiyon Mobilya",
-    "location": "Ankara",
+    "location": {
+      "tr": "Ankara",
+      "en": "Ankara",
+      "ar": "أنقرة",
+      "es": "Ankara",
+      "de": "Ankara",
+      "zh": "安卡拉"
+    },
     "image": "references/turkiye/ref-27.webp"
   },
   {
     "id": "ref-18",
     "name": "E-Bebek Kadir Has AVM",
-    "location": "İstanbul",
+    "location": {
+      "tr": "İstanbul",
+      "en": "İstanbul",
+      "ar": "إسطنبول",
+      "es": "Estambul",
+      "de": "Istanbul",
+      "zh": "伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-18.webp"
   },
   {
     "id": "ref-19",
     "name": "Elle Capacity AVM",
-    "location": "İstanbul",
+    "location": {
+      "tr": "İstanbul",
+      "en": "İstanbul",
+      "ar": "إسطنبول",
+      "es": "Estambul",
+      "de": "Istanbul",
+      "zh": "伊斯坦布尔"
+    },
     "image": "references/turkiye/ref-19.webp"
   }
 ]

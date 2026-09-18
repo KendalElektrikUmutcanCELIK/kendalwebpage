@@ -20,7 +20,11 @@
     "catalog": "Katalog & Fiyat Listesi",
     "certifications": "Sertifikalar",
     "references": "Referanslarımız",
-    "contact": "İletişim"
+    "contact": "İletişim",
+    "k2_products": "K2 Ürünlerimiz",
+    "vanti_products": "Vanti Ürünlerimiz",
+    "global_products": "Global Ürünlerimiz",
+    "our_pages": "Sayfalarımız"
   },
   "hero": {
     "badge": "1997'den Beri Küresel Üretici",
@@ -92,6 +96,11 @@
     "message": "Size daha iyi bir deneyim sunmak için çerezleri kullanıyoruz. Sitemizi kullanarak çerez politikamızı kabul etmiş olursunuz.",
     "accept": "Kabul Et"
   },
+  "gallery": {
+    "previous": "Önceki Görsel",
+    "next": "Sonraki Görsel",
+    "image": "Görsel"
+  },
   "news": {
     "items": [
       "İTÜ iş birliği ile yerli LED çip AR-GE çalışmalarımız hızla devam ediyor.",
@@ -141,7 +150,10 @@
     },
     "phone_label": "İletişim Hattı",
     "sales_phone_label": "Satış Destek Hattı",
-    "support_phone_label": "Teknik Servis Hattı"
+    "support_phone_label": "Teknik Servis Hattı",
+    "email_label": "E-Posta",
+    "address_label": "Adres",
+    "hq_factory_label": "Merkez Ofis & Fabrika"
   },
   "career": {
     "title": "Kariyer",
@@ -234,7 +246,24 @@
       "Kendal Elektrik, 2017 yılında faaliyete geçen 22.000 m² kapalı alana sahip modern üretim tesisinde, yıllık 80 milyon adet aydınlatma ürünü üretim kapasitesiyle sektörün öncü üreticileri arasında yer almaktadır. Yüksek otomasyon teknolojisiyle desteklenen üretim altyapısında LED ampul, LED panel, filament LED ampul, mum ampul, manuel montaj hatları, SMD dizgi sistemleri ve plastik enjeksiyon üretimi tek çatı altında gerçekleştirilmektedir.",
       "Türkiye, Avrupa ve Orta Doğu'da filament LED ampul üreten tek üretici olma özelliğine sahip olan Kendal Elektrik, üretimin her aşamasında uluslararası kalite standartlarını esas almaktadır. Tedarikçilerden gelen tüm hammaddeler ve yarı mamuller IQC (Incoming Quality Control) süreçlerinden geçirilirken, üretim boyunca IPQC (In Process Quality Control) kontrolleri uygulanmakta, sevkiyat öncesinde ise OQC (Outgoing Quality Control) ile nihai ürünler tekrar denetlenmektedir.",
       "ESD korumalı üretim alanlarında gerçekleştirilen üretim süreçleri sayesinde elektronik bileşenler elektrostatik deşarja karşı korunurken, ürünler elektriksel güvenlik, mekanik dayanım, fotometrik performans, güç tüketimi, güç faktörü, EMC uyumluluğu, sürücü kontrolü, lümen değeri, renk sıcaklığı, CRI ölçümü, izolasyon direnci, topraklama direnci, yüksek gerilim, kaçak akım, yaşlandırma, ömür ve düşme testleri gibi kapsamlı kalite kontrollerinden geçirilmektedir. Dijital üretim yönetimini ERP, MES ve WMS sistemleriyle destekleyen Kendal Elektrik; yüksek üretim kapasitesi, ileri otomasyon altyapısı, izlenebilir süreçleri ve sürdürülebilir kalite anlayışıyla Türkiye'de ürettiği yenilikçi aydınlatma çözümlerini dünyanın birçok ülkesine güvenle ulaştırmaktadır."
-    ]
+    ],
+    "image_alt": "Kendal Elektrik Üretim Tesisi Görsel",
+    "image_title": "Kendal Elektrik Üretim Aşaması"
+  },
+  "product_detail": {
+    "go_back": "Geri Dön",
+    "zoom_image": "Görseli büyüt",
+    "pdf_download": "Ürün Bilgi Formu İndir",
+    "light_color_options": "Işık Rengi Seçenekleri",
+    "color_options": "Renk Seçenekleri",
+    "casing_options": "Kasa Rengi Seçenekleri",
+    "watt_options": "Watt Seçenekleri",
+    "socket_options": "Duy Seçenekleri",
+    "key_features": "Öne Çıkan Özellikler",
+    "technical_details": "Teknik Detaylar",
+    "no_technical_data": "Bu ürüne ait detaylı teknik veri bulunmamaktadır.",
+    "installation_video": "Kurulum Videosu",
+    "close": "Kapat"
   },
   "brand_info": {
     "k2": {
@@ -290,6 +319,20 @@
       "filter_no_results": "Sonuç bulunamadı.",
       "filter_clear": "Temizle",
       "filter_apply": "Uygula"
+    },
+    "compare": {
+      "add": "Karşılaştır",
+      "added": "Eklendi",
+      "max_reached": "En fazla 3 ürün karşılaştırabilirsiniz",
+      "tray_hint": "Bu kategoriden karşılaştırmak için 2-3 ürün seçin",
+      "compare_button": "Karşılaştır",
+      "clear": "Temizle",
+      "modal_title": "Ürün Karşılaştırma",
+      "view": "İncele",
+      "model": "Model:",
+      "no_value": "—",
+      "loading": "Yükleniyor...",
+      "comparing_count": "ürün karşılaştırılıyor"
     },
     "footer": {
       "address_prefix": "Adres: ",

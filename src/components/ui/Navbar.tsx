@@ -190,7 +190,7 @@ export const Navbar = () => {
                 />
               </div>
               <span className="font-semibold tracking-wide">
-                {language === 'tr' ? 'K2 Ürünlerimiz' : 'K2 Products'}
+                {(t as any).nav?.k2_products || 'K2 Products'}
               </span>
             </div>
           ),
@@ -216,7 +216,7 @@ export const Navbar = () => {
                 />
               </div>
               <span className="font-semibold tracking-wide">
-                {language === 'tr' ? 'Vanti Ürünlerimiz' : 'Vanti Products'}
+                {(t as any).nav?.vanti_products || 'Vanti Products'}
               </span>
             </div>
           ),
@@ -242,7 +242,7 @@ export const Navbar = () => {
                 />
               </div>
               <span className="font-semibold tracking-wide">
-                {language === 'tr' ? 'Global Ürünlerimiz' : 'Global Products'}
+                {(t as any).nav?.global_products || 'Global Products'}
               </span>
             </div>
           ),
@@ -272,7 +272,7 @@ export const Navbar = () => {
       ? [
           ...navGroups,
           {
-            label: language === 'tr' ? 'Sayfalarımız' : 'Our Pages',
+            label: (t as any).nav?.our_pages || 'Our Pages',
             links: customLinks.map((link) => ({
               id: `custom_${link.id}`,
               href: link.url,

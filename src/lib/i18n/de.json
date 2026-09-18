@@ -20,7 +20,11 @@
     "catalog": "Katalog & Preisliste",
     "certifications": "Zertifikate",
     "references": "Unsere Referenzen",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "k2_products": "K2-Produkte",
+    "vanti_products": "Vanti-Produkte",
+    "global_products": "Global-Produkte",
+    "our_pages": "Unsere Seiten"
   },
   "hero": {
     "badge": "Globaler Hersteller Seit 1997",
@@ -92,6 +96,11 @@
     "message": "Wir verwenden Cookies, um Ihnen ein besseres Erlebnis zu bieten. Durch die Nutzung unserer Website stimmen Sie unserer Cookie-Richtlinie zu.",
     "accept": "Akzeptieren"
   },
+  "gallery": {
+    "previous": "Vorheriges Bild",
+    "next": "Nächstes Bild",
+    "image": "Bild"
+  },
   "news": {
     "items": [
       "Unsere F&E-Arbeiten an einheimischen LED-Chips schreiten in Zusammenarbeit mit der Technischen Universität Istanbul (İTÜ) zügig voran.",
@@ -141,7 +150,10 @@
     },
     "phone_label": "Kontakt-Hotline",
     "sales_phone_label": "Vertriebs-Hotline",
-    "support_phone_label": "Technischer Support"
+    "support_phone_label": "Technischer Support",
+    "email_label": "E-Mail",
+    "address_label": "Adresse",
+    "hq_factory_label": "Hauptsitz & Fabrik"
   },
   "career": {
     "title": "Karriere",
@@ -216,7 +228,24 @@
       "Kendal Elektrik, das 2017 in einer modernen Produktionsstätte mit 22.000 m² überdachter Fläche seine Tätigkeit aufnahm, zählt mit einer jährlichen Produktionskapazität von 80 Millionen Beleuchtungsprodukten zu den führenden Herstellern der Branche. In einer durch hohe Automatisierungstechnologie unterstützten Produktionsinfrastruktur werden LED-Lampen, LED-Panels, Filament-LED-Lampen, Kerzenlampen, manuelle Montagelinien, SMD-Bestückungssysteme und Kunststoffspritzguss unter einem Dach gefertigt.",
       "Kendal Elektrik, der einzige Hersteller von Filament-LED-Lampen in der Türkei, Europa und dem Nahen Osten, orientiert sich in jeder Produktionsphase an internationalen Qualitätsstandards. Alle von Lieferanten bezogenen Rohstoffe und Halbfertigprodukte durchlaufen IQC-Prozesse (Incoming Quality Control), während der Produktion werden IPQC-Kontrollen (In Process Quality Control) durchgeführt, und vor dem Versand werden die Endprodukte erneut mittels OQC (Outgoing Quality Control) geprüft.",
       "Dank der in ESD-geschützten Produktionsbereichen durchgeführten Fertigungsprozesse sind elektronische Bauteile vor elektrostatischer Entladung geschützt, während die Produkte umfassenden Qualitätskontrollen unterzogen werden, darunter elektrische Sicherheit, mechanische Festigkeit, photometrische Leistung, Energieverbrauch, Leistungsfaktor, EMV-Konformität, Treiberkontrolle, Lumenwert, Farbtemperatur, CRI-Messung, Isolationswiderstand, Erdungswiderstand, Hochspannung, Kriechstrom, Alterung, Lebensdauer und Falltests. Kendal Elektrik unterstützt sein digitales Produktionsmanagement mit ERP-, MES- und WMS-Systemen und liefert dank seiner hohen Produktionskapazität, fortschrittlichen Automatisierungsinfrastruktur, nachvollziehbaren Prozesse und seines nachhaltigen Qualitätsverständnisses zuverlässig innovative, in der Türkei gefertigte Beleuchtungslösungen in zahlreiche Länder der Welt."
-    ]
+    ],
+    "image_alt": "Bild der Kendal Elektrik Produktionsstätte",
+    "image_title": "Kendal Elektrik Produktionsphase"
+  },
+  "product_detail": {
+    "go_back": "Zurück",
+    "zoom_image": "Bild vergrößern",
+    "pdf_download": "Produktdatenblatt Herunterladen",
+    "light_color_options": "Lichtfarboptionen",
+    "color_options": "Farboptionen",
+    "casing_options": "Gehäuseoptionen",
+    "watt_options": "Wattoptionen",
+    "socket_options": "Fassungsoptionen",
+    "key_features": "Hauptmerkmale",
+    "technical_details": "Technische Details",
+    "no_technical_data": "Für dieses Produkt sind keine detaillierten technischen Daten verfügbar.",
+    "installation_video": "Installationsvideo",
+    "close": "Schließen"
   },
   "brand_info": {
     "k2": {
@@ -272,6 +301,20 @@
       "filter_no_results": "Keine Ergebnisse gefunden.",
       "filter_clear": "Zurücksetzen",
       "filter_apply": "Anwenden"
+    },
+    "compare": {
+      "add": "Vergleichen",
+      "added": "Hinzugefügt",
+      "max_reached": "Sie können bis zu 3 Produkte vergleichen",
+      "tray_hint": "Wählen Sie 2-3 Produkte aus dieser Kategorie zum Vergleich",
+      "compare_button": "Vergleichen",
+      "clear": "Leeren",
+      "modal_title": "Produktvergleich",
+      "view": "Ansehen",
+      "model": "Modell:",
+      "no_value": "—",
+      "loading": "Wird geladen...",
+      "comparing_count": "Produkte im Vergleich"
     },
     "footer": {
       "address_prefix": "Adresse: ",

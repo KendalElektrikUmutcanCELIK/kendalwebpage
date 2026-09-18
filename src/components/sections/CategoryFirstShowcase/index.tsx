@@ -59,34 +59,20 @@ export default function CategoryFirstShowcase({
   const isK2 = brandName === 'k2';
   const isGlobal = brandName === 'global';
 
-  const compareTexts =
-    language === 'en'
-      ? {
-          add: 'Compare',
-          added: 'Added',
-          max_reached: 'You can compare up to 3 products',
-          tray_hint: 'Select 2-3 products from this category to compare',
-          compare_button: 'Compare',
-          clear: 'Clear',
-          modal_title: 'Product Comparison',
-          view: 'View',
-          model: 'Model:',
-          no_value: '—',
-          loading: 'Loading...',
-        }
-      : {
-          add: 'Karşılaştır',
-          added: 'Eklendi',
-          max_reached: 'En fazla 3 ürün karşılaştırabilirsiniz',
-          tray_hint: 'Bu kategoriden karşılaştırmak için 2-3 ürün seçin',
-          compare_button: 'Karşılaştır',
-          clear: 'Temizle',
-          modal_title: 'Ürün Karşılaştırma',
-          view: 'İncele',
-          model: 'Model:',
-          no_value: '—',
-          loading: 'Yükleniyor...',
-        };
+  const compareTexts = (t as any).brand_pages?.compare || {
+    add: 'Karşılaştır',
+    added: 'Eklendi',
+    max_reached: 'En fazla 3 ürün karşılaştırabilirsiniz',
+    tray_hint: 'Bu kategoriden karşılaştırmak için 2-3 ürün seçin',
+    compare_button: 'Karşılaştır',
+    clear: 'Temizle',
+    modal_title: 'Ürün Karşılaştırma',
+    view: 'İncele',
+    model: 'Model:',
+    no_value: '—',
+    loading: 'Yükleniyor...',
+    comparing_count: 'ürün karşılaştırılıyor',
+  };
 
   const urlGroup = searchParams?.get('group') || null;
   const urlCategory = searchParams?.get('category') || null;

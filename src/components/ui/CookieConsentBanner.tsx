@@ -44,7 +44,7 @@ export const CookieConsentBanner = () => {
             href="/gizlilik-cerez-politikasi"
             className="ml-2 text-[var(--brand-red)] hover:underline whitespace-nowrap"
           >
-            Gizlilik ve Çerez Politikası
+            {(t as any).footer?.legal?.privacy || 'Privacy and Cookie Policy'}
           </Link>
         </p>
         <button

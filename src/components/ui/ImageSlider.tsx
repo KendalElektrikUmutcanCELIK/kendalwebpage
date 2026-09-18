@@ -1,16 +1,19 @@
 'use client';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
+import { useLanguage } from '@/lib/i18n/LanguageProvider';
 
 export function ImageSlider({
   images,
-  altPrefix = 'Görsel',
+  altPrefix,
   titlePrefix = '',
 }: {
   images: string[];
   altPrefix?: string;
   titlePrefix?: string;
 }) {
+  const { t } = useLanguage();
+  const resolvedAltPrefix = altPrefix ?? (t as any).gallery?.image ?? 'Image';
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -59,7 +62,7 @@ export function ImageSlider({
             {shouldRender && (
               <Image
                 src={src}
-                alt={`${altPrefix} ${idx + 1}`}
+                alt={`${resolvedAltPrefix} ${idx + 1}`}
                 title={titlePrefix ? `${titlePrefix} ${idx + 1}` : undefined}
                 fill
                 sizes="(max-width: 768px) 100vw, 80vw"
@@ -76,7 +79,7 @@ export function ImageSlider({
           <button
             onClick={goToPrev}
             className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-black/60 hover:bg-[var(--brand-red)] text-white w-10 h-10 flex items-center justify-center rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110"
-            aria-label="Önceki Görsel"
+            aria-label={(t as any).gallery?.previous || 'Previous Image'}
           >
             <svg
               width="24"
@@ -95,7 +98,7 @@ export function ImageSlider({
           <button
             onClick={goToNext}
             className="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-black/60 hover:bg-[var(--brand-red)] text-white w-10 h-10 flex items-center justify-center rounded-full backdrop-blur-md border border-white/20 transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110"
-            aria-label="Sonraki Görsel"
+            aria-label={(t as any).gallery?.next || 'Next Image'}
           >
             <svg
               width="24"
@@ -121,7 +124,7 @@ export function ImageSlider({
                     ? 'bg-white scale-125'
                     : 'bg-white/40 hover:bg-white/70'
                 }`}
-                aria-label={`Görsel ${idx + 1}`}
+                aria-label={`${resolvedAltPrefix} ${idx + 1}`}
               />
             ))}
           </div>

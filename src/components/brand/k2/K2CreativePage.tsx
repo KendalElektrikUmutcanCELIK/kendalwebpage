@@ -104,6 +104,8 @@ const translations = {
     exportEyebrow: 'Global Erişim',
     exportTitle: "K2'nin ışığı sınır tanımıyor.",
     exportHint: 'Haritadaki noktalara tıklayın.',
+    exportMobileSummary:
+      'Türkiye merkezli üretim gücümüzle 4 kıtada 40 ülkeye ihracat yapıyoruz.',
     sec3Title: 'Zorlu Koşullar',
     sec3Text:
       'Spot, LED panel, projektör, solar armatür ve magnet sistemlerden dekoratif aydınlatmaya uzanan geniş ürün gamıyla K2; ev ve ofis aydınlatmasında yenilikçi LED çözümleriyle enerjiden tasarruf edin, geleceğe yatırım yapın.',
@@ -141,6 +143,8 @@ const translations = {
     exportEyebrow: 'Global Reach',
     exportTitle: "K2's light knows no borders.",
     exportHint: 'Click a point on the map.',
+    exportMobileSummary:
+      'With our Turkey-based manufacturing power, we export to 40 countries across 4 continents.',
     sec3Title: 'Extreme Conditions',
     sec3Text:
       "From spotlights, LED panels and floodlights to solar fixtures, magnet systems and decorative lighting, K2's extensive range brings innovative LED solutions to home and office lighting — save energy, invest in the future.",
@@ -151,8 +155,7 @@ const translations = {
     explore: 'اكتشف القصة',
     whyEyebrow: 'لماذا K2؟',
     whyHeading: 'العلامة الموثوقة التي تضيء الظلام.',
-    whySubtext:
-      'بضمان كندال إلكتريك، تتميز K2 بتقنية LED الاحترافية ومتانتها.',
+    whySubtext: 'بضمان كندال إلكتريك، تتميز K2 بتقنية LED الاحترافية ومتانتها.',
     trustStats: [
       {
         value: 'من أبرز العلامات في القطاع',
@@ -170,7 +173,7 @@ const translations = {
       "تستمد علامتنا اسمها من جبل K2، أحد أصعب الجبال وأكثرها شهرة لدى متسلقي الجبال، وتعمل برؤية 'إضاءة الظلام'.",
     sec2Title: 'تشكيلة واسعة',
     sec2Text:
-      "تمثّل التشكيلة الواسعة من أنظمة إضاءة LED الاحترافية لدى كندال إلكتريك، والحلول التي تركز على كفاءة الطاقة، والمنتجات الزخرفية. تتصدر K2 القطاع كواحدة من أكثر علامات الإضاءة التركية شهرة وموثوقية.",
+      'تمثّل التشكيلة الواسعة من أنظمة إضاءة LED الاحترافية لدى كندال إلكتريك، والحلول التي تركز على كفاءة الطاقة، والمنتجات الزخرفية. تتصدر K2 القطاع كواحدة من أكثر علامات الإضاءة التركية شهرة وموثوقية.',
     popularLabel: 'فئات المنتجات',
     popularTitle: 'فئاتنا',
     categoryCountLabel: 'منتج',
@@ -178,6 +181,8 @@ const translations = {
     exportEyebrow: 'وصول عالمي',
     exportTitle: 'ضوء K2 لا يعرف حدوداً.',
     exportHint: 'انقر على نقطة في الخريطة.',
+    exportMobileSummary:
+      'بفضل قوتنا التصنيعية القائمة في تركيا، نصدّر إلى 40 دولة عبر 4 قارات.',
     sec3Title: 'ظروف قاسية',
     sec3Text:
       'من الكشافات وألواح LED والأضواء الكاشفة إلى الأجهزة الشمسية والأنظمة المغناطيسية والإضاءة الزخرفية، تجلب تشكيلة K2 الواسعة حلول LED مبتكرة لإضاءة المنزل والمكتب — وفّر الطاقة، واستثمر في المستقبل.',
@@ -207,7 +212,7 @@ const translations = {
       "Nuestra marca, que toma su nombre del K2, una de las montañas más difíciles y prestigiosas para los alpinistas, actúa con la visión de 'Iluminar la Oscuridad'.",
     sec2Title: 'Amplia Gama',
     sec2Text:
-      "Representa la amplia gama de sistemas profesionales de iluminación LED de Kendal Elektrik, soluciones centradas en la eficiencia energética y productos decorativos. K2 lidera el sector como una de las marcas de iluminación más prestigiosas y confiables de Turquía.",
+      'Representa la amplia gama de sistemas profesionales de iluminación LED de Kendal Elektrik, soluciones centradas en la eficiencia energética y productos decorativos. K2 lidera el sector como una de las marcas de iluminación más prestigiosas y confiables de Turquía.',
     popularLabel: 'Categorías de Productos',
     popularTitle: 'Nuestras Categorías',
     categoryCountLabel: 'Productos',
@@ -215,6 +220,8 @@ const translations = {
     exportEyebrow: 'Alcance Global',
     exportTitle: 'La luz de K2 no conoce fronteras.',
     exportHint: 'Haga clic en un punto del mapa.',
+    exportMobileSummary:
+      'Con nuestra capacidad de fabricación con sede en Turquía, exportamos a 40 países en 4 continentes.',
     sec3Title: 'Condiciones Extremas',
     sec3Text:
       'Desde focos, paneles LED y proyectores hasta luminarias solares, sistemas magnéticos e iluminación decorativa, la amplia gama de K2 aporta soluciones LED innovadoras para el hogar y la oficina — ahorre energía, invierta en el futuro.',
@@ -244,7 +251,7 @@ const translations = {
       "Unsere Marke, die ihren Namen vom K2 trägt, einem der schwierigsten und angesehensten Berge für Bergsteiger, verfolgt die Vision 'Die Dunkelheit erhellen'.",
     sec2Title: 'Breites Sortiment',
     sec2Text:
-      "Repräsentiert das breite Sortiment professioneller LED-Beleuchtungssysteme, energieeffizienzorientierter Lösungen und dekorativer Produkte von Kendal Elektrik. K2 führt die Branche als eine der angesehensten und vertrauenswürdigsten Beleuchtungsmarken der Türkei an.",
+      'Repräsentiert das breite Sortiment professioneller LED-Beleuchtungssysteme, energieeffizienzorientierter Lösungen und dekorativer Produkte von Kendal Elektrik. K2 führt die Branche als eine der angesehensten und vertrauenswürdigsten Beleuchtungsmarken der Türkei an.',
     popularLabel: 'Produktkategorien',
     popularTitle: 'Unsere Kategorien',
     categoryCountLabel: 'Produkte',
@@ -252,6 +259,8 @@ const translations = {
     exportEyebrow: 'Globale Reichweite',
     exportTitle: 'Das Licht von K2 kennt keine Grenzen.',
     exportHint: 'Klicken Sie auf einen Punkt auf der Karte.',
+    exportMobileSummary:
+      'Mit unserer Fertigungskraft mit Sitz in der Türkei exportieren wir in 40 Länder auf 4 Kontinenten.',
     sec3Title: 'Extreme Bedingungen',
     sec3Text:
       'Von Strahlern, LED-Panels und Flutlichtern bis hin zu Solarleuchten, Magnetsystemen und dekorativer Beleuchtung — das umfangreiche Sortiment von K2 bringt innovative LED-Lösungen für Heim und Büro: Energie sparen, in die Zukunft investieren.',
@@ -289,6 +298,8 @@ const translations = {
     exportEyebrow: '全球覆盖',
     exportTitle: 'K2 的光芒无国界。',
     exportHint: '点击地图上的位置。',
+    exportMobileSummary:
+      '凭借我们在土耳其的制造实力，我们的产品出口到4大洲40个国家。',
     sec3Title: '严苛环境',
     sec3Text:
       '从射灯、LED平板灯、投光灯到太阳能灯具、磁吸系统及装饰照明，K2 丰富的产品线为家庭和办公照明带来创新的LED解决方案——节约能源，投资未来。',
@@ -629,6 +640,7 @@ export function K2CreativePage({ allProducts }: K2CreativePageProps) {
           eyebrow={t.exportEyebrow}
           title={t.exportTitle}
           hint={t.exportHint}
+          mobileSummary={t.exportMobileSummary}
           language={language}
           accent={K2_ACCENT}
         />

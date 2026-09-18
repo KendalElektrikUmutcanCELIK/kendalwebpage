@@ -81,7 +81,7 @@ export function IletisimClient() {
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="mb-12">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-[var(--global-text)] opacity-90 mb-4">
-            {language === 'tr' ? 'İletişim' : 'Contact Us'}
+            {t.nav.contact}
           </h1>
           <div className="h-1.5 w-16 bg-[var(--brand-red)] rounded-full" />
         </div>
@@ -149,7 +149,7 @@ export function IletisimClient() {
                 </div>
                 <div>
                   <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">
-                    E-Posta
+                    {(t as any).footer?.email_label || 'Email'}
                   </span>
                   <a
                     href={`mailto:${siteSettings.email}`}
@@ -165,12 +165,10 @@ export function IletisimClient() {
           {/* Harita ve Adres */}
           <div className="contact-block flex flex-col">
             <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1.5">
-              {language === 'tr' ? 'Adres' : 'Address'}
+              {(t as any).footer?.address_label || 'Address'}
             </span>
             <h2 className="text-2xl font-bold text-white mb-5 tracking-tight">
-              {language === 'tr'
-                ? 'Merkez Ofis & Fabrika'
-                : 'Headquarters & Factory'}
+              {(t as any).footer?.hq_factory_label || 'Headquarters & Factory'}
             </h2>
 
             <a

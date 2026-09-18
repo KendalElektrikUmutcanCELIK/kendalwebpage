@@ -41,8 +41,12 @@ export function UretimClient() {
         <div className="max-w-2xl mx-auto">
           <ImageSlider
             images={images}
-            altPrefix="Kendal Elektrik Üretim Tesisi Görsel"
-            titlePrefix="Kendal Elektrik Üretim Aşaması"
+            altPrefix={
+              pageData.image_alt || 'Kendal Elektrik Üretim Tesisi Görsel'
+            }
+            titlePrefix={
+              pageData.image_title || 'Kendal Elektrik Üretim Aşaması'
+            }
           />
         </div>
 

@@ -8,12 +8,14 @@ import {
   type ProductListItem,
 } from '@/data/products';
 import { getAssetPath, getBrandUrunlerHref } from '@/lib/basePath';
+import type { Language } from '@/lib/i18n/LanguageProvider';
+import { resolveLocalized } from '@/lib/i18n/localized';
 
 interface CategoryShowcaseProps {
   label: string;
   title: string;
   allProducts: ProductListItem[];
-  language: string;
+  language: Language;
   brandName: string;
   accent: string;
   countLabel: string;
@@ -42,32 +44,41 @@ export function CategoryShowcase({
   align = 'left',
   theme = 'dark',
 }: CategoryShowcaseProps) {
-  const lang = language === 'en' ? 'en' : 'tr';
+  const lang = language;
   const isDark = theme === 'dark';
   const catalogBase = getBrandUrunlerHref(brandName);
 
   const categories = useMemo<CategoryItem[]>(() => {
     const raw = new Map<
       string,
-      { nameTr: string; nameEn?: string; count: number; sampleImage?: string }
+      {
+        nameTr: string;
+        displayName: string;
+        count: number;
+        sampleImage?: string;
+      }
     >();
     for (const p of allProducts) {
       const nameTr = p.category?.tr?.[0];
-      if (!nameTr) continue;
-      const nameEn = p.category?.en?.[0];
+      if (!nameTr || !p.category) continue;
+      const displayName = resolveLocalized(p.category, lang)[0] || nameTr;
       const existing = raw.get(nameTr);
       if (existing) {
         existing.count += 1;
-        if (!existing.nameEn && nameEn) existing.nameEn = nameEn;
       } else {
-        raw.set(nameTr, { nameTr, nameEn, count: 1, sampleImage: p.image });
+        raw.set(nameTr, {
+          nameTr,
+          displayName,
+          count: 1,
+          sampleImage: p.image,
+        });
       }
     }
 
     const isK2 = brandName === 'k2';
     const groups = new Map<
       string,
-      { nameTr: string; nameEn: string; count: number; sampleImage?: string }
+      { displayName: string; count: number; sampleImage?: string }
     >();
     const items: CategoryItem[] = [];
 
@@ -80,8 +91,7 @@ export function CategoryShowcase({
         if (g) g.count += cat.count;
         else
           groups.set(groupDef.key, {
-            nameTr: groupDef.name.tr,
-            nameEn: groupDef.name.en,
+            displayName: resolveLocalized(groupDef.name, lang),
             count: cat.count,
             sampleImage: cat.sampleImage,
           });
@@ -89,7 +99,7 @@ export function CategoryShowcase({
       }
       items.push({
         key: cat.nameTr,
-        displayName: (lang === 'en' ? cat.nameEn : cat.nameTr) || cat.nameTr,
+        displayName: cat.displayName,
         count: cat.count,
         href: `${catalogBase}?category=${encodeURIComponent(cat.nameTr)}`,
         sampleImage: cat.sampleImage,
@@ -99,14 +109,14 @@ export function CategoryShowcase({
     for (const [key, g] of groups) {
       items.push({
         key,
-        displayName: (lang === 'en' ? g.nameEn : g.nameTr) || g.nameTr,
+        displayName: g.displayName,
         count: g.count,
         href: `${catalogBase}?group=${key}`,
         sampleImage: g.sampleImage,
       });
     }
 
-    const collator = new Intl.Collator(lang === 'en' ? 'en' : 'tr', {
+    const collator = new Intl.Collator(lang === 'tr' ? 'tr' : lang, {
       sensitivity: 'base',
     });
     items.sort((a, b) => collator.compare(a.displayName, b.displayName));

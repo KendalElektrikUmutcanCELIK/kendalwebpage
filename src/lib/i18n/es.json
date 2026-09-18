@@ -20,7 +20,11 @@
     "catalog": "Catálogo y Lista de Precios",
     "certifications": "Certificaciones",
     "references": "Nuestras Referencias",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "k2_products": "Productos K2",
+    "vanti_products": "Productos Vanti",
+    "global_products": "Productos Global",
+    "our_pages": "Nuestras Páginas"
   },
   "hero": {
     "badge": "Fabricante Global Desde 1997",
@@ -92,6 +96,11 @@
     "message": "Utilizamos cookies para ofrecerle una mejor experiencia. Al utilizar nuestro sitio, acepta nuestra política de cookies.",
     "accept": "Aceptar"
   },
+  "gallery": {
+    "previous": "Imagen Anterior",
+    "next": "Siguiente Imagen",
+    "image": "Imagen"
+  },
   "news": {
     "items": [
       "Nuestros trabajos de I+D de chips LED nacionales avanzan rápidamente en colaboración con la Universidad Técnica de Estambul (İTÜ).",
@@ -141,7 +150,10 @@
     },
     "phone_label": "Línea de Contacto",
     "sales_phone_label": "Línea de Atención a Ventas",
-    "support_phone_label": "Línea de Servicio Técnico"
+    "support_phone_label": "Línea de Servicio Técnico",
+    "email_label": "Correo Electrónico",
+    "address_label": "Dirección",
+    "hq_factory_label": "Sede Central y Fábrica"
   },
   "career": {
     "title": "Carrera",
@@ -216,7 +228,24 @@
       "Kendal Elektrik, que inició su actividad en 2017 en una moderna planta de producción con 22.000 m² de superficie cubierta, se encuentra entre los fabricantes líderes del sector con una capacidad de producción anual de 80 millones de productos de iluminación. En una infraestructura de producción respaldada por tecnología de alta automatización, la fabricación de bombillas LED, paneles LED, bombillas LED de filamento, bombillas tipo vela, líneas de montaje manual, sistemas de montaje SMD y producción de inyección de plástico se realiza bajo un mismo techo.",
       "Kendal Elektrik, el único fabricante de bombillas LED de filamento en Turquía, Europa y Oriente Medio, se basa en estándares internacionales de calidad en cada etapa de la producción. Todas las materias primas y semiacabados procedentes de los proveedores pasan por procesos de IQC (Control de Calidad de Entrada), se aplican controles IPQC (Control de Calidad en Proceso) durante la producción, y antes del envío, los productos finales se vuelven a inspeccionar mediante OQC (Control de Calidad de Salida).",
       "Gracias a los procesos de producción realizados en áreas protegidas contra descargas electrostáticas (ESD), los componentes electrónicos quedan protegidos frente a este tipo de descargas, mientras que los productos se someten a exhaustivos controles de calidad, como seguridad eléctrica, resistencia mecánica, rendimiento fotométrico, consumo de energía, factor de potencia, compatibilidad EMC, control de drivers, valor de lúmenes, temperatura de color, medición de CRI, resistencia de aislamiento, resistencia de puesta a tierra, alta tensión, corriente de fuga, envejecimiento, vida útil y pruebas de caída. Kendal Elektrik, que respalda su gestión de producción digital con sistemas ERP, MES y WMS, sigue entregando con confianza sus soluciones de iluminación innovadoras, fabricadas en Turquía, a numerosos países del mundo, gracias a su alta capacidad de producción, avanzada infraestructura de automatización, procesos trazables y su enfoque de calidad sostenible."
-    ]
+    ],
+    "image_alt": "Imagen de la Planta de Fabricación de Kendal Elektrik",
+    "image_title": "Etapa de Fabricación de Kendal Elektrik"
+  },
+  "product_detail": {
+    "go_back": "Volver",
+    "zoom_image": "Ampliar imagen",
+    "pdf_download": "Descargar Ficha Técnica del Producto",
+    "light_color_options": "Opciones de Color de Luz",
+    "color_options": "Opciones de Color",
+    "casing_options": "Opciones de Carcasa",
+    "watt_options": "Opciones de Vataje",
+    "socket_options": "Opciones de Casquillo",
+    "key_features": "Características Destacadas",
+    "technical_details": "Detalles Técnicos",
+    "no_technical_data": "No hay datos técnicos detallados disponibles para este producto.",
+    "installation_video": "Video de Instalación",
+    "close": "Cerrar"
   },
   "brand_info": {
     "k2": {
@@ -272,6 +301,20 @@
       "filter_no_results": "No se encontraron resultados.",
       "filter_clear": "Limpiar",
       "filter_apply": "Aplicar"
+    },
+    "compare": {
+      "add": "Comparar",
+      "added": "Añadido",
+      "max_reached": "Puede comparar hasta 3 productos",
+      "tray_hint": "Seleccione 2-3 productos de esta categoría para comparar",
+      "compare_button": "Comparar",
+      "clear": "Limpiar",
+      "modal_title": "Comparación de Productos",
+      "view": "Ver",
+      "model": "Modelo:",
+      "no_value": "—",
+      "loading": "Cargando...",
+      "comparing_count": "productos en comparación"
     },
     "footer": {
       "address_prefix": "Dirección: ",

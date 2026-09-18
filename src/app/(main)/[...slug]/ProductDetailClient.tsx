@@ -248,7 +248,8 @@ export function ProductDetailClient({
   variations,
 }: ProductDetailClientProps) {
   const router = useRouter();
-  const { language } = useLanguage();
+  const { t, language } = useLanguage();
+  const pd = (t as any).product_detail || {};
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const name = resolveLocalized(product.name, language);
@@ -589,7 +590,7 @@ export function ProductDetailClient({
               </svg>
             </div>
             <span className="font-semibold tracking-wide text-xs uppercase">
-              {language === 'en' ? 'Go Back' : 'Geri Dön'}
+              {pd.go_back || 'Go Back'}
             </span>
           </button>
 
@@ -601,14 +602,14 @@ export function ProductDetailClient({
               href={homeHref}
               className={`transition-colors ${isLight ? 'hover:text-zinc-700' : 'hover:text-white/80'}`}
             >
-              {language === 'en' ? 'Home' : 'Ana Sayfa'}
+              {(t as any).brand_pages?.navbar?.home || 'Home'}
             </Link>
             <span className="opacity-50">/</span>
             <Link
               href={categoryHref}
               className={`transition-colors ${isLight ? 'hover:text-zinc-700' : 'hover:text-white/80'}`}
             >
-              {categoryName || (language === 'en' ? 'Products' : 'Ürünler')}
+              {categoryName || t.nav.products}
             </Link>
             <span className="opacity-50">/</span>
             <span className={isLight ? 'text-zinc-600' : 'text-white/70'}>
@@ -648,9 +649,7 @@ export function ProductDetailClient({
                 <button
                   type="button"
                   onClick={() => setLightboxOpen(true)}
-                  aria-label={
-                    language === 'tr' ? 'Görseli büyüt' : 'Zoom image'
-                  }
+                  aria-label={pd.zoom_image || 'Zoom image'}
                   className={`relative w-full max-w-[320px] md:max-w-md flex items-center justify-center p-8 md:p-10 z-10 rounded-[2.5rem] transition-all duration-500 group-hover/showcase:-translate-y-1.5 cursor-zoom-in
                   ${
                     isLight
@@ -749,9 +748,7 @@ export function ProductDetailClient({
                     </svg>
                   </span>
                   <span>
-                    {language === 'tr'
-                      ? 'Ürün Bilgi Formu İndir'
-                      : 'Download Product Info Sheet'}
+                    {pd.pdf_download || 'Download Product Info Sheet'}
                   </span>
                   <svg
                     className="w-4 h-4 opacity-40 -translate-x-1 group-hover:opacity-90 group-hover:translate-x-0 transition-all duration-300"
@@ -1134,13 +1131,9 @@ export function ProductDetailClient({
                       uniqueLights.length > 1 && {
                         key: 'light',
                         label:
-                          language === 'tr'
-                            ? uniqueCasings.length > 1
-                              ? 'Işık Rengi Seçenekleri'
-                              : 'Renk Seçenekleri'
-                            : uniqueCasings.length > 1
-                              ? 'Light Color Options'
-                              : 'Color Options',
+                          uniqueCasings.length > 1
+                            ? pd.light_color_options || 'Light Color Options'
+                            : pd.color_options || 'Color Options',
                         showDot: true,
                         items: uniqueLights
                           .map((color) => ({
@@ -1152,13 +1145,9 @@ export function ProductDetailClient({
                       uniqueCasings.length > 1 && {
                         key: 'casing',
                         label:
-                          language === 'tr'
-                            ? uniqueLights.length > 1
-                              ? 'Kasa Rengi Seçenekleri'
-                              : 'Renk Seçenekleri'
-                            : uniqueLights.length > 1
-                              ? 'Casing Options'
-                              : 'Color Options',
+                          uniqueLights.length > 1
+                            ? pd.casing_options || 'Casing Options'
+                            : pd.color_options || 'Color Options',
                         showDot: true,
                         items: uniqueCasings
                           .map((color) => ({
@@ -1169,10 +1158,7 @@ export function ProductDetailClient({
                       },
                       uniqueWatts.length > 1 && {
                         key: 'watt',
-                        label:
-                          language === 'tr'
-                            ? 'Watt Seçenekleri'
-                            : 'Wattage Options',
+                        label: pd.watt_options || 'Wattage Options',
                         showDot: false,
                         items: uniqueWatts
                           .map((watt) => ({
@@ -1183,10 +1169,7 @@ export function ProductDetailClient({
                       },
                       uniqueSockets.length > 1 && {
                         key: 'socket',
-                        label:
-                          language === 'tr'
-                            ? 'Duy Seçenekleri'
-                            : 'Socket Options',
+                        label: pd.socket_options || 'Socket Options',
                         showDot: false,
                         items: uniqueSockets
                           .map((socket) => ({
@@ -1242,12 +1225,8 @@ export function ProductDetailClient({
                     <SectionHeader
                       title={
                         hasDedicatedFeatures
-                          ? language === 'tr'
-                            ? 'Öne Çıkan Özellikler'
-                            : 'Key Features'
-                          : language === 'tr'
-                            ? 'Teknik Detaylar'
-                            : 'Technical Details'
+                          ? pd.key_features || 'Key Features'
+                          : pd.technical_details || 'Technical Details'
                       }
                       icon={
                         <svg
@@ -1355,9 +1334,7 @@ export function ProductDetailClient({
 
               <div className="w-full pb-3">
                 <SectionHeader
-                  title={
-                    language === 'tr' ? 'Teknik Detaylar' : 'Technical Details'
-                  }
+                  title={pd.technical_details || 'Technical Details'}
                   icon={
                     <svg
                       className="w-4 h-4"
@@ -1484,9 +1461,8 @@ export function ProductDetailClient({
                     className={`p-8 rounded-3xl border border-dashed flex items-center justify-center max-w-2xl mx-auto ${isLight ? 'bg-white/50 border-zinc-200 text-zinc-400' : 'bg-white/5 border-white/10 text-zinc-500'}`}
                   >
                     <span className="font-medium text-sm">
-                      {language === 'tr'
-                        ? 'Bu ürüne ait detaylı teknik veri bulunmamaktadır.'
-                        : 'No detailed technical data available.'}
+                      {pd.no_technical_data ||
+                        'No detailed technical data available.'}
                     </span>
                   </div>
                 )}
@@ -1499,9 +1475,7 @@ export function ProductDetailClient({
               <SectionDivider />
               <div className="w-full max-w-3xl mx-auto">
                 <SectionHeader
-                  title={
-                    language === 'tr' ? 'Kurulum Videosu' : 'Installation Video'
-                  }
+                  title={pd.installation_video || 'Installation Video'}
                   icon={
                     <svg
                       className="w-4 h-4"
@@ -1547,7 +1521,7 @@ export function ProductDetailClient({
                       <iframe
                         className="w-full h-full object-cover"
                         src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&controls=1&rel=0&modestbranding=1`}
-                        title="Kurulum Videosu"
+                        title={pd.installation_video || 'Installation Video'}
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen
@@ -1569,7 +1543,7 @@ export function ProductDetailClient({
           <button
             type="button"
             onClick={() => setLightboxOpen(false)}
-            aria-label={language === 'tr' ? 'Kapat' : 'Close'}
+            aria-label={pd.close || 'Close'}
             className="absolute top-5 right-5 md:top-8 md:right-8 w-11 h-11 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 text-white border border-white/15 transition-colors"
           >
             <svg

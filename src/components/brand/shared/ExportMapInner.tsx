@@ -9,6 +9,9 @@ import {
   HQ,
 } from '@/data/exportCountries';
 import landTopology from '@/data/world-land-110m.json';
+import type { Language } from '@/lib/i18n/LanguageProvider';
+import type { LocalizedField } from '@/lib/i18n/localized';
+import { resolveLocalized } from '@/lib/i18n/localized';
 
 type Ring = [number, number][];
 type PolygonGeom = { type: 'Polygon'; coordinates: Ring[] };
@@ -19,14 +22,46 @@ const HEIGHT = 480;
 const ZOOM = 3.2;
 
 const OCEAN_LABELS: {
-  nameTr: string;
-  nameEn: string;
+  name: LocalizedField<string>;
   lon: number;
   lat: number;
 }[] = [
-  { nameTr: 'ATLANTİK OKYANUSU', nameEn: 'ATLANTIC OCEAN', lon: -34, lat: 12 },
-  { nameTr: 'PASİFİK OKYANUSU', nameEn: 'PACIFIC OCEAN', lon: -152, lat: 2 },
-  { nameTr: 'HİNT OKYANUSU', nameEn: 'INDIAN OCEAN', lon: 72, lat: -28 },
+  {
+    name: {
+      tr: 'ATLANTİK OKYANUSU',
+      en: 'ATLANTIC OCEAN',
+      ar: 'المحيط الأطلسي',
+      es: 'OCÉANO ATLÁNTICO',
+      de: 'ATLANTISCHER OZEAN',
+      zh: '大西洋',
+    },
+    lon: -34,
+    lat: 12,
+  },
+  {
+    name: {
+      tr: 'PASİFİK OKYANUSU',
+      en: 'PACIFIC OCEAN',
+      ar: 'المحيط الهادئ',
+      es: 'OCÉANO PACÍFICO',
+      de: 'PAZIFISCHER OZEAN',
+      zh: '太平洋',
+    },
+    lon: -152,
+    lat: 2,
+  },
+  {
+    name: {
+      tr: 'HİNT OKYANUSU',
+      en: 'INDIAN OCEAN',
+      ar: 'المحيط الهندي',
+      es: 'OCÉANO ÍNDICO',
+      de: 'INDISCHER OZEAN',
+      zh: '印度洋',
+    },
+    lon: 72,
+    lat: -28,
+  },
 ];
 
 function arcPath(x1: number, y1: number, x2: number, y2: number): string {
@@ -38,7 +73,7 @@ function arcPath(x1: number, y1: number, x2: number, y2: number): string {
 }
 
 interface ExportMapInnerProps {
-  language: string;
+  language: Language;
   accent: string;
   theme?: 'dark' | 'light';
 }
@@ -167,7 +202,7 @@ export default function ExportMapInner({
               const [x, y] = projection([o.lon, o.lat]) || [0, 0];
               return (
                 <text
-                  key={o.nameTr}
+                  key={o.name.tr}
                   x={x}
                   y={y}
                   textAnchor="middle"
@@ -179,7 +214,7 @@ export default function ExportMapInner({
                   className="select-none pointer-events-none uppercase"
                   style={{ fontStyle: 'italic' }}
                 >
-                  {language === 'en' ? o.nameEn : o.nameTr}
+                  {resolveLocalized(o.name, language)}
                 </text>
               );
             })}
@@ -209,7 +244,7 @@ export default function ExportMapInner({
                   key={c.id}
                   onClick={() => toggle(c.id)}
                   className="cursor-pointer"
-                  aria-label={language === 'en' ? c.nameEn : c.nameTr}
+                  aria-label={resolveLocalized(c.name, language)}
                 >
                   <circle cx={x} cy={y} r={9} fill="transparent" />
                   {!isHQ && (
@@ -254,7 +289,7 @@ export default function ExportMapInner({
           >
             <span className="text-lg leading-none">{active.flag}</span>
             <span className="text-sm font-bold">
-              {language === 'en' ? active.nameEn : active.nameTr}
+              {resolveLocalized(active.name, language)}
             </span>
             <button
               type="button"

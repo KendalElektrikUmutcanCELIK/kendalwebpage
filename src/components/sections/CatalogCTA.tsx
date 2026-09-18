@@ -67,9 +67,9 @@ export const CatalogCTA = () => {
 
           <a
             href={
-              language === 'en'
-                ? 'en-catalog.pdf'
-                : 'kendal-elektrik-katalog-2026.pdf'
+              language === 'tr'
+                ? 'kendal-elektrik-katalog-2026.pdf'
+                : 'en-catalog.pdf'
             }
             target="_blank"
             rel="noopener noreferrer"

@@ -5,11 +5,12 @@ import React, { useEffect, useRef } from 'react';
 import { referenceProjects } from '@/data/projects';
 import { getAssetPath } from '@/lib/basePath';
 import { useLanguage } from '@/lib/i18n/LanguageProvider';
+import { resolveLocalized } from '@/lib/i18n/localized';
 
 const REFERENCE_DATA = referenceProjects;
 
 export const Projects = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const containerRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const isPausedRef = useRef(false);
@@ -143,6 +144,7 @@ export const Projects = () => {
 
           {REFERENCE_DATA.map((item, idx) => {
             const isPriority = idx < 4;
+            const location = resolveLocalized(item.location, language);
             return (
               <div
                 key={`${item.id}-${idx}`}
@@ -150,7 +152,7 @@ export const Projects = () => {
               >
                 <Image
                   src={getAssetPath(`/images/${item.image}`)}
-                  alt={`${item.name} - ${item.location}`}
+                  alt={`${item.name} - ${location}`}
                   fill
                   sizes="(max-width: 768px) 75vw, (max-width: 1024px) 35vw, 25vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -164,7 +166,7 @@ export const Projects = () => {
                     {item.name}
                   </h4>
                   <p className="text-white/70 text-sm font-medium tracking-wide transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-75">
-                    {item.location}
+                    {location}
                   </p>
                 </div>
               </div>

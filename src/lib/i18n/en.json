@@ -20,7 +20,11 @@
     "catalog": "Catalog",
     "certifications": "Certifications",
     "references": "Our References",
-    "contact": "Contact"
+    "contact": "Contact",
+    "k2_products": "K2 Products",
+    "vanti_products": "Vanti Products",
+    "global_products": "Global Products",
+    "our_pages": "Our Pages"
   },
   "hero": {
     "badge": "Global Manufacturer Since 1997",
@@ -92,6 +96,11 @@
     "message": "We use cookies to ensure you get the best experience on our website. By using our site, you consent to our cookie policy.",
     "accept": "Accept"
   },
+  "gallery": {
+    "previous": "Previous Image",
+    "next": "Next Image",
+    "image": "Image"
+  },
   "news": {
     "items": [
       "Our domestic LED chip R&D partnership with ITU is rapidly progressing.",
@@ -141,7 +150,10 @@
     },
     "phone_label": "Contact Line",
     "sales_phone_label": "Sales Support Line",
-    "support_phone_label": "Technical Service Line"
+    "support_phone_label": "Technical Service Line",
+    "email_label": "Email",
+    "address_label": "Address",
+    "hq_factory_label": "Headquarters & Factory"
   },
   "career": {
     "title": "Careers",
@@ -234,7 +246,24 @@
       "Kendal Elektrik, in its modern production facility with a closed area of 22,000 m² which became operational in 2017, is among the leading manufacturers of the sector with an annual production capacity of 80 million lighting products. In the production infrastructure supported by high automation technology, LED bulbs, LED panels, filament LED bulbs, candle bulbs, manual assembly lines, SMD assembly systems, and plastic injection production are carried out under a single roof.",
       "As the only manufacturer producing filament LED bulbs in Turkey, Europe, and the Middle East, Kendal Elektrik bases every stage of production on international quality standards. While all raw materials and semi-finished products coming from suppliers go through IQC (Incoming Quality Control) processes, IPQC (In Process Quality Control) is applied throughout the production, and the final products are inspected again with OQC (Outgoing Quality Control) before shipment.",
       "Thanks to the production processes carried out in ESD-protected production areas, electronic components are protected against electrostatic discharge, while the products undergo comprehensive quality controls such as electrical safety, mechanical endurance, photometric performance, power consumption, power factor, EMC compliance, driver control, lumen value, color temperature, CRI measurement, insulation resistance, grounding resistance, high voltage, leakage current, aging, lifetime, and drop tests. Supporting digital production management with ERP, MES, and WMS systems, Kendal Elektrik safely delivers innovative lighting solutions produced in Turkey to many countries of the world with its high production capacity, advanced automation infrastructure, traceable processes, and sustainable quality understanding."
-    ]
+    ],
+    "image_alt": "Kendal Elektrik Manufacturing Facility Image",
+    "image_title": "Kendal Elektrik Manufacturing Stage"
+  },
+  "product_detail": {
+    "go_back": "Go Back",
+    "zoom_image": "Zoom image",
+    "pdf_download": "Download Product Info Sheet",
+    "light_color_options": "Light Color Options",
+    "color_options": "Color Options",
+    "casing_options": "Casing Options",
+    "watt_options": "Wattage Options",
+    "socket_options": "Socket Options",
+    "key_features": "Key Features",
+    "technical_details": "Technical Details",
+    "no_technical_data": "No detailed technical data available.",
+    "installation_video": "Installation Video",
+    "close": "Close"
   },
   "brand_info": {
     "k2": {
@@ -290,6 +319,20 @@
       "filter_no_results": "No results found.",
       "filter_clear": "Clear",
       "filter_apply": "Apply"
+    },
+    "compare": {
+      "add": "Compare",
+      "added": "Added",
+      "max_reached": "You can compare up to 3 products",
+      "tray_hint": "Select 2-3 products from this category to compare",
+      "compare_button": "Compare",
+      "clear": "Clear",
+      "modal_title": "Product Comparison",
+      "view": "View",
+      "model": "Model:",
+      "no_value": "—",
+      "loading": "Loading...",
+      "comparing_count": "products being compared"
     },
     "footer": {
       "address_prefix": "Address: ",

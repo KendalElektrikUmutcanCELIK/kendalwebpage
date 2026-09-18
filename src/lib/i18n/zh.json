@@ -20,7 +20,11 @@
     "catalog": "产品目录与价目表",
     "certifications": "认证证书",
     "references": "客户案例",
-    "contact": "联系我们"
+    "contact": "联系我们",
+    "k2_products": "K2产品",
+    "vanti_products": "Vanti产品",
+    "global_products": "Global产品",
+    "our_pages": "我们的页面"
   },
   "hero": {
     "badge": "自1997年起的全球制造商",
@@ -92,6 +96,11 @@
     "message": "我们使用 Cookie 为您提供更好的浏览体验。继续使用本网站即表示您同意我们的 Cookie 政策。",
     "accept": "接受"
   },
+  "gallery": {
+    "previous": "上一张图片",
+    "next": "下一张图片",
+    "image": "图片"
+  },
   "news": {
     "items": [
       "我们与伊斯坦布尔技术大学（İTÜ）合作开展的国产LED芯片研发工作正快速推进。",
@@ -141,7 +150,10 @@
     },
     "phone_label": "客服热线",
     "sales_phone_label": "销售支持热线",
-    "support_phone_label": "技术服务热线"
+    "support_phone_label": "技术服务热线",
+    "email_label": "电子邮箱",
+    "address_label": "地址",
+    "hq_factory_label": "总部与工厂"
   },
   "career": {
     "title": "招聘信息",
@@ -216,7 +228,24 @@
       "Kendal Elektrik 于2017年在占地22,000平方米的现代化生产基地正式投产，年产照明产品达8000万件，是行业内的领先制造商之一。在高度自动化技术支持的生产体系下，LED灯泡、LED平板灯、灯丝LED灯泡、烛形灯泡、人工组装线、SMD贴片系统以及塑料注塑生产均在同一屋檐下完成。",
       "作为土耳其、欧洲及中东地区唯一生产灯丝LED灯泡的制造商，Kendal Elektrik 在生产的每一个环节都以国际质量标准为基准。所有来自供应商的原材料及半成品均需经过来料质量检验（IQC），生产过程中执行过程质量控制（IPQC），出货前成品还需再次通过出货质量检验（OQC）进行把关。",
       "得益于在防静电（ESD）保护区域内进行的生产工艺，电子元件得以免受静电放电的损害，同时产品还需经过电气安全、机械强度、光度性能、功耗、功率因数、电磁兼容性（EMC）、驱动控制、光通量、色温、显色指数（CRI）测量、绝缘电阻、接地电阻、高压测试、漏电流、老化、寿命及跌落测试等全面的质量检验。Kendal Elektrik 借助 ERP、MES 与 WMS 系统支持其数字化生产管理，凭借高产能、先进的自动化基础设施、可追溯的生产流程以及可持续的质量理念，持续将在土耳其制造的创新照明解决方案可靠地输送至世界众多国家。"
-    ]
+    ],
+    "image_alt": "Kendal Elektrik 生产工厂图片",
+    "image_title": "Kendal Elektrik 生产阶段"
+  },
+  "product_detail": {
+    "go_back": "返回",
+    "zoom_image": "放大图片",
+    "pdf_download": "下载产品信息表",
+    "light_color_options": "光色选项",
+    "color_options": "颜色选项",
+    "casing_options": "外壳颜色选项",
+    "watt_options": "瓦数选项",
+    "socket_options": "灯座选项",
+    "key_features": "主要特点",
+    "technical_details": "技术细节",
+    "no_technical_data": "该产品暂无详细技术数据。",
+    "installation_video": "安装视频",
+    "close": "关闭"
   },
   "brand_info": {
     "k2": {
@@ -272,6 +301,20 @@
       "filter_no_results": "未找到结果。",
       "filter_clear": "清除",
       "filter_apply": "应用"
+    },
+    "compare": {
+      "add": "对比",
+      "added": "已添加",
+      "max_reached": "最多可对比3款产品",
+      "tray_hint": "从该分类中选择2-3款产品进行对比",
+      "compare_button": "对比",
+      "clear": "清空",
+      "modal_title": "产品对比",
+      "view": "查看",
+      "model": "型号：",
+      "no_value": "—",
+      "loading": "加载中...",
+      "comparing_count": "款产品正在对比"
     },
     "footer": {
       "address_prefix": "地址：",

@@ -141,6 +141,8 @@ const translations = {
     exportEyebrow: 'Global Erişim',
     exportTitle: "Vanti'nin serinliği, Türkiye'den dünyaya ihraç ediliyor.",
     exportHint: 'Haritadaki noktalara tıklayın.',
+    exportMobileSummary:
+      'Türkiye merkezli üretim gücümüzle 4 kıtada 40 ülkeye ihracat yapıyoruz.',
     videoLabel: 'Yakından Bakış',
     videoTitle: 'Ürün Tanıtım Videolarımız',
     videoSubtitle: 'Vanti ürünlerini gerçek kullanımda izleyin.',
@@ -186,6 +188,8 @@ const translations = {
     exportEyebrow: 'Global Reach',
     exportTitle: "Vanti's cooling, exported from Turkey to the world.",
     exportHint: 'Click a point on the map.',
+    exportMobileSummary:
+      'With our Turkey-based manufacturing power, we export to 40 countries across 4 continents.',
     videoLabel: 'Up Close',
     videoTitle: 'Our Product Demo Videos',
     videoSubtitle: 'See Vanti products in real use.',
@@ -211,8 +215,7 @@ const translations = {
     explore: 'اشعر بالانتعاش',
     whyEyebrow: 'لماذا Vanti؟',
     whyHeading: 'علامة الانتعاش التي تثق بها تركيا.',
-    whySubtext:
-      'بضمان كندال إلكتريك، تتميز Vanti بجودتها ورضا عملائها.',
+    whySubtext: 'بضمان كندال إلكتريك، تتميز Vanti بجودتها ورضا عملائها.',
     sec1Title: 'نسيم طبيعي',
     sec1Text:
       'نصمم أكثر المراوح هدوءاً وقوةً لتشعر بنسيم الطبيعة المنعش في كل ركن من منزلك.',
@@ -228,6 +231,8 @@ const translations = {
     exportEyebrow: 'وصول عالمي',
     exportTitle: 'انتعاش Vanti يُصدَّر من تركيا إلى العالم.',
     exportHint: 'انقر على نقطة في الخريطة.',
+    exportMobileSummary:
+      'بفضل قوتنا التصنيعية القائمة في تركيا، نصدّر إلى 40 دولة عبر 4 قارات.',
     videoLabel: 'عن قرب',
     videoTitle: 'فيديوهات عرض منتجاتنا',
     videoSubtitle: 'شاهد منتجات Vanti في الاستخدام الفعلي.',
@@ -273,6 +278,8 @@ const translations = {
     exportEyebrow: 'Alcance Global',
     exportTitle: 'El frescor de Vanti, exportado desde Turquía al mundo.',
     exportHint: 'Haga clic en un punto del mapa.',
+    exportMobileSummary:
+      'Con nuestra capacidad de fabricación con sede en Turquía, exportamos a 40 países en 4 continentes.',
     videoLabel: 'De Cerca',
     videoTitle: 'Nuestros Videos de Demostración',
     videoSubtitle: 'Vea los productos Vanti en uso real.',
@@ -316,8 +323,11 @@ const translations = {
     categoryCountLabel: 'Produkte',
     viewAllLabel: 'Alle Kategorien',
     exportEyebrow: 'Globale Reichweite',
-    exportTitle: 'Die Kühle von Vanti wird von der Türkei in die Welt exportiert.',
+    exportTitle:
+      'Die Kühle von Vanti wird von der Türkei in die Welt exportiert.',
     exportHint: 'Klicken Sie auf einen Punkt auf der Karte.',
+    exportMobileSummary:
+      'Mit unserer Fertigungskraft mit Sitz in der Türkei exportieren wir in 40 Länder auf 4 Kontinenten.',
     videoLabel: 'Nahaufnahme',
     videoTitle: 'Unsere Produktvideos',
     videoSubtitle: 'Sehen Sie Vanti-Produkte im echten Einsatz.',
@@ -352,8 +362,7 @@ const translations = {
     sec1Text:
       '我们设计最安静、最强劲的风扇，让您在家中每个角落都能感受到大自然般的清爽微风。',
     sec2Title: '智能降温',
-    sec2Text:
-      '凭借广角摆动和空气动力学叶片结构，均匀分配气流，带来即时清凉。',
+    sec2Text: '凭借广角摆动和空气动力学叶片结构，均匀分配气流，带来即时清凉。',
     familiesLabel: '我们的产品系列',
     familiesTitle: '为您找到合适的风扇',
     popularLabel: '产品分类',
@@ -363,6 +372,8 @@ const translations = {
     exportEyebrow: '全球覆盖',
     exportTitle: 'Vanti 的清凉，从土耳其出口到世界各地。',
     exportHint: '点击地图上的位置。',
+    exportMobileSummary:
+      '凭借我们在土耳其的制造实力，我们的产品出口到4大洲40个国家。',
     videoLabel: '近距离观看',
     videoTitle: '产品展示视频',
     videoSubtitle: '观看 Vanti 产品的实际使用场景。',
@@ -382,8 +393,7 @@ const translations = {
       { value: '低于0.5%', label: '退货率' },
     ],
     sec3Title: '节能省电',
-    sec3Text:
-      '选择低能耗、高性能的环保 Vanti 系列，清凉度过整个夏天。',
+    sec3Text: '选择低能耗、高性能的环保 Vanti 系列，清凉度过整个夏天。',
     catalogBtn: '探索产品',
   },
 };
@@ -571,6 +581,7 @@ export function VantiCreativePage({ allProducts }: VantiCreativePageProps) {
         eyebrow={t.exportEyebrow}
         title={t.exportTitle}
         hint={t.exportHint}
+        mobileSummary={t.exportMobileSummary}
         language={language}
         accent={VANTI_ACCENT}
         cardTheme="light"

@@ -15,6 +15,7 @@ export interface CompareTexts {
   model: string;
   no_value: string;
   loading?: string;
+  comparing_count?: string;
 }
 
 interface CompareItem {
@@ -165,7 +166,7 @@ export default function ProductCompareModal({
               {texts.modal_title}
             </h3>
             <p className="text-sm text-zinc-400 mt-1">
-              {items.length} ürün karşılaştırılıyor
+              {items.length} {texts.comparing_count || 'ürün karşılaştırılıyor'}
             </p>
           </div>
           <button
@@ -288,39 +289,39 @@ export default function ProductCompareModal({
               )}
               {attributesLoaded &&
                 attributeRows.map((row, i) => {
-                const palette = rowPalette[i % rowPalette.length];
-                return (
-                  <React.Fragment key={row.label}>
-                    <tr className={palette.bg}>
-                      <td
-                        colSpan={items.length}
-                        className="pt-3 sm:pt-5 pb-2 sm:pb-3 text-center"
-                      >
-                        <span className="inline-flex items-center gap-2">
-                          <span
-                            className={`w-2 h-2 rounded-full ${palette.dot} flex-shrink-0`}
-                          />
-                          <span
-                            className={`text-xs sm:text-base md:text-lg font-extrabold uppercase tracking-wider ${palette.text}`}
-                          >
-                            {row.label}
-                          </span>
-                        </span>
-                      </td>
-                    </tr>
-                    <tr className={palette.bg}>
-                      {row.values.map((value, j) => (
+                  const palette = rowPalette[i % rowPalette.length];
+                  return (
+                    <React.Fragment key={row.label}>
+                      <tr className={palette.bg}>
                         <td
-                          key={j}
-                          className={`px-1 pb-3 sm:pb-5 text-center text-zinc-800 text-xs sm:text-base md:text-lg font-medium leading-relaxed align-top ${j > 0 ? 'border-l-2 border-zinc-200' : ''}`}
+                          colSpan={items.length}
+                          className="pt-3 sm:pt-5 pb-2 sm:pb-3 text-center"
                         >
-                          {renderValue(value, texts.no_value)}
+                          <span className="inline-flex items-center gap-2">
+                            <span
+                              className={`w-2 h-2 rounded-full ${palette.dot} flex-shrink-0`}
+                            />
+                            <span
+                              className={`text-xs sm:text-base md:text-lg font-extrabold uppercase tracking-wider ${palette.text}`}
+                            >
+                              {row.label}
+                            </span>
+                          </span>
                         </td>
-                      ))}
-                    </tr>
-                  </React.Fragment>
-                );
-              })}
+                      </tr>
+                      <tr className={palette.bg}>
+                        {row.values.map((value, j) => (
+                          <td
+                            key={j}
+                            className={`px-1 pb-3 sm:pb-5 text-center text-zinc-800 text-xs sm:text-base md:text-lg font-medium leading-relaxed align-top ${j > 0 ? 'border-l-2 border-zinc-200' : ''}`}
+                          >
+                            {renderValue(value, texts.no_value)}
+                          </td>
+                        ))}
+                      </tr>
+                    </React.Fragment>
+                  );
+                })}
             </tbody>
           </table>
         </div>

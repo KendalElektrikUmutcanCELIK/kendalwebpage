@@ -110,7 +110,7 @@ export const BRAND_HOSTS: Record<string, string> = {
 export interface CategoryGroupDef {
   key: string;
   brand: string;
-  name: { tr: string; en: string };
+  name: LocalizedField<string>;
   categories: string[];
 }
 
@@ -118,7 +118,14 @@ export const CATEGORY_GROUPS: CategoryGroupDef[] = [
   {
     key: 'armatur',
     brand: 'k2',
-    name: { tr: 'Armatürler', en: 'Fixtures' },
+    name: {
+      tr: 'Armatürler',
+      en: 'Fixtures',
+      ar: 'التجهيزات',
+      es: 'Luminarias',
+      de: 'Leuchten',
+      zh: '灯具',
+    },
     categories: [
       'Exit Armatürler',
       'LED Armatürler',
@@ -144,7 +151,14 @@ export const CATEGORY_GROUPS: CategoryGroupDef[] = [
   {
     key: 'digerleri',
     brand: 'k2',
-    name: { tr: 'Diğerleri', en: 'Others' },
+    name: {
+      tr: 'Diğerleri',
+      en: 'Others',
+      ar: 'أخرى',
+      es: 'Otros',
+      de: 'Sonstiges',
+      zh: '其他',
+    },
     categories: [
       'Adaptörler',
       'Duylar',

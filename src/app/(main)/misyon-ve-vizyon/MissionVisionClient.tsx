@@ -10,13 +10,12 @@ import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect';
 
 export function MissionVisionClient() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { language } = useLanguage();
+  const { t, language } = useLanguage();
 
   const { mission: missionData, vision: visionData } =
     getMissionVisionContent(language);
 
-  const pageTitle =
-    language === 'en' ? 'Mission and Vision' : 'Misyon ve Vizyon';
+  const pageTitle = t.nav.mission_vision;
 
   useIsomorphicLayoutEffect(() => {
     const ctx = gsap.context(() => {
